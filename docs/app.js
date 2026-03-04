@@ -266,5 +266,9 @@ async function main() {
 
 main().catch((err) => {
   console.error(err);
-  document.body.innerHTML = `<main class="card" style="margin:2rem;">Failed to load data: ${err.message}</main>`;
+  const container = document.createElement('main');
+  container.className = 'card';
+  container.style.margin = '2rem';
+  container.textContent = `Failed to load data: ${err.message}`;
+  document.body.prepend(container);
 });

@@ -1,0 +1,5 @@
+source_id,title,url,organization,license_note,access_utc,notes
+un_m49_overview,UN M49 Standard country or area codes for statistical use (multilingual overview),https://unstats.un.org/unsd/methodology/m49/overview/,United Nations Statistics Division (UNSD),UN website terms,2026-03-04T12:30:28.193311+00:00,"Primary source for M49, ISO2/ISO3 mappings, UN geoscheme, LDC/LLDC/SIDS flags, and UN-language names."
+un_sdg_geoarea_list,UN SDG API GeoArea List,https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List,United Nations SDG Global Database,UN SDG API terms,2026-03-04T12:30:28.193311+00:00,GeoArea code-name mapping used in SDG API.
+un_sdg_geoarea_tree,UN SDG API GeoArea Tree,https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/Tree,United Nations SDG Global Database,UN SDG API terms,2026-03-04T12:30:28.193311+00:00,Hierarchy for SDG regional groupings.
+world_bank_country_api,World Bank API v2 - Country metadata,https://api.worldbank.org/v2/country?format=json&per_page=1000,World Bank Open Data,World Bank data terms,2026-03-04T12:30:28.193311+00:00,"Income level, lending type, region, capital city and coordinates."

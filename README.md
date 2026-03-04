@@ -2,7 +2,7 @@
 
 A reproducible country/area classification dataset and static explorer app for researchers.
 
-Maintainer: [Mafizul Islam](https://github.com/mafilicious)
+Maintainer: [Mafizul Islam](https://github.com/MafiAtUN)
 
 This project rebuilds country classifications in a normalized format using authoritative, updateable sources and publishes outputs that can be consumed directly as CSV/JSON.
 

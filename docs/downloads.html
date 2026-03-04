@@ -3,53 +3,407 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Downloads | Country Classification Commons</title>
+  <title>Downloads &amp; API Links | Country Classification Commons</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260304b">
+  <link rel="stylesheet" href="./styles.css?v=20260304c">
+  <script defer>
+    function switchTab(group, id) {
+      document.querySelectorAll(`[data-tabgroup="${group}"]`).forEach(el => el.classList.remove('active'));
+      document.querySelectorAll(`[data-tabpane="${group}"]`).forEach(el => el.classList.remove('active'));
+      document.querySelector(`[data-tabgroup="${group}"][data-tabid="${id}"]`).classList.add('active');
+      document.querySelector(`[data-tabpane="${group}"][data-paneid="${id}"]`).classList.add('active');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tabgroup, btn.dataset.tabid));
+      });
+      // activate first tab in each group
+      const seen = new Set();
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        if (!seen.has(btn.dataset.tabgroup)) {
+          btn.classList.add('active');
+          const pane = document.querySelector(`[data-tabpane="${btn.dataset.tabgroup}"][data-paneid="${btn.dataset.tabid}"]`);
+          if (pane) pane.classList.add('active');
+          seen.add(btn.dataset.tabgroup);
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <header class="hero">
-    <h1>Downloads & API Links</h1>
-    <p>Direct files for CSV/JSON download and programmatic access.</p>
+    <h1>Downloads &amp; API Links</h1>
+    <p>Direct-download files, permanent raw links, and copy-paste code for every major tool.</p>
     <nav class="nav">
       <a href="./index.html">Home</a>
       <a href="./explorer.html">Explorer</a>
-      <a href="./downloads.html" aria-current="page">Downloads & API Links</a>
+      <a href="./downloads.html" aria-current="page">Downloads &amp; API Links</a>
+      <a href="./about.html">About &amp; Methodology</a>
     </nav>
   </header>
 
   <main>
+
+    <!-- Quick intro -->
     <section class="card">
-      <h2>Latest Dataset Files (GitHub Pages)</h2>
+      <h2>What is available?</h2>
+      <p>
+        Every dataset is published in both <strong>CSV</strong> (for spreadsheet tools) and <strong>JSON</strong> (for code).
+        Files are refreshed automatically by GitHub Actions and served via GitHub Pages.
+        All permanent raw links below are stable and suitable for use in live queries from Excel, Power BI, Tableau, R, Python, SPSS, or Stata — the data refreshes in the background without breaking your link.
+      </p>
+      <p>Last snapshot: <strong id="snap-id">loading…</strong> &nbsp;·&nbsp; Generated (UTC): <strong id="snap-ts">loading…</strong></p>
+      <script defer>
+        fetch('./data/run_manifest.json')
+          .then(r => r.json())
+          .then(m => {
+            document.querySelector('#snap-id').textContent = m.snapshot_id || 'n/a';
+            document.querySelector('#snap-ts').textContent = m.generated_at_utc ? new Date(m.generated_at_utc).toUTCString() : 'n/a';
+          }).catch(() => {
+            document.querySelector('#snap-id').textContent = 'unavailable';
+            document.querySelector('#snap-ts').textContent = 'unavailable';
+          });
+      </script>
+    </section>
+
+    <!-- Dataset cards -->
+    <section class="card">
+      <h2>Datasets</h2>
+      <div class="dataset-grid">
+
+        <!-- countries_master -->
+        <div class="dataset-card">
+          <h3>countries_master</h3>
+          <div class="file-meta">248 rows &nbsp;·&nbsp; one row per country/area &nbsp;·&nbsp; CSV ~72 KB &nbsp;·&nbsp; JSON ~298 KB</div>
+          <p style="font-size:.85rem;margin:.3rem 0 .5rem">The authoritative country-level reference table. One row per ISO3 code. Contains:</p>
+          <ul>
+            <li><code>iso3</code>, <code>iso2</code>, <code>m49</code> — standard country codes</li>
+            <li>Country names in English, Arabic, Chinese, French, Russian, Spanish</li>
+            <li>UN geoscheme: global, region, sub-region, intermediate region codes and names</li>
+            <li>UN special designations: <code>is_ldc</code>, <code>is_lldc</code>, <code>is_sids</code></li>
+            <li>World Bank: income level, lending type, WB region, capital city, lat/lon</li>
+            <li>World Bank FCS status, FCS category, fiscal year</li>
+            <li>OECD DAC: ODA-eligible flag, WB income hint, reporting year</li>
+          </ul>
+          <div class="dl-links">
+            <a class="btn btn-sm" href="./data/countries_master.csv" download>↓ CSV</a>
+            <a class="btn btn-sm btn-outline" href="./data/countries_master.json" download>↓ JSON</a>
+            <a class="btn btn-sm btn-outline" href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv" target="_blank">Raw CSV link</a>
+          </div>
+        </div>
+
+        <!-- country_group_membership -->
+        <div class="dataset-card">
+          <h3>country_group_membership</h3>
+          <div class="file-meta">4 367 rows &nbsp;·&nbsp; long format &nbsp;·&nbsp; CSV ~240 KB &nbsp;·&nbsp; JSON ~820 KB</div>
+          <p style="font-size:.85rem;margin:.3rem 0 .5rem">Every country–group relationship in long (tidy) format. Ideal for merging into your own analysis. Columns:</p>
+          <ul>
+            <li><code>iso3</code>, <code>iso2</code>, <code>m49</code> — country identifiers</li>
+            <li><code>source</code> — e.g. <em>un_m49</em>, <em>world_bank</em>, <em>oecd_dac</em>, <em>world_bank_fcs</em>, <em>un_sdg</em></li>
+            <li><code>group_type</code> — e.g. <em>region</em>, <em>income_level</em>, <em>special_group</em>, <em>oda_eligibility</em></li>
+            <li><code>group_code</code> — short code for the group</li>
+            <li><code>group_name</code> — human-readable group name</li>
+          </ul>
+          <div class="dl-links">
+            <a class="btn btn-sm" href="./data/country_group_membership.csv" download>↓ CSV</a>
+            <a class="btn btn-sm btn-outline" href="./data/country_group_membership.json" download>↓ JSON</a>
+            <a class="btn btn-sm btn-outline" href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_group_membership.csv" target="_blank">Raw CSV link</a>
+          </div>
+        </div>
+
+        <!-- country_classification_library -->
+        <div class="dataset-card">
+          <h3>country_classification_library</h3>
+          <div class="file-meta">4 367 rows &nbsp;·&nbsp; denormalized &nbsp;·&nbsp; CSV ~1.1 MB &nbsp;·&nbsp; JSON ~3.5 MB</div>
+          <p style="font-size:.85rem;margin:.3rem 0 .5rem">A fully denormalized join of <em>countries_master</em> and <em>country_group_membership</em>. Every row is a country–group pair plus all country metadata. Best for ad-hoc queries when you don't want to do your own join. Contains all columns from both parent tables.</p>
+          <div class="dl-links">
+            <a class="btn btn-sm" href="./data/country_classification_library.csv" download>↓ CSV</a>
+            <a class="btn btn-sm btn-outline" href="./data/country_classification_library.json" download>↓ JSON</a>
+            <a class="btn btn-sm btn-outline" href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_classification_library.csv" target="_blank">Raw CSV link</a>
+          </div>
+        </div>
+
+        <!-- sources + manifest -->
+        <div class="dataset-card">
+          <h3>sources &amp; run_manifest</h3>
+          <div class="file-meta">sources: 6 rows &nbsp;·&nbsp; manifest: JSON metadata</div>
+          <p style="font-size:.85rem;margin:.3rem 0 .5rem">Provenance and integrity records for each pipeline run.</p>
+          <ul>
+            <li><strong>sources.csv/json</strong> — one row per upstream source: organisation, title, URL, access timestamp, license note, notes</li>
+            <li><strong>run_manifest.json</strong> — snapshot ID, UTC timestamp, record counts, and SHA-256 checksums for every output file</li>
+          </ul>
+          <div class="dl-links">
+            <a class="btn btn-sm btn-outline" href="./data/sources.csv" download>↓ sources CSV</a>
+            <a class="btn btn-sm btn-outline" href="./data/run_manifest.json" download>↓ manifest JSON</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Permanent raw links -->
+    <section class="card">
+      <h2>Permanent raw links (for live queries)</h2>
+      <p style="font-size:.9rem">These links always serve the <strong>latest committed version</strong>. Paste them directly into Excel, Power BI, Tableau, or code — no need to re-download manually.</p>
+      <div class="table-wrap">
+        <table style="min-width:600px">
+          <thead><tr><th>File</th><th>Raw URL</th></tr></thead>
+          <tbody>
+            <tr><td>countries_master.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv" target="_blank">…/data/latest/countries_master.csv</a></td></tr>
+            <tr><td>country_group_membership.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_group_membership.csv" target="_blank">…/data/latest/country_group_membership.csv</a></td></tr>
+            <tr><td>country_classification_library.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_classification_library.csv" target="_blank">…/data/latest/country_classification_library.csv</a></td></tr>
+            <tr><td>sources.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/sources.csv" target="_blank">…/data/latest/sources.csv</a></td></tr>
+            <tr><td>run_manifest.json</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/run_manifest.json" target="_blank">…/data/latest/run_manifest.json</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Code snippets -->
+    <section class="card">
+      <h2>How to load the data in your tool</h2>
+      <p style="font-size:.9rem">Copy-paste snippets for every major tool. Replace the URL with any raw link from the table above.</p>
+
+      <div class="tab-bar">
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="r">R</button>
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="python">Python</button>
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="excel">Excel</button>
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="powerbi">Power BI</button>
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="tableau">Tableau</button>
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="spss">SPSS</button>
+        <button class="tab-btn" data-tabgroup="tools" data-tabid="stata">Stata</button>
+      </div>
+
+      <!-- R -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="r">
+        <pre><span style="color:#6fd3b7"># Install readr if needed: install.packages("readr")</span>
+library(readr)
+
+BASE &lt;- "https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/"
+
+<span style="color:#6fd3b7"># Master country table (one row per country/area)</span>
+countries &lt;- read_csv(paste0(BASE, "countries_master.csv"))
+
+<span style="color:#6fd3b7"># Long-format group memberships</span>
+memberships &lt;- read_csv(paste0(BASE, "country_group_membership.csv"))
+
+<span style="color:#6fd3b7"># Full denormalized library (country + group in one table)</span>
+library_df &lt;- read_csv(paste0(BASE, "country_classification_library.csv"))
+
+<span style="color:#6fd3b7"># Example: filter to LDC countries</span>
+ldc &lt;- countries[countries$is_ldc == TRUE, ]
+
+<span style="color:#6fd3b7"># Example: find all World Bank income-level memberships</span>
+income_groups &lt;- memberships[memberships$source == "world_bank" &amp;
+                              memberships$group_type == "income_level", ]</pre>
+      </div>
+
+      <!-- Python -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="python">
+        <pre><span style="color:#6fd3b7"># pip install pandas requests</span>
+import pandas as pd
+
+BASE = "https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/"
+
+<span style="color:#6fd3b7"># Master country table</span>
+countries = pd.read_csv(BASE + "countries_master.csv")
+
+<span style="color:#6fd3b7"># Long-format group memberships</span>
+memberships = pd.read_csv(BASE + "country_group_membership.csv")
+
+<span style="color:#6fd3b7"># Full denormalized library</span>
+library_df = pd.read_csv(BASE + "country_classification_library.csv")
+
+<span style="color:#6fd3b7"># Example: LDC countries</span>
+ldc = countries[countries["is_ldc"] == True]
+
+<span style="color:#6fd3b7"># Example: World Bank FCS list</span>
+fcs = countries[countries["wb_fcs_status"] == True][["iso3","country_name_en","wb_fcs_category"]]
+
+<span style="color:#6fd3b7"># Example: merge memberships back to country names</span>
+df = memberships.merge(countries[["iso3","country_name_en"]], on="iso3")</pre>
+      </div>
+
+      <!-- Excel -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="excel">
+        <pre><span style="color:#6fd3b7">--- Excel (Get Data from Web) ---</span>
+
+1. Open Excel → Data tab → Get Data → From Web
+2. Paste this URL:
+   https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv
+
+3. Click OK → in Power Query Editor, select the table and click "Close &amp; Load"
+
+4. To refresh later: Data tab → Refresh All
+
+<span style="color:#6fd3b7">--- Power Query formula (paste in Advanced Editor) ---</span>
+let
+    Source = Csv.Document(
+        Web.Contents("https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv"),
+        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]
+    ),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders</pre>
+      </div>
+
+      <!-- Power BI -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="powerbi">
+        <pre><span style="color:#6fd3b7">--- Power BI Desktop ---</span>
+
+1. Home → Get Data → Web
+2. Paste URL:
+   https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv
+
+3. Power Query will detect it as a CSV table automatically.
+4. Promote first row as headers if not already done.
+
+<span style="color:#6fd3b7">--- M formula (Power Query Advanced Editor) ---</span>
+let
+    Source = Csv.Document(
+        Web.Contents(
+            "https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv"
+        ),
+        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]
+    ),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Types"    = Table.TransformColumnTypes(#"Promoted Headers",
+        {{"is_ldc","Logical"},{"is_lldc","Logical"},{"is_sids","Logical"},
+         {"wb_fcs_status","Logical"},{"oecd_dac_eligible","Logical"}})
+in
+    #"Changed Types"
+
+<span style="color:#6fd3b7">-- Tip: load country_group_membership.csv as a second query,
+-- then create a relationship on iso3 to build a cross-filter.</span></pre>
+      </div>
+
+      <!-- Tableau -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="tableau">
+        <pre><span style="color:#6fd3b7">--- Tableau Desktop ---</span>
+
+Option A — Web Data Connector (Tableau 2020.4+):
+  Connect → Web Data Connector
+  Paste: https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv
+
+Option B — Text File (download first):
+  1. Download countries_master.csv from this page
+  2. Connect → Text File → select the downloaded file
+
+Option C — Google Sheets bridge:
+  1. In Google Sheets: File → Import → upload the CSV
+  2. Publish the sheet (File → Share → Publish to web → CSV)
+  3. Connect Tableau to that published CSV URL
+
+<span style="color:#6fd3b7">-- After connecting, you can JOIN country_group_membership.csv
+-- on iso3 to add classification groups to your map/chart.</span></pre>
+      </div>
+
+      <!-- SPSS -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="spss">
+        <pre><span style="color:#6fd3b7">* SPSS syntax — download the CSV file first, then import.</span>
+
+GET DATA
+  /TYPE=TXT
+  /FILE='C:\path\to\countries_master.csv'
+  /ENCODING='UTF8'
+  /DELIMITERS=","
+  /QUALIFIER='"'
+  /ARRANGEMENT=DELIMITED
+  /FIRSTCASE=2
+  /VARIABLES=
+    iso3 A3
+    iso2 A2
+    m49 A3
+    country_name_en A80
+    region_name_en A60
+    wb_income_name A40
+    is_ldc A5
+    is_lldc A5
+    is_sids A5
+    wb_fcs_status A5
+    oecd_dac_eligible A5.
+CACHE.
+EXECUTE.
+
+<span style="color:#6fd3b7">* Note: download the latest CSV from the Downloads page
+* before running this syntax, or use a macro to fetch via URL.</span></pre>
+      </div>
+
+      <!-- Stata -->
+      <div class="tab-pane" data-tabpane="tools" data-paneid="stata">
+        <pre><span style="color:#6fd3b7">* Stata 16+ can import directly from a URL</span>
+
+local base "https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/"
+
+<span style="color:#6fd3b7">* Master country table</span>
+import delimited "`base'countries_master.csv", ///
+    varnames(1) encoding("UTF-8") clear
+
+<span style="color:#6fd3b7">* Group memberships (long format)</span>
+import delimited "`base'country_group_membership.csv", ///
+    varnames(1) encoding("UTF-8") clear
+
+<span style="color:#6fd3b7">* Example: keep only LDC countries</span>
+keep if is_ldc == "True"
+
+<span style="color:#6fd3b7">* Example: merge memberships with master on iso3</span>
+import delimited "`base'countries_master.csv",        varnames(1) clear
+save countries_master.dta, replace
+
+import delimited "`base'country_group_membership.csv", varnames(1) clear
+merge m:1 iso3 using countries_master.dta</pre>
+      </div>
+
+    </section>
+
+    <!-- Best practices -->
+    <section class="card">
+      <h2>How to best use this data</h2>
+      <div class="grid">
+        <div>
+          <h3 style="font-size:.95rem;margin:0 0 .5rem">Start with <em>countries_master</em></h3>
+          <p style="font-size:.85rem">
+            If you need a single lookup table (e.g. to add income level or region to a dataset you already have), use
+            <strong>countries_master.csv</strong>. Join on <code>iso3</code> (preferred) or <code>m49</code>.
+            Every country has a unique <code>iso3</code>.
+          </p>
+          <h3 style="font-size:.95rem;margin:.75rem 0 .5rem">Use <em>country_group_membership</em> for multi-group analysis</h3>
+          <p style="font-size:.85rem">
+            If you want to filter or count countries by group (e.g. "all OECD DAC ODA recipients in Sub-Saharan Africa"),
+            use the long-format <strong>country_group_membership.csv</strong>.
+            It is already tidy: one group membership per row, easy to <code>GROUP BY</code> or pivot.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size:.95rem;margin:0 0 .5rem">One-stop table: use <em>country_classification_library</em></h3>
+          <p style="font-size:.85rem">
+            Need everything in one place without joins? Use <strong>country_classification_library.csv</strong>.
+            It is the full Cartesian product of countries × groups, with all country metadata repeated per row.
+            Best for ad-hoc queries, pivot tables, and BI tools where joins are inconvenient.
+          </p>
+          <h3 style="font-size:.95rem;margin:.75rem 0 .5rem">Key columns reference</h3>
+          <ul style="font-size:.83rem">
+            <li><code>source</code>: <em>un_m49 / world_bank / world_bank_fcs / oecd_dac / un_sdg</em></li>
+            <li><code>group_type</code>: <em>region / income_level / lending_type / special_group / fcs_status / oda_eligibility …</em></li>
+            <li>Boolean columns (<code>is_ldc</code>, <code>wb_fcs_status</code> …) are stored as text <code>True</code>/<code>False</code> in CSV; in JSON they are proper booleans.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Whole-repo download -->
+    <section class="card">
+      <h2>Repository download</h2>
       <ul>
-        <li><a href="./data/countries_master.csv">countries_master.csv</a></li>
-        <li><a href="./data/country_group_membership.csv">country_group_membership.csv</a></li>
-        <li><a href="./data/country_classification_library.csv">country_classification_library.csv (full denormalized library)</a></li>
-        <li><a href="./data/sources.csv">sources.csv</a></li>
-        <li><a href="./data/run_manifest.json">run_manifest.json</a></li>
+        <li><a href="https://github.com/MafiAtUN/country-classification-commons/archive/refs/heads/main.zip">Download full repository as ZIP</a> — includes all data, scripts, and history.</li>
+        <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/latest">Browse latest data directory on GitHub</a></li>
+        <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/history">Browse historical snapshots</a></li>
+        <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/changelog">Browse change logs</a></li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>Raw Links (for Excel, BI, code)</h2>
-      <ul>
-        <li><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv">Raw countries_master.csv</a></li>
-        <li><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_group_membership.csv">Raw country_group_membership.csv</a></li>
-        <li><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_classification_library.csv">Raw country_classification_library.csv</a></li>
-        <li><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/sources.csv">Raw sources.csv</a></li>
-        <li><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/run_manifest.json">Raw run_manifest.json</a></li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Whole Repository Download</h2>
-      <ul>
-        <li><a href="https://github.com/MafiAtUN/country-classification-commons/archive/refs/heads/main.zip">Download full repository ZIP</a></li>
-        <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/latest">Browse latest data directory</a></li>
-      </ul>
-    </section>
   </main>
 </body>
 </html>

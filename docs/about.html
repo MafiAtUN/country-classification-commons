@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About &amp; Methodology | Country Classification Commons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=20260304c">
+</head>
+<body>
+  <header class="hero">
+    <h1>About &amp; Methodology</h1>
+    <p>How data is collected, processed, validated, and kept up-to-date — and why you can trust it.</p>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./explorer.html">Explorer</a>
+      <a href="./downloads.html">Downloads &amp; API Links</a>
+      <a href="./about.html" aria-current="page">About &amp; Methodology</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- What is this -->
+    <section class="card">
+      <h2>What is Country Classification Commons?</h2>
+      <p>
+        Country Classification Commons is an open, automated reference library that consolidates country-level
+        classifications from the United Nations, World Bank, and OECD into a single, machine-readable dataset.
+        It is designed for UN agencies, INGOs, academic researchers, students, data journalists, and anyone who
+        regularly works with countries as units of analysis and needs consistent, authoritative classification metadata.
+      </p>
+      <p>
+        Instead of hunting across multiple agency websites, manually copy-pasting tables, or maintaining your own lookup files,
+        you can reference a single stable URL that is refreshed automatically from the original sources.
+      </p>
+    </section>
+
+    <!-- Data sources -->
+    <section class="card">
+      <h2>Data sources</h2>
+      <p>All data is fetched directly from authoritative public sources at every pipeline run. No manual editing is applied.</p>
+      <div class="table-wrap">
+        <table class="source-table">
+          <thead>
+            <tr>
+              <th>Source ID</th>
+              <th>Organisation</th>
+              <th>Dataset</th>
+              <th>What it provides</th>
+              <th>Access method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>un_m49</code></td>
+              <td>UN Statistics Division (UNSD)</td>
+              <td><a href="https://unstats.un.org/unsd/methodology/m49/overview/" target="_blank" rel="noreferrer">M49 Overview</a></td>
+              <td>ISO2, ISO3, M49 codes; UN geoscheme (region/sub-region/intermediate); LDC, LLDC, SIDS flags; country names in 6 UN languages</td>
+              <td>HTML scrape (multilingual tabs)</td>
+            </tr>
+            <tr>
+              <td><code>un_sdg</code></td>
+              <td>UN SDG Global Database</td>
+              <td><a href="https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List" target="_blank" rel="noreferrer">SDG GeoArea API</a></td>
+              <td>SDG geographic area codes; SDG regional hierarchy memberships</td>
+              <td>JSON REST API</td>
+            </tr>
+            <tr>
+              <td><code>world_bank</code></td>
+              <td>World Bank Open Data</td>
+              <td><a href="https://api.worldbank.org/v2/country?format=json&per_page=1000" target="_blank" rel="noreferrer">World Bank Country API v2</a></td>
+              <td>WB income level (Low / Lower Middle / Upper Middle / High), lending type (IDA/IBRD/Blend), WB region, capital city, latitude/longitude</td>
+              <td>JSON REST API (paginated)</td>
+            </tr>
+            <tr>
+              <td><code>world_bank_fcs</code></td>
+              <td>World Bank</td>
+              <td><a href="https://www.worldbank.org/en/topic/fragilityconflictviolence/brief/classification-of-fragile-and-conflict-affected-situations" target="_blank" rel="noreferrer">FCS Classification page</a></td>
+              <td>Fragile &amp; Conflict-affected Situations (FCS) list: country name, category (Conflict vs Institutional &amp; Social Fragility), fiscal year</td>
+              <td>Auto-discovered latest FY PDF → pdftotext parse</td>
+            </tr>
+            <tr>
+              <td><code>oecd_dac</code></td>
+              <td>OECD Development Assistance Committee</td>
+              <td><a href="https://webfs.oecd.org/oda/DAClists/" target="_blank" rel="noreferrer">DAC List of ODA Recipients</a></td>
+              <td>ODA recipient eligibility, DAC group (LDCs / LMICs / UMICs / Other LICs), World Bank income hint, reporting year</td>
+              <td>Auto-discovered latest CSV from official OECD webfs directory</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Pipeline methodology -->
+    <section class="card">
+      <h2>Data pipeline methodology</h2>
+
+      <h3 style="font-size:.97rem;margin:.5rem 0 .4rem">Authority ranking</h3>
+      <p style="font-size:.88rem">
+        When multiple sources provide overlapping information (e.g. country name, ISO codes),
+        the pipeline follows this authority order:
+      </p>
+      <ol class="step-list" style="font-size:.88rem">
+        <li><strong>UN M49</strong> — canonical ISO2, ISO3, M49 codes; UN geoscheme hierarchy; LDC/LLDC/SIDS flags; all six UN-language names</li>
+        <li><strong>UN SDG API</strong> — SDG geographic groupings and regional hierarchy</li>
+        <li><strong>World Bank API</strong> — economic classification (income level, lending type), capital cities, coordinates</li>
+        <li><strong>World Bank FCS page</strong> — latest fragility roster and category</li>
+        <li><strong>OECD DAC CSV</strong> — ODA recipient status and groupings</li>
+      </ol>
+
+      <h3 style="font-size:.97rem;margin:.75rem 0 .4rem">Processing steps</h3>
+      <ol class="step-list" style="font-size:.88rem">
+        <li>Fetch all sources in parallel using <code>requests.Session</code> with a descriptive User-Agent.</li>
+        <li>Parse UN M49 HTML page for all six language tabs; derive the canonical country list from the English tab (filter to 3-character ISO3 only). Merge multilingual names on <code>[m49, iso3]</code>.</li>
+        <li>Merge World Bank API response into the M49 base table on <code>iso3</code> (left join — M49 is the authority).</li>
+        <li>Merge UN SDG GeoArea list on <code>m49</code>; walk the tree JSON to derive region memberships.</li>
+        <li>For the World Bank FCS PDF: auto-detect the latest FY PDF link, extract text with <code>pdftotext</code>, parse country names and categories from the structured section headers.</li>
+        <li>For OECD DAC CSV: auto-detect the most recent CSV in the official webfs directory; read and normalise.</li>
+        <li>Map FCS and OECD country names to ISO3 using Unicode-normalised string matching + a curated alias table. Unmapped names are recorded in <code>unmapped_external_names.csv</code> for transparency.</li>
+        <li>Build the long-format memberships table from all sources. Emit one row per country–group pair with explicit <code>source</code> and <code>group_type</code>.</li>
+        <li>Denormalize into <code>country_classification_library</code> by joining memberships back to the master table.</li>
+        <li>Write CSV and JSON outputs; compute SHA-256 checksums; generate the run manifest.</li>
+        <li>Compare with the previous run and write a human-readable changelog report.</li>
+        <li>Copy output files into <code>docs/data/</code> for GitHub Pages serving.</li>
+      </ol>
+
+      <h3 style="font-size:.97rem;margin:.75rem 0 .4rem">Name-matching for FCS and OECD</h3>
+      <p style="font-size:.88rem">
+        The WB FCS PDF and OECD DAC CSV do not publish ISO3 codes directly, so country names must be matched to ISO3.
+        The pipeline applies deterministic Unicode normalisation (NFKD, accent-strip, punctuation-strip, lowercase) and then
+        looks up the normalised name in an index built from the M49 and World Bank name columns.
+        A curated alias table handles known divergences (e.g. "Türkiye" → TUR, "West Bank and Gaza Strip" → PSE).
+        Any name that cannot be resolved is saved to <code>unmapped_external_names.csv</code> so coverage gaps are transparent.
+      </p>
+    </section>
+
+    <!-- GitHub Actions -->
+    <section class="card">
+      <h2>Automation — GitHub Actions workflows</h2>
+
+      <h3 style="font-size:.97rem;margin:.5rem 0 .4rem">1. Update Data (<code>update-data.yml</code>)</h3>
+      <p style="font-size:.88rem">This workflow runs the full data pipeline and commits any changes back to the repository.</p>
+      <div class="table-wrap">
+        <table style="min-width:500px;font-size:.83rem">
+          <thead><tr><th>Trigger</th><th>Schedule (UTC)</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Weekday morning</td><td>05:17 Mon–Fri</td><td>Catch overnight upstream updates (WB API, M49 edits)</td></tr>
+            <tr><td>Weekday evening</td><td>17:17 Mon–Fri</td><td>Catch same-day source revisions</td></tr>
+            <tr><td>Weekly safety refresh</td><td>09:42 every Sunday</td><td>Ensure data is never more than 7 days old</td></tr>
+            <tr><td>Manual dispatch</td><td><em>on demand</em></td><td>Force a refresh at any time from GitHub Actions UI</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.85rem;margin-top:.6rem">
+        The workflow checks out the repository, installs Python 3.11 + <code>requirements.txt</code>,
+        runs <code>scripts/update_data.py</code>, stages the changed files under <code>data/latest/</code>,
+        <code>data/changelog/</code>, <code>data/history/</code>, and <code>docs/data/</code>,
+        and commits + pushes only if there is a diff.
+        The commit message is always <code>chore(data): automated refresh</code>, making the history clean and auditable.
+      </p>
+
+      <h3 style="font-size:.97rem;margin:.85rem 0 .4rem">2. Deploy Pages (<code>deploy-pages.yml</code>)</h3>
+      <p style="font-size:.88rem">
+        Every push to <code>main</code> that touches any file under <code>docs/</code> or the workflow file itself
+        triggers this workflow. It uploads the <code>docs/</code> folder as a GitHub Pages artifact and deploys it
+        to <a href="https://mafiAtUN.github.io/country-classification-commons/" target="_blank" rel="noreferrer">https://mafiAtUN.github.io/country-classification-commons/</a>.
+        Concurrent runs are cancelled so only the latest version is ever deployed.
+      </p>
+      <p style="font-size:.85rem">
+        This means: when the data pipeline runs and finds changes, it commits → that commit triggers Pages deploy →
+        within minutes the live website serves the updated data files.
+      </p>
+
+      <h3 style="font-size:.97rem;margin:.85rem 0 .4rem">Data freshness</h3>
+      <p style="font-size:.85rem">
+        Under normal conditions the data is refreshed <strong>up to 10 times per week</strong> (twice per weekday + once on Sunday).
+        The exact "last refreshed" timestamp is embedded in every output file via <code>run_manifest.json</code> and visible in the Explorer header.
+        Each run also archives a full snapshot to <code>data/history/&lt;snapshot-id&gt;/</code>, so historical versions are always available in the repository.
+      </p>
+    </section>
+
+    <!-- Change tracking -->
+    <section class="card">
+      <h2>Change tracking &amp; reproducibility</h2>
+      <div class="grid">
+        <div>
+          <h3 style="font-size:.95rem;margin:0 0 .4rem">Per-run changelog</h3>
+          <p style="font-size:.85rem">
+            Every run generates a Markdown report at <code>data/changelog/changes_&lt;snapshot_id&gt;.md</code> listing:
+          </p>
+          <ul style="font-size:.85rem">
+            <li>Countries/areas added or removed since the previous run</li>
+            <li>Countries where core metadata changed (income level, FCS status, ODA eligibility, etc.)</li>
+            <li>Group memberships added or removed</li>
+            <li>Any country names from external sources (FCS, OECD) that could not be mapped to ISO3</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:.95rem;margin:0 0 .4rem">SHA-256 checksums</h3>
+          <p style="font-size:.85rem">
+            The <code>run_manifest.json</code> file includes a SHA-256 hash for every output file.
+            This lets you verify that the file you downloaded matches exactly what the pipeline produced,
+            and detect any transmission or storage corruption.
+          </p>
+          <h3 style="font-size:.95rem;margin:.6rem 0 .4rem">Full history in git</h3>
+          <p style="font-size:.85rem">
+            Every automated commit is versioned in the repository's git history.
+            You can check out any past commit to reproduce the exact dataset from that point in time.
+            Snapshots are also copied to <code>data/history/</code> for convenient access without git.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitations -->
+    <section class="card">
+      <h2>Limitations &amp; caveats</h2>
+      <ul style="font-size:.88rem">
+        <li><strong>Source lag:</strong> The pipeline reflects the state of upstream sources at the time of the last run. If a source organisation updates their classification mid-day, the change will appear in the next pipeline run (at most ~12 hours on weekdays).</li>
+        <li><strong>FCS PDF parsing:</strong> The World Bank FCS list is published only as a PDF. The pipeline uses <code>pdftotext</code> to extract text and parses the output using section headers. If the PDF layout changes, parsing may fail or produce incorrect results — unmapped names would appear in <code>unmapped_external_names.csv</code>.</li>
+        <li><strong>OECD DAC CSV format:</strong> The pipeline auto-selects the most recent CSV in the OECD webfs directory. Column names are assumed stable; a format change could require a script update.</li>
+        <li><strong>Coverage:</strong> Only countries/areas that appear in the UN M49 overview with a valid 3-character ISO3 code are included. Sub-national and provisional territories without ISO3 codes are excluded.</li>
+        <li><strong>Boolean columns in CSV:</strong> <code>True</code>/<code>False</code> strings (capitalised) are used. In JSON, proper JSON booleans are used.</li>
+        <li><strong>Non-member UN territories:</strong> The dataset covers UN statistical countries/areas, which includes some non-member territories (e.g. Taiwan, Kosovo, Western Sahara) under their ISO3 codes.</li>
+      </ul>
+    </section>
+
+    <!-- Citation -->
+    <section class="card">
+      <h2>Citation &amp; license</h2>
+      <p style="font-size:.88rem">
+        This project is open source under the MIT License. The <em>compiled dataset</em> is derived from public data published
+        by UNSD, World Bank, and OECD. Please also cite the original sources when using the data in publications:
+      </p>
+      <ul style="font-size:.85rem">
+        <li>United Nations Statistics Division. <em>M49 Standard country or area codes for statistical use.</em> <a href="https://unstats.un.org/unsd/methodology/m49/" target="_blank" rel="noreferrer">unstats.un.org</a></li>
+        <li>World Bank. <em>World Bank Country and Lending Groups.</em> <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519" target="_blank" rel="noreferrer">World Bank Open Data</a></li>
+        <li>World Bank. <em>Harmonized List of Fragile Situations.</em> <a href="https://www.worldbank.org/en/topic/fragilityconflictviolence/brief/classification-of-fragile-and-conflict-affected-situations" target="_blank" rel="noreferrer">worldbank.org</a></li>
+        <li>OECD. <em>DAC List of ODA Recipients.</em> <a href="https://www.oecd.org/en/topics/policy-issues/official-development-assistance-oda.html" target="_blank" rel="noreferrer">oecd.org</a></li>
+      </ul>
+      <p style="font-size:.85rem;margin-top:.5rem">
+        Repository: <a href="https://github.com/MafiAtUN/country-classification-commons" target="_blank" rel="noreferrer">github.com/MafiAtUN/country-classification-commons</a>
+      </p>
+    </section>
+
+  </main>
+</body>
+</html>

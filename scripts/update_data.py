@@ -736,9 +736,21 @@ def create_change_report(
     return "\n".join(lines)
 
 
+def _sanitize_json(obj: Any) -> Any:
+    """Replace float NaN/Inf with None so output is valid JSON (not just valid JS)."""
+    import math
+    if isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
+        return None
+    if isinstance(obj, dict):
+        return {k: _sanitize_json(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_sanitize_json(v) for v in obj]
+    return obj
+
+
 def write_json(path: Path, payload: Any) -> None:
     with path.open("w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
+        json.dump(_sanitize_json(payload), f, ensure_ascii=False, indent=2)
 
 
 def main() -> None:

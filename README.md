@@ -16,6 +16,8 @@ This project rebuilds country classifications in a normalized format using autho
   - OECD DAC ODA eligibility summary fields
 - `data/latest/country_group_membership.csv`
   - Long-format membership table: one row per country-group assignment
+- `data/latest/country_classification_library.csv`
+  - Denormalized full library: one row per country classification assignment with key country metadata
 - `data/latest/sources.csv`
   - Source catalog with access timestamps and provenance notes
 - `data/latest/run_manifest.json`
@@ -25,7 +27,10 @@ This project rebuilds country classifications in a normalized format using autho
 - `data/changelog/changes_<snapshot>.md`
   - Diff report against previous snapshot
 - `docs/`
-  - GitHub Pages web app for search, filtering, and visualization
+  - GitHub Pages multi-page site:
+    - `index.html` (overview)
+    - `explorer.html` (interactive country/classification explorer)
+    - `downloads.html` (direct download links + raw file links)
 
 ## Source Systems (Current)
 
@@ -60,6 +65,7 @@ The app reads:
 
 - `docs/data/countries_master.json`
 - `docs/data/country_group_membership.json`
+- `docs/data/country_classification_library.json`
 - `docs/data/sources.json`
 - `docs/data/run_manifest.json`
 

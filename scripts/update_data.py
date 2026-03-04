@@ -4,6 +4,7 @@
 Outputs:
 - data/latest/countries_master.csv
 - data/latest/country_group_membership.csv
+- data/latest/country_classification_library.csv
 - data/latest/sources.csv
 - data/latest/run_manifest.json
 - data/latest/unmapped_external_names.csv
@@ -885,6 +886,61 @@ def main() -> None:
 
     countries = countries.sort_values(["country_name_en", "iso3"]).reset_index(drop=True)
     memberships = build_group_memberships(countries, sdg_group_df, oecd_groups)
+    library = memberships.merge(
+        countries[
+            [
+                "iso3",
+                "iso2",
+                "m49",
+                "country_name_en",
+                "country_name_ar",
+                "country_name_zh",
+                "country_name_fr",
+                "country_name_ru",
+                "country_name_es",
+                "global_name_en",
+                "region_name_en",
+                "sub_region_name_en",
+                "intermediate_region_name_en",
+                "wb_region_name",
+                "wb_income_name",
+                "wb_lending_name",
+                "wb_fcs_status",
+                "wb_fcs_category",
+                "oecd_dac_eligible",
+            ]
+        ],
+        on=["iso3", "iso2", "m49"],
+        how="left",
+    )
+    library = library[
+        [
+            "iso3",
+            "iso2",
+            "m49",
+            "country_name_en",
+            "country_name_ar",
+            "country_name_zh",
+            "country_name_fr",
+            "country_name_ru",
+            "country_name_es",
+            "global_name_en",
+            "region_name_en",
+            "sub_region_name_en",
+            "intermediate_region_name_en",
+            "wb_region_name",
+            "wb_income_name",
+            "wb_lending_name",
+            "wb_fcs_status",
+            "wb_fcs_category",
+            "oecd_dac_eligible",
+            "source",
+            "group_type",
+            "group_code",
+            "group_name",
+        ]
+    ].copy()
+    library = library.sort_values(["iso3", "source", "group_type", "group_name"]).reset_index(drop=True)
 
     if unmapped_frames:
         unmapped = pd.concat(unmapped_frames, ignore_index=True).drop_duplicates()
@@ -959,11 +1015,13 @@ def main() -> None:
 
     current_country_path = LATEST_DIR / "countries_master.csv"
     current_group_path = LATEST_DIR / "country_group_membership.csv"
+    current_library_path = LATEST_DIR / "country_classification_library.csv"
     current_sources_path = LATEST_DIR / "sources.csv"
     current_unmapped_path = LATEST_DIR / "unmapped_external_names.csv"
 
     to_records_csv(current_country_path, countries)
     to_records_csv(current_group_path, memberships)
+    to_records_csv(current_library_path, library)
     to_records_csv(current_sources_path, sources)
     to_records_csv(current_unmapped_path, unmapped)
 
@@ -983,12 +1041,14 @@ def main() -> None:
         "record_counts": {
             "countries_master": int(len(countries)),
             "country_group_membership": int(len(memberships)),
+            "country_classification_library": int(len(library)),
             "sources": int(len(sources)),
             "unmapped_external_names": int(len(unmapped)),
         },
         "files": {
             "countries_master.csv": {"sha256": sha256_file(current_country_path)},
             "country_group_membership.csv": {"sha256": sha256_file(current_group_path)},
+            "country_classification_library.csv": {"sha256": sha256_file(current_library_path)},
             "sources.csv": {"sha256": sha256_file(current_sources_path)},
             "unmapped_external_names.csv": {"sha256": sha256_file(current_unmapped_path)},
         },
@@ -1001,6 +1061,7 @@ def main() -> None:
     for f in [
         current_country_path,
         current_group_path,
+        current_library_path,
         current_sources_path,
         current_unmapped_path,
         LATEST_DIR / "run_manifest.json",
@@ -1010,18 +1071,21 @@ def main() -> None:
 
     shutil.copy2(current_country_path, DOCS_DATA_DIR / "countries_master.csv")
     shutil.copy2(current_group_path, DOCS_DATA_DIR / "country_group_membership.csv")
+    shutil.copy2(current_library_path, DOCS_DATA_DIR / "country_classification_library.csv")
     shutil.copy2(current_sources_path, DOCS_DATA_DIR / "sources.csv")
     shutil.copy2(current_unmapped_path, DOCS_DATA_DIR / "unmapped_external_names.csv")
     shutil.copy2(LATEST_DIR / "run_manifest.json", DOCS_DATA_DIR / "run_manifest.json")
 
     write_json(DOCS_DATA_DIR / "countries_master.json", countries.to_dict(orient="records"))
     write_json(DOCS_DATA_DIR / "country_group_membership.json", memberships.to_dict(orient="records"))
+    write_json(DOCS_DATA_DIR / "country_classification_library.json", library.to_dict(orient="records"))
     write_json(DOCS_DATA_DIR / "sources.json", sources.to_dict(orient="records"))
     write_json(DOCS_DATA_DIR / "unmapped_external_names.json", unmapped.to_dict(orient="records"))
 
     print(f"Built dataset snapshot: {timestamp}")
     print(f"Countries: {len(countries)}")
     print(f"Group memberships: {len(memberships)}")
+    print(f"Library rows: {len(library)}")
     print(f"Unmapped external names: {len(unmapped)}")
     print(f"Changelog: {change_report_path}")
 

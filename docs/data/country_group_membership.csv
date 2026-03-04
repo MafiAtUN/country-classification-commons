@@ -39,6 +39,9 @@ AFG,AF,4,un_sdg,region,1,World (total) by continental regions
 AFG,AF,4,world_bank,income_level,LIC,Low income
 AFG,AF,4,world_bank,lending_type,IDX,International Development Association (IDA)
 AFG,AF,4,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+AFG,AF,4,world_bank_fcs,fcs_category,Conflict,Conflict
+AFG,AF,4,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+AFG,AF,4,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 AGO,AO,24,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 AGO,AO,24,oecd_dac,oda_recipient_group,10016,LDCs
 AGO,AO,24,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -286,6 +289,9 @@ BDI,BI,108,un_sdg,region,1,World (total) by continental regions
 BDI,BI,108,world_bank,income_level,LIC,Low income
 BDI,BI,108,world_bank,lending_type,IDX,International Development Association (IDA)
 BDI,BI,108,world_bank,region,SSF,Sub-Saharan Africa
+BDI,BI,108,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+BDI,BI,108,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+BDI,BI,108,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 BEL,BE,56,un_m49,global,1,World
 BEL,BE,56,un_m49,region,150,Europe
 BEL,BE,56,un_m49,sub_region,155,Western Europe
@@ -360,6 +366,9 @@ BFA,BF,854,un_sdg,region,1,World (total) by continental regions
 BFA,BF,854,world_bank,income_level,LIC,Low income
 BFA,BF,854,world_bank,lending_type,IDX,International Development Association (IDA)
 BFA,BF,854,world_bank,region,SSF,Sub-Saharan Africa
+BFA,BF,854,world_bank_fcs,fcs_category,Conflict,Conflict
+BFA,BF,854,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+BFA,BF,854,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 BGD,BD,50,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 BGD,BD,50,oecd_dac,oda_recipient_group,10016,LDCs
 BGD,BD,50,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -650,6 +659,9 @@ CAF,CF,140,un_sdg,region,1,World (total) by continental regions
 CAF,CF,140,world_bank,income_level,LIC,Low income
 CAF,CF,140,world_bank,lending_type,IDX,International Development Association (IDA)
 CAF,CF,140,world_bank,region,SSF,Sub-Saharan Africa
+CAF,CF,140,world_bank_fcs,fcs_category,Conflict,Conflict
+CAF,CF,140,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+CAF,CF,140,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 CAN,CA,124,un_m49,global,1,World
 CAN,CA,124,un_m49,region,19,Americas
 CAN,CA,124,un_m49,sub_region,21,Northern America
@@ -755,6 +767,9 @@ CMR,CM,120,un_sdg,region,1,World (total) by continental regions
 CMR,CM,120,world_bank,income_level,LMC,Lower middle income
 CMR,CM,120,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 CMR,CM,120,world_bank,region,SSF,Sub-Saharan Africa
+CMR,CM,120,world_bank_fcs,fcs_category,Conflict,Conflict
+CMR,CM,120,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+CMR,CM,120,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 COD,CD,180,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 COD,CD,180,oecd_dac,oda_recipient_group,10016,LDCs
 COD,CD,180,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -777,6 +792,9 @@ COD,CD,180,un_sdg,region,1,World (total) by continental regions
 COD,CD,180,world_bank,income_level,LIC,Low income
 COD,CD,180,world_bank,lending_type,IDX,International Development Association (IDA)
 COD,CD,180,world_bank,region,SSF,Sub-Saharan Africa
+COD,CD,180,world_bank_fcs,fcs_category,Conflict,Conflict
+COD,CD,180,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+COD,CD,180,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 COG,CG,178,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 COG,CG,178,oecd_dac,oda_recipient_group,10018,LMICs
 COG,CG,178,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -796,6 +814,9 @@ COG,CG,178,un_sdg,region,1,World (total) by continental regions
 COG,CG,178,world_bank,income_level,LMC,Lower middle income
 COG,CG,178,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 COG,CG,178,world_bank,region,SSF,Sub-Saharan Africa
+COG,CG,178,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+COG,CG,178,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+COG,CG,178,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 COK,CK,184,un_m49,global,1,World
 COK,CK,184,un_m49,region,9,Oceania
 COK,CK,184,un_m49,special_group,SIDS,Small Island Developing States (SIDS)
@@ -852,6 +873,9 @@ COM,KM,174,un_sdg,region,1,World (total) by continental regions
 COM,KM,174,world_bank,income_level,LMC,Lower middle income
 COM,KM,174,world_bank,lending_type,IDX,International Development Association (IDA)
 COM,KM,174,world_bank,region,SSF,Sub-Saharan Africa
+COM,KM,174,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+COM,KM,174,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+COM,KM,174,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 CPV,CV,132,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 CPV,CV,132,oecd_dac,oda_recipient_group,10018,LMICs
 CPV,CV,132,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -1145,6 +1169,9 @@ ERI,ER,232,un_sdg,region,1,World (total) by continental regions
 ERI,ER,232,world_bank,income_level,LIC,Low income
 ERI,ER,232,world_bank,lending_type,IDX,International Development Association (IDA)
 ERI,ER,232,world_bank,region,SSF,Sub-Saharan Africa
+ERI,ER,232,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+ERI,ER,232,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+ERI,ER,232,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 ESH,EH,732,un_m49,global,1,World
 ESH,EH,732,un_m49,region,2,Africa
 ESH,EH,732,un_m49,sub_region,15,Northern Africa
@@ -1207,6 +1234,9 @@ ETH,ET,231,un_sdg,region,1,World (total) by continental regions
 ETH,ET,231,world_bank,income_level,INX,Not classified
 ETH,ET,231,world_bank,lending_type,IDX,International Development Association (IDA)
 ETH,ET,231,world_bank,region,SSF,Sub-Saharan Africa
+ETH,ET,231,world_bank_fcs,fcs_category,Conflict,Conflict
+ETH,ET,231,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+ETH,ET,231,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 FIN,FI,246,un_m49,global,1,World
 FIN,FI,246,un_m49,region,150,Europe
 FIN,FI,246,un_m49,sub_region,154,Northern Europe
@@ -1297,6 +1327,9 @@ FSM,FM,583,un_sdg,region,1,World (total) by continental regions
 FSM,FM,583,world_bank,income_level,LMC,Lower middle income
 FSM,FM,583,world_bank,lending_type,IDX,International Development Association (IDA)
 FSM,FM,583,world_bank,region,EAS,East Asia & Pacific
+FSM,FM,583,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+FSM,FM,583,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+FSM,FM,583,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 GAB,GA,266,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 GAB,GA,266,oecd_dac,oda_recipient_group,10019,UMICs
 GAB,GA,266,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -1469,6 +1502,9 @@ GNB,GW,624,un_sdg,region,1,World (total) by continental regions
 GNB,GW,624,world_bank,income_level,LIC,Low income
 GNB,GW,624,world_bank,lending_type,IDX,International Development Association (IDA)
 GNB,GW,624,world_bank,region,SSF,Sub-Saharan Africa
+GNB,GW,624,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+GNB,GW,624,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+GNB,GW,624,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 GNQ,GQ,226,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 GNQ,GQ,226,oecd_dac,oda_recipient_group,10019,UMICs
 GNQ,GQ,226,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -1679,6 +1715,9 @@ HTI,HT,332,un_sdg,region,1,World (total) by continental regions
 HTI,HT,332,world_bank,income_level,LMC,Lower middle income
 HTI,HT,332,world_bank,lending_type,IDX,International Development Association (IDA)
 HTI,HT,332,world_bank,region,LCN,Latin America & Caribbean
+HTI,HT,332,world_bank_fcs,fcs_category,Conflict,Conflict
+HTI,HT,332,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+HTI,HT,332,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 HUN,HU,348,un_m49,global,1,World
 HUN,HU,348,un_m49,region,150,Europe
 HUN,HU,348,un_m49,sub_region,151,Eastern Europe
@@ -1799,6 +1838,9 @@ IRQ,IQ,368,un_sdg,region,1,World (total) by continental regions
 IRQ,IQ,368,world_bank,income_level,UMC,Upper middle income
 IRQ,IQ,368,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 IRQ,IQ,368,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+IRQ,IQ,368,world_bank_fcs,fcs_category,Conflict,Conflict
+IRQ,IQ,368,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+IRQ,IQ,368,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 ISL,IS,352,un_m49,global,1,World
 ISL,IS,352,un_m49,region,150,Europe
 ISL,IS,352,un_m49,sub_region,154,Northern Europe
@@ -2004,6 +2046,9 @@ KIR,KI,296,un_sdg,region,1,World (total) by continental regions
 KIR,KI,296,world_bank,income_level,LMC,Lower middle income
 KIR,KI,296,world_bank,lending_type,IDX,International Development Association (IDA)
 KIR,KI,296,world_bank,region,EAS,East Asia & Pacific
+KIR,KI,296,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+KIR,KI,296,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+KIR,KI,296,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 KNA,KN,659,un_m49,global,1,World
 KNA,KN,659,un_m49,intermediate_region,29,Caribbean
 KNA,KN,659,un_m49,region,19,Americas
@@ -2091,6 +2136,9 @@ LBN,LB,422,un_sdg,region,1,World (total) by continental regions
 LBN,LB,422,world_bank,income_level,LMC,Lower middle income
 LBN,LB,422,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 LBN,LB,422,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+LBN,LB,422,world_bank_fcs,fcs_category,Conflict,Conflict
+LBN,LB,422,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+LBN,LB,422,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 LBR,LR,430,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 LBR,LR,430,oecd_dac,oda_recipient_group,10016,LDCs
 LBR,LR,430,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -2131,6 +2179,9 @@ LBY,LY,434,un_sdg,region,1,World (total) by continental regions
 LBY,LY,434,world_bank,income_level,UMC,Upper middle income
 LBY,LY,434,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 LBY,LY,434,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+LBY,LY,434,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+LBY,LY,434,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+LBY,LY,434,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 LCA,LC,662,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 LCA,LC,662,oecd_dac,oda_recipient_group,10019,UMICs
 LCA,LC,662,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -2405,6 +2456,9 @@ MHL,MH,584,un_sdg,region,1,World (total) by continental regions
 MHL,MH,584,world_bank,income_level,UMC,Upper middle income
 MHL,MH,584,world_bank,lending_type,IDX,International Development Association (IDA)
 MHL,MH,584,world_bank,region,EAS,East Asia & Pacific
+MHL,MH,584,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+MHL,MH,584,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MHL,MH,584,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 MKD,MK,807,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 MKD,MK,807,oecd_dac,oda_recipient_group,10019,UMICs
 MKD,MK,807,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -2450,6 +2504,9 @@ MLI,ML,466,un_sdg,region,1,World (total) by continental regions
 MLI,ML,466,world_bank,income_level,LIC,Low income
 MLI,ML,466,world_bank,lending_type,IDX,International Development Association (IDA)
 MLI,ML,466,world_bank,region,SSF,Sub-Saharan Africa
+MLI,ML,466,world_bank_fcs,fcs_category,Conflict,Conflict
+MLI,ML,466,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MLI,ML,466,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 MLT,MT,470,un_m49,global,1,World
 MLT,MT,470,un_m49,region,150,Europe
 MLT,MT,470,un_m49,sub_region,39,Southern Europe
@@ -2483,6 +2540,9 @@ MMR,MM,104,un_sdg,region,1,World (total) by continental regions
 MMR,MM,104,world_bank,income_level,LMC,Lower middle income
 MMR,MM,104,world_bank,lending_type,IDX,International Development Association (IDA)
 MMR,MM,104,world_bank,region,EAS,East Asia & Pacific
+MMR,MM,104,world_bank_fcs,fcs_category,Conflict,Conflict
+MMR,MM,104,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MMR,MM,104,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 MNE,ME,499,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 MNE,ME,499,oecd_dac,oda_recipient_group,10019,UMICs
 MNE,ME,499,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -2560,6 +2620,9 @@ MOZ,MZ,508,un_sdg,region,1,World (total) by continental regions
 MOZ,MZ,508,world_bank,income_level,LIC,Low income
 MOZ,MZ,508,world_bank,lending_type,IDX,International Development Association (IDA)
 MOZ,MZ,508,world_bank,region,SSF,Sub-Saharan Africa
+MOZ,MZ,508,world_bank_fcs,fcs_category,Conflict,Conflict
+MOZ,MZ,508,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MOZ,MZ,508,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 MRT,MR,478,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 MRT,MR,478,oecd_dac,oda_recipient_group,10016,LDCs
 MRT,MR,478,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -2747,6 +2810,9 @@ NER,NE,562,un_sdg,region,1,World (total) by continental regions
 NER,NE,562,world_bank,income_level,LIC,Low income
 NER,NE,562,world_bank,lending_type,IDX,International Development Association (IDA)
 NER,NE,562,world_bank,region,SSF,Sub-Saharan Africa
+NER,NE,562,world_bank_fcs,fcs_category,Conflict,Conflict
+NER,NE,562,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+NER,NE,562,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 NFK,NF,574,un_m49,global,1,World
 NFK,NF,574,un_m49,region,9,Oceania
 NFK,NF,574,un_m49,sub_region,53,Australia and New Zealand
@@ -2775,6 +2841,9 @@ NGA,NG,566,un_sdg,region,1,World (total) by continental regions
 NGA,NG,566,world_bank,income_level,LMC,Lower middle income
 NGA,NG,566,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 NGA,NG,566,world_bank,region,SSF,Sub-Saharan Africa
+NGA,NG,566,world_bank_fcs,fcs_category,Conflict,Conflict
+NGA,NG,566,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+NGA,NG,566,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 NIC,NI,558,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 NIC,NI,558,oecd_dac,oda_recipient_group,10018,LMICs
 NIC,NI,558,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3025,6 +3094,9 @@ PNG,PG,598,un_sdg,region,1,World (total) by continental regions
 PNG,PG,598,world_bank,income_level,LMC,Lower middle income
 PNG,PG,598,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 PNG,PG,598,world_bank,region,EAS,East Asia & Pacific
+PNG,PG,598,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+PNG,PG,598,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+PNG,PG,598,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 POL,PL,616,un_m49,global,1,World
 POL,PL,616,un_m49,region,150,Europe
 POL,PL,616,un_m49,sub_region,151,Eastern Europe
@@ -3126,6 +3198,9 @@ PSE,PS,275,un_sdg,region,1,World (total) by continental regions
 PSE,PS,275,world_bank,income_level,LMC,Lower middle income
 PSE,PS,275,world_bank,lending_type,LNX,World Bank lending type: Not classified
 PSE,PS,275,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+PSE,PS,275,world_bank_fcs,fcs_category,Conflict,Conflict
+PSE,PS,275,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+PSE,PS,275,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 PYF,PF,258,un_m49,global,1,World
 PYF,PF,258,un_m49,region,9,Oceania
 PYF,PF,258,un_m49,special_group,SIDS,Small Island Developing States (SIDS)
@@ -3254,6 +3329,9 @@ SDN,SD,729,un_sdg,region,1,World (total) by continental regions
 SDN,SD,729,world_bank,income_level,LIC,Low income
 SDN,SD,729,world_bank,lending_type,IDX,International Development Association (IDA)
 SDN,SD,729,world_bank,region,SSF,Sub-Saharan Africa
+SDN,SD,729,world_bank_fcs,fcs_category,Conflict,Conflict
+SDN,SD,729,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SDN,SD,729,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 SEN,SN,686,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 SEN,SN,686,oecd_dac,oda_recipient_group,10016,LDCs
 SEN,SN,686,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3352,6 +3430,9 @@ SLB,SB,90,un_sdg,region,1,World (total) by continental regions
 SLB,SB,90,world_bank,income_level,LMC,Lower middle income
 SLB,SB,90,world_bank,lending_type,IDX,International Development Association (IDA)
 SLB,SB,90,world_bank,region,EAS,East Asia & Pacific
+SLB,SB,90,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+SLB,SB,90,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SLB,SB,90,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 SLE,SL,694,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 SLE,SL,694,oecd_dac,oda_recipient_group,10016,LDCs
 SLE,SL,694,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3427,6 +3508,9 @@ SOM,SO,706,un_sdg,region,1,World (total) by continental regions
 SOM,SO,706,world_bank,income_level,LIC,Low income
 SOM,SO,706,world_bank,lending_type,IDX,International Development Association (IDA)
 SOM,SO,706,world_bank,region,SSF,Sub-Saharan Africa
+SOM,SO,706,world_bank_fcs,fcs_category,Conflict,Conflict
+SOM,SO,706,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SOM,SO,706,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 SPM,PM,666,un_m49,global,1,World
 SPM,PM,666,un_m49,region,19,Americas
 SPM,PM,666,un_m49,sub_region,21,Northern America
@@ -3479,6 +3563,9 @@ SSD,SS,728,un_sdg,region,1,World (total) by continental regions
 SSD,SS,728,world_bank,income_level,LIC,Low income
 SSD,SS,728,world_bank,lending_type,IDX,International Development Association (IDA)
 SSD,SS,728,world_bank,region,SSF,Sub-Saharan Africa
+SSD,SS,728,world_bank_fcs,fcs_category,Conflict,Conflict
+SSD,SS,728,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SSD,SS,728,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 STP,ST,678,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 STP,ST,678,oecd_dac,oda_recipient_group,10016,LDCs
 STP,ST,678,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3501,6 +3588,9 @@ STP,ST,678,un_sdg,region,1,World (total) by continental regions
 STP,ST,678,world_bank,income_level,LMC,Lower middle income
 STP,ST,678,world_bank,lending_type,IDX,International Development Association (IDA)
 STP,ST,678,world_bank,region,SSF,Sub-Saharan Africa
+STP,ST,678,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+STP,ST,678,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+STP,ST,678,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 SUR,SR,740,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 SUR,SR,740,oecd_dac,oda_recipient_group,10019,UMICs
 SUR,SR,740,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3636,6 +3726,9 @@ SYR,SY,760,un_sdg,region,1,World (total) by continental regions
 SYR,SY,760,world_bank,income_level,LIC,Low income
 SYR,SY,760,world_bank,lending_type,IDX,International Development Association (IDA)
 SYR,SY,760,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+SYR,SY,760,world_bank_fcs,fcs_category,Conflict,Conflict
+SYR,SY,760,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SYR,SY,760,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 TCA,TC,796,un_m49,global,1,World
 TCA,TC,796,un_m49,intermediate_region,29,Caribbean
 TCA,TC,796,un_m49,region,19,Americas
@@ -3675,6 +3768,9 @@ TCD,TD,148,un_sdg,region,1,World (total) by continental regions
 TCD,TD,148,world_bank,income_level,LIC,Low income
 TCD,TD,148,world_bank,lending_type,IDX,International Development Association (IDA)
 TCD,TD,148,world_bank,region,SSF,Sub-Saharan Africa
+TCD,TD,148,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+TCD,TD,148,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+TCD,TD,148,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 TGO,TG,768,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 TGO,TG,768,oecd_dac,oda_recipient_group,10016,LDCs
 TGO,TG,768,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3793,6 +3889,9 @@ TLS,TL,626,un_sdg,region,1,World (total) by continental regions
 TLS,TL,626,world_bank,income_level,LMC,Lower middle income
 TLS,TL,626,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 TLS,TL,626,world_bank,region,EAS,East Asia & Pacific
+TLS,TL,626,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+TLS,TL,626,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+TLS,TL,626,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 TON,TO,776,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 TON,TO,776,oecd_dac,oda_recipient_group,10019,UMICs
 TON,TO,776,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3889,6 +3988,9 @@ TUV,TV,798,un_sdg,region,1,World (total) by continental regions
 TUV,TV,798,world_bank,income_level,UMC,Upper middle income
 TUV,TV,798,world_bank,lending_type,IDX,International Development Association (IDA)
 TUV,TV,798,world_bank,region,EAS,East Asia & Pacific
+TUV,TV,798,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+TUV,TV,798,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+TUV,TV,798,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 TZA,TZ,834,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 TZA,TZ,834,oecd_dac,oda_recipient_group,10016,LDCs
 TZA,TZ,834,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -3953,6 +4055,9 @@ UKR,UA,804,un_sdg,region,1,World (total) by continental regions
 UKR,UA,804,world_bank,income_level,UMC,Upper middle income
 UKR,UA,804,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 UKR,UA,804,world_bank,region,ECS,Europe & Central Asia
+UKR,UA,804,world_bank_fcs,fcs_category,Conflict,Conflict
+UKR,UA,804,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+UKR,UA,804,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 UMI,UM,581,un_m49,global,1,World
 UMI,UM,581,un_m49,region,9,Oceania
 UMI,UM,581,un_m49,sub_region,57,Micronesia
@@ -4060,6 +4165,9 @@ VEN,VE,862,un_sdg,region,1,World (total) by continental regions
 VEN,VE,862,world_bank,income_level,INX,Not classified
 VEN,VE,862,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 VEN,VE,862,world_bank,region,LCN,Latin America & Caribbean
+VEN,VE,862,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+VEN,VE,862,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+VEN,VE,862,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 VGB,VG,92,un_m49,global,1,World
 VGB,VG,92,un_m49,intermediate_region,29,Caribbean
 VGB,VG,92,un_m49,region,19,Americas
@@ -4186,6 +4294,9 @@ YEM,YE,887,un_sdg,region,1,World (total) by continental regions
 YEM,YE,887,world_bank,income_level,LIC,Low income
 YEM,YE,887,world_bank,lending_type,IDX,International Development Association (IDA)
 YEM,YE,887,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
+YEM,YE,887,world_bank_fcs,fcs_category,Conflict,Conflict
+YEM,YE,887,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+YEM,YE,887,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
 ZAF,ZA,710,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
 ZAF,ZA,710,oecd_dac,oda_recipient_group,10019,UMICs
 ZAF,ZA,710,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
@@ -4252,3 +4363,6 @@ ZWE,ZW,716,un_sdg,region,1,World (total) by continental regions
 ZWE,ZW,716,world_bank,income_level,LMC,Lower middle income
 ZWE,ZW,716,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 ZWE,ZW,716,world_bank,region,SSF,Sub-Saharan Africa
+ZWE,ZW,716,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
+ZWE,ZW,716,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+ZWE,ZW,716,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations

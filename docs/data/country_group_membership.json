@@ -360,6 +360,33 @@
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
   },
   {
+    "iso3": "AFG",
+    "iso2": "AF",
+    "m49": "4",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "AFG",
+    "iso2": "AF",
+    "m49": "4",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "AFG",
+    "iso2": "AF",
+    "m49": "4",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "AGO",
     "iso2": "AO",
     "m49": "24",
@@ -2583,6 +2610,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "BDI",
+    "iso2": "BI",
+    "m49": "108",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "BDI",
+    "iso2": "BI",
+    "m49": "108",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "BDI",
+    "iso2": "BI",
+    "m49": "108",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "BEL",
     "iso2": "BE",
     "m49": "56",
@@ -3247,6 +3301,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "BFA",
+    "iso2": "BF",
+    "m49": "854",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "BFA",
+    "iso2": "BF",
+    "m49": "854",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "BFA",
+    "iso2": "BF",
+    "m49": "854",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "BGD",
@@ -5859,6 +5940,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "CAF",
+    "iso2": "CF",
+    "m49": "140",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "CAF",
+    "iso2": "CF",
+    "m49": "140",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "CAF",
+    "iso2": "CF",
+    "m49": "140",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "CAN",
     "iso2": "CA",
     "m49": "124",
@@ -6804,6 +6912,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "CMR",
+    "iso2": "CM",
+    "m49": "120",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "CMR",
+    "iso2": "CM",
+    "m49": "120",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "CMR",
+    "iso2": "CM",
+    "m49": "120",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "COD",
     "iso2": "CD",
     "m49": "180",
@@ -7002,6 +7137,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "COD",
+    "iso2": "CD",
+    "m49": "180",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "COD",
+    "iso2": "CD",
+    "m49": "180",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "COD",
+    "iso2": "CD",
+    "m49": "180",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "COG",
     "iso2": "CG",
     "m49": "178",
@@ -7171,6 +7333,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "COG",
+    "iso2": "CG",
+    "m49": "178",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "COG",
+    "iso2": "CG",
+    "m49": "178",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "COG",
+    "iso2": "CG",
+    "m49": "178",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "COK",
@@ -7677,6 +7866,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "COM",
+    "iso2": "KM",
+    "m49": "174",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "COM",
+    "iso2": "KM",
+    "m49": "174",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "COM",
+    "iso2": "KM",
+    "m49": "174",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "CPV",
     "iso2": "CV",
     "m49": "132",
@@ -10312,6 +10528,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "ERI",
+    "iso2": "ER",
+    "m49": "232",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "ERI",
+    "iso2": "ER",
+    "m49": "232",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "ERI",
+    "iso2": "ER",
+    "m49": "232",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "ESH",
@@ -10872,6 +11115,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "ETH",
+    "iso2": "ET",
+    "m49": "231",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "ETH",
+    "iso2": "ET",
+    "m49": "231",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "ETH",
+    "iso2": "ET",
+    "m49": "231",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "FIN",
     "iso2": "FI",
     "m49": "246",
@@ -11680,6 +11950,33 @@
     "group_type": "region",
     "group_code": "EAS",
     "group_name": "East Asia & Pacific"
+  },
+  {
+    "iso3": "FSM",
+    "iso2": "FM",
+    "m49": "583",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "FSM",
+    "iso2": "FM",
+    "m49": "583",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "FSM",
+    "iso2": "FM",
+    "m49": "583",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "GAB",
@@ -13228,6 +13525,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "GNB",
+    "iso2": "GW",
+    "m49": "624",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "GNB",
+    "iso2": "GW",
+    "m49": "624",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "GNB",
+    "iso2": "GW",
+    "m49": "624",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "GNQ",
@@ -15120,6 +15444,33 @@
     "group_name": "Latin America & Caribbean"
   },
   {
+    "iso3": "HTI",
+    "iso2": "HT",
+    "m49": "332",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "HTI",
+    "iso2": "HT",
+    "m49": "332",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "HTI",
+    "iso2": "HT",
+    "m49": "332",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "HUN",
     "iso2": "HU",
     "m49": "348",
@@ -16198,6 +16549,33 @@
     "group_type": "region",
     "group_code": "MEA",
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
+  },
+  {
+    "iso3": "IRQ",
+    "iso2": "IQ",
+    "m49": "368",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "IRQ",
+    "iso2": "IQ",
+    "m49": "368",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "IRQ",
+    "iso2": "IQ",
+    "m49": "368",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "ISL",
@@ -18045,6 +18423,33 @@
     "group_name": "East Asia & Pacific"
   },
   {
+    "iso3": "KIR",
+    "iso2": "KI",
+    "m49": "296",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "KIR",
+    "iso2": "KI",
+    "m49": "296",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "KIR",
+    "iso2": "KI",
+    "m49": "296",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "KNA",
     "iso2": "KN",
     "m49": "659",
@@ -18828,6 +19233,33 @@
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
   },
   {
+    "iso3": "LBN",
+    "iso2": "LB",
+    "m49": "422",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "LBN",
+    "iso2": "LB",
+    "m49": "422",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "LBN",
+    "iso2": "LB",
+    "m49": "422",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "LBR",
     "iso2": "LR",
     "m49": "430",
@@ -19186,6 +19618,33 @@
     "group_type": "region",
     "group_code": "MEA",
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
+  },
+  {
+    "iso3": "LBY",
+    "iso2": "LY",
+    "m49": "434",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "LBY",
+    "iso2": "LY",
+    "m49": "434",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "LBY",
+    "iso2": "LY",
+    "m49": "434",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "LCA",
@@ -21654,6 +22113,33 @@
     "group_name": "East Asia & Pacific"
   },
   {
+    "iso3": "MHL",
+    "iso2": "MH",
+    "m49": "584",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "MHL",
+    "iso2": "MH",
+    "m49": "584",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "MHL",
+    "iso2": "MH",
+    "m49": "584",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "MKD",
     "iso2": "MK",
     "m49": "807",
@@ -22059,6 +22545,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "MLI",
+    "iso2": "ML",
+    "m49": "466",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "MLI",
+    "iso2": "ML",
+    "m49": "466",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "MLI",
+    "iso2": "ML",
+    "m49": "466",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "MLT",
     "iso2": "MT",
     "m49": "470",
@@ -22354,6 +22867,33 @@
     "group_type": "region",
     "group_code": "EAS",
     "group_name": "East Asia & Pacific"
+  },
+  {
+    "iso3": "MMR",
+    "iso2": "MM",
+    "m49": "104",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "MMR",
+    "iso2": "MM",
+    "m49": "104",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "MMR",
+    "iso2": "MM",
+    "m49": "104",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "MNE",
@@ -23047,6 +23587,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "MOZ",
+    "iso2": "MZ",
+    "m49": "508",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "MOZ",
+    "iso2": "MZ",
+    "m49": "508",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "MOZ",
+    "iso2": "MZ",
+    "m49": "508",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "MRT",
@@ -24732,6 +25299,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "NER",
+    "iso2": "NE",
+    "m49": "562",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "NER",
+    "iso2": "NE",
+    "m49": "562",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "NER",
+    "iso2": "NE",
+    "m49": "562",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "NFK",
     "iso2": "NF",
     "m49": "574",
@@ -24982,6 +25576,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "NGA",
+    "iso2": "NG",
+    "m49": "566",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "NGA",
+    "iso2": "NG",
+    "m49": "566",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "NGA",
+    "iso2": "NG",
+    "m49": "566",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "NIC",
@@ -27232,6 +27853,33 @@
     "group_type": "region",
     "group_code": "EAS",
     "group_name": "East Asia & Pacific"
+  },
+  {
+    "iso3": "PNG",
+    "iso2": "PG",
+    "m49": "598",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "PNG",
+    "iso2": "PG",
+    "m49": "598",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "PNG",
+    "iso2": "PG",
+    "m49": "598",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "POL",
@@ -28143,6 +28791,33 @@
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
   },
   {
+    "iso3": "PSE",
+    "iso2": "PS",
+    "m49": "275",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "PSE",
+    "iso2": "PS",
+    "m49": "275",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "PSE",
+    "iso2": "PS",
+    "m49": "275",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "PYF",
     "iso2": "PF",
     "m49": "258",
@@ -29293,6 +29968,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "SDN",
+    "iso2": "SD",
+    "m49": "729",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "SDN",
+    "iso2": "SD",
+    "m49": "729",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "SDN",
+    "iso2": "SD",
+    "m49": "729",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "SEN",
@@ -30177,6 +30879,33 @@
     "group_name": "East Asia & Pacific"
   },
   {
+    "iso3": "SLB",
+    "iso2": "SB",
+    "m49": "90",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "SLB",
+    "iso2": "SB",
+    "m49": "90",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "SLB",
+    "iso2": "SB",
+    "m49": "90",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "SLE",
     "iso2": "SL",
     "m49": "694",
@@ -30852,6 +31581,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "SOM",
+    "iso2": "SO",
+    "m49": "706",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "SOM",
+    "iso2": "SO",
+    "m49": "706",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "SOM",
+    "iso2": "SO",
+    "m49": "706",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "SPM",
     "iso2": "PM",
     "m49": "666",
@@ -31320,6 +32076,33 @@
     "group_name": "Sub-Saharan Africa"
   },
   {
+    "iso3": "SSD",
+    "iso2": "SS",
+    "m49": "728",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "SSD",
+    "iso2": "SS",
+    "m49": "728",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "SSD",
+    "iso2": "SS",
+    "m49": "728",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "STP",
     "iso2": "ST",
     "m49": "678",
@@ -31516,6 +32299,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "STP",
+    "iso2": "ST",
+    "m49": "678",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "STP",
+    "iso2": "ST",
+    "m49": "678",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "STP",
+    "iso2": "ST",
+    "m49": "678",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "SUR",
@@ -32733,6 +33543,33 @@
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
   },
   {
+    "iso3": "SYR",
+    "iso2": "SY",
+    "m49": "760",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "SYR",
+    "iso2": "SY",
+    "m49": "760",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "SYR",
+    "iso2": "SY",
+    "m49": "760",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "TCA",
     "iso2": "TC",
     "m49": "796",
@@ -33082,6 +33919,33 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "TCD",
+    "iso2": "TD",
+    "m49": "148",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "TCD",
+    "iso2": "TD",
+    "m49": "148",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "TCD",
+    "iso2": "TD",
+    "m49": "148",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "TGO",
@@ -34146,6 +35010,33 @@
     "group_name": "East Asia & Pacific"
   },
   {
+    "iso3": "TLS",
+    "iso2": "TL",
+    "m49": "626",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "TLS",
+    "iso2": "TL",
+    "m49": "626",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "TLS",
+    "iso2": "TL",
+    "m49": "626",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "TON",
     "iso2": "TO",
     "m49": "776",
@@ -35010,6 +35901,33 @@
     "group_name": "East Asia & Pacific"
   },
   {
+    "iso3": "TUV",
+    "iso2": "TV",
+    "m49": "798",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "TUV",
+    "iso2": "TV",
+    "m49": "798",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "TUV",
+    "iso2": "TV",
+    "m49": "798",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "TZA",
     "iso2": "TZ",
     "m49": "834",
@@ -35584,6 +36502,33 @@
     "group_type": "region",
     "group_code": "ECS",
     "group_name": "Europe & Central Asia"
+  },
+  {
+    "iso3": "UKR",
+    "iso2": "UA",
+    "m49": "804",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "UKR",
+    "iso2": "UA",
+    "m49": "804",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "UKR",
+    "iso2": "UA",
+    "m49": "804",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   },
   {
     "iso3": "UMI",
@@ -36549,6 +37494,33 @@
     "group_name": "Latin America & Caribbean"
   },
   {
+    "iso3": "VEN",
+    "iso2": "VE",
+    "m49": "862",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "VEN",
+    "iso2": "VE",
+    "m49": "862",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "VEN",
+    "iso2": "VE",
+    "m49": "862",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "VGB",
     "iso2": "VG",
     "m49": "92",
@@ -37683,6 +38655,33 @@
     "group_name": "Middle East, North Africa, Afghanistan & Pakistan"
   },
   {
+    "iso3": "YEM",
+    "iso2": "YE",
+    "m49": "887",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Conflict",
+    "group_name": "Conflict"
+  },
+  {
+    "iso3": "YEM",
+    "iso2": "YE",
+    "m49": "887",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "YEM",
+    "iso2": "YE",
+    "m49": "887",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
+  },
+  {
     "iso3": "ZAF",
     "iso2": "ZA",
     "m49": "710",
@@ -38275,5 +39274,32 @@
     "group_type": "region",
     "group_code": "SSF",
     "group_name": "Sub-Saharan Africa"
+  },
+  {
+    "iso3": "ZWE",
+    "iso2": "ZW",
+    "m49": "716",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_category",
+    "group_code": "Institutional and Social Fragility",
+    "group_name": "Institutional and Social Fragility"
+  },
+  {
+    "iso3": "ZWE",
+    "iso2": "ZW",
+    "m49": "716",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_fiscal_year",
+    "group_code": "FY26",
+    "group_name": "World Bank FCS list fiscal year FY26"
+  },
+  {
+    "iso3": "ZWE",
+    "iso2": "ZW",
+    "m49": "716",
+    "source": "world_bank_fcs",
+    "group_type": "fcs_status",
+    "group_code": "FCS",
+    "group_name": "Fragile and Conflict-affected Situations"
   }
 ]

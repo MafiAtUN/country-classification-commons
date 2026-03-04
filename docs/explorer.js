@@ -24,12 +24,12 @@ function requestJson(url) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
-    xhr.responseType = 'json';
+    xhr.responseType = 'text';
     xhr.onload = () => {
       if (xhr.status >= 200 && xhr.status < 300) {
-        if (xhr.response !== null) return resolve(xhr.response);
         try {
-          return resolve(JSON.parse(xhr.responseText));
+          const text = (xhr.responseText || '').trim();
+          return resolve(JSON.parse(text));
         } catch (e) {
           return reject(new Error(`${url} -> invalid JSON`));
         }

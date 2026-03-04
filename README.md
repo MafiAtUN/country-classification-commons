@@ -49,9 +49,12 @@ python scripts/update_data.py
 
 ## GitHub Pages Setup
 
-1. Push this folder to a dedicated repository (recommended).
-2. In repository settings, set Pages source to `docs/` on `main`.
-3. The app will serve from `https://<user>.github.io/<repo>/`.
+This repository includes `.github/workflows/deploy-pages.yml` to deploy the `docs/` app.
+
+1. In repository settings, open `Pages`.
+2. Set `Source` to `GitHub Actions`.
+3. Push to `main` (or run the workflow manually).
+4. The app will serve from `https://<user>.github.io/<repo>/`.
 
 The app reads:
 
@@ -79,12 +82,17 @@ This performs:
 ## Recommended Publishing Pattern
 
 - Keep this as a dedicated public repository.
-- Schedule updates (GitHub Actions or cron) to run `scripts/update_data.py`.
+- Use the included scheduled workflow `.github/workflows/update-data.yml`.
 - Commit `data/latest/`, `data/changelog/`, and `docs/data/` after each successful run.
 
 ## Data Contract
 
 Schema reference: [`DATA_DICTIONARY.md`](./DATA_DICTIONARY.md)
+
+## Tool Usage Guide
+
+Detailed instructions for spreadsheets, BI tools, and programming environments:
+[`USAGE_GUIDE.md`](./USAGE_GUIDE.md)
 
 ## Citation Guidance
 

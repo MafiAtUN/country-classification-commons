@@ -7,54 +7,115 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260304b">
-  <script src="./explorer.js?v=20260304b" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260304c">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="./explorer.js?v=20260304c" defer></script>
 </head>
 <body>
   <header class="hero">
     <h1>Explorer</h1>
-    <p>Search countries, view classifications, and copy direct data links.</p>
+    <p>Search and visualise country classifications across UN, World Bank, and OECD sources.</p>
     <nav class="nav">
       <a href="./index.html">Home</a>
       <a href="./explorer.html" aria-current="page">Explorer</a>
-      <a href="./downloads.html">Downloads & API Links</a>
+      <a href="./downloads.html">Downloads &amp; API Links</a>
+      <a href="./about.html">About &amp; Methodology</a>
     </nav>
   </header>
 
   <main>
+    <!-- Error banner -->
     <section id="load-error" class="card error-card hidden"></section>
 
+    <!-- Snapshot meta -->
+    <section class="card snapshot-bar">
+      <span id="snapshot-meta">Loading data…</span>
+      <a href="./downloads.html" class="btn btn-sm btn-outline">Get downloads &rarr;</a>
+    </section>
+
+    <!-- Summary stats -->
+    <section class="stats-grid" id="stats-row">
+      <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Countries / Areas</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-memberships">—</div><div class="stat-label">Group Memberships</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-ldc">—</div><div class="stat-label">LDCs</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-fcs">—</div><div class="stat-label">Fragile &amp; Conflict (FCS)</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-oecd">—</div><div class="stat-label">ODA-eligible (OECD DAC)</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-sids">—</div><div class="stat-label">SIDS</div></div>
+    </section>
+
+    <!-- Charts row -->
+    <section class="grid charts-grid">
+      <article class="card">
+        <h2>World Bank Income Groups</h2>
+        <div class="chart-wrap"><canvas id="chart-income"></canvas></div>
+      </article>
+      <article class="card">
+        <h2>UN Regions</h2>
+        <div class="chart-wrap"><canvas id="chart-region"></canvas></div>
+      </article>
+    </section>
+
+    <section class="grid charts-grid">
+      <article class="card">
+        <h2>Special Designations</h2>
+        <p class="chart-note">LDC = Least Developed Countries &nbsp;|&nbsp; LLDC = Landlocked Developing Countries &nbsp;|&nbsp; SIDS = Small Island Developing States &nbsp;|&nbsp; FCS = Fragile &amp; Conflict-affected Situations</p>
+        <div class="chart-wrap chart-wrap-sm"><canvas id="chart-special"></canvas></div>
+      </article>
+      <article class="card">
+        <h2>Memberships per Country (distribution)</h2>
+        <p class="chart-note">How many classification groups each country/area belongs to.</p>
+        <div class="chart-wrap chart-wrap-sm"><canvas id="chart-hist"></canvas></div>
+      </article>
+    </section>
+
+    <!-- Filter controls -->
     <section class="controls card">
       <div>
         <label for="search">Search country</label>
-        <input id="search" type="search" placeholder="Name, ISO2, ISO3, M49">
+        <input id="search" type="search" placeholder="Name, ISO2, ISO3, M49…">
       </div>
       <div>
         <label for="source-filter">Source</label>
-        <select id="source-filter"><option value="">All</option></select>
+        <select id="source-filter"><option value="">All sources</option></select>
       </div>
       <div>
         <label for="type-filter">Group type</label>
-        <select id="type-filter"><option value="">All</option></select>
+        <select id="type-filter"><option value="">All types</option></select>
+      </div>
+      <div>
+        <label for="income-filter">WB Income level</label>
+        <select id="income-filter"><option value="">All income levels</option></select>
+      </div>
+      <div>
+        <label for="region-filter">UN Region</label>
+        <select id="region-filter"><option value="">All regions</option></select>
       </div>
       <div>
         <label for="result-count">Results</label>
-        <div id="result-count" class="stat-box">Loading...</div>
+        <div id="result-count" class="stat-box">Loading…</div>
       </div>
     </section>
 
+    <!-- Country table -->
     <section class="card">
-      <h2>Countries</h2>
+      <h2>Countries / Areas</h2>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Country</th>
+              <th>Country / Area</th>
               <th>ISO3</th>
+              <th>ISO2</th>
               <th>M49</th>
               <th>UN Region</th>
               <th>WB Income</th>
-              <th>Memberships</th>
+              <th>LDC</th>
+              <th>LLDC</th>
+              <th>SIDS</th>
+              <th>FCS</th>
+              <th>ODA</th>
+              <th>Groups</th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="country-body"></tbody>
@@ -62,10 +123,17 @@
       </div>
     </section>
 
-    <section class="card">
-      <h2>Snapshot</h2>
-      <p id="snapshot-meta">Loading snapshot metadata...</p>
-      <p><a href="./downloads.html">Go to Downloads & API Links</a></p>
+    <!-- Country detail panel -->
+    <section class="card" id="detail-panel" style="display:none">
+      <h2 id="detail-label">Select a country to view memberships</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Source</th><th>Group type</th><th>Code</th><th>Group name</th></tr>
+          </thead>
+          <tbody id="detail-body"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 </body>

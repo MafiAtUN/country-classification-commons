@@ -7,50 +7,81 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260304b">
+  <link rel="stylesheet" href="./styles.css?v=20260304c">
 </head>
 <body>
   <header class="hero">
     <h1>Country Classification Commons</h1>
-    <p>Production-ready country classification library with direct CSV/JSON access and reusable data links.</p>
+    <p>An open, auto-refreshing reference library of country classifications from the UN, World Bank, and OECD — for researchers, analysts, and practitioners who work with countries as units of analysis.</p>
     <nav class="nav">
       <a href="./index.html" aria-current="page">Home</a>
       <a href="./explorer.html">Explorer</a>
-      <a href="./downloads.html">Downloads & API Links</a>
+      <a href="./downloads.html">Downloads &amp; API Links</a>
+      <a href="./about.html">About &amp; Methodology</a>
     </nav>
   </header>
 
   <main>
     <section class="card">
-      <h2>What You Can Do</h2>
+      <h2>What is this?</h2>
+      <p>
+        Country Classification Commons consolidates authoritative country metadata from five official sources
+        into a single, machine-readable dataset that is refreshed automatically up to 10&times; per week.
+        It is designed for UN agencies, INGOs, academics, students, and data professionals who need consistent,
+        citable classification metadata without having to manually maintain their own lookup tables.
+      </p>
       <ul>
-        <li>Browse and filter country classifications in the Explorer.</li>
-        <li>Download clean CSV/JSON files directly.</li>
-        <li>Use permanent GitHub raw links in Excel, BI tools, and code.</li>
-        <li>Get the denormalized full library in one file.</li>
+        <li>Browse and search 248 countries/areas with 4 367 group memberships in the <strong>Explorer</strong>.</li>
+        <li>Download clean CSV or JSON files, or use permanent raw links in your code or BI tool.</li>
+        <li>One row per country-group pair — tidy data ready for merging into your own analysis.</li>
+        <li>Every run is timestamped, checksummed, and diffed against the previous snapshot.</li>
       </ul>
       <p class="cta-row">
         <a class="btn" href="./explorer.html">Open Explorer</a>
         <a class="btn btn-outline" href="./downloads.html">Get Downloads</a>
+        <a class="btn btn-outline" href="./about.html">Read Methodology</a>
       </p>
     </section>
 
     <section class="grid">
       <article class="card">
-        <h2>Core Datasets</h2>
+        <h2>Datasets</h2>
         <ul>
-          <li><code>countries_master.csv</code>: country-level master table</li>
-          <li><code>country_group_membership.csv</code>: long-format memberships</li>
-          <li><code>country_classification_library.csv</code>: full denormalized library</li>
-          <li><code>sources.csv</code> and <code>run_manifest.json</code>: provenance + snapshot metadata</li>
+          <li><strong>countries_master</strong> — 248 rows, one per country/area with ISO2/ISO3/M49, UN regions, WB income, FCS, OECD DAC, names in 6 languages</li>
+          <li><strong>country_group_membership</strong> — 4 367 rows, long-format: every country–group relationship</li>
+          <li><strong>country_classification_library</strong> — fully denormalized join of the above two tables</li>
+          <li><strong>sources &amp; run_manifest</strong> — provenance, access timestamps, and SHA-256 checksums</li>
         </ul>
       </article>
+
+      <article class="card">
+        <h2>Sources covered</h2>
+        <ul>
+          <li><strong>UN M49</strong> — geoscheme, LDC/LLDC/SIDS, multilingual names</li>
+          <li><strong>UN SDG API</strong> — SDG geographic groupings</li>
+          <li><strong>World Bank API</strong> — income level, lending type, WB region</li>
+          <li><strong>World Bank FCS</strong> — Fragile &amp; Conflict-affected Situations (latest FY)</li>
+          <li><strong>OECD DAC</strong> — ODA recipient list (latest published CSV)</li>
+        </ul>
+      </article>
+
       <article class="card">
         <h2>Automation</h2>
         <ul>
-          <li>Scheduled GitHub Actions refresh data multiple times weekly.</li>
-          <li>GitHub Pages auto-deploys updated docs.</li>
-          <li>All outputs are versioned in repository history.</li>
+          <li>GitHub Actions runs the pipeline twice each weekday and once on Sundays.</li>
+          <li>Only changed files are committed, keeping git history clean and diff-able.</li>
+          <li>A changelog report is generated for every run showing added/removed memberships.</li>
+          <li>GitHub Pages auto-deploys within minutes of any data update.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Who is this for?</h2>
+        <ul>
+          <li><strong>UN &amp; INGO staff</strong> — consistent cross-classification lookups for reporting</li>
+          <li><strong>Academics &amp; researchers</strong> — citable, versioned, machine-readable data</li>
+          <li><strong>Students</strong> — free, open data for projects and dissertations</li>
+          <li><strong>Data analysts</strong> — stable permanent links for Excel, Power BI, Tableau, R, Python</li>
         </ul>
       </article>
     </section>

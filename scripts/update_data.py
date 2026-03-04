@@ -396,6 +396,79 @@ def fetch_oecd_dac_latest(session: requests.Session) -> tuple[pd.DataFrame, str]
     return df, selected_url
 
 
+def _parse_fcs_text_layout(text: str, fy_label: str) -> list[dict[str, str]]:
+    """Parse FCS PDF text extracted with layout mode (two-column preserved).
+
+    pypdf extraction_mode='layout' preserves columns as spaces, so each line
+    may contain a left-column entry (Conflict) and/or a right-column entry
+    (Institutional and Social Fragility) separated by many spaces.
+    We detect the column split position from the header line.
+    """
+    rows: list[dict[str, str]] = []
+    lines = text.splitlines()
+
+    # Find the header line that contains both category names; use it to
+    # determine the character-position boundary between the two columns.
+    col_split = None
+    header_line_idx = None
+    for i, line in enumerate(lines):
+        upper = line.upper()
+        if "CONFLICT" in upper and "INSTITUTIONAL" in upper:
+            # The split is approximately at the start of "INSTITUTIONAL"
+            col_split = upper.index("INSTITUTIONAL")
+            header_line_idx = i
+            break
+
+    if col_split is not None:
+        # Two-column layout: split each row at the last run of 5+ spaces.
+        # This is more reliable than using the header's character position.
+        for line in lines[header_line_idx + 1 :]:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            upper = stripped.upper()
+            if upper.startswith("OFFICIAL USE") or (upper.startswith("FY") and "FRAGILE" in upper):
+                break
+
+            # Find last whitespace gap of >=5 spaces to detect column boundary.
+            gap_matches = list(re.finditer(r" {5,}", line))
+            if gap_matches:
+                last_gap = gap_matches[-1]
+                left  = line[:last_gap.start()].strip()
+                right = line[last_gap.end():].strip()
+            else:
+                left  = stripped
+                right = ""
+
+            if left:
+                rows.append({"fcs_country_name": left,  "wb_fcs_category": "Conflict",                          "wb_fcs_fy": fy_label})
+            if right:
+                rows.append({"fcs_country_name": right, "wb_fcs_category": "Institutional and Social Fragility", "wb_fcs_fy": fy_label})
+    else:
+        # Single-column layout (pdftotext output): parse sequentially.
+        section = ""
+        for raw_line in lines:
+            line = raw_line.strip()
+            if not line:
+                continue
+            upper = line.upper()
+            if upper == "CONFLICT":
+                section = "Conflict"
+                continue
+            if upper == "INSTITUTIONAL AND SOCIAL FRAGILITY":
+                section = "Institutional and Social Fragility"
+                continue
+            if upper.startswith("FY") and "FRAGILE" in upper:
+                continue
+            if upper.startswith("OFFICIAL USE"):
+                break
+            if not section:
+                continue
+            rows.append({"fcs_country_name": line, "wb_fcs_category": section, "wb_fcs_fy": fy_label})
+
+    return rows
+
+
 def fetch_world_bank_fcs_latest(session: requests.Session) -> tuple[pd.DataFrame, str, str]:
     res = session.get(WORLD_BANK_FCS_PAGE_URL, timeout=60)
     res.raise_for_status()
@@ -421,42 +494,29 @@ def fetch_world_bank_fcs_latest(session: requests.Session) -> tuple[pd.DataFrame
 
     pdf_bytes = session.get(selected_url, timeout=60).content
 
-    with tempfile.TemporaryDirectory() as tmp:
-        pdf_path = Path(tmp) / "fcs.pdf"
-        txt_path = Path(tmp) / "fcs.txt"
-        pdf_path.write_bytes(pdf_bytes)
-        subprocess.run(["pdftotext", str(pdf_path), str(txt_path)], check=True)
-        text = txt_path.read_text(encoding="utf-8", errors="ignore")
-
-    section = ""
-    rows: list[dict[str, str]] = []
-    for raw_line in text.splitlines():
-        line = raw_line.strip()
-        if not line:
-            continue
-
-        upper = line.upper()
-        if upper == "CONFLICT":
-            section = "Conflict"
-            continue
-        if upper == "INSTITUTIONAL AND SOCIAL FRAGILITY":
-            section = "Institutional and Social Fragility"
-            continue
-        if upper.startswith("FY") and "FRAGILE" in upper:
-            continue
-        if upper.startswith("OFFICIAL USE"):
-            break
-
-        if not section:
-            continue
-
-        rows.append(
-            {
-                "fcs_country_name": line,
-                "wb_fcs_category": section,
-                "wb_fcs_fy": fy_label,
-            }
+    # Primary: pypdf with layout mode (pure Python, no system dependencies).
+    text = None
+    try:
+        import io as _io
+        from pypdf import PdfReader
+        reader = PdfReader(_io.BytesIO(pdf_bytes))
+        text = "\n".join(
+            page.extract_text(extraction_mode="layout") or ""
+            for page in reader.pages
         )
+    except Exception as exc:
+        print(f"pypdf extraction failed ({exc}); trying pdftotext fallback")
+
+    # Fallback: pdftotext (requires poppler-utils installed on the system).
+    if not text:
+        with tempfile.TemporaryDirectory() as tmp:
+            pdf_path = Path(tmp) / "fcs.pdf"
+            txt_path = Path(tmp) / "fcs.txt"
+            pdf_path.write_bytes(pdf_bytes)
+            subprocess.run(["pdftotext", str(pdf_path), str(txt_path)], check=True)
+            text = txt_path.read_text(encoding="utf-8", errors="ignore")
+
+    rows = _parse_fcs_text_layout(text, fy_label)
 
     if not rows:
         raise RuntimeError("Failed to parse country names from WB FCS PDF")

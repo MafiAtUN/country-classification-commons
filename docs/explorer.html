@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260305a">
+  <link rel="stylesheet" href="./styles.css?v=20260305b">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="./explorer.js?v=20260305a" defer></script>
+  <script src="./explorer.js?v=20260305b" defer></script>
 </head>
 <body>
   <header class="hero">
@@ -147,11 +147,16 @@
           <h2>World Bank Country &amp; Lending Groups</h2>
           <p>
             The World Bank classifies <strong>215 economies</strong> by income level and lending eligibility.
-            <strong>33 UN statistical territories are not included</strong> (e.g. French overseas territories,
-            Western Sahara, British Indian Ocean Territory) — this explains why the World Bank count for Africa
-            is 54, not 60.
-            Income levels are updated annually each July using Atlas GNI per capita data.
-            Lending type indicates eligibility for IDA (concessional) or IBRD financing.
+            <strong>33 UN statistical territories are not included</strong> — mostly French and British overseas
+            territories, Western Sahara, and similar — so the WB count for the African continent is 54, not 60.
+            Income levels are updated each July using Atlas GNI per capita. Lending type shows IDA/IBRD eligibility.
+          </p>
+          <p>
+            <strong>⚠ WB region ≠ UN region:</strong> The World Bank labels its Africa region
+            <em>"Sub-Saharan Africa"</em> (48 countries). The remaining 6 North African countries
+            (Algeria, Egypt, Libya, Morocco, Tunisia, Sudan) appear in the WB region
+            <em>"Middle East, North Africa, Afghanistan &amp; Pakistan"</em>.
+            Filter by <em>WB Region</em> below to see this breakdown.
           </p>
         </div>
         <div class="cls-info-stats">
@@ -359,17 +364,24 @@
         <div class="cls-info-main">
           <h2>UN SDG Geographic Regions</h2>
           <p>
-            The UN Sustainable Development Goals (SDG) monitoring framework uses its own geographic grouping system,
-            which is <strong>different from the UN M49 geoscheme</strong>.
-            SDG regions are designed for SDG indicator aggregation and include overlapping groups —
-            for example, a country can appear in both "Eastern Africa" and "Sub-Saharan Africa" and "LDC Africa"
-            simultaneously.
-            There are <strong id="sdg-groups-inline">—</strong> SDG groups covering all 248 UN statistical areas.
+            The UN SDG monitoring framework uses its own geographic grouping system,
+            <strong>different from UN M49 and World Bank regions</strong>.
+            SDG groups are overlapping — a country can belong to multiple groups simultaneously
+            (e.g. "Africa", "Sub-Saharan Africa", "Eastern Africa", and "LDC Africa" at once).
+            There are <strong id="sdg-groups-inline">—</strong> distinct SDG groups.
           </p>
           <p>
-            <strong>Use this tab</strong> when your analysis is based on SDG reporting or when you need to match
-            countries to the SDG indicator database groupings.
-            For standard UN regional groupings, use the <button class="link-btn" data-switch-tab="m49">UN M49 tab</button>.
+            <strong>Why SDG "Africa" = 60 but World Bank "Africa" = 54:</strong>
+            The SDG group <em>"Africa"</em> covers the full continental Africa — all 60 countries
+            per UN M49, including North African and overseas territories.
+            The World Bank's <em>"Sub-Saharan Africa"</em> region covers only 48 countries
+            (North Africa sits in WB's MENA region, and 6 territories have no WB classification at all).
+            These are different groupings answering different questions.
+            For Sub-Saharan Africa specifically, select <em>"Sub-Saharan Africa"</em> in the filter below (53 countries).
+          </p>
+          <p>
+            Use this tab when matching to the <a href="https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List" target="_blank" rel="noreferrer">UN SDG indicator database</a> groupings.
+            For standard UN geographic hierarchy, use the <button class="link-btn" data-switch-tab="m49">UN M49 tab</button>.
           </p>
         </div>
         <div class="cls-info-stats">

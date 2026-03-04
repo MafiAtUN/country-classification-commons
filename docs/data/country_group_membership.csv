@@ -4252,3 +4252,117 @@ ZWE,ZW,716,un_sdg,region,1,World (total) by continental regions
 ZWE,ZW,716,world_bank,income_level,LMC,Lower middle income
 ZWE,ZW,716,world_bank,lending_type,IDB,Blend financing (IBRD and IDA eligible)
 ZWE,ZW,716,world_bank,region,SSF,Sub-Saharan Africa
+AFG,AF,4,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+AFG,AF,4,world_bank_fcs,fcs_category,CON,Conflict
+AFG,AF,4,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+BDI,BI,108,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+BDI,BI,108,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+BDI,BI,108,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+BFA,BF,854,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+BFA,BF,854,world_bank_fcs,fcs_category,CON,Conflict
+BFA,BF,854,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+TCD,TD,148,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+TCD,TD,148,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+TCD,TD,148,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+CMR,CM,120,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+CMR,CM,120,world_bank_fcs,fcs_category,CON,Conflict
+CMR,CM,120,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+COM,KM,174,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+COM,KM,174,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+COM,KM,174,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+CAF,CF,140,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+CAF,CF,140,world_bank_fcs,fcs_category,CON,Conflict
+CAF,CF,140,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+COG,CG,178,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+COG,CG,178,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+COG,CG,178,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+COD,CD,180,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+COD,CD,180,world_bank_fcs,fcs_category,CON,Conflict
+COD,CD,180,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+ERI,ER,232,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+ERI,ER,232,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+ERI,ER,232,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+ETH,ET,231,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+ETH,ET,231,world_bank_fcs,fcs_category,CON,Conflict
+ETH,ET,231,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+GNB,GW,624,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+GNB,GW,624,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+GNB,GW,624,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+HTI,HT,332,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+HTI,HT,332,world_bank_fcs,fcs_category,CON,Conflict
+HTI,HT,332,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+KIR,KI,296,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+KIR,KI,296,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+KIR,KI,296,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+IRQ,IQ,368,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+IRQ,IQ,368,world_bank_fcs,fcs_category,CON,Conflict
+IRQ,IQ,368,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+LBY,LY,434,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+LBY,LY,434,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+LBY,LY,434,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+LBN,LB,422,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+LBN,LB,422,world_bank_fcs,fcs_category,CON,Conflict
+LBN,LB,422,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MHL,MH,584,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+MHL,MH,584,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+MHL,MH,584,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MLI,ML,466,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+MLI,ML,466,world_bank_fcs,fcs_category,CON,Conflict
+MLI,ML,466,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+FSM,FM,583,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+FSM,FM,583,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+FSM,FM,583,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MOZ,MZ,508,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+MOZ,MZ,508,world_bank_fcs,fcs_category,CON,Conflict
+MOZ,MZ,508,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+PNG,PG,598,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+PNG,PG,598,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+PNG,PG,598,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+MMR,MM,104,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+MMR,MM,104,world_bank_fcs,fcs_category,CON,Conflict
+MMR,MM,104,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+STP,ST,678,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+STP,ST,678,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+STP,ST,678,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+NER,NE,562,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+NER,NE,562,world_bank_fcs,fcs_category,CON,Conflict
+NER,NE,562,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SLB,SB,90,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+SLB,SB,90,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+SLB,SB,90,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+NGA,NG,566,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+NGA,NG,566,world_bank_fcs,fcs_category,CON,Conflict
+NGA,NG,566,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+TLS,TL,626,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+TLS,TL,626,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+TLS,TL,626,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SOM,SO,706,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+SOM,SO,706,world_bank_fcs,fcs_category,CON,Conflict
+SOM,SO,706,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+TUV,TV,798,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+TUV,TV,798,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+TUV,TV,798,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SSD,SS,728,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+SSD,SS,728,world_bank_fcs,fcs_category,CON,Conflict
+SSD,SS,728,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+VEN,VE,862,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+VEN,VE,862,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+VEN,VE,862,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SDN,SD,729,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+SDN,SD,729,world_bank_fcs,fcs_category,CON,Conflict
+SDN,SD,729,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+ZWE,ZW,716,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+ZWE,ZW,716,world_bank_fcs,fcs_category,INS,Institutional and Social Fragility
+ZWE,ZW,716,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+SYR,SY,760,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+SYR,SY,760,world_bank_fcs,fcs_category,CON,Conflict
+SYR,SY,760,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+UKR,UA,804,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+UKR,UA,804,world_bank_fcs,fcs_category,CON,Conflict
+UKR,UA,804,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+PSE,PS,275,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+PSE,PS,275,world_bank_fcs,fcs_category,CON,Conflict
+PSE,PS,275,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26
+YEM,YE,887,world_bank_fcs,fcs_status,FCS,Fragile and Conflict-affected Situations
+YEM,YE,887,world_bank_fcs,fcs_category,CON,Conflict
+YEM,YE,887,world_bank_fcs,fcs_fiscal_year,FY26,World Bank FCS list fiscal year FY26

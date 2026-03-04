@@ -381,6 +381,7 @@ function renderFCS() {
   const q       = (document.getElementById('fcs-search')?.value || '').trim().toLowerCase();
   const cat     = document.getElementById('fcs-category')?.value || '';
   const unReg   = document.getElementById('fcs-un-region')?.value || '';
+  const wbReg   = document.getElementById('fcs-wb-region')?.value || '';
 
   const fcsAll = S.countries.filter(c => flag(c.wb_fcs_status));
 
@@ -389,8 +390,9 @@ function renderFCS() {
   if (noDataEl) noDataEl.classList.toggle('hidden', fcsAll.length > 0);
 
   const filtered = fcsAll.filter(c => {
-    if (cat   && clean(c.wb_fcs_category) !== cat)     return false;
-    if (unReg && clean(c.region_name_en) !== unReg)   return false;
+    if (cat    && clean(c.wb_fcs_category) !== cat)    return false;
+    if (unReg  && clean(c.region_name_en)  !== unReg)  return false;
+    if (wbReg  && clean(c.wb_region_name)  !== wbReg)  return false;
     if (q) {
       const hay = `${c.country_name_en} ${c.iso3}`.toLowerCase();
       if (!hay.includes(q)) return false;
@@ -413,7 +415,7 @@ function renderFCS() {
   const tbody = document.getElementById('fcs-body');
   tbody.innerHTML = '';
   if (fcsAll.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#888;padding:1.5rem">FCS data not available — see warning above</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#888;padding:1.5rem">FCS data not available — see warning above</td></tr>';
     return;
   }
   for (const c of filtered) {
@@ -423,6 +425,7 @@ function renderFCS() {
       <td>${clean(c.country_name_en)}</td>
       <td><code>${clean(c.iso3)}</code></td>
       <td>${clean(c.region_name_en)}</td>
+      <td>${clean(c.wb_region_name)}</td>
       <td>${clean(c.wb_income_name)}</td>
       <td><span class="pill ${catCls}">${clean(c.wb_fcs_category)}</span></td>
       <td>${clean(c.wb_fcs_fy)}</td>
@@ -569,7 +572,9 @@ function populateFilters() {
   fillSelect('oecd-un-region', unique(S.countries.filter(c => flag(c.oecd_dac_eligible)).map(c => c.region_name_en)), 'All UN regions');
 
   // FCS
-  fillSelect('fcs-un-region', unique(S.countries.filter(c => flag(c.wb_fcs_status)).map(c => c.region_name_en)), 'All UN regions');
+  const fcsAll = S.countries.filter(c => flag(c.wb_fcs_status));
+  fillSelect('fcs-un-region', unique(fcsAll.map(c => c.region_name_en)), 'All UN regions');
+  fillSelect('fcs-wb-region', unique(fcsAll.map(c => c.wb_region_name)), 'All WB regions');
 
   // SDG
   const sdgGroupNames = unique((S.bySrc['un_sdg'] || []).map(m => m.group_name));
@@ -599,7 +604,7 @@ function wireEvents() {
     'm49':  ['m49-search', 'm49-region', 'm49-subregion', 'm49-special'],
     'wb':   ['wb-search', 'wb-income', 'wb-region', 'wb-lending'],
     'oecd': ['oecd-search', 'oecd-group', 'oecd-un-region'],
-    'fcs':  ['fcs-search', 'fcs-category', 'fcs-un-region'],
+    'fcs':  ['fcs-search', 'fcs-category', 'fcs-un-region', 'fcs-wb-region'],
     'sdg':  ['sdg-group', 'sdg-search'],
   };
   for (const [tab, ids] of Object.entries(tabInputs)) {

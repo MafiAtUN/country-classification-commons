@@ -21,42 +21,18 @@ const els = {
   selectedMemberships: document.querySelector('#selected-memberships'),
 };
 
-function pageBaseHref() {
-  const { origin, pathname } = window.location;
-  if (window.location.protocol === 'file:') {
-    if (pathname.endsWith('/')) return pathname;
-    const tail = pathname.split('/').pop() || '';
-    if (tail.includes('.')) {
-      return pathname.slice(0, pathname.lastIndexOf('/') + 1);
-    }
-    return `${pathname}/`;
-  }
-  if (pathname.endsWith('/')) return `${origin}${pathname}`;
-  const tail = pathname.split('/').pop() || '';
-  if (tail.includes('.')) {
-    return `${origin}${pathname.slice(0, pathname.lastIndexOf('/') + 1)}`;
-  }
-  return `${origin}${pathname}/`;
-}
-
 async function loadJson(fileName) {
-  const base = pageBaseHref();
-  const candidates = window.location.protocol === 'file:'
-    ? [
-      `${base}data/${fileName}`,
-      `./data/${fileName}`,
-      `data/${fileName}`,
-    ]
-    : [
-      `${base}data/${fileName}`,
-      `${window.location.origin}/country-classification-commons/data/${fileName}`,
-      `${window.location.origin}/data/${fileName}`,
-    ];
+  const candidates = [
+    `data/${fileName}`,
+    `./data/${fileName}`,
+    `/country-classification-commons/data/${fileName}`,
+    `https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/docs/data/${fileName}`,
+  ];
 
   const errors = [];
-  for (const url of candidates) {
+  for (const url of Array.from(new Set(candidates))) {
     try {
-      const res = await fetch(url, { cache: 'no-cache' });
+      const res = await fetch(url);
       if (!res.ok) {
         errors.push(`${url} -> HTTP ${res.status}`);
         continue;

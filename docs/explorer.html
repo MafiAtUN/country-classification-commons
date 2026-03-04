@@ -7,14 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260304c">
+  <link rel="stylesheet" href="./styles.css?v=20260305a">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="./explorer.js?v=20260304c" defer></script>
+  <script src="./explorer.js?v=20260305a" defer></script>
 </head>
 <body>
   <header class="hero">
-    <h1>Explorer</h1>
-    <p>Search and visualise country classifications across UN, World Bank, and OECD sources.</p>
+    <h1>Country Classification Explorer</h1>
+    <p>Choose a classification system below. Each system has its own country coverage, groupings, and purpose.</p>
     <nav class="nav">
       <a href="./index.html">Home</a>
       <a href="./explorer.html" aria-current="page">Explorer</a>
@@ -24,117 +24,420 @@
   </header>
 
   <main>
+
     <!-- Error banner -->
-    <section id="load-error" class="card error-card hidden"></section>
+    <div id="load-error" class="card error-card hidden" role="alert"></div>
 
-    <!-- Snapshot meta -->
-    <section class="card snapshot-bar">
+    <!-- Snapshot bar -->
+    <div class="card snapshot-bar">
       <span id="snapshot-meta">Loading data…</span>
-      <a href="./downloads.html" class="btn btn-sm btn-outline">Get downloads &rarr;</a>
-    </section>
+      <a href="./downloads.html" class="btn btn-sm btn-outline">Download data →</a>
+    </div>
 
-    <!-- Summary stats -->
-    <section class="stats-grid" id="stats-row">
-      <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Countries / Areas</div></div>
-      <div class="stat-card"><div class="stat-num" id="stat-memberships">—</div><div class="stat-label">Group Memberships</div></div>
-      <div class="stat-card"><div class="stat-num" id="stat-ldc">—</div><div class="stat-label">LDCs</div></div>
-      <div class="stat-card"><div class="stat-num" id="stat-fcs">—</div><div class="stat-label">Fragile &amp; Conflict (FCS)</div></div>
-      <div class="stat-card"><div class="stat-num" id="stat-oecd">—</div><div class="stat-label">ODA-eligible (OECD DAC)</div></div>
-      <div class="stat-card"><div class="stat-num" id="stat-sids">—</div><div class="stat-label">SIDS</div></div>
-    </section>
+    <!-- Classification system tab bar -->
+    <div class="cls-tab-bar" role="tablist">
+      <button class="cls-tab active" data-tab="m49"    role="tab" aria-selected="true">
+        <span class="cls-tab-label">UN M49 / Geoscheme</span>
+        <span class="cls-tab-count" id="count-m49">—</span>
+      </button>
+      <button class="cls-tab" data-tab="wb"     role="tab" aria-selected="false">
+        <span class="cls-tab-label">World Bank</span>
+        <span class="cls-tab-count" id="count-wb">—</span>
+      </button>
+      <button class="cls-tab" data-tab="oecd"   role="tab" aria-selected="false">
+        <span class="cls-tab-label">OECD DAC</span>
+        <span class="cls-tab-count" id="count-oecd">—</span>
+      </button>
+      <button class="cls-tab" data-tab="fcs"    role="tab" aria-selected="false">
+        <span class="cls-tab-label">World Bank FCS</span>
+        <span class="cls-tab-count" id="count-fcs">—</span>
+      </button>
+      <button class="cls-tab" data-tab="sdg"    role="tab" aria-selected="false">
+        <span class="cls-tab-label">UN SDG Regions</span>
+        <span class="cls-tab-count" id="count-sdg">—</span>
+      </button>
+    </div>
 
-    <!-- Charts row -->
-    <section class="grid charts-grid">
-      <article class="card">
-        <h2>World Bank Income Groups</h2>
-        <div class="chart-wrap"><canvas id="chart-income"></canvas></div>
-      </article>
-      <article class="card">
-        <h2>UN Regions</h2>
-        <div class="chart-wrap"><canvas id="chart-region"></canvas></div>
-      </article>
-    </section>
+    <!-- ═══════════════════════════════ TAB: UN M49 ═══════════════════════════════ -->
+    <div class="tab-content" id="tab-m49">
 
-    <section class="grid charts-grid">
-      <article class="card">
-        <h2>Special Designations</h2>
-        <p class="chart-note">LDC = Least Developed Countries &nbsp;|&nbsp; LLDC = Landlocked Developing Countries &nbsp;|&nbsp; SIDS = Small Island Developing States &nbsp;|&nbsp; FCS = Fragile &amp; Conflict-affected Situations</p>
-        <div class="chart-wrap chart-wrap-sm"><canvas id="chart-special"></canvas></div>
-      </article>
-      <article class="card">
-        <h2>Memberships per Country (distribution)</h2>
-        <p class="chart-note">How many classification groups each country/area belongs to.</p>
-        <div class="chart-wrap chart-wrap-sm"><canvas id="chart-hist"></canvas></div>
-      </article>
-    </section>
+      <div class="card cls-info-card">
+        <div class="cls-info-main">
+          <h2>UN M49 Standard Country or Area Codes</h2>
+          <p>
+            The foundational UN classification system published by the UN Statistics Division (UNSD).
+            Covers <strong>all 248 UN statistical countries and areas</strong> — including territories and dependencies
+            that may not be members of the UN or classified by the World Bank or OECD.
+            Provides the global geoscheme (global → region → sub-region → intermediate region),
+            plus three special designations: <strong>LDC</strong> (Least Developed Countries),
+            <strong>LLDC</strong> (Landlocked Developing Countries), and
+            <strong>SIDS</strong> (Small Island Developing States).
+          </p>
+        </div>
+        <div class="cls-info-stats">
+          <div class="mini-stat"><div class="mini-num" id="m49-total">—</div><div class="mini-lbl">Total countries / areas</div></div>
+          <div class="mini-stat"><div class="mini-num" id="m49-ldc">—</div><div class="mini-lbl">LDC</div></div>
+          <div class="mini-stat"><div class="mini-num" id="m49-lldc">—</div><div class="mini-lbl">LLDC</div></div>
+          <div class="mini-stat"><div class="mini-num" id="m49-sids">—</div><div class="mini-lbl">SIDS</div></div>
+        </div>
+      </div>
 
-    <!-- Filter controls -->
-    <section class="controls card">
-      <div>
-        <label for="search">Search country</label>
-        <input id="search" type="search" placeholder="Name, ISO2, ISO3, M49…">
+      <div class="grid">
+        <div class="card"><h3>Countries by UN Region</h3><div class="chart-wrap"><canvas id="chart-m49-region"></canvas></div></div>
+        <div class="card"><h3>Special Designations</h3><div class="chart-wrap"><canvas id="chart-m49-special"></canvas></div></div>
       </div>
-      <div>
-        <label for="source-filter">Source</label>
-        <select id="source-filter"><option value="">All sources</option></select>
-      </div>
-      <div>
-        <label for="type-filter">Group type</label>
-        <select id="type-filter"><option value="">All types</option></select>
-      </div>
-      <div>
-        <label for="income-filter">WB Income level</label>
-        <select id="income-filter"><option value="">All income levels</option></select>
-      </div>
-      <div>
-        <label for="region-filter">UN Region</label>
-        <select id="region-filter"><option value="">All regions</option></select>
-      </div>
-      <div>
-        <label for="result-count">Results</label>
-        <div id="result-count" class="stat-box">Loading…</div>
-      </div>
-    </section>
 
-    <!-- Country table -->
-    <section class="card">
-      <h2>Countries / Areas</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Country / Area</th>
-              <th>ISO3</th>
-              <th>ISO2</th>
-              <th>M49</th>
-              <th>UN Region</th>
-              <th>WB Income</th>
-              <th>LDC</th>
-              <th>LLDC</th>
-              <th>SIDS</th>
-              <th>FCS</th>
-              <th>ODA</th>
-              <th>Groups</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="country-body"></tbody>
-        </table>
+      <div class="cls-filters card">
+        <div>
+          <label for="m49-search">Search</label>
+          <input id="m49-search" type="search" placeholder="Country name, ISO3, ISO2, M49…">
+        </div>
+        <div>
+          <label for="m49-region">UN Region</label>
+          <select id="m49-region"><option value="">All regions</option></select>
+        </div>
+        <div>
+          <label for="m49-subregion">UN Sub-region</label>
+          <select id="m49-subregion"><option value="">All sub-regions</option></select>
+        </div>
+        <div>
+          <label for="m49-special">Special group</label>
+          <select id="m49-special">
+            <option value="">All</option>
+            <option value="ldc">LDC only</option>
+            <option value="lldc">LLDC only</option>
+            <option value="sids">SIDS only</option>
+          </select>
+        </div>
+        <div>
+          <label>Showing</label>
+          <div class="stat-box" id="m49-count">—</div>
+        </div>
       </div>
-    </section>
 
-    <!-- Country detail panel -->
-    <section class="card" id="detail-panel" style="display:none">
-      <h2 id="detail-label">Select a country to view memberships</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Source</th><th>Group type</th><th>Code</th><th>Group name</th></tr>
-          </thead>
-          <tbody id="detail-body"></tbody>
-        </table>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Country / Area</th>
+                <th>ISO3</th>
+                <th>ISO2</th>
+                <th>M49</th>
+                <th>UN Region</th>
+                <th>UN Sub-region</th>
+                <th>Intermediate Region</th>
+                <th title="Least Developed Country">LDC</th>
+                <th title="Landlocked Developing Country">LLDC</th>
+                <th title="Small Island Developing State">SIDS</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="m49-body"></tbody>
+          </table>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <!-- ═══════════════════════════════ TAB: WORLD BANK ═══════════════════════════════ -->
+    <div class="tab-content hidden" id="tab-wb">
+
+      <div class="card cls-info-card">
+        <div class="cls-info-main">
+          <h2>World Bank Country &amp; Lending Groups</h2>
+          <p>
+            The World Bank classifies <strong>215 economies</strong> by income level and lending eligibility.
+            <strong>33 UN statistical territories are not included</strong> (e.g. French overseas territories,
+            Western Sahara, British Indian Ocean Territory) — this explains why the World Bank count for Africa
+            is 54, not 60.
+            Income levels are updated annually each July using Atlas GNI per capita data.
+            Lending type indicates eligibility for IDA (concessional) or IBRD financing.
+          </p>
+        </div>
+        <div class="cls-info-stats">
+          <div class="mini-stat"><div class="mini-num" id="wb-total">—</div><div class="mini-lbl">Economies classified</div></div>
+          <div class="mini-stat"><div class="mini-num" id="wb-low">—</div><div class="mini-lbl">Low income</div></div>
+          <div class="mini-stat"><div class="mini-num" id="wb-lm">—</div><div class="mini-lbl">Lower middle</div></div>
+          <div class="mini-stat"><div class="mini-num" id="wb-um">—</div><div class="mini-lbl">Upper middle</div></div>
+          <div class="mini-stat"><div class="mini-num" id="wb-high">—</div><div class="mini-lbl">High income</div></div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card"><h3>Income level distribution</h3><div class="chart-wrap"><canvas id="chart-wb-income"></canvas></div></div>
+        <div class="card"><h3>Countries by WB Region</h3><div class="chart-wrap"><canvas id="chart-wb-region"></canvas></div></div>
+      </div>
+
+      <div class="cls-filters card">
+        <div>
+          <label for="wb-search">Search</label>
+          <input id="wb-search" type="search" placeholder="Country name, ISO3…">
+        </div>
+        <div>
+          <label for="wb-income">Income level</label>
+          <select id="wb-income"><option value="">All income levels</option></select>
+        </div>
+        <div>
+          <label for="wb-region">WB Region</label>
+          <select id="wb-region"><option value="">All WB regions</option></select>
+        </div>
+        <div>
+          <label for="wb-lending">Lending type</label>
+          <select id="wb-lending"><option value="">All lending types</option></select>
+        </div>
+        <div>
+          <label>Showing</label>
+          <div class="stat-box" id="wb-count">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Economy</th>
+                <th>ISO3</th>
+                <th>WB Region</th>
+                <th>Income Level</th>
+                <th>Lending Type</th>
+                <th>Capital City</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="wb-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ TAB: OECD DAC ═══════════════════════════════ -->
+    <div class="tab-content hidden" id="tab-oecd">
+
+      <div class="card cls-info-card">
+        <div class="cls-info-main">
+          <h2>OECD DAC List of ODA Recipients</h2>
+          <p>
+            The OECD Development Assistance Committee (DAC) publishes the official list of countries
+            eligible to receive Official Development Assistance (ODA).
+            The current list covers <strong id="oecd-total-inline">—</strong> countries and territories,
+            grouped by DAC category which roughly tracks World Bank income levels.
+            Only countries on this list can be reported as ODA recipients in donor statistics.
+            High-income countries are <em>not</em> on this list.
+          </p>
+        </div>
+        <div class="cls-info-stats">
+          <div class="mini-stat"><div class="mini-num" id="oecd-total">—</div><div class="mini-lbl">ODA-eligible</div></div>
+          <div class="mini-stat"><div class="mini-num" id="oecd-ldc">—</div><div class="mini-lbl">LDCs</div></div>
+          <div class="mini-stat"><div class="mini-num" id="oecd-lmic">—</div><div class="mini-lbl">LMICs</div></div>
+          <div class="mini-stat"><div class="mini-num" id="oecd-umic">—</div><div class="mini-lbl">UMICs</div></div>
+          <div class="mini-stat"><div class="mini-num" id="oecd-other">—</div><div class="mini-lbl">Other LICs</div></div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card"><h3>Countries by DAC group</h3><div class="chart-wrap"><canvas id="chart-oecd-group"></canvas></div></div>
+        <div class="card"><h3>ODA recipients by UN Region</h3><div class="chart-wrap"><canvas id="chart-oecd-region"></canvas></div></div>
+      </div>
+
+      <div class="cls-filters card">
+        <div>
+          <label for="oecd-search">Search</label>
+          <input id="oecd-search" type="search" placeholder="Country name, ISO3…">
+        </div>
+        <div>
+          <label for="oecd-group">DAC group</label>
+          <select id="oecd-group"><option value="">All groups</option></select>
+        </div>
+        <div>
+          <label for="oecd-un-region">UN Region</label>
+          <select id="oecd-un-region"><option value="">All regions</option></select>
+        </div>
+        <div>
+          <label>Showing</label>
+          <div class="stat-box" id="oecd-count">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Country / Territory</th>
+                <th>ISO3</th>
+                <th>UN Region</th>
+                <th>DAC Group</th>
+                <th>WB Income (OECD)</th>
+                <th>Reporting Year</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="oecd-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ TAB: WB FCS ═══════════════════════════════ -->
+    <div class="tab-content hidden" id="tab-fcs">
+
+      <div class="card cls-info-card">
+        <div class="cls-info-main">
+          <h2>World Bank — Fragile and Conflict-affected Situations (FCS)</h2>
+          <p>
+            The World Bank publishes an annual list of countries classified as
+            <strong>Fragile and Conflict-affected Situations (FCS)</strong>.
+            Countries are grouped into two categories:
+            <strong>Conflict</strong> (active conflict with significant impact on governance and service delivery)
+            and <strong>Institutional and Social Fragility</strong>
+            (weak institutions, social cohesion, or high vulnerability without active conflict).
+            The list informs IDA resource allocation and World Bank operational policies.
+          </p>
+          <p id="fcs-no-data" class="cls-warning hidden">
+            ⚠ The FCS list could not be parsed from the latest pipeline run.
+            The World Bank publishes the FCS list as a PDF; if the PDF layout changed, the parser may need updating.
+            Check <a href="https://www.worldbank.org/en/topic/fragilityconflictviolence/brief/classification-of-fragile-and-conflict-affected-situations" target="_blank" rel="noreferrer">the WB page</a> directly.
+          </p>
+        </div>
+        <div class="cls-info-stats">
+          <div class="mini-stat"><div class="mini-num" id="fcs-total">—</div><div class="mini-lbl">FCS countries</div></div>
+          <div class="mini-stat"><div class="mini-num" id="fcs-conflict">—</div><div class="mini-lbl">Conflict</div></div>
+          <div class="mini-stat"><div class="mini-num" id="fcs-fragile">—</div><div class="mini-lbl">Institutional Fragility</div></div>
+        </div>
+      </div>
+
+      <div class="card"><h3>FCS countries by UN Region &amp; category</h3><div class="chart-wrap"><canvas id="chart-fcs"></canvas></div></div>
+
+      <div class="cls-filters card">
+        <div>
+          <label for="fcs-search">Search</label>
+          <input id="fcs-search" type="search" placeholder="Country name, ISO3…">
+        </div>
+        <div>
+          <label for="fcs-category">Category</label>
+          <select id="fcs-category">
+            <option value="">All categories</option>
+            <option value="Conflict">Conflict</option>
+            <option value="Institutional and Social Fragility">Institutional &amp; Social Fragility</option>
+          </select>
+        </div>
+        <div>
+          <label for="fcs-un-region">UN Region</label>
+          <select id="fcs-un-region"><option value="">All regions</option></select>
+        </div>
+        <div>
+          <label>Showing</label>
+          <div class="stat-box" id="fcs-count">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>ISO3</th>
+                <th>UN Region</th>
+                <th>WB Income Level</th>
+                <th>FCS Category</th>
+                <th>Fiscal Year</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="fcs-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ TAB: UN SDG ═══════════════════════════════ -->
+    <div class="tab-content hidden" id="tab-sdg">
+
+      <div class="card cls-info-card">
+        <div class="cls-info-main">
+          <h2>UN SDG Geographic Regions</h2>
+          <p>
+            The UN Sustainable Development Goals (SDG) monitoring framework uses its own geographic grouping system,
+            which is <strong>different from the UN M49 geoscheme</strong>.
+            SDG regions are designed for SDG indicator aggregation and include overlapping groups —
+            for example, a country can appear in both "Eastern Africa" and "Sub-Saharan Africa" and "LDC Africa"
+            simultaneously.
+            There are <strong id="sdg-groups-inline">—</strong> SDG groups covering all 248 UN statistical areas.
+          </p>
+          <p>
+            <strong>Use this tab</strong> when your analysis is based on SDG reporting or when you need to match
+            countries to the SDG indicator database groupings.
+            For standard UN regional groupings, use the <button class="link-btn" data-switch-tab="m49">UN M49 tab</button>.
+          </p>
+        </div>
+        <div class="cls-info-stats">
+          <div class="mini-stat"><div class="mini-num">248</div><div class="mini-lbl">Countries covered</div></div>
+          <div class="mini-stat"><div class="mini-num" id="sdg-groups-count">—</div><div class="mini-lbl">SDG groups</div></div>
+          <div class="mini-stat"><div class="mini-num" id="sdg-filtered-count">—</div><div class="mini-lbl">Shown (selected group)</div></div>
+        </div>
+      </div>
+
+      <div class="card"><h3>Countries per top-level SDG group</h3><p class="chart-note">Shows the major SDG continental groupings only. Select a specific group below to filter the table.</p><div class="chart-wrap" style="height:300px"><canvas id="chart-sdg"></canvas></div></div>
+
+      <div class="cls-filters card">
+        <div style="grid-column: span 2">
+          <label for="sdg-group">SDG Group (select to filter countries)</label>
+          <select id="sdg-group"><option value="">All SDG groups</option></select>
+        </div>
+        <div>
+          <label for="sdg-search">Search country</label>
+          <input id="sdg-search" type="search" placeholder="Country name, ISO3…">
+        </div>
+        <div>
+          <label>Showing</label>
+          <div class="stat-box" id="sdg-count">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Country / Area</th>
+                <th>ISO3</th>
+                <th>M49</th>
+                <th>SDG Groups</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="sdg-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Country detail panel (shared across all tabs) -->
+    <div class="card" id="detail-panel" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem">
+        <h2 id="detail-label" style="margin:0">Country detail</h2>
+        <button id="detail-close" class="btn btn-sm btn-outline" type="button">✕ Close</button>
+      </div>
+      <p id="detail-names" style="font-size:.85rem;color:#555;margin:.25rem 0 .75rem"></p>
+      <div class="grid" style="gap:.75rem;margin-bottom:.75rem">
+        <div>
+          <strong style="font-size:.85rem">All group memberships</strong>
+          <div class="table-wrap" style="margin-top:.4rem">
+            <table>
+              <thead><tr><th>Source</th><th>Group type</th><th>Code</th><th>Group name</th></tr></thead>
+              <tbody id="detail-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="detail-flags">
+          <strong style="font-size:.85rem">Quick reference</strong>
+          <div id="detail-flags-inner" style="margin-top:.5rem;font-size:.88rem"></div>
+        </div>
+      </div>
+    </div>
+
   </main>
 </body>
 </html>

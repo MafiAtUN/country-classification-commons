@@ -21,10 +21,39 @@ const els = {
   selectedMemberships: document.querySelector('#selected-memberships'),
 };
 
-async function loadJson(path) {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`Failed to load ${path}`);
-  return res.json();
+function pageBaseHref() {
+  const { origin, pathname } = window.location;
+  if (pathname.endsWith('/')) return `${origin}${pathname}`;
+  const tail = pathname.split('/').pop() || '';
+  if (tail.includes('.')) {
+    return `${origin}${pathname.slice(0, pathname.lastIndexOf('/') + 1)}`;
+  }
+  return `${origin}${pathname}/`;
+}
+
+async function loadJson(fileName) {
+  const base = pageBaseHref();
+  const candidates = [
+    `${base}data/${fileName}`,
+    `${window.location.origin}/country-classification-commons/data/${fileName}`,
+    `${window.location.origin}/data/${fileName}`,
+  ];
+
+  const errors = [];
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) {
+        errors.push(`${url} -> HTTP ${res.status}`);
+        continue;
+      }
+      return await res.json();
+    } catch (err) {
+      errors.push(`${url} -> ${err.message}`);
+    }
+  }
+
+  throw new Error(`Failed to load ${fileName}. Tried: ${errors.join(' | ')}`);
 }
 
 function uniqueSorted(values) {
@@ -221,10 +250,10 @@ function wireEvents() {
 
 async function main() {
   const [countries, memberships, sources, manifest] = await Promise.all([
-    loadJson('./data/countries_master.json'),
-    loadJson('./data/country_group_membership.json'),
-    loadJson('./data/sources.json').catch(() => []),
-    loadJson('./data/run_manifest.json').catch(() => null),
+    loadJson('countries_master.json'),
+    loadJson('country_group_membership.json'),
+    loadJson('sources.json').catch(() => []),
+    loadJson('run_manifest.json').catch(() => null),
   ]);
 
   state.countries = countries;

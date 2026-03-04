@@ -23,6 +23,14 @@ const els = {
 
 function pageBaseHref() {
   const { origin, pathname } = window.location;
+  if (window.location.protocol === 'file:') {
+    if (pathname.endsWith('/')) return pathname;
+    const tail = pathname.split('/').pop() || '';
+    if (tail.includes('.')) {
+      return pathname.slice(0, pathname.lastIndexOf('/') + 1);
+    }
+    return `${pathname}/`;
+  }
   if (pathname.endsWith('/')) return `${origin}${pathname}`;
   const tail = pathname.split('/').pop() || '';
   if (tail.includes('.')) {
@@ -33,11 +41,17 @@ function pageBaseHref() {
 
 async function loadJson(fileName) {
   const base = pageBaseHref();
-  const candidates = [
-    `${base}data/${fileName}`,
-    `${window.location.origin}/country-classification-commons/data/${fileName}`,
-    `${window.location.origin}/data/${fileName}`,
-  ];
+  const candidates = window.location.protocol === 'file:'
+    ? [
+      `${base}data/${fileName}`,
+      `./data/${fileName}`,
+      `data/${fileName}`,
+    ]
+    : [
+      `${base}data/${fileName}`,
+      `${window.location.origin}/country-classification-commons/data/${fileName}`,
+      `${window.location.origin}/data/${fileName}`,
+    ];
 
   const errors = [];
   for (const url of candidates) {

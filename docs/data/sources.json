@@ -1,0 +1,56 @@
+[
+  {
+    "source_id": "un_m49_overview",
+    "title": "UN M49 Standard country or area codes for statistical use (multilingual overview)",
+    "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+    "organization": "United Nations Statistics Division (UNSD)",
+    "license_note": "UN website terms",
+    "access_utc": "2026-03-04T12:51:17.410384+00:00",
+    "notes": "Primary source for M49, ISO2/ISO3 mappings, UN geoscheme, LDC/LLDC/SIDS flags, and UN-language names."
+  },
+  {
+    "source_id": "un_sdg_geoarea_list",
+    "title": "UN SDG API GeoArea List",
+    "url": "https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List",
+    "organization": "United Nations SDG Global Database",
+    "license_note": "UN SDG API terms",
+    "access_utc": "2026-03-04T12:51:17.410384+00:00",
+    "notes": "GeoArea code-name mapping used in SDG API."
+  },
+  {
+    "source_id": "un_sdg_geoarea_tree",
+    "title": "UN SDG API GeoArea Tree",
+    "url": "https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/Tree",
+    "organization": "United Nations SDG Global Database",
+    "license_note": "UN SDG API terms",
+    "access_utc": "2026-03-04T12:51:17.410384+00:00",
+    "notes": "Hierarchy for SDG regional groupings."
+  },
+  {
+    "source_id": "world_bank_country_api",
+    "title": "World Bank API v2 - Country metadata",
+    "url": "https://api.worldbank.org/v2/country?format=json&per_page=1000",
+    "organization": "World Bank Open Data",
+    "license_note": "World Bank data terms",
+    "access_utc": "2026-03-04T12:51:17.410384+00:00",
+    "notes": "Income level, lending type, region, capital city and coordinates."
+  },
+  {
+    "source_id": "world_bank_fcs",
+    "title": "World Bank Classification of Fragile and Conflict-affected Situations",
+    "url": "https://thedocs.worldbank.org/en/doc/5c7e4e268baaafa6ef38d924be9279be-0090082025/original/FCSListFY26.pdf",
+    "organization": "World Bank",
+    "license_note": "World Bank website terms",
+    "access_utc": "2026-03-04T12:51:17.410384+00:00",
+    "notes": "Parsed latest FY list from official page (selected: FY26)."
+  },
+  {
+    "source_id": "oecd_dac_oda_recipients",
+    "title": "OECD DAC List of ODA Recipients (CSV)",
+    "url": "https://webfs.oecd.org/oda/DAClists/DAC-List-of-ODA-Recipients-for-reporting-2024-flows.csv",
+    "organization": "OECD",
+    "license_note": "OECD terms",
+    "access_utc": "2026-03-04T12:51:17.410384+00:00",
+    "notes": "Latest CSV auto-selected from official OECD webfs directory."
+  }
+]

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Country Classification Commons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <h1>Country Classification Commons</h1>
+    <p>Unified country/area groupings from UN Statistics (M49), UN SDG API, and World Bank.</p>
+    <div id="snapshot-meta"></div>
+  </header>
+
+  <main>
+    <section class="controls card">
+      <div>
+        <label for="search">Search country</label>
+        <input id="search" type="search" placeholder="Name, ISO2, ISO3, or M49">
+      </div>
+      <div>
+        <label for="source-filter">Source</label>
+        <select id="source-filter"><option value="">All</option></select>
+      </div>
+      <div>
+        <label for="type-filter">Group type</label>
+        <select id="type-filter"><option value="">All</option></select>
+      </div>
+      <div>
+        <label for="group-filter">Group</label>
+        <select id="group-filter"><option value="">All</option></select>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Membership Distribution</h2>
+        <canvas id="membership-chart" height="130"></canvas>
+      </article>
+      <article class="card">
+        <h2>Quick Stats</h2>
+        <ul id="quick-stats"></ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Countries</h2>
+      <p id="result-count"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>ISO3</th>
+              <th>ISO2</th>
+              <th>M49</th>
+              <th>UN Region</th>
+              <th>WB Income</th>
+              <th>WB FCS</th>
+              <th>OECD DAC</th>
+              <th>Groups</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="country-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Selected Country Memberships</h2>
+      <p id="selected-country-label">Select a country in the table.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Type</th>
+              <th>Code</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody id="selected-memberships"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Sources</h2>
+      <ul id="sources"></ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="./styles.css?v=20260305d">
+  <link rel="stylesheet" href="./styles.css?v=20260305g">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -39,14 +39,36 @@
     <div id="edb-error" class="card error-card hidden" role="alert"></div>
 
     <section class="card lab-intro">
-      <h2>Source and citation</h2>
+      <h2>Data source &amp; citation</h2>
       <p>
-        World Bank Doing Business indicators (source: Doing Business database via World Bank API).
-        Note: Doing Business was discontinued on September 16, 2021; latest available series values here are year 2019.
+        Ease of Doing Business data is drawn from the <strong>World Bank Doing Business database</strong>, accessed via the
+        World Bank Open Data API. The Doing Business project measured regulatory environments for small and medium enterprises
+        across 190 economies. <strong>The programme was discontinued on 16 September 2021</strong>; the latest available
+        observations are from the <strong>2019 edition</strong> (published 2019).
+      </p>
+      <p>
+        Country group memberships (UN M49 regions, World Bank income groups, UN SDG groups, OECD DAC groups, WB FCS status)
+        are sourced from the <strong>Country Classification Commons</strong> library and joined to the Doing Business data by ISO3 code.
+      </p>
+      <table class="source-meta-table">
+        <tbody>
+          <tr><th>Rank indicator</th><td><code>IC.BUS.EASE.XQ</code> — Ease of Doing Business rank (1 = best, 190 = worst)</td></tr>
+          <tr><th>Score indicator</th><td><code>IC.BUS.EASE.DFRN.XQ.DB1719</code> — Distance to Frontier score (0–100, higher = better regulatory environment)</td></tr>
+          <tr><th>Data vintage</th><td>2019 (final edition before discontinuation)</td></tr>
+          <tr><th>Economy coverage</th><td>Up to 190 economies</td></tr>
+          <tr><th>API source ID</th><td>World Bank Data Catalog source 1 (Doing Business)</td></tr>
+        </tbody>
+      </table>
+      <p class="source-note">
+        <strong>Formal citation:</strong> World Bank (2020). <em>Doing Business 2020: Comparing Business Regulation in 190 Economies</em>.
+        Washington, DC: World Bank. DOI: <a href="https://doi.org/10.1596/978-1-4648-1440-2" target="_blank" rel="noreferrer">10.1596/978-1-4648-1440-2</a>
       </p>
       <div class="source-ribbon">
-        <a class="src-link" href="https://api.worldbank.org/v2/indicator/IC.BUS.EASE.XQ?format=json" target="_blank" rel="noreferrer">WB indicator metadata</a>
-        <a class="src-link" href="https://www.worldbank.org/en/programs/business-enabling-environment" target="_blank" rel="noreferrer">World Bank BEE / DB note</a>
+        <a class="src-link" href="https://www.worldbank.org/en/programs/business-enabling-environment" target="_blank" rel="noreferrer">World Bank DB archive</a>
+        <a class="src-link" href="https://api.worldbank.org/v2/indicator/IC.BUS.EASE.XQ?format=json" target="_blank" rel="noreferrer">Rank indicator metadata</a>
+        <a class="src-link" href="https://api.worldbank.org/v2/indicator/IC.BUS.EASE.DFRN.XQ.DB1719?format=json" target="_blank" rel="noreferrer">Score indicator metadata</a>
+        <a class="src-link" href="https://data.worldbank.org/indicator/IC.BUS.EASE.XQ" target="_blank" rel="noreferrer">WB Open Data portal</a>
+        <a class="src-link" href="https://github.com/MafiAtUN/country-classification-commons" target="_blank" rel="noreferrer">Country Classification Commons</a>
       </div>
     </section>
 

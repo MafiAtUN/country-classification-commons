@@ -125,6 +125,32 @@
           </div>
         </div>
 
+        <!-- aggregates -->
+        <div class="dataset-card">
+          <h3>aggregates</h3>
+          <div class="file-meta">4 367 rows &nbsp;·&nbsp; long format &nbsp;·&nbsp; CSV ~180 KB</div>
+          <p style="font-size:.85rem;margin:.3rem 0 .5rem">
+            Long-format reference table matching the
+            <a href="https://raw.githubusercontent.com/MafiAtUN/OSAAReferenceData/refs/heads/main/Aggregates.csv" target="_blank" rel="noreferrer">OSAA / UNCTAD aggregates format</a>.
+            One row per country-group membership. Best for pivot tables, group-level analysis,
+            and matching against other UN reference datasets. Columns:
+          </p>
+          <ul>
+            <li><code>Country or Area</code> — English country name</li>
+            <li><code>M49 Code</code> — UN numeric code</li>
+            <li><code>iso2</code>, <code>iso3</code> — ISO alpha codes</li>
+            <li><code>country_grouping</code> — group name (e.g. <em>Africa</em>, <em>Low income</em>, <em>Least Developed Countries (LDC)</em>)</li>
+          </ul>
+          <p style="font-size:.82rem;color:#555;margin:.3rem 0">
+            <strong>Tip:</strong> In Excel, pivot on <code>country_grouping</code> to count countries per group.
+            In R: <code>dplyr::count(df, country_grouping)</code>. In Python: <code>df.groupby("country_grouping").size()</code>.
+          </p>
+          <div class="dl-links">
+            <a class="btn btn-sm" href="./data/aggregates.csv" download>↓ CSV</a>
+            <a class="btn btn-sm btn-outline" href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/aggregates.csv" target="_blank">Raw CSV link</a>
+          </div>
+        </div>
+
         <!-- sources + manifest -->
         <div class="dataset-card">
           <h3>sources &amp; run_manifest</h3>
@@ -154,6 +180,7 @@
             <tr><td>countries_master.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/countries_master.csv" target="_blank">…/data/latest/countries_master.csv</a></td></tr>
             <tr><td>country_group_membership.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_group_membership.csv" target="_blank">…/data/latest/country_group_membership.csv</a></td></tr>
             <tr><td>country_classification_library.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/country_classification_library.csv" target="_blank">…/data/latest/country_classification_library.csv</a></td></tr>
+            <tr><td>aggregates.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/aggregates.csv" target="_blank">…/data/latest/aggregates.csv</a></td></tr>
             <tr><td>sources.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/sources.csv" target="_blank">…/data/latest/sources.csv</a></td></tr>
             <tr><td>run_manifest.json</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/run_manifest.json" target="_blank">…/data/latest/run_manifest.json</a></td></tr>
           </tbody>

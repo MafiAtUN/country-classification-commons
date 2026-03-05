@@ -58,6 +58,106 @@
       </button>
     </div>
 
+    <!-- Export guide (collapsible) -->
+    <details class="export-guide">
+      <summary>How to export a filtered country list — examples &amp; tool tips</summary>
+      <div class="export-guide-body">
+        <p>
+          Every tab has an <strong>Export CSV</strong> button. It downloads <em>exactly the rows currently shown</em>
+          in the table — all filters, dropdowns, and search terms are applied before export.
+          The file is <strong>UTF-8 CSV</strong>, compatible with Excel, R (readr/read.csv), Python (pandas),
+          Stata, SPSS, and Power BI. The filename includes the classification system and row count so you always
+          know what you downloaded.
+        </p>
+
+        <h3>UN M49 / Geoscheme — examples</h3>
+        <div class="export-guide-example">
+          <strong>All LDC countries with geographic codes</strong><br>
+          Set <em>Special group → LDC only</em> → Export →
+          columns: <code>country_name_en, iso3, iso2, m49, region, sub_region, intermediate_region, is_ldc, is_lldc, is_sids</code>.
+          Useful as a master list for any analysis that requires UN M49 codes alongside LDC/LLDC/SIDS flags.
+        </div>
+        <div class="export-guide-example">
+          <strong>All countries in a specific sub-region</strong><br>
+          Set <em>UN Sub-region → Eastern Africa</em> → Export → precise 20-country list with full geographic hierarchy.
+          Combine with the search box to further narrow by name.
+        </div>
+
+        <h3>World Bank — examples</h3>
+        <div class="export-guide-example">
+          <strong>Low-income economies in Sub-Saharan Africa</strong><br>
+          Set <em>Income level → Low income</em> + <em>WB Region → Sub-Saharan Africa</em> → Export →
+          the exact list used in World Bank operational and poverty targeting work.
+        </div>
+        <div class="export-guide-example">
+          <strong>All IDA-eligible economies</strong><br>
+          Set <em>Lending type → IDA</em> → Export → countries eligible for concessional IDA financing
+          (<code>wb_income_name, wb_lending_name, capital_city</code> included per row).
+        </div>
+        <div class="export-guide-example">
+          <strong>Upper-middle-income economies globally</strong><br>
+          Set <em>Income level → Upper middle income</em> → Export → used to identify countries approaching
+          high-income status or recently graduated from ODA eligibility.
+        </div>
+
+        <h3>OECD DAC — examples</h3>
+        <div class="export-guide-example">
+          <strong>All ODA-eligible LDCs in Africa</strong><br>
+          Set <em>DAC group → LDCs</em> + <em>UN Region → Africa</em> → Export →
+          columns include <code>dac_group, wb_income_hint, reporting_year</code>.
+          Use directly for ODA targeting, donor reporting, or OECD peer-review submissions.
+        </div>
+        <div class="export-guide-example">
+          <strong>All ODA-eligible countries in a specific reporting year</strong><br>
+          No filter needed — the <code>reporting_year</code> column in the export shows the year each country
+          was added to or last confirmed on the DAC list.
+        </div>
+
+        <h3>World Bank FCS — examples</h3>
+        <div class="export-guide-example">
+          <strong>Conflict-affected countries only</strong><br>
+          Set <em>Category → Conflict</em> → Export → 21-country list with
+          <code>wb_region, wb_income_name, wb_fcs_category, wb_fcs_fy</code>.
+          Useful for humanitarian programming, risk analysis, and IDA conflict windows.
+        </div>
+        <div class="export-guide-example">
+          <strong>FCS countries in a specific WB region</strong><br>
+          Set <em>WB Region → Sub-Saharan Africa</em> (or any region) → Export →
+          fragile and conflict-affected states within that region only.
+          Combine with <em>Category</em> filter to separate Conflict from Institutional Fragility.
+        </div>
+
+        <h3>UN SDG Regions — examples</h3>
+        <div class="export-guide-example">
+          <strong>All countries in a specific SDG group</strong><br>
+          Select e.g. <em>Sub-Saharan Africa</em> in the SDG group dropdown → Export →
+          53-country list. The <code>sdg_groups</code> column lists <em>all</em> groups each country belongs to,
+          separated by <code>;</code> — so one row per country, all memberships visible at once.
+        </div>
+        <div class="export-guide-example">
+          <strong>Splitting the sdg_groups column into multiple rows</strong><br>
+          <strong>Excel:</strong> select the column → Data → Text to Columns → delimiter <code>;</code><br>
+          <strong>R:</strong> <code>tidyr::separate_rows(df, sdg_groups, sep = ";")</code><br>
+          <strong>Python:</strong> <code>df["sdg_groups"].str.split(";").explode().reset_index(drop=True)</code><br>
+          <strong>Stata:</strong> <code>split sdg_groups, parse(";")</code><br>
+          <strong>Power BI:</strong> Split Column → By Delimiter <code>;</code> → Into Rows
+        </div>
+
+        <h3>General tips</h3>
+        <div class="export-guide-example">
+          <strong>Match counts before exporting</strong><br>
+          The <em>Showing</em> box and the <em>Export CSV</em> note both display the exact row count.
+          If the count looks wrong, check your active filters — each dropdown narrows the list independently.
+        </div>
+        <div class="export-guide-example">
+          <strong>Want the full unfiltered dataset?</strong><br>
+          Clear all filters (reload the page) then export — or go to the
+          <a href="./downloads.html">Downloads page</a> to get pre-built full CSVs and JSON files
+          with permanent raw GitHub URLs for scripting.
+        </div>
+      </div>
+    </details>
+
     <!-- ═══════════════════════════════ TAB: UN M49 ═══════════════════════════════ -->
     <div class="tab-content" id="tab-m49">
 
@@ -112,6 +212,10 @@
         <div>
           <label>Showing</label>
           <div class="stat-box" id="m49-count">—</div>
+        </div>
+        <div class="export-row">
+          <span class="export-note" id="m49-export-note"></span>
+          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
         </div>
       </div>
 
@@ -194,6 +298,10 @@
           <label>Showing</label>
           <div class="stat-box" id="wb-count">—</div>
         </div>
+        <div class="export-row">
+          <span class="export-note" id="wb-export-note"></span>
+          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
+        </div>
       </div>
 
       <div class="card">
@@ -261,6 +369,10 @@
         <div>
           <label>Showing</label>
           <div class="stat-box" id="oecd-count">—</div>
+        </div>
+        <div class="export-row">
+          <span class="export-note" id="oecd-export-note"></span>
+          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
         </div>
       </div>
 
@@ -339,6 +451,10 @@
           <label>Showing</label>
           <div class="stat-box" id="fcs-count">—</div>
         </div>
+        <div class="export-row">
+          <span class="export-note" id="fcs-export-note"></span>
+          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
+        </div>
       </div>
 
       <div class="card">
@@ -410,6 +526,10 @@
         <div>
           <label>Showing</label>
           <div class="stat-box" id="sdg-count">—</div>
+        </div>
+        <div class="export-row">
+          <span class="export-note" id="sdg-export-note"></span>
+          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
         </div>
       </div>
 

@@ -39,6 +39,7 @@
     <nav class="nav">
       <a href="./index.html">Home</a>
       <a href="./explorer.html">Explorer</a>
+      <a href="./examples.html">Example Uses</a>
       <a href="./downloads.html" aria-current="page">Downloads &amp; API Links</a>
       <a href="./about.html">About &amp; Methodology</a>
     </nav>
@@ -166,6 +167,24 @@
           </div>
         </div>
 
+        <div class="dataset-card">
+          <h3>SDR 2025 extracted artifacts</h3>
+          <div class="file-meta">Derived from SDR2025-data.xlsx (Codebook + SDR2025 Data + Overview)</div>
+          <p style="font-size:.85rem;margin:.3rem 0 .5rem">
+            Machine-readable extracts used by the SDG Analytics Lab.
+          </p>
+          <ul>
+            <li><code>sdr2025_codebook.json</code> — 126 indicator definitions, thresholds, metadata, and source notes</li>
+            <li><code>sdr2025_overview.json</code> — 208-country SDG index overview with goal dashboard and trend statuses</li>
+            <li><code>sdr2025_indicator_scores.json</code> — 2025 normalized indicator scores by country (102 indicators)</li>
+          </ul>
+          <div class="dl-links">
+            <a class="btn btn-sm btn-outline" href="./data/sdr2025_codebook.json" download>↓ codebook JSON</a>
+            <a class="btn btn-sm btn-outline" href="./data/sdr2025_overview.json" download>↓ overview JSON</a>
+            <a class="btn btn-sm btn-outline" href="./data/sdr2025_indicator_scores.json" download>↓ indicator-scores JSON</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -183,6 +202,9 @@
             <tr><td>aggregates.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/aggregates.csv" target="_blank">…/data/latest/aggregates.csv</a></td></tr>
             <tr><td>sources.csv</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/sources.csv" target="_blank">…/data/latest/sources.csv</a></td></tr>
             <tr><td>run_manifest.json</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/data/latest/run_manifest.json" target="_blank">…/data/latest/run_manifest.json</a></td></tr>
+            <tr><td>sdr2025_codebook.json</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/docs/data/sdr2025_codebook.json" target="_blank">…/docs/data/sdr2025_codebook.json</a></td></tr>
+            <tr><td>sdr2025_overview.json</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/docs/data/sdr2025_overview.json" target="_blank">…/docs/data/sdr2025_overview.json</a></td></tr>
+            <tr><td>sdr2025_indicator_scores.json</td><td><a href="https://raw.githubusercontent.com/MafiAtUN/country-classification-commons/main/docs/data/sdr2025_indicator_scores.json" target="_blank">…/docs/data/sdr2025_indicator_scores.json</a></td></tr>
           </tbody>
         </table>
       </div>

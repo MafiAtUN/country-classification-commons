@@ -314,14 +314,142 @@ details.export-guide summary::-webkit-details-marker { display: none; }
 }
 .export-note { font-size: .8rem; color: #666; }
 
+/* ── SDG Analytics Lab ───────────────────────────── */
+.hero-lab {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255,255,255,.18), rgba(255,255,255,0) 38%),
+    radial-gradient(circle at 80% 10%, rgba(249,198,124,.24), rgba(249,198,124,0) 34%),
+    linear-gradient(128deg, #094c57, #0a5f4f 48%, #1c6d3e);
+}
+
+.lab-main { gap: 1rem; }
+.lab-main h2, .lab-main h3 { font-family: "Sora", "Space Grotesk", sans-serif; }
+.lab-intro p { font-size: .9rem; line-height: 1.6; margin-top: .35rem; }
+
+.source-ribbon {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin-top: .75rem;
+}
+.src-link {
+  text-decoration: none;
+  border: 1px solid #bdd8ce;
+  background: #f1faf6;
+  color: #0f5b46;
+  border-radius: 999px;
+  padding: .27rem .68rem;
+  font-size: .78rem;
+}
+.src-link:hover { background: #e5f3ec; }
+
+.lab-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: .7rem;
+  align-items: end;
+}
+.lab-filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  min-height: 100%;
+}
+.lab-metric-card h3 { margin-bottom: .45rem; }
+.lab-metric-explainer {
+  font-size: .84rem;
+  line-height: 1.52;
+  color: #2d3b39;
+}
+.lab-metric-explainer p { margin: .22rem 0; }
+.lab-metric-explainer .meta {
+  color: #52625f;
+  font-size: .79rem;
+}
+
+.lab-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .75rem;
+}
+.kpi-card {
+  background: linear-gradient(155deg, #fffef8, #f4fbf8);
+  border: 1px solid #cfe0d8;
+}
+.kpi-label {
+  font-size: .77rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #516462;
+}
+.kpi-value {
+  margin-top: .3rem;
+  font-size: 1.36rem;
+  font-weight: 700;
+  color: #0f5b46;
+}
+.kpi-sub { font-size: .77rem; color: #556; margin-top: .15rem; }
+
+.lab-subnav-wrap { padding: .65rem .8rem; }
+.lab-subnav { display: flex; flex-wrap: wrap; gap: .5rem; }
+.lab-tab-link {
+  border: 1px solid #c6d8d0;
+  background: #f0f6f3;
+  border-radius: 9px;
+  padding: .42rem .75rem;
+  text-decoration: none;
+  color: inherit;
+  font-size: .86rem;
+}
+.lab-tab-link.active {
+  background: #0b6e4f;
+  color: #fff;
+  border-color: #0b6e4f;
+}
+.lab-tab {
+  border: 1px solid #c6d8d0;
+  background: #f0f6f3;
+  border-radius: 9px;
+  padding: .42rem .75rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .86rem;
+}
+.lab-tab.active {
+  background: #0b6e4f;
+  color: #fff;
+  border-color: #0b6e4f;
+}
+
+.lab-grid-2 { grid-template-columns: 1.05fr .95fr; }
+.plot { width: 100%; min-height: 340px; }
+#lab-map { width: 100%; height: 420px; border-radius: 10px; overflow: hidden; border: 1px solid #d4ddd8; }
+.chart-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-top: .55rem;
+}
+.lab-notes p { font-size: .87rem; line-height: 1.55; margin: .45rem 0; }
+.lab-country-meta {
+  margin-top: .65rem;
+  background: #f4faf7;
+  border: 1px solid #d4e4dd;
+  border-radius: 8px;
+  padding: .65rem .75rem;
+  font-size: .86rem;
+}
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 900px) {
   .grid, .dataset-grid { grid-template-columns: 1fr; }
   .cls-info-card { flex-direction: column; }
+  .lab-grid-2 { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .cls-tab { min-width: 120px; flex: 1 1 40%; }
+  .plot { min-height: 300px; }
+  #lab-map { height: 360px; }
 }
 @media (max-width: 480px) {
   .cls-tab { min-width: 100%; }
+  .lab-filters { grid-template-columns: 1fr; }
 }

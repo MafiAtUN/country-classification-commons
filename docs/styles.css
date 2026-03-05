@@ -250,6 +250,51 @@ pre {
 .source-table td, .source-table th { font-size: .82rem; }
 .source-table th { white-space: nowrap; }
 
+/* ── Export guide ─────────────────────────────────── */
+details.export-guide {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: .65rem 1.15rem;
+  box-shadow: 0 5px 16px rgba(0,0,0,.04);
+}
+details.export-guide summary {
+  cursor: pointer;
+  font-weight: 600; font-size: .93rem;
+  list-style: none;
+  display: flex; align-items: center; gap: .5rem;
+  user-select: none;
+}
+details.export-guide summary::before {
+  content: '▶'; font-size: .7rem;
+  transition: transform .15s; color: var(--accent);
+}
+details.export-guide[open] summary::before { transform: rotate(90deg); }
+details.export-guide summary::-webkit-details-marker { display: none; }
+
+.export-guide-body { padding-top: .75rem; }
+.export-guide-body > p { font-size: .88rem; margin: 0 0 .6rem; line-height: 1.55; }
+.export-guide-body h3 { font-size: .9rem; margin: .8rem 0 .3rem; color: var(--accent); }
+.export-guide-example {
+  background: #f5faf8; border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: .5rem .75rem;
+  margin: .3rem 0; font-size: .84rem; line-height: 1.5;
+}
+.export-guide-example code {
+  background: #e0f0ea; padding: .05rem .28rem;
+  border-radius: 3px; font-size: .79rem;
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+.export-row {
+  display: flex; align-items: center;
+  justify-content: flex-end; gap: .75rem;
+  grid-column: 1 / -1;
+  padding-top: .5rem;
+  border-top: 1px solid var(--line);
+  margin-top: .1rem;
+}
+.export-note { font-size: .8rem; color: #666; }
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 900px) {
   .grid, .dataset-grid { grid-template-columns: 1fr; }

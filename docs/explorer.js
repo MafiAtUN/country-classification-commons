@@ -35,6 +35,7 @@ const S = {
   bySrc: {},           // source → [membership, …]
   activeTab: 'm49',
   charts: {},
+  exportData: null,    // { filename, headers, rows } set by each render fn
 };
 
 // ── Data loading ──────────────────────────────────────────────────────────────
@@ -125,6 +126,33 @@ function viewBtn(iso3) {
 
 function boolPill(val, label, cls) {
   return flag(val) ? `<span class="pill ${cls}">${label}</span>` : '';
+}
+
+// ── CSV export ─────────────────────────────────────────────────────────────────
+
+function csvEscape(v) {
+  const s = (v == null || v === 'null' || v === null) ? '' : String(v);
+  return (s.includes(',') || s.includes('"') || s.includes('\n'))
+    ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
+function downloadCSV(filename, headers, rows) {
+  const lines = [headers.map(csvEscape).join(',')];
+  for (const row of rows) lines.push(row.map(csvEscape).join(','));
+  const blob = new Blob([lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function storeExport(noteId, data) {
+  S.exportData = data;
+  const note = document.getElementById(noteId);
+  if (note) {
+    const n = data.rows.length;
+    note.textContent = `${n} row${n !== 1 ? 's' : ''} will be exported`;
+  }
 }
 
 // ── Tab switching ─────────────────────────────────────────────────────────────
@@ -230,6 +258,16 @@ function renderM49() {
     tbody.appendChild(tr);
   }
   wireViewBtns();
+
+  storeExport('m49-export-note', {
+    filename: `un-m49_filtered_${filtered.length}rows.csv`,
+    headers: ['country_name_en','iso3','iso2','m49','region_name_en','sub_region_name_en','intermediate_region_name_en','is_ldc','is_lldc','is_sids'],
+    rows: filtered.map(c => [
+      clean(c.country_name_en), clean(c.iso3), clean(c.iso2), clean(c.m49),
+      clean(c.region_name_en), clean(c.sub_region_name_en), clean(c.intermediate_region_name_en),
+      flag(c.is_ldc), flag(c.is_lldc), flag(c.is_sids),
+    ]),
+  });
 }
 
 // ══════════════════════════ TAB 2: WORLD BANK ════════════════════════════════
@@ -291,6 +329,15 @@ function renderWB() {
     tbody.appendChild(tr);
   }
   wireViewBtns();
+
+  storeExport('wb-export-note', {
+    filename: `world-bank_filtered_${filtered.length}rows.csv`,
+    headers: ['country_name_en','iso3','wb_country_name','wb_region_name','wb_income_name','wb_lending_name','capital_city'],
+    rows: filtered.map(c => [
+      clean(c.country_name_en), clean(c.iso3), clean(c.wb_country_name),
+      clean(c.wb_region_name), clean(c.wb_income_name), clean(c.wb_lending_name), clean(c.capital_city),
+    ]),
+  });
 }
 
 // ══════════════════════════ TAB 3: OECD DAC ══════════════════════════════════
@@ -373,6 +420,15 @@ function renderOECD() {
     tbody.appendChild(tr);
   }
   wireViewBtns();
+
+  storeExport('oecd-export-note', {
+    filename: `oecd-dac_filtered_${filtered.length}rows.csv`,
+    headers: ['country_name_en','iso3','un_region_name_en','dac_group','wb_income_hint','reporting_year'],
+    rows: filtered.map(c => {
+      const info = oecdGroupMap[c.iso3] || {};
+      return [clean(c.country_name_en), clean(c.iso3), clean(c.region_name_en), info.dacGroup || '', info.wbIncome || '', info.reportingYear || ''];
+    }),
+  });
 }
 
 // ══════════════════════════ TAB 4: WB FCS ════════════════════════════════════
@@ -434,6 +490,15 @@ function renderFCS() {
     tbody.appendChild(tr);
   }
   wireViewBtns();
+
+  storeExport('fcs-export-note', {
+    filename: `wb-fcs_filtered_${filtered.length}rows.csv`,
+    headers: ['country_name_en','iso3','un_region_name_en','wb_region_name','wb_income_name','wb_fcs_category','wb_fcs_fy'],
+    rows: filtered.map(c => [
+      clean(c.country_name_en), clean(c.iso3), clean(c.region_name_en), clean(c.wb_region_name),
+      clean(c.wb_income_name), clean(c.wb_fcs_category), clean(c.wb_fcs_fy),
+    ]),
+  });
 }
 
 // ══════════════════════════ TAB 5: UN SDG ════════════════════════════════════
@@ -490,6 +555,15 @@ function renderSDG() {
     tbody.appendChild(tr);
   }
   wireViewBtns();
+
+  storeExport('sdg-export-note', {
+    filename: `un-sdg_filtered_${filtered.length}rows.csv`,
+    headers: ['country_name_en','iso3','m49','sdg_groups'],
+    rows: filtered.map(c => {
+      const groups = (sdgGroups[c.iso3] || []).sort((a,b) => a.localeCompare(b));
+      return [clean(c.country_name_en), clean(c.iso3), clean(c.m49), groups.join(';')];
+    }),
+  });
 }
 
 // ══════════════════════════ Country detail panel ══════════════════════════════
@@ -597,6 +671,14 @@ function wireEvents() {
   // Close detail panel
   document.getElementById('detail-close').addEventListener('click', () => {
     document.getElementById('detail-panel').style.display = 'none';
+  });
+
+  // Export buttons (one per tab, all share same class)
+  document.querySelectorAll('.export-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!S.exportData) return;
+      downloadCSV(S.exportData.filename, S.exportData.headers, S.exportData.rows);
+    });
   });
 
   // Per-tab filter inputs

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ease of Doing Business Analysis | Country Classification Commons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="./styles.css?v=20260305d">
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="./ease-business.js?v=20260305e" defer></script>
+</head>
+<body>
+  <header class="hero hero-lab">
+    <h1>Ease of Doing Business Analysis</h1>
+    <p>Official World Bank Doing Business indicators analyzed through country classification schemes.</p>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./explorer.html">Explorer</a>
+      <a href="./examples.html" aria-current="page">Example Uses</a>
+      <a href="./downloads.html">Downloads &amp; API Links</a>
+      <a href="./about.html">About &amp; Methodology</a>
+    </nav>
+  </header>
+
+  <main class="lab-main">
+    <section class="card">
+      <div class="lab-subnav">
+        <a class="lab-tab-link" href="./sdg-lab.html">SDG Analytics</a>
+        <a class="lab-tab-link" href="./ai-readiness.html">Government AI Readiness</a>
+        <a class="lab-tab-link active" href="./ease-business.html">Ease of Doing Business</a>
+      </div>
+    </section>
+
+    <div id="edb-error" class="card error-card hidden" role="alert"></div>
+
+    <section class="card lab-intro">
+      <h2>Source and citation</h2>
+      <p>
+        World Bank Doing Business indicators (source: Doing Business database via World Bank API).
+        Note: Doing Business was discontinued on September 16, 2021; latest available series values here are year 2019.
+      </p>
+      <div class="source-ribbon">
+        <a class="src-link" href="https://api.worldbank.org/v2/indicator/IC.BUS.EASE.XQ?format=json" target="_blank" rel="noreferrer">WB indicator metadata</a>
+        <a class="src-link" href="https://www.worldbank.org/en/programs/business-enabling-environment" target="_blank" rel="noreferrer">World Bank BEE / DB note</a>
+      </div>
+    </section>
+
+    <section class="card lab-filters">
+      <div>
+        <label for="edb-search">Country search</label>
+        <input id="edb-search" type="search" placeholder="Country or ISO3...">
+      </div>
+      <div>
+        <label for="edb-metric">Metric</label>
+        <select id="edb-metric">
+          <option value="score" selected>Ease of Doing Business Score</option>
+          <option value="rank">Ease of Doing Business Rank</option>
+        </select>
+      </div>
+      <div>
+        <label for="edb-scheme">Classification scheme</label>
+        <select id="edb-scheme"></select>
+      </div>
+      <div>
+        <label for="edb-group">Selected group</label>
+        <select id="edb-group"><option value="">All groups</option></select>
+      </div>
+      <div>
+        <label for="edb-topn">Top/Bottom rows</label>
+        <select id="edb-topn">
+          <option value="10">10</option>
+          <option value="15" selected>15</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+      <div>
+        <label for="edb-missing">Missing values</label>
+        <select id="edb-missing">
+          <option value="exclude" selected>Exclude missing metric</option>
+          <option value="include">Include missing metric</option>
+        </select>
+      </div>
+      <div class="lab-filter-actions">
+        <button class="btn btn-sm" id="edb-reset" type="button">Reset filters</button>
+      </div>
+    </section>
+
+    <section class="lab-kpis" id="edb-kpis"></section>
+
+    <section class="grid lab-grid-2">
+      <article class="card">
+        <h3 id="edb-top-title">Top performers</h3>
+        <div class="plot" id="edb-top-chart"></div>
+        <div class="chart-actions">
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-top-chart" data-export="data" type="button">Download Data (CSV)</button>
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-top-chart" data-export="image" type="button">Download Image (PNG)</button>
+        </div>
+      </article>
+      <article class="card">
+        <h3 id="edb-bottom-title">Bottom performers</h3>
+        <div class="plot" id="edb-bottom-chart"></div>
+        <div class="chart-actions">
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-bottom-chart" data-export="data" type="button">Download Data (CSV)</button>
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-bottom-chart" data-export="image" type="button">Download Image (PNG)</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid lab-grid-2">
+      <article class="card">
+        <h3 id="edb-region-title">Average metric by UN region</h3>
+        <div class="plot" id="edb-region-chart"></div>
+        <div class="chart-actions">
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-region-chart" data-export="data" type="button">Download Data (CSV)</button>
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-region-chart" data-export="image" type="button">Download Image (PNG)</button>
+        </div>
+      </article>
+      <article class="card">
+        <h3 id="edb-hist-title">Metric distribution</h3>
+        <div class="plot" id="edb-hist-chart"></div>
+        <div class="chart-actions">
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-hist-chart" data-export="data" type="button">Download Data (CSV)</button>
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-hist-chart" data-export="image" type="button">Download Image (PNG)</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid lab-grid-2">
+      <article class="card">
+        <h3>Interactive map</h3>
+        <div id="edb-map"></div>
+        <div class="chart-actions">
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-map" data-export="data" type="button">Download Data (CSV)</button>
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-map" data-export="image" type="button">Download Image (PNG)</button>
+        </div>
+      </article>
+      <article class="card">
+        <label for="edb-country">Country profile</label>
+        <select id="edb-country"></select>
+        <div class="lab-country-meta" id="edb-meta"></div>
+        <div class="plot" id="edb-country-chart"></div>
+        <div class="chart-actions">
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-country-chart" data-export="data" type="button">Download Data (CSV)</button>
+          <button class="btn btn-sm btn-outline edb-export" data-chart="edb-country-chart" data-export="image" type="button">Download Image (PNG)</button>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

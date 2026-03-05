@@ -8,11 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="./styles.css?v=20260305d">
+  <link rel="stylesheet" href="./styles.css?v=20260305g">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="./sdg-lab.js?v=20260305d" defer></script>
+  <script src="./sdg-lab.js?v=20260305e" defer></script>
 </head>
 <body>
   <header class="hero hero-lab">
@@ -38,11 +38,38 @@
     </section>
 
     <section class="card lab-intro">
-      <h2>Why this matters</h2>
+      <h2>Data source &amp; citation</h2>
       <p>
-        The same SDG score can tell different policy stories depending on whether you slice countries by UN regions,
-        World Bank income classes, OECD DAC groups, FCS status, or SDG regional clusters. This lab demonstrates that
-        classification choices are not cosmetic: they change conclusions, rankings, and peer comparison sets.
+        SDG data is drawn from the <strong>Sustainable Development Report 2025 (SDR 2025)</strong>, published by the
+        <strong>UN Sustainable Development Solutions Network (SDSN)</strong>. The report provides SDG Index scores,
+        goal-level scores, and indicator-level scores for <strong>166 countries</strong>, alongside spillover and
+        SDG progress trend assessments.
+      </p>
+      <p>
+        Country group memberships (UN M49 regions, World Bank income groups, UN SDG groups, OECD DAC groups, WB FCS status)
+        are sourced from the <strong>Country Classification Commons</strong> library and joined to SDR 2025 data by ISO3 code.
+      </p>
+      <table class="source-meta-table">
+        <tbody>
+          <tr><th>Overall score</th><td>SDG Index score (0–100) — average of 17 goal scores, higher = better SDG performance</td></tr>
+          <tr><th>Goal scores</th><td>Goal 1–17 scores (0–100) derived from indicator-level data</td></tr>
+          <tr><th>Spillover index</th><td>Measures negative international spillovers; a low spillover score means a country's consumption patterns harm other countries' SDG progress</td></tr>
+          <tr><th>SDG progress</th><td>Trend score reflecting rate of change toward SDG targets</td></tr>
+          <tr><th>Edition</th><td>2025 (data vintage 2023–2025 depending on indicator)</td></tr>
+          <tr><th>Country coverage</th><td>166 countries</td></tr>
+          <tr><th>DOI</th><td><a href="https://doi.org/10.25546/111909" target="_blank" rel="noreferrer">10.25546/111909</a></td></tr>
+          <tr><th>Data API</th><td>SDSN ArcGIS FeatureServer (live endpoint)</td></tr>
+        </tbody>
+      </table>
+      <p class="source-note">
+        <strong>Formal citation:</strong> Sachs, J.D., Lafortune, G., Fuller, G., and Drumm, E. (2025).
+        <em>Sustainable Development Report 2025</em>. Paris: SDSN.
+        DOI: <a href="https://doi.org/10.25546/111909" target="_blank" rel="noreferrer">10.25546/111909</a>
+      </p>
+      <p>
+        <strong>Why classification matters:</strong> The same SDG score tells different policy stories depending on whether
+        you slice countries by UN regions, World Bank income classes, OECD DAC groups, FCS status, or SDG regional clusters.
+        Classification choices are not cosmetic — they change conclusions, rankings, and peer comparison sets.
       </p>
       <div class="source-ribbon" id="source-ribbon"></div>
     </section>
@@ -90,6 +117,13 @@
         <select id="lab-missing">
           <option value="exclude">Exclude missing metric</option>
           <option value="include">Include missing metric</option>
+        </select>
+      </div>
+      <div>
+        <label for="lab-zero-overall">Overall score = 0</label>
+        <select id="lab-zero-overall">
+          <option value="exclude" selected>Exclude from analysis</option>
+          <option value="include">Include in analysis</option>
         </select>
       </div>
       <div class="lab-filter-actions">

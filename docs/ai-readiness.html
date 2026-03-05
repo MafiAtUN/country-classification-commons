@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="./styles.css?v=20260305d">
+  <link rel="stylesheet" href="./styles.css?v=20260305g">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -39,14 +39,37 @@
     <div id="ai-error" class="card error-card hidden" role="alert"></div>
 
     <section class="card lab-intro">
-      <h2>Source and citation</h2>
+      <h2>Data source &amp; citation</h2>
       <p>
-        Government AI Readiness Index 2025 data is sourced from Oxford Insights. This analysis joins the index
-        with the Country Classification Commons library to compare readiness across multiple country-group schemas.
+        AI readiness data is drawn from the <strong>Government AI Readiness Index 2025</strong> published by
+        <strong>Oxford Insights</strong>. The index assesses how prepared national governments are to implement
+        AI-powered public services, covering <strong>193 countries</strong> across three pillars and nine sub-pillars.
+      </p>
+      <p>
+        Country group memberships (UN M49 regions, World Bank income groups, UN SDG groups, OECD DAC groups, WB FCS status)
+        are sourced from the <strong>Country Classification Commons</strong> library and joined to the index by ISO3 code.
+      </p>
+      <table class="source-meta-table">
+        <tbody>
+          <tr><th>Pillar 1</th><td><strong>Government</strong> — vision &amp; strategy, digital public infrastructure, data availability &amp; use, ethics &amp; regulation, digital skills</td></tr>
+          <tr><th>Pillar 2</th><td><strong>Technology sector</strong> — size &amp; dynamism of the tech ecosystem, private sector AI investment, innovation capacity</td></tr>
+          <tr><th>Pillar 3</th><td><strong>Data &amp; infrastructure</strong> — data environment, connectivity &amp; hardware, open data availability</td></tr>
+          <tr><th>Score range</th><td>0–100 composite index (higher = greater AI readiness)</td></tr>
+          <tr><th>Edition</th><td>2025 (7th annual edition)</td></tr>
+          <tr><th>Country coverage</th><td>193 countries</td></tr>
+          <tr><th>Publisher</th><td>Oxford Insights, Oxford, United Kingdom</td></tr>
+        </tbody>
+      </table>
+      <p class="source-note">
+        <strong>Formal citation:</strong> Oxford Insights (2025). <em>Government AI Readiness Index 2025</em>.
+        Oxford: Oxford Insights. Available at:
+        <a href="https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/" target="_blank" rel="noreferrer">oxfordinsights.com</a>
       </p>
       <div class="source-ribbon">
         <a class="src-link" href="https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/" target="_blank" rel="noreferrer">Oxford Insights 2025 Index</a>
         <a class="src-link" href="https://oxfordinsights.com/ai-readiness/framework-2025/" target="_blank" rel="noreferrer">Methodology framework</a>
+        <a class="src-link" href="https://oxfordinsights.com/ai-readiness/data-2025/" target="_blank" rel="noreferrer">Index data download</a>
+        <a class="src-link" href="https://github.com/MafiAtUN/country-classification-commons" target="_blank" rel="noreferrer">Country Classification Commons</a>
       </div>
     </section>
 

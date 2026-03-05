@@ -56,6 +56,29 @@
         <span class="cls-tab-label">UN SDG Regions</span>
         <span class="cls-tab-count" id="count-sdg">—</span>
       </button>
+      <button class="cls-tab" data-tab="all"    role="tab" aria-selected="false">
+        <span class="cls-tab-label">All Groups</span>
+        <span class="cls-tab-count" id="count-all">—</span>
+      </button>
+    </div>
+
+    <!-- Cross-system filters (always visible, applied on top of each tab) -->
+    <div class="card cross-filters-card" id="cross-filter-card">
+      <div class="cross-filter-header">
+        <strong style="font-size:.88rem">Cross-system filters</strong>
+        <span class="cross-filter-note">Stack on top of each tab's own filters to intersect classification systems</span>
+        <button class="link-btn" id="cross-filter-clear" style="margin-left:auto;font-size:.8rem">Clear</button>
+      </div>
+      <div class="cross-filter-grid">
+        <div>
+          <label for="cross-wb-income">WB Income Level</label>
+          <select id="cross-wb-income"><option value="">Any income level</option></select>
+        </div>
+        <div>
+          <label for="cross-sdg-group">SDG Group membership</label>
+          <select id="cross-sdg-group"><option value="">Any SDG group</option></select>
+        </div>
+      </div>
     </div>
 
     <!-- Export guide (collapsible) -->
@@ -546,6 +569,74 @@
               </tr>
             </thead>
             <tbody id="sdg-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ TAB: ALL GROUPS ═══════════════════════════════ -->
+    <div class="tab-content hidden" id="tab-all">
+
+      <div class="card cls-info-card">
+        <div class="cls-info-main">
+          <h2>All Group Memberships — Combined Reference</h2>
+          <p>
+            Every country / area with all its group memberships from all five sources combined:
+            UN M49 geographic hierarchy, World Bank income &amp; lending, OECD DAC ODA eligibility,
+            World Bank FCS, and UN SDG regional groups.
+            Search by <strong>country name, ISO3, M49 code, or group name</strong>.
+            Filter by source to narrow to one classification system.
+            Export generates a long-format CSV (one row per country-group) compatible with the
+            <a href="https://raw.githubusercontent.com/MafiAtUN/OSAAReferenceData/refs/heads/main/Aggregates.csv" target="_blank" rel="noreferrer">OSAA reference data format</a>.
+          </p>
+        </div>
+        <div class="cls-info-stats">
+          <div class="mini-stat"><div class="mini-num">248</div><div class="mini-lbl">Countries / areas</div></div>
+          <div class="mini-stat"><div class="mini-num" id="all-memberships-total">—</div><div class="mini-lbl">Total memberships</div></div>
+          <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lbl">Data sources</div></div>
+        </div>
+      </div>
+
+      <div class="cls-filters card">
+        <div style="grid-column:span 2">
+          <label for="all-search">Search country or group</label>
+          <input id="all-search" type="search" placeholder="Country name, ISO3, M49 code, or group name…">
+        </div>
+        <div>
+          <label for="all-source">Source / system</label>
+          <select id="all-source">
+            <option value="">All sources</option>
+            <option value="un_m49">UN M49 / Geoscheme</option>
+            <option value="world_bank">World Bank</option>
+            <option value="oecd_dac">OECD DAC</option>
+            <option value="world_bank_fcs">World Bank FCS</option>
+            <option value="un_sdg">UN SDG</option>
+          </select>
+        </div>
+        <div>
+          <label>Showing</label>
+          <div class="stat-box" id="all-count">—</div>
+        </div>
+        <div class="export-row">
+          <span class="export-note" id="all-export-note"></span>
+          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Country / Area</th>
+                <th>ISO3</th>
+                <th>M49</th>
+                <th style="width:3rem;text-align:center" title="Number of group memberships">#</th>
+                <th>All Group Memberships</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="all-body"></tbody>
           </table>
         </div>
       </div>

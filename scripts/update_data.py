@@ -813,6 +813,26 @@ def write_json(path: Path, payload: Any) -> None:
         json.dump(_sanitize_json(payload), f, ensure_ascii=False, indent=2)
 
 
+_AGGREGATES_LABEL_MAP = {
+    "LDC":  "Least Developed Countries (LDC)",
+    "LLDC": "Land Locked Developing Countries (LLDC)",
+    "SIDS": "Small Island Developing States (SIDS)",
+}
+
+
+def write_aggregates(countries: "pd.DataFrame", memberships: "pd.DataFrame", out_path: Path) -> None:
+    """Write long-format aggregates CSV (one row per country-group) matching OSAA reference format."""
+    # memberships already has iso3, iso2, m49; only need country_name_en from countries
+    name_map = countries.set_index("iso3")[["country_name_en"]]
+    df = memberships.merge(name_map, on="iso3", how="left")
+    df["country_grouping"] = df["group_name"].map(lambda x: _AGGREGATES_LABEL_MAP.get(x, x))
+    agg = df[["country_name_en", "m49", "iso2", "iso3", "country_grouping"]].copy()
+    agg = agg.rename(columns={"country_name_en": "Country or Area", "m49": "M49 Code"})
+    agg = agg.sort_values(["Country or Area", "country_grouping"]).reset_index(drop=True)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    agg.to_csv(out_path, index=False, encoding="utf-8")
+
+
 def main() -> None:
     for d in [LATEST_DIR, HISTORY_DIR, CHANGELOG_DIR, DOCS_DATA_DIR]:
         d.mkdir(parents=True, exist_ok=True)
@@ -1153,6 +1173,9 @@ def main() -> None:
     write_json(DOCS_DATA_DIR / "country_classification_library.json", library.to_dict(orient="records"))
     write_json(DOCS_DATA_DIR / "sources.json", sources.to_dict(orient="records"))
     write_json(DOCS_DATA_DIR / "unmapped_external_names.json", unmapped.to_dict(orient="records"))
+
+    write_aggregates(countries, memberships, DOCS_DATA_DIR / "aggregates.csv")
+    write_aggregates(countries, memberships, LATEST_DIR / "aggregates.csv")
 
     print(f"Built dataset snapshot: {timestamp}")
     print(f"Countries: {len(countries)}")

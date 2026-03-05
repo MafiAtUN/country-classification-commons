@@ -250,6 +250,25 @@ pre {
 .source-table td, .source-table th { font-size: .82rem; }
 .source-table th { white-space: nowrap; }
 
+/* ── Cross-system filters card ────────────────────── */
+.cross-filters-card {
+  background: #f0f7f4;
+  border: 1px solid #b8ddd2;
+  border-radius: 12px;
+  padding: .75rem 1.15rem;
+  box-shadow: 0 5px 16px rgba(0,0,0,.04);
+}
+.cross-filter-header {
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: .55rem; flex-wrap: wrap;
+}
+.cross-filter-note { font-size: .79rem; color: #556; }
+.cross-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: .65rem;
+}
+
 /* ── Export guide ─────────────────────────────────── */
 details.export-guide {
   background: var(--surface);

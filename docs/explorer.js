@@ -33,6 +33,8 @@ const S = {
   memberships: [],     // country_group_membership.json array
   byIso3: new Map(),   // iso3 → [membership, …]
   bySrc: {},           // source → [membership, …]
+  sdgGroups: {},       // iso3 → [sdg group names]  — built once, used by cross-filter
+  regionSubMap: {},    // un region → Set of sub-regions — for cascading dropdown
   activeTab: 'm49',
   charts: {},
   exportData: null,    // { filename, headers, rows } set by each render fn
@@ -89,6 +91,33 @@ function buildBySrc() {
     if (!S.bySrc[m.source]) S.bySrc[m.source] = [];
     S.bySrc[m.source].push(m);
   }
+}
+
+function buildSDGGroups() {
+  S.sdgGroups = {};
+  for (const m of (S.bySrc['un_sdg'] || [])) {
+    if (!S.sdgGroups[m.iso3]) S.sdgGroups[m.iso3] = [];
+    S.sdgGroups[m.iso3].push(m.group_name);
+  }
+}
+
+function applyCrossFilters(arr) {
+  const wb  = document.getElementById('cross-wb-income')?.value || '';
+  const sdg = document.getElementById('cross-sdg-group')?.value  || '';
+  if (!wb && !sdg) return arr;
+  return arr.filter(c => {
+    if (wb  && clean(c.wb_income_name) !== wb)                        return false;
+    if (sdg && !(S.sdgGroups[c.iso3] || []).includes(sdg))            return false;
+    return true;
+  });
+}
+
+function updateSubregionFilter() {
+  const region = document.getElementById('m49-region')?.value || '';
+  const subs = (region && S.regionSubMap[region])
+    ? [...S.regionSubMap[region]].sort((a, b) => a.localeCompare(b))
+    : unique(S.countries.map(c => c.sub_region_name_en));
+  fillSelect('m49-subregion', subs, 'All sub-regions');
 }
 
 function destroyChart(key) {
@@ -173,11 +202,12 @@ function switchTab(tab) {
 
 function renderActiveTab() {
   switch (S.activeTab) {
-    case 'm49':  renderM49();  break;
-    case 'wb':   renderWB();   break;
-    case 'oecd': renderOECD(); break;
-    case 'fcs':  renderFCS();  break;
-    case 'sdg':  renderSDG();  break;
+    case 'm49':  renderM49();       break;
+    case 'wb':   renderWB();        break;
+    case 'oecd': renderOECD();      break;
+    case 'fcs':  renderFCS();       break;
+    case 'sdg':  renderSDG();       break;
+    case 'all':  renderAllGroups(); break;
   }
 }
 
@@ -192,6 +222,9 @@ function updateTabCounts() {
   document.getElementById('count-oecd').textContent = `${oecdCountries.length} recipients`;
   document.getElementById('count-fcs').textContent  = fcsCountries.length ? `${fcsCountries.length} countries` : 'No data';
   document.getElementById('count-sdg').textContent  = `248 countries`;
+  document.getElementById('count-all').textContent  = `${S.memberships.length.toLocaleString()} memberships`;
+  const allTotalEl = document.getElementById('all-memberships-total');
+  if (allTotalEl) allTotalEl.textContent = S.memberships.length.toLocaleString();
 }
 
 // ══════════════════════════ TAB 1: UN M49 ════════════════════════════════════
@@ -202,7 +235,7 @@ function renderM49() {
   const subreg   = document.getElementById('m49-subregion')?.value || '';
   const special  = document.getElementById('m49-special')?.value || '';
 
-  const filtered = S.countries.filter(c => {
+  const _filtered = S.countries.filter(c => {
     if (region && clean(c.region_name_en) !== region) return false;
     if (subreg && clean(c.sub_region_name_en) !== subreg) return false;
     if (special === 'ldc'  && !flag(c.is_ldc))  return false;
@@ -214,7 +247,7 @@ function renderM49() {
     }
     return true;
   });
-
+  const filtered = applyCrossFilters(_filtered);
   document.getElementById('m49-count').textContent = `${filtered.length} of ${S.countries.length}`;
 
   // Stats
@@ -280,7 +313,7 @@ function renderWB() {
 
   const wbAll = S.countries.filter(c => clean(c.wb_income_name));
 
-  const filtered = wbAll.filter(c => {
+  const filtered = applyCrossFilters(wbAll.filter(c => {
     if (income  && clean(c.wb_income_name) !== income)  return false;
     if (region  && clean(c.wb_region_name) !== region)  return false;
     if (lending && clean(c.wb_lending_name) !== lending) return false;
@@ -289,7 +322,7 @@ function renderWB() {
       if (!hay.includes(q)) return false;
     }
     return true;
-  });
+  }));
 
   document.getElementById('wb-count').textContent = `${filtered.length} of ${wbAll.length}`;
 
@@ -358,7 +391,7 @@ function renderOECD() {
     if (m.group_type === 'reporting_year')      oecdGroupMap[m.iso3].reportingYear = m.group_name;
   }
 
-  const filtered = oecdAll.filter(c => {
+  const filtered = applyCrossFilters(oecdAll.filter(c => {
     const info = oecdGroupMap[c.iso3] || {};
     if (group && info.dacGroup !== group) return false;
     if (unReg && clean(c.region_name_en) !== unReg) return false;
@@ -367,7 +400,7 @@ function renderOECD() {
       if (!hay.includes(q)) return false;
     }
     return true;
-  });
+  }));
 
   document.getElementById('oecd-count').textContent = `${filtered.length} of ${oecdAll.length}`;
   document.getElementById('oecd-total').textContent  = oecdAll.length;
@@ -445,7 +478,7 @@ function renderFCS() {
   const noDataEl = document.getElementById('fcs-no-data');
   if (noDataEl) noDataEl.classList.toggle('hidden', fcsAll.length > 0);
 
-  const filtered = fcsAll.filter(c => {
+  const filtered = applyCrossFilters(fcsAll.filter(c => {
     if (cat    && clean(c.wb_fcs_category) !== cat)    return false;
     if (unReg  && clean(c.region_name_en)  !== unReg)  return false;
     if (wbReg  && clean(c.wb_region_name)  !== wbReg)  return false;
@@ -454,7 +487,7 @@ function renderFCS() {
       if (!hay.includes(q)) return false;
     }
     return true;
-  });
+  }));
 
   document.getElementById('fcs-count').textContent    = fcsAll.length ? `${filtered.length} of ${fcsAll.length}` : 'No data';
   document.getElementById('fcs-total').textContent    = fcsAll.length || '—';
@@ -518,7 +551,7 @@ function renderSDG() {
   document.getElementById('sdg-groups-count').textContent = allGroups.length;
   if (document.getElementById('sdg-groups-inline')) document.getElementById('sdg-groups-inline').textContent = allGroups.length;
 
-  let filtered = S.countries.filter(c => {
+  let filtered = applyCrossFilters(S.countries.filter(c => {
     if (selectedGroup) {
       const groups = sdgGroups[c.iso3] || [];
       if (!groups.includes(selectedGroup)) return false;
@@ -528,7 +561,7 @@ function renderSDG() {
       if (!hay.includes(q)) return false;
     }
     return true;
-  });
+  }));
 
   document.getElementById('sdg-count').textContent         = `${filtered.length}`;
   document.getElementById('sdg-filtered-count').textContent = filtered.length;
@@ -562,6 +595,62 @@ function renderSDG() {
     rows: filtered.map(c => {
       const groups = (sdgGroups[c.iso3] || []).sort((a,b) => a.localeCompare(b));
       return [clean(c.country_name_en), clean(c.iso3), clean(c.m49), groups.join(';')];
+    }),
+  });
+}
+
+// ══════════════════════════ TAB 6: ALL GROUPS ════════════════════════════════
+
+function renderAllGroups() {
+  const q       = (document.getElementById('all-search')?.value || '').trim().toLowerCase();
+  const srcFlt  = document.getElementById('all-source')?.value || '';
+
+  const filtered = S.countries.filter(c => {
+    if (q) {
+      const mems = S.byIso3.get(c.iso3) || [];
+      const groupText = mems.map(m => m.group_name).join(' ').toLowerCase();
+      const hay = `${c.country_name_en} ${c.iso3} ${c.m49} ${groupText}`;
+      if (!hay.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('all-count').textContent = `${filtered.length} of ${S.countries.length}`;
+
+  const tbody = document.getElementById('all-body');
+  tbody.innerHTML = '';
+  for (const c of filtered) {
+    let mems = S.byIso3.get(c.iso3) || [];
+    if (srcFlt) mems = mems.filter(m => m.source === srcFlt);
+    const totalMems = (S.byIso3.get(c.iso3) || []).length;
+    const pills = mems
+      .sort((a, b) => `${a.source}:${a.group_name}`.localeCompare(`${b.source}:${b.group_name}`))
+      .map(m => `<span class="pill src-pill src-${m.source.replace(/_/g,'-')}">${m.group_name}</span>`)
+      .join(' ');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${clean(c.country_name_en)}</td>
+      <td><code>${clean(c.iso3)}</code></td>
+      <td>${clean(c.m49)}</td>
+      <td style="text-align:center"><span class="pill">${totalMems}</span></td>
+      <td style="max-width:560px;white-space:normal">${pills || '<em style="color:#aaa;font-size:.8rem">none in this source</em>'}</td>
+      <td>${viewBtn(c.iso3)}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+  wireViewBtns();
+
+  // Export: long format (one row per country-group, matching aggregates.csv)
+  storeExport('all-export-note', {
+    filename: `all-groups_${filtered.length}countries.csv`,
+    headers: ['Country or Area', 'M49 Code', 'iso2', 'iso3', 'source', 'group_type', 'group_name'],
+    rows: filtered.flatMap(c => {
+      let mems = S.byIso3.get(c.iso3) || [];
+      if (srcFlt) mems = mems.filter(m => m.source === srcFlt);
+      return mems.map(m => [
+        clean(c.country_name_en), clean(c.m49), clean(c.iso2), clean(c.iso3),
+        m.source, m.group_type, m.group_name,
+      ]);
     }),
   });
 }
@@ -628,9 +717,17 @@ function wireViewBtns() {
 // ── Populate filter dropdowns ─────────────────────────────────────────────────
 
 function populateFilters() {
-  // M49
-  fillSelect('m49-region',    unique(S.countries.map(c => c.region_name_en)),        'All UN regions');
-  fillSelect('m49-subregion', unique(S.countries.map(c => c.sub_region_name_en)),    'All sub-regions');
+  // M49 — build cascading region→sub-region map
+  S.regionSubMap = {};
+  for (const c of S.countries) {
+    const r = clean(c.region_name_en), s = clean(c.sub_region_name_en);
+    if (r && s) {
+      if (!S.regionSubMap[r]) S.regionSubMap[r] = new Set();
+      S.regionSubMap[r].add(s);
+    }
+  }
+  fillSelect('m49-region',    unique(S.countries.map(c => c.region_name_en)),     'All UN regions');
+  fillSelect('m49-subregion', unique(S.countries.map(c => c.sub_region_name_en)), 'All sub-regions');
 
   // WB
   const wb = S.countries.filter(c => clean(c.wb_income_name));
@@ -653,6 +750,10 @@ function populateFilters() {
   // SDG
   const sdgGroupNames = unique((S.bySrc['un_sdg'] || []).map(m => m.group_name));
   fillSelect('sdg-group', sdgGroupNames, 'All SDG groups (select one to filter)');
+
+  // Cross-system filters
+  fillSelect('cross-wb-income', INCOME_ORDER.filter(k => S.countries.some(c => c.wb_income_name === k)), 'Any income level');
+  fillSelect('cross-sdg-group', sdgGroupNames, 'Any SDG group');
 }
 
 // ── Wire events ───────────────────────────────────────────────────────────────
@@ -681,13 +782,36 @@ function wireEvents() {
     });
   });
 
-  // Per-tab filter inputs
+  // Cross-system filters (always active regardless of tab)
+  ['cross-wb-income', 'cross-sdg-group'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', () => renderActiveTab());
+  });
+  document.getElementById('cross-filter-clear')?.addEventListener('click', () => {
+    const wb = document.getElementById('cross-wb-income');
+    const sdg = document.getElementById('cross-sdg-group');
+    if (wb) wb.value = '';
+    if (sdg) sdg.value = '';
+    renderActiveTab();
+  });
+
+  // Cascading region → sub-region for M49 tab
+  const m49RegionEl = document.getElementById('m49-region');
+  if (m49RegionEl) {
+    m49RegionEl.addEventListener('change', () => {
+      updateSubregionFilter();
+      if (S.activeTab === 'm49') renderActiveTab();
+    });
+  }
+
+  // Per-tab filter inputs (region handled separately above for M49)
   const tabInputs = {
-    'm49':  ['m49-search', 'm49-region', 'm49-subregion', 'm49-special'],
+    'm49':  ['m49-search', 'm49-subregion', 'm49-special'],
     'wb':   ['wb-search', 'wb-income', 'wb-region', 'wb-lending'],
     'oecd': ['oecd-search', 'oecd-group', 'oecd-un-region'],
     'fcs':  ['fcs-search', 'fcs-category', 'fcs-un-region', 'fcs-wb-region'],
     'sdg':  ['sdg-group', 'sdg-search'],
+    'all':  ['all-search', 'all-source'],
   };
   for (const [tab, ids] of Object.entries(tabInputs)) {
     for (const id of ids) {
@@ -714,6 +838,7 @@ async function main() {
     S.memberships = Array.isArray(memberships) ? memberships : [];
     buildByIso3();
     buildBySrc();
+    buildSDGGroups();
 
     const snap = manifest?.snapshot_id || 'n/a';
     const ts   = manifest?.generated_at_utc

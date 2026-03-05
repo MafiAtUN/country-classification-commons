@@ -5,7 +5,7 @@
     "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
     "organization": "United Nations Statistics Division (UNSD)",
     "license_note": "UN website terms",
-    "access_utc": "2026-03-05T05:37:16.587328+00:00",
+    "access_utc": "2026-03-05T17:58:26.791755+00:00",
     "notes": "Primary source for M49, ISO2/ISO3 mappings, UN geoscheme, LDC/LLDC/SIDS flags, and UN-language names."
   },
   {
@@ -14,7 +14,7 @@
     "url": "https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List",
     "organization": "United Nations SDG Global Database",
     "license_note": "UN SDG API terms",
-    "access_utc": "2026-03-05T05:37:16.587328+00:00",
+    "access_utc": "2026-03-05T17:58:26.791755+00:00",
     "notes": "GeoArea code-name mapping used in SDG API."
   },
   {
@@ -23,7 +23,7 @@
     "url": "https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/Tree",
     "organization": "United Nations SDG Global Database",
     "license_note": "UN SDG API terms",
-    "access_utc": "2026-03-05T05:37:16.587328+00:00",
+    "access_utc": "2026-03-05T17:58:26.791755+00:00",
     "notes": "Hierarchy for SDG regional groupings."
   },
   {
@@ -32,7 +32,7 @@
     "url": "https://api.worldbank.org/v2/country?format=json&per_page=1000",
     "organization": "World Bank Open Data",
     "license_note": "World Bank data terms",
-    "access_utc": "2026-03-05T05:37:16.587328+00:00",
+    "access_utc": "2026-03-05T17:58:26.791755+00:00",
     "notes": "Income level, lending type, region, capital city and coordinates."
   },
   {
@@ -41,7 +41,7 @@
     "url": "https://thedocs.worldbank.org/en/doc/5c7e4e268baaafa6ef38d924be9279be-0090082025/original/FCSListFY26.pdf",
     "organization": "World Bank",
     "license_note": "World Bank website terms",
-    "access_utc": "2026-03-05T05:37:16.587328+00:00",
+    "access_utc": "2026-03-05T17:58:26.791755+00:00",
     "notes": "Parsed latest FY list from official page (selected: FY26)."
   },
   {
@@ -50,7 +50,7 @@
     "url": "https://webfs.oecd.org/oda/DAClists/DAC-List-of-ODA-Recipients-for-reporting-2024-flows.csv",
     "organization": "OECD",
     "license_note": "OECD terms",
-    "access_utc": "2026-03-05T05:37:16.587328+00:00",
+    "access_utc": "2026-03-05T17:58:26.791755+00:00",
     "notes": "Latest CSV auto-selected from official OECD webfs directory."
   }
 ]

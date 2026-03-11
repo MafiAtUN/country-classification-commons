@@ -1,4 +1,9 @@
 .venv/
 __pycache__/
 *.pyc
+*.pyo
 .DS_Store
+*.xlsx
+*.xls
+notebooks/
+.ipynb_checkpoints/

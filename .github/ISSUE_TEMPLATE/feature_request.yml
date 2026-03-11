@@ -1,0 +1,59 @@
+name: Feature Request / New Data Source
+description: Propose a new classification source or a project enhancement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to propose a new data source integration or a general improvement.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Request type
+      options:
+        - New data source integration
+        - Schema change or new field
+        - Pipeline improvement
+        - Docs site enhancement
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the request
+      description: What should be added or changed, and why?
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL (if proposing a new data source)
+      description: Link to the official data page or API endpoint.
+      placeholder: "https://..."
+
+  - type: textarea
+    id: access
+    attributes:
+      label: Machine-readable access
+      description: |
+        How is the data available? (JSON API, CSV download, PDF, HTML table, etc.)
+        Is it freely accessible without authentication?
+      placeholder: "e.g. CSV available at https://... updated annually, no auth required."
+
+  - type: textarea
+    id: value
+    attributes:
+      label: Why should this be added?
+      description: What analytical or policy value does this source provide that is not already covered?
+    validations:
+      required: true
+
+  - type: textarea
+    id: license
+    attributes:
+      label: License / usage terms
+      description: Any known license restrictions on the source data?

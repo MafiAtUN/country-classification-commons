@@ -1,0 +1,61 @@
+name: Bug Report
+description: Report incorrect data, a broken pipeline step, or a site issue
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as possible.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the project is affected?
+      options:
+        - Data output (wrong value, missing country, incorrect group membership)
+        - Pipeline script (error during data refresh)
+        - GitHub Actions workflow (build failure)
+        - Docs site (explorer, downloads, charts)
+        - Documentation (README, DATA_DICTIONARY, etc.)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly. Include country codes, group names, or snapshot IDs where relevant.
+      placeholder: "e.g. Country ISO3=XYZ is listed in group SIDS but should not be."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: "e.g. XYZ should not appear in SIDS because..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Download countries_master.csv from data/latest/
+        2. Filter is_sids == true
+        3. Country XYZ appears but...
+
+  - type: input
+    id: snapshot
+    attributes:
+      label: Snapshot ID (if applicable)
+      description: Found in data/latest/run_manifest.json under `snapshot_id`
+      placeholder: "e.g. 20260305T053716Z"
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any other information, links, or screenshots.

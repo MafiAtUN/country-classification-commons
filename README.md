@@ -1,6 +1,13 @@
 # Country Classification Commons
 
-A reproducible country/area classification dataset and static explorer app for researchers.
+[![Update Data](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/update-data.yml/badge.svg)](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/update-data.yml)
+[![Deploy Pages](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/deploy-pages.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+
+An open, auto-refreshing reference library of country classifications from the UN, World Bank, and OECD — for researchers, analysts, and practitioners who work with countries as units of analysis.
+
+**[Live Explorer →](https://mafiatun.github.io/country-classification-commons/)**
 
 Maintainer: [Mafizul Islam](https://github.com/MafiAtUN)
 
@@ -100,9 +107,19 @@ Schema reference: [`DATA_DICTIONARY.md`](./DATA_DICTIONARY.md)
 Detailed instructions for spreadsheets, BI tools, and programming environments:
 [`USAGE_GUIDE.md`](./USAGE_GUIDE.md)
 
+## Contributing
+
+Contributions are welcome — bug reports, new data source proposals, documentation fixes, and code improvements. See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for guidelines.
+
+Please read our [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) before participating.
+
 ## Citation Guidance
 
 When reusing the data, cite both this repository snapshot and upstream official sources listed in `data/latest/sources.csv`.
+
+## Security
+
+To report a security vulnerability, see [`SECURITY.md`](./SECURITY.md).
 
 ## License
 

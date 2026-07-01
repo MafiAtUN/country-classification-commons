@@ -11093,8 +11093,8 @@
     "m49": "231",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "INX",
-    "group_name": "Not classified"
+    "group_code": "LIC",
+    "group_name": "Low income"
   },
   {
     "iso3": "ETH",
@@ -11930,8 +11930,8 @@
     "m49": "583",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "LMC",
-    "group_name": "Lower middle income"
+    "group_code": "UMC",
+    "group_name": "Upper middle income"
   },
   {
     "iso3": "FSM",
@@ -17348,8 +17348,8 @@
     "m49": "400",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "LMC",
-    "group_name": "Lower middle income"
+    "group_code": "UMC",
+    "group_name": "Upper middle income"
   },
   {
     "iso3": "JOR",
@@ -20084,8 +20084,8 @@
     "m49": "144",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "LMC",
-    "group_name": "Lower middle income"
+    "group_code": "UMC",
+    "group_name": "Upper middle income"
   },
   {
     "iso3": "LKA",
@@ -27473,8 +27473,8 @@
     "m49": "608",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "LMC",
-    "group_name": "Lower middle income"
+    "group_code": "UMC",
+    "group_name": "Upper middle income"
   },
   {
     "iso3": "PHL",
@@ -34124,8 +34124,8 @@
     "m49": "768",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "LIC",
-    "group_name": "Low income"
+    "group_code": "LMC",
+    "group_name": "Lower middle income"
   },
   {
     "iso3": "TGO",
@@ -37472,8 +37472,8 @@
     "m49": "862",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "INX",
-    "group_name": "Not classified"
+    "group_code": "LMC",
+    "group_name": "Lower middle income"
   },
   {
     "iso3": "VEN",
@@ -37958,8 +37958,8 @@
     "m49": "704",
     "source": "world_bank",
     "group_type": "income_level",
-    "group_code": "LMC",
-    "group_name": "Lower middle income"
+    "group_code": "UMC",
+    "group_name": "Upper middle income"
   },
   {
     "iso3": "VNM",

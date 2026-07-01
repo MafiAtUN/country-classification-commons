@@ -1231,7 +1231,7 @@ ETH,ET,231,un_sdg,region,738,Sub-Saharan Africa (inc. Sudan)
 ETH,ET,231,un_sdg,region,1,World (total) by MDG regions
 ETH,ET,231,un_sdg,region,1,World (total) by SDG regions
 ETH,ET,231,un_sdg,region,1,World (total) by continental regions
-ETH,ET,231,world_bank,income_level,INX,Not classified
+ETH,ET,231,world_bank,income_level,LIC,Low income
 ETH,ET,231,world_bank,lending_type,IDX,International Development Association (IDA)
 ETH,ET,231,world_bank,region,SSF,Sub-Saharan Africa
 ETH,ET,231,world_bank_fcs,fcs_category,Conflict,Conflict
@@ -1324,7 +1324,7 @@ FSM,FM,583,un_sdg,region,722,Small Island Developing States (SIDS)
 FSM,FM,583,un_sdg,region,1,World (total) by MDG regions
 FSM,FM,583,un_sdg,region,1,World (total) by SDG regions
 FSM,FM,583,un_sdg,region,1,World (total) by continental regions
-FSM,FM,583,world_bank,income_level,LMC,Lower middle income
+FSM,FM,583,world_bank,income_level,UMC,Upper middle income
 FSM,FM,583,world_bank,lending_type,IDX,International Development Association (IDA)
 FSM,FM,583,world_bank,region,EAS,East Asia & Pacific
 FSM,FM,583,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
@@ -1926,7 +1926,7 @@ JOR,JO,400,un_sdg,region,485,"Western Asia (exc. Armenia, Azerbaijan, Cyprus, Is
 JOR,JO,400,un_sdg,region,1,World (total) by MDG regions
 JOR,JO,400,un_sdg,region,1,World (total) by SDG regions
 JOR,JO,400,un_sdg,region,1,World (total) by continental regions
-JOR,JO,400,world_bank,income_level,LMC,Lower middle income
+JOR,JO,400,world_bank,income_level,UMC,Upper middle income
 JOR,JO,400,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 JOR,JO,400,world_bank,region,MEA,"Middle East, North Africa, Afghanistan & Pakistan"
 JPN,JP,392,un_m49,global,1,World
@@ -2230,7 +2230,7 @@ LKA,LK,144,un_sdg,region,34,Southern Asia
 LKA,LK,144,un_sdg,region,1,World (total) by MDG regions
 LKA,LK,144,un_sdg,region,1,World (total) by SDG regions
 LKA,LK,144,un_sdg,region,1,World (total) by continental regions
-LKA,LK,144,world_bank,income_level,LMC,Lower middle income
+LKA,LK,144,world_bank,income_level,UMC,Upper middle income
 LKA,LK,144,world_bank,lending_type,IDX,International Development Association (IDA)
 LKA,LK,144,world_bank,region,SAS,South Asia
 LSO,LS,426,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
@@ -3051,7 +3051,7 @@ PHL,PH,608,un_sdg,region,35,South-Eastern Asia
 PHL,PH,608,un_sdg,region,1,World (total) by MDG regions
 PHL,PH,608,un_sdg,region,1,World (total) by SDG regions
 PHL,PH,608,un_sdg,region,1,World (total) by continental regions
-PHL,PH,608,world_bank,income_level,LMC,Lower middle income
+PHL,PH,608,world_bank,income_level,UMC,Upper middle income
 PHL,PH,608,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 PHL,PH,608,world_bank,region,EAS,East Asia & Pacific
 PLW,PW,585,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
@@ -3790,7 +3790,7 @@ TGO,TG,768,un_sdg,region,11,Western Africa
 TGO,TG,768,un_sdg,region,1,World (total) by MDG regions
 TGO,TG,768,un_sdg,region,1,World (total) by SDG regions
 TGO,TG,768,un_sdg,region,1,World (total) by continental regions
-TGO,TG,768,world_bank,income_level,LIC,Low income
+TGO,TG,768,world_bank,income_level,LMC,Lower middle income
 TGO,TG,768,world_bank,lending_type,IDX,International Development Association (IDA)
 TGO,TG,768,world_bank,region,SSF,Sub-Saharan Africa
 THA,TH,764,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
@@ -4162,7 +4162,7 @@ VEN,VE,862,un_sdg,region,5,South America
 VEN,VE,862,un_sdg,region,1,World (total) by MDG regions
 VEN,VE,862,un_sdg,region,1,World (total) by SDG regions
 VEN,VE,862,un_sdg,region,1,World (total) by continental regions
-VEN,VE,862,world_bank,income_level,INX,Not classified
+VEN,VE,862,world_bank,income_level,LMC,Lower middle income
 VEN,VE,862,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 VEN,VE,862,world_bank,region,LCN,Latin America & Caribbean
 VEN,VE,862,world_bank_fcs,fcs_category,Institutional and Social Fragility,Institutional and Social Fragility
@@ -4216,7 +4216,7 @@ VNM,VN,704,un_sdg,region,35,South-Eastern Asia
 VNM,VN,704,un_sdg,region,1,World (total) by MDG regions
 VNM,VN,704,un_sdg,region,1,World (total) by SDG regions
 VNM,VN,704,un_sdg,region,1,World (total) by continental regions
-VNM,VN,704,world_bank,income_level,LMC,Lower middle income
+VNM,VN,704,world_bank,income_level,UMC,Upper middle income
 VNM,VN,704,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
 VNM,VN,704,world_bank,region,EAS,East Asia & Pacific
 VUT,VU,548,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient

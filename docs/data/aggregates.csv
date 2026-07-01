@@ -1323,7 +1323,7 @@ Ethiopia,231,ET,ETH,Land Locked Developing Countries (LLDC)
 Ethiopia,231,ET,ETH,Landlocked Developing Countries (LLDC)
 Ethiopia,231,ET,ETH,Least Developed Countries (LDC)
 Ethiopia,231,ET,ETH,Least Developed Countries (LDC)
-Ethiopia,231,ET,ETH,Not classified
+Ethiopia,231,ET,ETH,Low income
 Ethiopia,231,ET,ETH,ODA-eligible recipient
 Ethiopia,231,ET,ETH,OECD DAC reporting year 2024 flows
 Ethiopia,231,ET,ETH,Sub-Saharan Africa
@@ -1985,11 +1985,11 @@ Jordan,400,JO,JOR,Asia
 Jordan,400,JO,JOR,Developing regions
 Jordan,400,JO,JOR,International Bank for Reconstruction and Development (IBRD)
 Jordan,400,JO,JOR,LMICs
-Jordan,400,JO,JOR,Lower middle income
 Jordan,400,JO,JOR,"Middle East, North Africa, Afghanistan & Pakistan"
 Jordan,400,JO,JOR,Northern Africa and Western Asia
 Jordan,400,JO,JOR,ODA-eligible recipient
 Jordan,400,JO,JOR,OECD DAC reporting year 2024 flows
+Jordan,400,JO,JOR,Upper middle income
 Jordan,400,JO,JOR,Western Asia
 Jordan,400,JO,JOR,Western Asia
 Jordan,400,JO,JOR,"Western Asia (exc. Armenia, Azerbaijan, Cyprus, Israel and Georgia)"
@@ -2502,7 +2502,6 @@ Micronesia (Federated States of),583,FM,FSM,Fragile and Conflict-affected Situat
 Micronesia (Federated States of),583,FM,FSM,Institutional and Social Fragility
 Micronesia (Federated States of),583,FM,FSM,International Development Association (IDA)
 Micronesia (Federated States of),583,FM,FSM,LMICs
-Micronesia (Federated States of),583,FM,FSM,Lower middle income
 Micronesia (Federated States of),583,FM,FSM,Micronesia
 Micronesia (Federated States of),583,FM,FSM,Micronesia
 Micronesia (Federated States of),583,FM,FSM,ODA-eligible recipient
@@ -2513,6 +2512,7 @@ Micronesia (Federated States of),583,FM,FSM,Oceania (exc. Australia and New Zeal
 Micronesia (Federated States of),583,FM,FSM,SIDS Oceania
 Micronesia (Federated States of),583,FM,FSM,Small Island Developing States (SIDS)
 Micronesia (Federated States of),583,FM,FSM,Small Island Developing States (SIDS)
+Micronesia (Federated States of),583,FM,FSM,Upper middle income
 Micronesia (Federated States of),583,FM,FSM,World
 Micronesia (Federated States of),583,FM,FSM,World (total) by MDG regions
 Micronesia (Federated States of),583,FM,FSM,World (total) by SDG regions
@@ -3039,11 +3039,11 @@ Philippines,608,PH,PHL,East Asia & Pacific
 Philippines,608,PH,PHL,Eastern and South-Eastern Asia
 Philippines,608,PH,PHL,International Bank for Reconstruction and Development (IBRD)
 Philippines,608,PH,PHL,LMICs
-Philippines,608,PH,PHL,Lower middle income
 Philippines,608,PH,PHL,ODA-eligible recipient
 Philippines,608,PH,PHL,OECD DAC reporting year 2024 flows
 Philippines,608,PH,PHL,South-Eastern Asia
 Philippines,608,PH,PHL,South-eastern Asia
+Philippines,608,PH,PHL,Upper middle income
 Philippines,608,PH,PHL,World
 Philippines,608,PH,PHL,World (total) by MDG regions
 Philippines,608,PH,PHL,World (total) by SDG regions
@@ -3662,12 +3662,12 @@ Sri Lanka,144,LK,LKA,Central and Southern Asia
 Sri Lanka,144,LK,LKA,Developing regions
 Sri Lanka,144,LK,LKA,International Development Association (IDA)
 Sri Lanka,144,LK,LKA,LMICs
-Sri Lanka,144,LK,LKA,Lower middle income
 Sri Lanka,144,LK,LKA,ODA-eligible recipient
 Sri Lanka,144,LK,LKA,OECD DAC reporting year 2024 flows
 Sri Lanka,144,LK,LKA,South Asia
 Sri Lanka,144,LK,LKA,Southern Asia
 Sri Lanka,144,LK,LKA,Southern Asia
+Sri Lanka,144,LK,LKA,Upper middle income
 Sri Lanka,144,LK,LKA,World
 Sri Lanka,144,LK,LKA,World (total) by MDG regions
 Sri Lanka,144,LK,LKA,World (total) by SDG regions
@@ -3868,7 +3868,7 @@ Togo,768,TG,TGO,LDC Africa
 Togo,768,TG,TGO,LDCs
 Togo,768,TG,TGO,Least Developed Countries (LDC)
 Togo,768,TG,TGO,Least Developed Countries (LDC)
-Togo,768,TG,TGO,Low income
+Togo,768,TG,TGO,Lower middle income
 Togo,768,TG,TGO,ODA-eligible recipient
 Togo,768,TG,TGO,OECD DAC reporting year 2024 flows
 Togo,768,TG,TGO,Sub-Saharan Africa
@@ -4228,7 +4228,7 @@ Venezuela (Bolivarian Republic of),862,VE,VEN,International Bank for Reconstruct
 Venezuela (Bolivarian Republic of),862,VE,VEN,Latin America & Caribbean
 Venezuela (Bolivarian Republic of),862,VE,VEN,Latin America and the Caribbean
 Venezuela (Bolivarian Republic of),862,VE,VEN,Latin America and the Caribbean
-Venezuela (Bolivarian Republic of),862,VE,VEN,Not classified
+Venezuela (Bolivarian Republic of),862,VE,VEN,Lower middle income
 Venezuela (Bolivarian Republic of),862,VE,VEN,ODA-eligible recipient
 Venezuela (Bolivarian Republic of),862,VE,VEN,OECD DAC reporting year 2024 flows
 Venezuela (Bolivarian Republic of),862,VE,VEN,South America
@@ -4247,11 +4247,11 @@ Viet Nam,704,VN,VNM,East Asia & Pacific
 Viet Nam,704,VN,VNM,Eastern and South-Eastern Asia
 Viet Nam,704,VN,VNM,International Bank for Reconstruction and Development (IBRD)
 Viet Nam,704,VN,VNM,LMICs
-Viet Nam,704,VN,VNM,Lower middle income
 Viet Nam,704,VN,VNM,ODA-eligible recipient
 Viet Nam,704,VN,VNM,OECD DAC reporting year 2024 flows
 Viet Nam,704,VN,VNM,South-Eastern Asia
 Viet Nam,704,VN,VNM,South-eastern Asia
+Viet Nam,704,VN,VNM,Upper middle income
 Viet Nam,704,VN,VNM,World
 Viet Nam,704,VN,VNM,World (total) by MDG regions
 Viet Nam,704,VN,VNM,World (total) by SDG regions

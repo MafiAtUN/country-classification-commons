@@ -2,9 +2,7 @@ Country or Area,M49 Code,iso2,iso3,country_grouping
 Afghanistan,4,AF,AFG,Asia
 Afghanistan,4,AF,AFG,Asia
 Afghanistan,4,AF,AFG,Central and Southern Asia
-Afghanistan,4,AF,AFG,Conflict
 Afghanistan,4,AF,AFG,Developing regions
-Afghanistan,4,AF,AFG,Fragile and Conflict-affected Situations
 Afghanistan,4,AF,AFG,International Development Association (IDA)
 Afghanistan,4,AF,AFG,LDC Asia
 Afghanistan,4,AF,AFG,LDCs
@@ -23,7 +21,6 @@ Afghanistan,4,AF,AFG,World
 Afghanistan,4,AF,AFG,World (total) by MDG regions
 Afghanistan,4,AF,AFG,World (total) by SDG regions
 Afghanistan,4,AF,AFG,World (total) by continental regions
-Afghanistan,4,AF,AFG,World Bank FCS list fiscal year FY26
 Afghanistan,4,AF,AFG,World Bank low income (WB-L)
 Albania,8,AL,ALB,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Albania,8,AL,ALB,Europe
@@ -580,9 +577,7 @@ Bulgaria,100,BG,BGR,World (total) by SDG regions
 Bulgaria,100,BG,BGR,World (total) by continental regions
 Burkina Faso,854,BF,BFA,Africa
 Burkina Faso,854,BF,BFA,Africa
-Burkina Faso,854,BF,BFA,Conflict
 Burkina Faso,854,BF,BFA,Developing regions
-Burkina Faso,854,BF,BFA,Fragile and Conflict-affected Situations
 Burkina Faso,854,BF,BFA,International Development Association (IDA)
 Burkina Faso,854,BF,BFA,LDC Africa
 Burkina Faso,854,BF,BFA,LDCs
@@ -604,15 +599,12 @@ Burkina Faso,854,BF,BFA,World
 Burkina Faso,854,BF,BFA,World (total) by MDG regions
 Burkina Faso,854,BF,BFA,World (total) by SDG regions
 Burkina Faso,854,BF,BFA,World (total) by continental regions
-Burkina Faso,854,BF,BFA,World Bank FCS list fiscal year FY26
 Burkina Faso,854,BF,BFA,World Bank low income (WB-L)
 Burundi,108,BI,BDI,Africa
 Burundi,108,BI,BDI,Africa
 Burundi,108,BI,BDI,Developing regions
 Burundi,108,BI,BDI,Eastern Africa
 Burundi,108,BI,BDI,Eastern Africa
-Burundi,108,BI,BDI,Fragile and Conflict-affected Situations
-Burundi,108,BI,BDI,Institutional and Social Fragility
 Burundi,108,BI,BDI,International Development Association (IDA)
 Burundi,108,BI,BDI,LDC Africa
 Burundi,108,BI,BDI,LDCs
@@ -632,7 +624,6 @@ Burundi,108,BI,BDI,World
 Burundi,108,BI,BDI,World (total) by MDG regions
 Burundi,108,BI,BDI,World (total) by SDG regions
 Burundi,108,BI,BDI,World (total) by continental regions
-Burundi,108,BI,BDI,World Bank FCS list fiscal year FY26
 Burundi,108,BI,BDI,World Bank low income (WB-L)
 Cabo Verde,132,CV,CPV,Africa
 Cabo Verde,132,CV,CPV,Africa
@@ -679,9 +670,7 @@ Cambodia,116,KH,KHM,World Bank lower middle income (WB-LM)
 Cameroon,120,CM,CMR,Africa
 Cameroon,120,CM,CMR,Africa
 Cameroon,120,CM,CMR,Blend financing (IBRD and IDA eligible)
-Cameroon,120,CM,CMR,Conflict
 Cameroon,120,CM,CMR,Developing regions
-Cameroon,120,CM,CMR,Fragile and Conflict-affected Situations
 Cameroon,120,CM,CMR,LMICs
 Cameroon,120,CM,CMR,Lower middle income
 Cameroon,120,CM,CMR,Middle Africa
@@ -696,7 +685,6 @@ Cameroon,120,CM,CMR,World
 Cameroon,120,CM,CMR,World (total) by MDG regions
 Cameroon,120,CM,CMR,World (total) by SDG regions
 Cameroon,120,CM,CMR,World (total) by continental regions
-Cameroon,120,CM,CMR,World Bank FCS list fiscal year FY26
 Cameroon,120,CM,CMR,World Bank lower middle income (WB-LM)
 Canada,124,CA,CAN,Americas
 Canada,124,CA,CAN,Americas
@@ -727,9 +715,7 @@ Cayman Islands,136,KY,CYM,World (total) by continental regions
 Cayman Islands,136,KY,CYM,World Bank lending type: Not classified
 Central African Republic,140,CF,CAF,Africa
 Central African Republic,140,CF,CAF,Africa
-Central African Republic,140,CF,CAF,Conflict
 Central African Republic,140,CF,CAF,Developing regions
-Central African Republic,140,CF,CAF,Fragile and Conflict-affected Situations
 Central African Republic,140,CF,CAF,International Development Association (IDA)
 Central African Republic,140,CF,CAF,LDC Africa
 Central African Republic,140,CF,CAF,LDCs
@@ -751,13 +737,10 @@ Central African Republic,140,CF,CAF,World
 Central African Republic,140,CF,CAF,World (total) by MDG regions
 Central African Republic,140,CF,CAF,World (total) by SDG regions
 Central African Republic,140,CF,CAF,World (total) by continental regions
-Central African Republic,140,CF,CAF,World Bank FCS list fiscal year FY26
 Central African Republic,140,CF,CAF,World Bank low income (WB-L)
 Chad,148,TD,TCD,Africa
 Chad,148,TD,TCD,Africa
 Chad,148,TD,TCD,Developing regions
-Chad,148,TD,TCD,Fragile and Conflict-affected Situations
-Chad,148,TD,TCD,Institutional and Social Fragility
 Chad,148,TD,TCD,International Development Association (IDA)
 Chad,148,TD,TCD,LDC Africa
 Chad,148,TD,TCD,LDCs
@@ -779,7 +762,6 @@ Chad,148,TD,TCD,World
 Chad,148,TD,TCD,World (total) by MDG regions
 Chad,148,TD,TCD,World (total) by SDG regions
 Chad,148,TD,TCD,World (total) by continental regions
-Chad,148,TD,TCD,World Bank FCS list fiscal year FY26
 Chad,148,TD,TCD,World Bank low income (WB-L)
 Chile,152,CL,CHL,Americas
 Chile,152,CL,CHL,Americas
@@ -882,8 +864,6 @@ Comoros,174,KM,COM,Africa
 Comoros,174,KM,COM,Developing regions
 Comoros,174,KM,COM,Eastern Africa
 Comoros,174,KM,COM,Eastern Africa
-Comoros,174,KM,COM,Fragile and Conflict-affected Situations
-Comoros,174,KM,COM,Institutional and Social Fragility
 Comoros,174,KM,COM,International Development Association (IDA)
 Comoros,174,KM,COM,LDC Africa
 Comoros,174,KM,COM,LDCs
@@ -903,14 +883,11 @@ Comoros,174,KM,COM,World
 Comoros,174,KM,COM,World (total) by MDG regions
 Comoros,174,KM,COM,World (total) by SDG regions
 Comoros,174,KM,COM,World (total) by continental regions
-Comoros,174,KM,COM,World Bank FCS list fiscal year FY26
 Comoros,174,KM,COM,World Bank lower middle income (WB-LM)
 Congo,178,CG,COG,Africa
 Congo,178,CG,COG,Africa
 Congo,178,CG,COG,Blend financing (IBRD and IDA eligible)
 Congo,178,CG,COG,Developing regions
-Congo,178,CG,COG,Fragile and Conflict-affected Situations
-Congo,178,CG,COG,Institutional and Social Fragility
 Congo,178,CG,COG,LMICs
 Congo,178,CG,COG,Lower middle income
 Congo,178,CG,COG,Middle Africa
@@ -925,7 +902,6 @@ Congo,178,CG,COG,World
 Congo,178,CG,COG,World (total) by MDG regions
 Congo,178,CG,COG,World (total) by SDG regions
 Congo,178,CG,COG,World (total) by continental regions
-Congo,178,CG,COG,World Bank FCS list fiscal year FY26
 Congo,178,CG,COG,World Bank lower middle income (WB-LM)
 Cook Islands,184,CK,COK,Developing regions
 Cook Islands,184,CK,COK,Oceania
@@ -1075,9 +1051,7 @@ Democratic People's Republic of Korea,408,KP,PRK,World Bank lending type: Not cl
 Democratic People's Republic of Korea,408,KP,PRK,World Bank low income (WB-L)
 Democratic Republic of the Congo,180,CD,COD,Africa
 Democratic Republic of the Congo,180,CD,COD,Africa
-Democratic Republic of the Congo,180,CD,COD,Conflict
 Democratic Republic of the Congo,180,CD,COD,Developing regions
-Democratic Republic of the Congo,180,CD,COD,Fragile and Conflict-affected Situations
 Democratic Republic of the Congo,180,CD,COD,International Development Association (IDA)
 Democratic Republic of the Congo,180,CD,COD,LDC Africa
 Democratic Republic of the Congo,180,CD,COD,LDCs
@@ -1096,7 +1070,6 @@ Democratic Republic of the Congo,180,CD,COD,World
 Democratic Republic of the Congo,180,CD,COD,World (total) by MDG regions
 Democratic Republic of the Congo,180,CD,COD,World (total) by SDG regions
 Democratic Republic of the Congo,180,CD,COD,World (total) by continental regions
-Democratic Republic of the Congo,180,CD,COD,World Bank FCS list fiscal year FY26
 Democratic Republic of the Congo,180,CD,COD,World Bank low income (WB-L)
 Denmark,208,DK,DNK,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Denmark,208,DK,DNK,Europe
@@ -1253,8 +1226,6 @@ Eritrea,232,ER,ERI,Africa
 Eritrea,232,ER,ERI,Developing regions
 Eritrea,232,ER,ERI,Eastern Africa
 Eritrea,232,ER,ERI,Eastern Africa
-Eritrea,232,ER,ERI,Fragile and Conflict-affected Situations
-Eritrea,232,ER,ERI,Institutional and Social Fragility
 Eritrea,232,ER,ERI,International Development Association (IDA)
 Eritrea,232,ER,ERI,LDC Africa
 Eritrea,232,ER,ERI,LDCs
@@ -1271,7 +1242,6 @@ Eritrea,232,ER,ERI,World
 Eritrea,232,ER,ERI,World (total) by MDG regions
 Eritrea,232,ER,ERI,World (total) by SDG regions
 Eritrea,232,ER,ERI,World (total) by continental regions
-Eritrea,232,ER,ERI,World Bank FCS list fiscal year FY26
 Eritrea,232,ER,ERI,World Bank low income (WB-L)
 Estonia,233,EE,EST,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Estonia,233,EE,EST,Europe
@@ -1310,11 +1280,9 @@ Eswatini,748,SZ,SWZ,World (total) by continental regions
 Eswatini,748,SZ,SWZ,World Bank lower middle income (WB-LM)
 Ethiopia,231,ET,ETH,Africa
 Ethiopia,231,ET,ETH,Africa
-Ethiopia,231,ET,ETH,Conflict
 Ethiopia,231,ET,ETH,Developing regions
 Ethiopia,231,ET,ETH,Eastern Africa
 Ethiopia,231,ET,ETH,Eastern Africa
-Ethiopia,231,ET,ETH,Fragile and Conflict-affected Situations
 Ethiopia,231,ET,ETH,International Development Association (IDA)
 Ethiopia,231,ET,ETH,LDC Africa
 Ethiopia,231,ET,ETH,LDCs
@@ -1334,7 +1302,6 @@ Ethiopia,231,ET,ETH,World
 Ethiopia,231,ET,ETH,World (total) by MDG regions
 Ethiopia,231,ET,ETH,World (total) by SDG regions
 Ethiopia,231,ET,ETH,World (total) by continental regions
-Ethiopia,231,ET,ETH,World Bank FCS list fiscal year FY26
 Ethiopia,231,ET,ETH,World Bank low income (WB-L)
 Falkland Islands (Malvinas),238,FK,FLK,Americas
 Falkland Islands (Malvinas),238,FK,FLK,Americas
@@ -1676,8 +1643,6 @@ Guinea,324,GN,GIN,World Bank lower middle income (WB-LM)
 Guinea-Bissau,624,GW,GNB,Africa
 Guinea-Bissau,624,GW,GNB,Africa
 Guinea-Bissau,624,GW,GNB,Developing regions
-Guinea-Bissau,624,GW,GNB,Fragile and Conflict-affected Situations
-Guinea-Bissau,624,GW,GNB,Institutional and Social Fragility
 Guinea-Bissau,624,GW,GNB,International Development Association (IDA)
 Guinea-Bissau,624,GW,GNB,LDC Africa
 Guinea-Bissau,624,GW,GNB,LDCs
@@ -1699,7 +1664,6 @@ Guinea-Bissau,624,GW,GNB,World
 Guinea-Bissau,624,GW,GNB,World (total) by MDG regions
 Guinea-Bissau,624,GW,GNB,World (total) by SDG regions
 Guinea-Bissau,624,GW,GNB,World (total) by continental regions
-Guinea-Bissau,624,GW,GNB,World Bank FCS list fiscal year FY26
 Guinea-Bissau,624,GW,GNB,World Bank low income (WB-L)
 Guyana,328,GY,GUY,Americas
 Guyana,328,GY,GUY,Americas
@@ -1726,9 +1690,7 @@ Haiti,332,HT,HTI,Americas
 Haiti,332,HT,HTI,Americas
 Haiti,332,HT,HTI,Caribbean
 Haiti,332,HT,HTI,Caribbean
-Haiti,332,HT,HTI,Conflict
 Haiti,332,HT,HTI,Developing regions
-Haiti,332,HT,HTI,Fragile and Conflict-affected Situations
 Haiti,332,HT,HTI,International Development Association (IDA)
 Haiti,332,HT,HTI,LDC Americas
 Haiti,332,HT,HTI,LDCs
@@ -1747,7 +1709,6 @@ Haiti,332,HT,HTI,World
 Haiti,332,HT,HTI,World (total) by MDG regions
 Haiti,332,HT,HTI,World (total) by SDG regions
 Haiti,332,HT,HTI,World (total) by continental regions
-Haiti,332,HT,HTI,World Bank FCS list fiscal year FY26
 Haiti,332,HT,HTI,World Bank lower middle income (WB-LM)
 Heard Island and McDonald Islands,334,HM,HMD,Australia and New Zealand
 Heard Island and McDonald Islands,334,HM,HMD,Australia and New Zealand
@@ -1865,9 +1826,7 @@ Iran (Islamic Republic of),364,IR,IRN,World (total) by continental regions
 Iran (Islamic Republic of),364,IR,IRN,World Bank upper middle income (WB-UM)
 Iraq,368,IQ,IRQ,Asia
 Iraq,368,IQ,IRQ,Asia
-Iraq,368,IQ,IRQ,Conflict
 Iraq,368,IQ,IRQ,Developing regions
-Iraq,368,IQ,IRQ,Fragile and Conflict-affected Situations
 Iraq,368,IQ,IRQ,International Bank for Reconstruction and Development (IBRD)
 Iraq,368,IQ,IRQ,"Middle East, North Africa, Afghanistan & Pakistan"
 Iraq,368,IQ,IRQ,Northern Africa and Western Asia
@@ -1882,7 +1841,6 @@ Iraq,368,IQ,IRQ,World
 Iraq,368,IQ,IRQ,World (total) by MDG regions
 Iraq,368,IQ,IRQ,World (total) by SDG regions
 Iraq,368,IQ,IRQ,World (total) by continental regions
-Iraq,368,IQ,IRQ,World Bank FCS list fiscal year FY26
 Iraq,368,IQ,IRQ,World Bank upper middle income (WB-UM)
 Ireland,372,IE,IRL,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Ireland,372,IE,IRL,Europe
@@ -2040,8 +1998,6 @@ Kenya,404,KE,KEN,World (total) by continental regions
 Kenya,404,KE,KEN,World Bank lower middle income (WB-LM)
 Kiribati,296,KI,KIR,Developing regions
 Kiribati,296,KI,KIR,East Asia & Pacific
-Kiribati,296,KI,KIR,Fragile and Conflict-affected Situations
-Kiribati,296,KI,KIR,Institutional and Social Fragility
 Kiribati,296,KI,KIR,International Development Association (IDA)
 Kiribati,296,KI,KIR,LDC Oceania
 Kiribati,296,KI,KIR,LDCs
@@ -2062,7 +2018,6 @@ Kiribati,296,KI,KIR,World
 Kiribati,296,KI,KIR,World (total) by MDG regions
 Kiribati,296,KI,KIR,World (total) by SDG regions
 Kiribati,296,KI,KIR,World (total) by continental regions
-Kiribati,296,KI,KIR,World Bank FCS list fiscal year FY26
 Kiribati,296,KI,KIR,World Bank lower middle income (WB-LM)
 Kuwait,414,KW,KWT,Asia
 Kuwait,414,KW,KWT,Asia
@@ -2137,9 +2092,7 @@ Latvia,428,LV,LVA,World (total) by continental regions
 Latvia,428,LV,LVA,World Bank lending type: Not classified
 Lebanon,422,LB,LBN,Asia
 Lebanon,422,LB,LBN,Asia
-Lebanon,422,LB,LBN,Conflict
 Lebanon,422,LB,LBN,Developing regions
-Lebanon,422,LB,LBN,Fragile and Conflict-affected Situations
 Lebanon,422,LB,LBN,International Bank for Reconstruction and Development (IBRD)
 Lebanon,422,LB,LBN,LMICs
 Lebanon,422,LB,LBN,Lower middle income
@@ -2154,7 +2107,6 @@ Lebanon,422,LB,LBN,World
 Lebanon,422,LB,LBN,World (total) by MDG regions
 Lebanon,422,LB,LBN,World (total) by SDG regions
 Lebanon,422,LB,LBN,World (total) by continental regions
-Lebanon,422,LB,LBN,World Bank FCS list fiscal year FY26
 Lebanon,422,LB,LBN,World Bank lower middle income (WB-LM)
 Lesotho,426,LS,LSO,Africa
 Lesotho,426,LS,LSO,Africa
@@ -2206,8 +2158,6 @@ Liberia,430,LR,LBR,World Bank low income (WB-L)
 Libya,434,LY,LBY,Africa
 Libya,434,LY,LBY,Africa
 Libya,434,LY,LBY,Developing regions
-Libya,434,LY,LBY,Fragile and Conflict-affected Situations
-Libya,434,LY,LBY,Institutional and Social Fragility
 Libya,434,LY,LBY,International Bank for Reconstruction and Development (IBRD)
 Libya,434,LY,LBY,"Middle East, North Africa, Afghanistan & Pakistan"
 Libya,434,LY,LBY,Northern Africa
@@ -2222,7 +2172,6 @@ Libya,434,LY,LBY,World
 Libya,434,LY,LBY,World (total) by MDG regions
 Libya,434,LY,LBY,World (total) by SDG regions
 Libya,434,LY,LBY,World (total) by continental regions
-Libya,434,LY,LBY,World Bank FCS list fiscal year FY26
 Libya,434,LY,LBY,World Bank upper middle income (WB-UM)
 Liechtenstein,438,LI,LIE,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Liechtenstein,438,LI,LIE,Europe
@@ -2349,9 +2298,7 @@ Maldives,462,MV,MDV,World (total) by continental regions
 Maldives,462,MV,MDV,World Bank upper middle income (WB-UM)
 Mali,466,ML,MLI,Africa
 Mali,466,ML,MLI,Africa
-Mali,466,ML,MLI,Conflict
 Mali,466,ML,MLI,Developing regions
-Mali,466,ML,MLI,Fragile and Conflict-affected Situations
 Mali,466,ML,MLI,International Development Association (IDA)
 Mali,466,ML,MLI,LDC Africa
 Mali,466,ML,MLI,LDCs
@@ -2373,7 +2320,6 @@ Mali,466,ML,MLI,World
 Mali,466,ML,MLI,World (total) by MDG regions
 Mali,466,ML,MLI,World (total) by SDG regions
 Mali,466,ML,MLI,World (total) by continental regions
-Mali,466,ML,MLI,World Bank FCS list fiscal year FY26
 Mali,466,ML,MLI,World Bank low income (WB-L)
 Malta,470,MT,MLT,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Malta,470,MT,MLT,Europe
@@ -2390,8 +2336,6 @@ Malta,470,MT,MLT,World (total) by continental regions
 Malta,470,MT,MLT,World Bank lending type: Not classified
 Marshall Islands,584,MH,MHL,Developing regions
 Marshall Islands,584,MH,MHL,East Asia & Pacific
-Marshall Islands,584,MH,MHL,Fragile and Conflict-affected Situations
-Marshall Islands,584,MH,MHL,Institutional and Social Fragility
 Marshall Islands,584,MH,MHL,International Development Association (IDA)
 Marshall Islands,584,MH,MHL,Micronesia
 Marshall Islands,584,MH,MHL,Micronesia
@@ -2409,7 +2353,6 @@ Marshall Islands,584,MH,MHL,World
 Marshall Islands,584,MH,MHL,World (total) by MDG regions
 Marshall Islands,584,MH,MHL,World (total) by SDG regions
 Marshall Islands,584,MH,MHL,World (total) by continental regions
-Marshall Islands,584,MH,MHL,World Bank FCS list fiscal year FY26
 Marshall Islands,584,MH,MHL,World Bank upper middle income (WB-UM)
 Martinique,474,MQ,MTQ,Americas
 Martinique,474,MQ,MTQ,Americas
@@ -2498,8 +2441,6 @@ Mexico,484,MX,MEX,World (total) by continental regions
 Mexico,484,MX,MEX,World Bank upper middle income (WB-UM)
 Micronesia (Federated States of),583,FM,FSM,Developing regions
 Micronesia (Federated States of),583,FM,FSM,East Asia & Pacific
-Micronesia (Federated States of),583,FM,FSM,Fragile and Conflict-affected Situations
-Micronesia (Federated States of),583,FM,FSM,Institutional and Social Fragility
 Micronesia (Federated States of),583,FM,FSM,International Development Association (IDA)
 Micronesia (Federated States of),583,FM,FSM,LMICs
 Micronesia (Federated States of),583,FM,FSM,Micronesia
@@ -2517,7 +2458,6 @@ Micronesia (Federated States of),583,FM,FSM,World
 Micronesia (Federated States of),583,FM,FSM,World (total) by MDG regions
 Micronesia (Federated States of),583,FM,FSM,World (total) by SDG regions
 Micronesia (Federated States of),583,FM,FSM,World (total) by continental regions
-Micronesia (Federated States of),583,FM,FSM,World Bank FCS list fiscal year FY26
 Micronesia (Federated States of),583,FM,FSM,World Bank lower middle income (WB-LM)
 Monaco,492,MC,MCO,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Monaco,492,MC,MCO,Europe
@@ -2609,11 +2549,9 @@ Morocco,504,MA,MAR,World (total) by continental regions
 Morocco,504,MA,MAR,World Bank lower middle income (WB-LM)
 Mozambique,508,MZ,MOZ,Africa
 Mozambique,508,MZ,MOZ,Africa
-Mozambique,508,MZ,MOZ,Conflict
 Mozambique,508,MZ,MOZ,Developing regions
 Mozambique,508,MZ,MOZ,Eastern Africa
 Mozambique,508,MZ,MOZ,Eastern Africa
-Mozambique,508,MZ,MOZ,Fragile and Conflict-affected Situations
 Mozambique,508,MZ,MOZ,International Development Association (IDA)
 Mozambique,508,MZ,MOZ,LDC Africa
 Mozambique,508,MZ,MOZ,LDCs
@@ -2630,15 +2568,12 @@ Mozambique,508,MZ,MOZ,World
 Mozambique,508,MZ,MOZ,World (total) by MDG regions
 Mozambique,508,MZ,MOZ,World (total) by SDG regions
 Mozambique,508,MZ,MOZ,World (total) by continental regions
-Mozambique,508,MZ,MOZ,World Bank FCS list fiscal year FY26
 Mozambique,508,MZ,MOZ,World Bank low income (WB-L)
 Myanmar,104,MM,MMR,Asia
 Myanmar,104,MM,MMR,Asia
-Myanmar,104,MM,MMR,Conflict
 Myanmar,104,MM,MMR,Developing regions
 Myanmar,104,MM,MMR,East Asia & Pacific
 Myanmar,104,MM,MMR,Eastern and South-Eastern Asia
-Myanmar,104,MM,MMR,Fragile and Conflict-affected Situations
 Myanmar,104,MM,MMR,International Development Association (IDA)
 Myanmar,104,MM,MMR,LDC Asia
 Myanmar,104,MM,MMR,LDCs
@@ -2653,7 +2588,6 @@ Myanmar,104,MM,MMR,World
 Myanmar,104,MM,MMR,World (total) by MDG regions
 Myanmar,104,MM,MMR,World (total) by SDG regions
 Myanmar,104,MM,MMR,World (total) by continental regions
-Myanmar,104,MM,MMR,World Bank FCS list fiscal year FY26
 Myanmar,104,MM,MMR,World Bank lower middle income (WB-LM)
 Namibia,516,NA,NAM,Africa
 Namibia,516,NA,NAM,Africa
@@ -2778,9 +2712,7 @@ Nicaragua,558,NI,NIC,World (total) by continental regions
 Nicaragua,558,NI,NIC,World Bank lower middle income (WB-LM)
 Niger,562,NE,NER,Africa
 Niger,562,NE,NER,Africa
-Niger,562,NE,NER,Conflict
 Niger,562,NE,NER,Developing regions
-Niger,562,NE,NER,Fragile and Conflict-affected Situations
 Niger,562,NE,NER,International Development Association (IDA)
 Niger,562,NE,NER,LDC Africa
 Niger,562,NE,NER,LDCs
@@ -2802,14 +2734,11 @@ Niger,562,NE,NER,World
 Niger,562,NE,NER,World (total) by MDG regions
 Niger,562,NE,NER,World (total) by SDG regions
 Niger,562,NE,NER,World (total) by continental regions
-Niger,562,NE,NER,World Bank FCS list fiscal year FY26
 Niger,562,NE,NER,World Bank low income (WB-L)
 Nigeria,566,NG,NGA,Africa
 Nigeria,566,NG,NGA,Africa
 Nigeria,566,NG,NGA,Blend financing (IBRD and IDA eligible)
-Nigeria,566,NG,NGA,Conflict
 Nigeria,566,NG,NGA,Developing regions
-Nigeria,566,NG,NGA,Fragile and Conflict-affected Situations
 Nigeria,566,NG,NGA,LMICs
 Nigeria,566,NG,NGA,Lower middle income
 Nigeria,566,NG,NGA,ODA-eligible recipient
@@ -2824,7 +2753,6 @@ Nigeria,566,NG,NGA,World
 Nigeria,566,NG,NGA,World (total) by MDG regions
 Nigeria,566,NG,NGA,World (total) by SDG regions
 Nigeria,566,NG,NGA,World (total) by continental regions
-Nigeria,566,NG,NGA,World Bank FCS list fiscal year FY26
 Nigeria,566,NG,NGA,World Bank lower middle income (WB-LM)
 Niue,570,NU,NIU,Developing regions
 Niue,570,NU,NIU,ODA-eligible recipient
@@ -2973,8 +2901,6 @@ Panama,591,PA,PAN,World Bank high income (WB-H)
 Papua New Guinea,598,PG,PNG,Blend financing (IBRD and IDA eligible)
 Papua New Guinea,598,PG,PNG,Developing regions
 Papua New Guinea,598,PG,PNG,East Asia & Pacific
-Papua New Guinea,598,PG,PNG,Fragile and Conflict-affected Situations
-Papua New Guinea,598,PG,PNG,Institutional and Social Fragility
 Papua New Guinea,598,PG,PNG,LMICs
 Papua New Guinea,598,PG,PNG,Lower middle income
 Papua New Guinea,598,PG,PNG,Melanesia
@@ -2991,7 +2917,6 @@ Papua New Guinea,598,PG,PNG,World
 Papua New Guinea,598,PG,PNG,World (total) by MDG regions
 Papua New Guinea,598,PG,PNG,World (total) by SDG regions
 Papua New Guinea,598,PG,PNG,World (total) by continental regions
-Papua New Guinea,598,PG,PNG,World Bank FCS list fiscal year FY26
 Papua New Guinea,598,PG,PNG,World Bank lower middle income (WB-LM)
 Paraguay,600,PY,PRY,Americas
 Paraguay,600,PY,PRY,Americas
@@ -3360,8 +3285,6 @@ San Marino,674,SM,SMR,World Bank lending type: Not classified
 Sao Tome and Principe,678,ST,STP,Africa
 Sao Tome and Principe,678,ST,STP,Africa
 Sao Tome and Principe,678,ST,STP,Developing regions
-Sao Tome and Principe,678,ST,STP,Fragile and Conflict-affected Situations
-Sao Tome and Principe,678,ST,STP,Institutional and Social Fragility
 Sao Tome and Principe,678,ST,STP,International Development Association (IDA)
 Sao Tome and Principe,678,ST,STP,LDCs
 Sao Tome and Principe,678,ST,STP,Lower middle income
@@ -3380,7 +3303,6 @@ Sao Tome and Principe,678,ST,STP,World
 Sao Tome and Principe,678,ST,STP,World (total) by MDG regions
 Sao Tome and Principe,678,ST,STP,World (total) by SDG regions
 Sao Tome and Principe,678,ST,STP,World (total) by continental regions
-Sao Tome and Principe,678,ST,STP,World Bank FCS list fiscal year FY26
 Sao Tome and Principe,678,ST,STP,World Bank lower middle income (WB-LM)
 Saudi Arabia,682,SA,SAU,Asia
 Saudi Arabia,682,SA,SAU,Asia
@@ -3536,8 +3458,6 @@ Slovenia,705,SI,SVN,World (total) by continental regions
 Slovenia,705,SI,SVN,World Bank lending type: Not classified
 Solomon Islands,90,SB,SLB,Developing regions
 Solomon Islands,90,SB,SLB,East Asia & Pacific
-Solomon Islands,90,SB,SLB,Fragile and Conflict-affected Situations
-Solomon Islands,90,SB,SLB,Institutional and Social Fragility
 Solomon Islands,90,SB,SLB,International Development Association (IDA)
 Solomon Islands,90,SB,SLB,LDC Oceania
 Solomon Islands,90,SB,SLB,LDCs
@@ -3558,15 +3478,12 @@ Solomon Islands,90,SB,SLB,World
 Solomon Islands,90,SB,SLB,World (total) by MDG regions
 Solomon Islands,90,SB,SLB,World (total) by SDG regions
 Solomon Islands,90,SB,SLB,World (total) by continental regions
-Solomon Islands,90,SB,SLB,World Bank FCS list fiscal year FY26
 Solomon Islands,90,SB,SLB,World Bank lower middle income (WB-LM)
 Somalia,706,SO,SOM,Africa
 Somalia,706,SO,SOM,Africa
-Somalia,706,SO,SOM,Conflict
 Somalia,706,SO,SOM,Developing regions
 Somalia,706,SO,SOM,Eastern Africa
 Somalia,706,SO,SOM,Eastern Africa
-Somalia,706,SO,SOM,Fragile and Conflict-affected Situations
 Somalia,706,SO,SOM,International Development Association (IDA)
 Somalia,706,SO,SOM,LDC Africa
 Somalia,706,SO,SOM,LDCs
@@ -3583,7 +3500,6 @@ Somalia,706,SO,SOM,World
 Somalia,706,SO,SOM,World (total) by MDG regions
 Somalia,706,SO,SOM,World (total) by SDG regions
 Somalia,706,SO,SOM,World (total) by continental regions
-Somalia,706,SO,SOM,World Bank FCS list fiscal year FY26
 Somalia,706,SO,SOM,World Bank low income (WB-L)
 South Africa,710,ZA,ZAF,Africa
 South Africa,710,ZA,ZAF,Africa
@@ -3617,11 +3533,9 @@ South Georgia and the South Sandwich Islands,239,GS,SGS,World (total) by SDG reg
 South Georgia and the South Sandwich Islands,239,GS,SGS,World (total) by continental regions
 South Sudan,728,SS,SSD,Africa
 South Sudan,728,SS,SSD,Africa
-South Sudan,728,SS,SSD,Conflict
 South Sudan,728,SS,SSD,Developing regions
 South Sudan,728,SS,SSD,Eastern Africa
 South Sudan,728,SS,SSD,Eastern Africa
-South Sudan,728,SS,SSD,Fragile and Conflict-affected Situations
 South Sudan,728,SS,SSD,International Development Association (IDA)
 South Sudan,728,SS,SSD,LDC Africa
 South Sudan,728,SS,SSD,LDCs
@@ -3641,7 +3555,6 @@ South Sudan,728,SS,SSD,World
 South Sudan,728,SS,SSD,World (total) by MDG regions
 South Sudan,728,SS,SSD,World (total) by SDG regions
 South Sudan,728,SS,SSD,World (total) by continental regions
-South Sudan,728,SS,SSD,World Bank FCS list fiscal year FY26
 South Sudan,728,SS,SSD,World Bank low income (WB-L)
 Spain,724,ES,ESP,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Spain,724,ES,ESP,Europe
@@ -3675,9 +3588,7 @@ Sri Lanka,144,LK,LKA,World (total) by continental regions
 Sri Lanka,144,LK,LKA,World Bank lower middle income (WB-LM)
 State of Palestine,275,PS,PSE,Asia
 State of Palestine,275,PS,PSE,Asia
-State of Palestine,275,PS,PSE,Conflict
 State of Palestine,275,PS,PSE,Developing regions
-State of Palestine,275,PS,PSE,Fragile and Conflict-affected Situations
 State of Palestine,275,PS,PSE,Lower middle income
 State of Palestine,275,PS,PSE,"Middle East, North Africa, Afghanistan & Pakistan"
 State of Palestine,275,PS,PSE,Northern Africa and Western Asia
@@ -3691,14 +3602,11 @@ State of Palestine,275,PS,PSE,World
 State of Palestine,275,PS,PSE,World (total) by MDG regions
 State of Palestine,275,PS,PSE,World (total) by SDG regions
 State of Palestine,275,PS,PSE,World (total) by continental regions
-State of Palestine,275,PS,PSE,World Bank FCS list fiscal year FY26
 State of Palestine,275,PS,PSE,World Bank lending type: Not classified
 State of Palestine,275,PS,PSE,World Bank lower middle income (WB-LM)
 Sudan,729,SD,SDN,Africa
 Sudan,729,SD,SDN,Africa
-Sudan,729,SD,SDN,Conflict
 Sudan,729,SD,SDN,Developing regions
-Sudan,729,SD,SDN,Fragile and Conflict-affected Situations
 Sudan,729,SD,SDN,International Development Association (IDA)
 Sudan,729,SD,SDN,LDC Africa
 Sudan,729,SD,SDN,LDCs
@@ -3716,7 +3624,6 @@ Sudan,729,SD,SDN,World
 Sudan,729,SD,SDN,World (total) by MDG regions
 Sudan,729,SD,SDN,World (total) by SDG regions
 Sudan,729,SD,SDN,World (total) by continental regions
-Sudan,729,SD,SDN,World Bank FCS list fiscal year FY26
 Sudan,729,SD,SDN,World Bank low income (WB-L)
 Suriname,740,SR,SUR,Americas
 Suriname,740,SR,SUR,Americas
@@ -3777,9 +3684,7 @@ Switzerland,756,CH,CHE,World (total) by continental regions
 Switzerland,756,CH,CHE,World Bank lending type: Not classified
 Syrian Arab Republic,760,SY,SYR,Asia
 Syrian Arab Republic,760,SY,SYR,Asia
-Syrian Arab Republic,760,SY,SYR,Conflict
 Syrian Arab Republic,760,SY,SYR,Developing regions
-Syrian Arab Republic,760,SY,SYR,Fragile and Conflict-affected Situations
 Syrian Arab Republic,760,SY,SYR,International Development Association (IDA)
 Syrian Arab Republic,760,SY,SYR,Low income
 Syrian Arab Republic,760,SY,SYR,"Middle East, North Africa, Afghanistan & Pakistan"
@@ -3794,7 +3699,6 @@ Syrian Arab Republic,760,SY,SYR,World
 Syrian Arab Republic,760,SY,SYR,World (total) by MDG regions
 Syrian Arab Republic,760,SY,SYR,World (total) by SDG regions
 Syrian Arab Republic,760,SY,SYR,World (total) by continental regions
-Syrian Arab Republic,760,SY,SYR,World Bank FCS list fiscal year FY26
 Syrian Arab Republic,760,SY,SYR,World Bank low income (WB-L)
 Tajikistan,762,TJ,TJK,Asia
 Tajikistan,762,TJ,TJK,Asia
@@ -3840,8 +3744,6 @@ Timor-Leste,626,TL,TLS,Blend financing (IBRD and IDA eligible)
 Timor-Leste,626,TL,TLS,Developing regions
 Timor-Leste,626,TL,TLS,East Asia & Pacific
 Timor-Leste,626,TL,TLS,Eastern and South-Eastern Asia
-Timor-Leste,626,TL,TLS,Fragile and Conflict-affected Situations
-Timor-Leste,626,TL,TLS,Institutional and Social Fragility
 Timor-Leste,626,TL,TLS,LDC Asia
 Timor-Leste,626,TL,TLS,LDCs
 Timor-Leste,626,TL,TLS,Least Developed Countries (LDC)
@@ -3858,7 +3760,6 @@ Timor-Leste,626,TL,TLS,World
 Timor-Leste,626,TL,TLS,World (total) by MDG regions
 Timor-Leste,626,TL,TLS,World (total) by SDG regions
 Timor-Leste,626,TL,TLS,World (total) by continental regions
-Timor-Leste,626,TL,TLS,World Bank FCS list fiscal year FY26
 Timor-Leste,626,TL,TLS,World Bank lower middle income (WB-LM)
 Togo,768,TG,TGO,Africa
 Togo,768,TG,TGO,Africa
@@ -3988,8 +3889,6 @@ Turks and Caicos Islands,796,TC,TCA,World (total) by continental regions
 Turks and Caicos Islands,796,TC,TCA,World Bank lending type: Not classified
 Tuvalu,798,TV,TUV,Developing regions
 Tuvalu,798,TV,TUV,East Asia & Pacific
-Tuvalu,798,TV,TUV,Fragile and Conflict-affected Situations
-Tuvalu,798,TV,TUV,Institutional and Social Fragility
 Tuvalu,798,TV,TUV,International Development Association (IDA)
 Tuvalu,798,TV,TUV,LDC Oceania
 Tuvalu,798,TV,TUV,LDCs
@@ -4010,7 +3909,6 @@ Tuvalu,798,TV,TUV,World
 Tuvalu,798,TV,TUV,World (total) by MDG regions
 Tuvalu,798,TV,TUV,World (total) by SDG regions
 Tuvalu,798,TV,TUV,World (total) by continental regions
-Tuvalu,798,TV,TUV,World Bank FCS list fiscal year FY26
 Tuvalu,798,TV,TUV,World Bank upper middle income (WB-UM)
 Türkiye,792,TR,TUR,Asia
 Türkiye,792,TR,TUR,Asia
@@ -4055,7 +3953,6 @@ Uganda,800,UG,UGA,World (total) by MDG regions
 Uganda,800,UG,UGA,World (total) by SDG regions
 Uganda,800,UG,UGA,World (total) by continental regions
 Uganda,800,UG,UGA,World Bank low income (WB-L)
-Ukraine,804,UA,UKR,Conflict
 Ukraine,804,UA,UKR,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Ukraine,804,UA,UKR,Eastern Europe
 Ukraine,804,UA,UKR,Eastern Europe
@@ -4063,7 +3960,6 @@ Ukraine,804,UA,UKR,Europe
 Ukraine,804,UA,UKR,Europe
 Ukraine,804,UA,UKR,Europe & Central Asia
 Ukraine,804,UA,UKR,Europe and Northern America
-Ukraine,804,UA,UKR,Fragile and Conflict-affected Situations
 Ukraine,804,UA,UKR,International Bank for Reconstruction and Development (IBRD)
 Ukraine,804,UA,UKR,LMICs
 Ukraine,804,UA,UKR,ODA-eligible recipient
@@ -4073,7 +3969,6 @@ Ukraine,804,UA,UKR,World
 Ukraine,804,UA,UKR,World (total) by MDG regions
 Ukraine,804,UA,UKR,World (total) by SDG regions
 Ukraine,804,UA,UKR,World (total) by continental regions
-Ukraine,804,UA,UKR,World Bank FCS list fiscal year FY26
 Ukraine,804,UA,UKR,World Bank upper middle income (WB-UM)
 United Arab Emirates,784,AE,ARE,Asia
 United Arab Emirates,784,AE,ARE,Asia
@@ -4222,8 +4117,6 @@ Vanuatu,548,VU,VUT,World Bank lower middle income (WB-LM)
 Venezuela (Bolivarian Republic of),862,VE,VEN,Americas
 Venezuela (Bolivarian Republic of),862,VE,VEN,Americas
 Venezuela (Bolivarian Republic of),862,VE,VEN,Developing regions
-Venezuela (Bolivarian Republic of),862,VE,VEN,Fragile and Conflict-affected Situations
-Venezuela (Bolivarian Republic of),862,VE,VEN,Institutional and Social Fragility
 Venezuela (Bolivarian Republic of),862,VE,VEN,International Bank for Reconstruction and Development (IBRD)
 Venezuela (Bolivarian Republic of),862,VE,VEN,Latin America & Caribbean
 Venezuela (Bolivarian Republic of),862,VE,VEN,Latin America and the Caribbean
@@ -4238,7 +4131,6 @@ Venezuela (Bolivarian Republic of),862,VE,VEN,World
 Venezuela (Bolivarian Republic of),862,VE,VEN,World (total) by MDG regions
 Venezuela (Bolivarian Republic of),862,VE,VEN,World (total) by SDG regions
 Venezuela (Bolivarian Republic of),862,VE,VEN,World (total) by continental regions
-Venezuela (Bolivarian Republic of),862,VE,VEN,World Bank FCS list fiscal year FY26
 Venezuela (Bolivarian Republic of),862,VE,VEN,World Bank not classified (WB-NC)
 Viet Nam,704,VN,VNM,Asia
 Viet Nam,704,VN,VNM,Asia
@@ -4284,9 +4176,7 @@ Western Sahara,732,EH,ESH,World (total) by SDG regions
 Western Sahara,732,EH,ESH,World (total) by continental regions
 Yemen,887,YE,YEM,Asia
 Yemen,887,YE,YEM,Asia
-Yemen,887,YE,YEM,Conflict
 Yemen,887,YE,YEM,Developing regions
-Yemen,887,YE,YEM,Fragile and Conflict-affected Situations
 Yemen,887,YE,YEM,International Development Association (IDA)
 Yemen,887,YE,YEM,LDC Asia
 Yemen,887,YE,YEM,LDCs
@@ -4304,7 +4194,6 @@ Yemen,887,YE,YEM,World
 Yemen,887,YE,YEM,World (total) by MDG regions
 Yemen,887,YE,YEM,World (total) by SDG regions
 Yemen,887,YE,YEM,World (total) by continental regions
-Yemen,887,YE,YEM,World Bank FCS list fiscal year FY26
 Yemen,887,YE,YEM,World Bank low income (WB-L)
 Zambia,894,ZM,ZMB,Africa
 Zambia,894,ZM,ZMB,Africa
@@ -4337,8 +4226,6 @@ Zimbabwe,716,ZW,ZWE,Blend financing (IBRD and IDA eligible)
 Zimbabwe,716,ZW,ZWE,Developing regions
 Zimbabwe,716,ZW,ZWE,Eastern Africa
 Zimbabwe,716,ZW,ZWE,Eastern Africa
-Zimbabwe,716,ZW,ZWE,Fragile and Conflict-affected Situations
-Zimbabwe,716,ZW,ZWE,Institutional and Social Fragility
 Zimbabwe,716,ZW,ZWE,LLDC Africa
 Zimbabwe,716,ZW,ZWE,LMICs
 Zimbabwe,716,ZW,ZWE,Land Locked Developing Countries (LLDC)
@@ -4354,7 +4241,6 @@ Zimbabwe,716,ZW,ZWE,World
 Zimbabwe,716,ZW,ZWE,World (total) by MDG regions
 Zimbabwe,716,ZW,ZWE,World (total) by SDG regions
 Zimbabwe,716,ZW,ZWE,World (total) by continental regions
-Zimbabwe,716,ZW,ZWE,World Bank FCS list fiscal year FY26
 Zimbabwe,716,ZW,ZWE,World Bank lower middle income (WB-LM)
 Åland Islands,248,AX,ALA,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)"
 Åland Islands,248,AX,ALA,Europe

@@ -2859,26 +2859,26 @@ NPL,NP,524,Nepal,نيبال,尼泊尔,Népal,Непал,Nepal,World,Asia,Souther
 NPL,NP,524,Nepal,نيبال,尼泊尔,Népal,Непал,Nepal,World,Asia,Southern Asia,,South Asia,Lower middle income,IDA,False,,True,world_bank,income_level,LMC,Lower middle income
 NPL,NP,524,Nepal,نيبال,尼泊尔,Népal,Непал,Nepal,World,Asia,Southern Asia,,South Asia,Lower middle income,IDA,False,,True,world_bank,lending_type,IDX,International Development Association (IDA)
 NPL,NP,524,Nepal,نيبال,尼泊尔,Népal,Непал,Nepal,World,Asia,Southern Asia,,South Asia,Lower middle income,IDA,False,,True,world_bank,region,SAS,South Asia
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,oda_recipient_group,10019,UMICs
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,wb_income_hint,WB-H,World Bank high income (WB-H)
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,global,1,World
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,region,9,Oceania
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,special_group,SIDS,Small Island Developing States (SIDS)
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,sub_region,57,Micronesia
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,515,Developing regions
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,57,Micronesia
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,9,Oceania
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,543,Oceania (exc. Australia and New Zealand)
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,934,SIDS Oceania
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,722,Small Island Developing States (SIDS)
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,1,World (total) by MDG regions
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,1,World (total) by SDG regions
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,1,World (total) by continental regions
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,world_bank,income_level,HIC,High income
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
-NRU,NR,520,Nauru,ناورو,瑙鲁,Nauru,Науру,Nauru,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,world_bank,region,EAS,East Asia & Pacific
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,oda_recipient_group,10019,UMICs
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,oecd_dac,wb_income_hint,WB-H,World Bank high income (WB-H)
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,global,1,World
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,region,9,Oceania
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,special_group,SIDS,Small Island Developing States (SIDS)
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_m49,sub_region,57,Micronesia
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,515,Developing regions
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,57,Micronesia
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,9,Oceania
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,543,Oceania (exc. Australia and New Zealand)
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,934,SIDS Oceania
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,722,Small Island Developing States (SIDS)
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,1,World (total) by MDG regions
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,1,World (total) by SDG regions
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,un_sdg,region,1,World (total) by continental regions
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,world_bank,income_level,HIC,High income
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,world_bank,lending_type,IBD,International Bank for Reconstruction and Development (IBRD)
+NRU,NR,520,Naoero,ناويرو,瑙鲁,Naoero,Наоэро,Naoero,World,Oceania,Micronesia,,East Asia & Pacific,High income,IBRD,False,,True,world_bank,region,EAS,East Asia & Pacific
 NZL,NZ,554,New Zealand,نيوزيلندا,新西兰,Nouvelle-Zélande,Новая Зеландия,Nueva Zelandia,World,Oceania,Australia and New Zealand,,East Asia & Pacific,High income,Not classified,False,,False,un_m49,global,1,World
 NZL,NZ,554,New Zealand,نيوزيلندا,新西兰,Nouvelle-Zélande,Новая Зеландия,Nueva Zelandia,World,Oceania,Australia and New Zealand,,East Asia & Pacific,High income,Not classified,False,,False,un_m49,region,9,Oceania
 NZL,NZ,554,New Zealand,نيوزيلندا,新西兰,Nouvelle-Zélande,Новая Зеландия,Nueva Zelandia,World,Oceania,Australia and New Zealand,,East Asia & Pacific,High income,Not classified,False,,False,un_m49,sub_region,53,Australia and New Zealand

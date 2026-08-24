@@ -5937,7 +5937,7 @@
     "country_name_fr": "Naoero",
     "country_name_ru": "Наоэро",
     "country_name_es": "Naoero",
-    "country_name_sdg_en": "Nauru",
+    "country_name_sdg_en": "Naoero",
     "global_code": "1",
     "global_name_en": "World",
     "region_code": "9",
@@ -5962,9 +5962,9 @@
     "wb_fcs_status": false,
     "wb_fcs_category": "",
     "wb_fcs_fy": "",
-    "oecd_dac_eligible": true,
-    "oecd_dac_wb_group": "WB-H",
-    "oecd_dac_reporting_year": "2024"
+    "oecd_dac_eligible": false,
+    "oecd_dac_wb_group": "",
+    "oecd_dac_reporting_year": ""
   },
   {
     "iso3": "NPL",

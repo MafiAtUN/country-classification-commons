@@ -2859,10 +2859,6 @@ NPL,NP,524,un_sdg,region,1,World (total) by continental regions
 NPL,NP,524,world_bank,income_level,LMC,Lower middle income
 NPL,NP,524,world_bank,lending_type,IDX,International Development Association (IDA)
 NPL,NP,524,world_bank,region,SAS,South Asia
-NRU,NR,520,oecd_dac,oda_eligibility,ODA,ODA-eligible recipient
-NRU,NR,520,oecd_dac,oda_recipient_group,10019,UMICs
-NRU,NR,520,oecd_dac,reporting_year,2024,OECD DAC reporting year 2024 flows
-NRU,NR,520,oecd_dac,wb_income_hint,WB-H,World Bank high income (WB-H)
 NRU,NR,520,un_m49,global,1,World
 NRU,NR,520,un_m49,region,9,Oceania
 NRU,NR,520,un_m49,special_group,SIDS,Small Island Developing States (SIDS)

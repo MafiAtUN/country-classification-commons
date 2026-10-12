@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below, and cite the publisher of each classification you use."
+type: dataset
+title: "Country Classification Commons: official country groupings from the UN, World Bank and OECD in one open table"
+authors:
+  - family-names: Islam
+    given-names: Mafizul
+publisher:
+  name: Nerd Lab
+version: 2.0.0
+date-released: 2026-10-12
+license: MIT
+url: "https://mafiatun.github.io/country-classification-commons/"
+repository-code: "https://github.com/MafiAtUN/country-classification-commons"
+keywords:
+  - country classification
+  - UN M49
+  - UN Member States
+  - SDG regions
+  - World Bank income groups
+  - OECD DAC
+  - reference data

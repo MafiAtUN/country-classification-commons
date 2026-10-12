@@ -12,6 +12,48 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.0] — 2026-10-12
+
+A Nerd Lab experiment from this release: the site carries "Nerd Lab presents" and is listed at
+[nerd-factory.github.io/nerd-lab](https://nerd-factory.github.io/nerd-lab/).
+
+### Breaking
+- **CSV files no longer start with a `# Country Classification Commons — Maintainer…` comment line.** The first line is
+  now the header, so Power BI, Tableau, Qlik, Excel, DuckDB and every CSV reader load the files with default settings.
+  If you skipped that line (`skiprows=1`, "remove top rows"), remove that step. `comment="#"` keeps working.
+- `country_group_membership.csv` booleans are lowercase `true`/`false`, matching `countries.csv`.
+
+### Added
+- `countries.csv` / `countries.json`: analysis-ready table, one row per country or area, 31 snake_case columns.
+- UN membership: `un_status` (`member_state`, `observer_state`, `non_member`), `is_un_member`, and `un_regional_group`
+  (AG, APG, EEG, GRULAC, WEOG), from a curated list in `reference/` checked on every run (193 + 2).
+- OECD membership (`is_oecd_member`, 38 countries), also curated in `reference/`.
+- `sdg_region` (the eight SDG Progress Report regions) and `analysis_region` (intermediate region, else sub-region).
+- `groups.csv`: catalogue of 121 groups with member and UN Member State counts.
+- `group_id`, `country_name` and `is_un_member` columns in `country_group_membership.csv`.
+- `docs/data/site.json`: compact payload for the website.
+- Redesigned site: Explorer (combine and exclude groups, UN-membership scope, table, map, breakdown, comparison,
+  CSV/ISO3 export, generated code for Python, R, SQL, Power Query, JavaScript and Julia), "Use it" guides for
+  eleven tools, Data page with column dictionary and group catalogue, Method page, ⌘K search, light and dark themes.
+- `scripts/build_shell.py` stamps the shared header and footer into every page.
+- `CITATION.cff`.
+
+### Fixed
+- `world_reference.csv` "OECD member" was derived from ODA eligibility, so aid recipients such as Afghanistan were
+  labelled OECD members. It now uses the OECD membership list. Added a "UN Member State" column.
+- World Bank fragility list: from FY27 the file is "A1-FY27-FCV-List.pdf" with ISO3 codes and no categories. The pipeline
+  finds and parses the new format; FCS data had been missing since the change.
+- Nauru: UN M49 now uses "Naoero", so OECD's "Nauru" went unmatched. Alias added.
+- The scheduled refresh failed from 8 October 2026 because `apt-get install` ran without `apt-get update`.
+- The website served March 2026 data: refresh commits pushed with `GITHUB_TOKEN` never triggered a Pages deploy.
+  Pages now redeploys after every refresh.
+
+### Removed
+- `docs/downloads.html` now redirects to the Data page; the map lives in the Explorer.
+- Unused `docs/app.js` and the previous `docs/explorer.js`.
+
+---
+
 ## [1.1.0] — 2026-03-11
 
 ### Added

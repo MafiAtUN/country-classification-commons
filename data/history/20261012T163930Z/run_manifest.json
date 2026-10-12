@@ -1,0 +1,50 @@
+{
+  "generated_at_utc": "2026-10-12T16:39:30.124158+00:00",
+  "snapshot_id": "20261012T163930Z",
+  "record_counts": {
+    "countries": 248,
+    "un_member_states": 193,
+    "groups": 121,
+    "countries_master": 248,
+    "country_group_membership": 4728,
+    "country_classification_library": 4728,
+    "country_group_dropdown_master": 3325,
+    "aggregates": 4728,
+    "world_reference": 248,
+    "sources": 8,
+    "unmapped_external_names": 0
+  },
+  "files": {
+    "countries.csv": {
+      "sha256": "941ef5529c1fe1d7c4316c162d858dd7a5067242de91503ed36d13b3cd7c57a4"
+    },
+    "groups.csv": {
+      "sha256": "068b89b1ffaa48e3e36c076dddd55dcc52b070b122f55899756426e7f5926f5c"
+    },
+    "countries_master.csv": {
+      "sha256": "b88740e39e3f5615179a9c877c2e1324ebc1e3835f86959bc2b16014c17e3164"
+    },
+    "country_group_membership.csv": {
+      "sha256": "802c07e065308a46c70516709f3172a480051c152a5e72e60aeb6931689a414e"
+    },
+    "country_classification_library.csv": {
+      "sha256": "24f13432a00639449fe0533696fc058e9d18a358e37722e36f21cdc558b82dac"
+    },
+    "country_group_dropdown_master.csv": {
+      "sha256": "de432d1a3c0ed9870f8bf11da4c149fc559a1ef1f4dc08a823d194acf405909e"
+    },
+    "aggregates.csv": {
+      "sha256": "186d206558c608f44ae7f38d4415e0cd9fffdbbabdec91785e2c92be58cef072"
+    },
+    "world_reference.csv": {
+      "sha256": "fc76955a7c57322b63ff9233e89b90fb29ac9aa28668bc4b66b83b8289280769"
+    },
+    "sources.csv": {
+      "sha256": "2dfb2f25415bec5ed782e3f6c250656dbc8c2e283b9271a8509bd6df45f0d9c5"
+    },
+    "unmapped_external_names.csv": {
+      "sha256": "ec3e406796b70c58efb92dc54917ca562ca0f6bb1046270699ecd2b923445ece"
+    }
+  },
+  "changelog_file": "data/changelog/changes_20261012T163930Z.md"
+}

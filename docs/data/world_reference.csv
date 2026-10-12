@@ -1,0 +1,249 @@
+Global Code,Global Name,Region Code,Region Name,Sub-region Code,Sub-region Name,Intermediate Region Code,Intermediate Region Name,Country or Area,m49,iso2,iso3,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),Small Island Developing States (SIDS),High income,Low income,Lower middle income,Upper middle income,OECD member,Fragile and Conflict-Affected Situations,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Afghanistan,4,AF,AFG,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Albania,8,AL,ALB,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,15,Northern Africa,,,Algeria,12,DZ,DZA,,,,,,,Upper middle income,,,UN Member State
+1,World,9,Oceania,61,Polynesia,,,American Samoa,16,AS,ASM,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,150,Europe,39,Southern Europe,,,Andorra,20,AD,AND,,,,High income,,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Angola,24,AO,AGO,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Anguilla,660,AI,AIA,,,Small Island Developing States (SIDS),,,,,,,
+1,World,,,,,,,Antarctica,10,AQ,ATA,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Antigua and Barbuda,28,AG,ATG,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Argentina,32,AR,ARG,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Armenia,51,AM,ARM,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Aruba,533,AW,ABW,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,9,Oceania,53,Australia and New Zealand,,,Australia,36,AU,AUS,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Austria,40,AT,AUT,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Azerbaijan,31,AZ,AZE,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Bahamas,44,BS,BHS,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Bahrain,48,BH,BHR,,,,High income,,,,,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Bangladesh,50,BD,BGD,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Barbados,52,BB,BRB,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Belarus,112,BY,BLR,,,,,,,Upper middle income,,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Belgium,56,BE,BEL,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Belize,84,BZ,BLZ,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Benin,204,BJ,BEN,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,21,Northern America,,,Bermuda,60,BM,BMU,,,,High income,,,,,,
+1,World,142,Asia,34,Southern Asia,,,Bhutan,64,BT,BTN,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Bolivia (Plurinational State of),68,BO,BOL,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,"Bonaire, Sint Eustatius and Saba",535,BQ,BES,,,Small Island Developing States (SIDS),,,,,,,
+1,World,150,Europe,39,Southern Europe,,,Bosnia and Herzegovina,70,BA,BIH,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,18,Southern Africa,Botswana,72,BW,BWA,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Bouvet Island,74,BV,BVT,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Brazil,76,BR,BRA,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,British Indian Ocean Territory,86,IO,IOT,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,British Virgin Islands,92,VG,VGB,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,142,Asia,35,South-eastern Asia,,,Brunei Darussalam,96,BN,BRN,,,,High income,,,,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Bulgaria,100,BG,BGR,,,,High income,,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Burkina Faso,854,BF,BFA,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Burundi,108,BI,BDI,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Cabo Verde,132,CV,CPV,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Cambodia,116,KH,KHM,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Cameroon,120,CM,CMR,,,,,,Lower middle income,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,19,Americas,21,Northern America,,,Canada,124,CA,CAN,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Cayman Islands,136,KY,CYM,,,,High income,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Central African Republic,140,CF,CAF,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Chad,148,TD,TCD,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Chile,152,CL,CHL,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,30,Eastern Asia,,,China,156,CN,CHN,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,30,Eastern Asia,,,"China, Hong Kong Special Administrative Region",344,HK,HKG,,,,High income,,,,,,
+1,World,142,Asia,30,Eastern Asia,,,"China, Macao Special Administrative Region",446,MO,MAC,,,,High income,,,,,,
+1,World,9,Oceania,53,Australia and New Zealand,,,Christmas Island,162,CX,CXR,,,,,,,,,,
+1,World,9,Oceania,53,Australia and New Zealand,,,Cocos (Keeling) Islands,166,CC,CCK,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Colombia,170,CO,COL,,,,,,,Upper middle income,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Comoros,174,KM,COM,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Congo,178,CG,COG,,,,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,61,Polynesia,,,Cook Islands,184,CK,COK,,,Small Island Developing States (SIDS),,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Costa Rica,188,CR,CRI,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Croatia,191,HR,HRV,,,,High income,,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Cuba,192,CU,CUB,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Curaçao,531,CW,CUW,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,142,Asia,145,Western Asia,,,Cyprus,196,CY,CYP,,,,High income,,,,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Czechia,203,CZ,CZE,,,,High income,,,,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Côte d’Ivoire,384,CI,CIV,,,,,,Lower middle income,,,,UN Member State
+1,World,142,Asia,30,Eastern Asia,,,Democratic People's Republic of Korea,408,KP,PRK,,,,,Low income,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Democratic Republic of the Congo,180,CD,COD,Least Developed Countries (LDC),,,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Denmark,208,DK,DNK,,,,High income,,,,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Djibouti,262,DJ,DJI,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Dominica,212,DM,DMA,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Dominican Republic,214,DO,DOM,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Ecuador,218,EC,ECU,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,15,Northern Africa,,,Egypt,818,EG,EGY,,,,,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,El Salvador,222,SV,SLV,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Equatorial Guinea,226,GQ,GNQ,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Eritrea,232,ER,ERI,Least Developed Countries (LDC),,,,Low income,,,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Estonia,233,EE,EST,,,,High income,,,,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,18,Southern Africa,Eswatini,748,SZ,SWZ,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Ethiopia,231,ET,ETH,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Falkland Islands (Malvinas),238,FK,FLK,,,,,,,,,,
+1,World,150,Europe,154,Northern Europe,,,Faroe Islands,234,FO,FRO,,,,High income,,,,,,
+1,World,9,Oceania,54,Melanesia,,,Fiji,242,FJ,FJI,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Finland,246,FI,FIN,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,155,Western Europe,,,France,250,FR,FRA,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,French Guiana,254,GF,GUF,,,,,,,,,,
+1,World,9,Oceania,61,Polynesia,,,French Polynesia,258,PF,PYF,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,French Southern Territories,260,TF,ATF,,,,,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Gabon,266,GA,GAB,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Gambia,270,GM,GMB,Least Developed Countries (LDC),,,,Low income,,,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Georgia,268,GE,GEO,,,,,,,Upper middle income,,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Germany,276,DE,DEU,,,,High income,,,,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Ghana,288,GH,GHA,,,,,,Lower middle income,,,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Gibraltar,292,GI,GIB,,,,High income,,,,,,
+1,World,150,Europe,39,Southern Europe,,,Greece,300,GR,GRC,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,21,Northern America,,,Greenland,304,GL,GRL,,,,High income,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Grenada,308,GD,GRD,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Guadeloupe,312,GP,GLP,,,,,,,,,,
+1,World,9,Oceania,57,Micronesia,,,Guam,316,GU,GUM,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Guatemala,320,GT,GTM,,,,,,,Upper middle income,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Guernsey,831,GG,GGY,,,,,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Guinea,324,GN,GIN,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Guinea-Bissau,624,GW,GNB,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,Low income,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Guyana,328,GY,GUY,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Haiti,332,HT,HTI,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,,Lower middle income,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,9,Oceania,53,Australia and New Zealand,,,Heard Island and McDonald Islands,334,HM,HMD,,,,,,,,,,
+1,World,150,Europe,39,Southern Europe,,,Holy See,336,VA,VAT,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Honduras,340,HN,HND,,,,,,Lower middle income,,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Hungary,348,HU,HUN,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Iceland,352,IS,ISL,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,India,356,IN,IND,,,,,,Lower middle income,,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Indonesia,360,ID,IDN,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Iran (Islamic Republic of),364,IR,IRN,,,,,,,Upper middle income,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,142,Asia,145,Western Asia,,,Iraq,368,IQ,IRQ,,,,,,,Upper middle income,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Ireland,372,IE,IRL,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Isle of Man,833,IM,IMN,,,,High income,,,,,,
+1,World,142,Asia,145,Western Asia,,,Israel,376,IL,ISR,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Italy,380,IT,ITA,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Jamaica,388,JM,JAM,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,142,Asia,30,Eastern Asia,,,Japan,392,JP,JPN,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Jersey,832,JE,JEY,,,,,,,,,,
+1,World,142,Asia,145,Western Asia,,,Jordan,400,JO,JOR,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,143,Central Asia,,,Kazakhstan,398,KZ,KAZ,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Kenya,404,KE,KEN,,,,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,Kiribati,296,KI,KIR,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,,Lower middle income,,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Kuwait,414,KW,KWT,,,,High income,,,,,,UN Member State
+1,World,142,Asia,143,Central Asia,,,Kyrgyzstan,417,KG,KGZ,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Lao People's Democratic Republic,418,LA,LAO,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Latvia,428,LV,LVA,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Lebanon,422,LB,LBN,,,,,,Lower middle income,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,18,Southern Africa,Lesotho,426,LS,LSO,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Liberia,430,LR,LBR,Least Developed Countries (LDC),,,,Low income,,,,,UN Member State
+1,World,2,Africa,15,Northern Africa,,,Libya,434,LY,LBY,,,,,,,Upper middle income,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,150,Europe,155,Western Europe,,,Liechtenstein,438,LI,LIE,,,,High income,,,,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Lithuania,440,LT,LTU,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Luxembourg,442,LU,LUX,,,,High income,,,,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Madagascar,450,MG,MDG,Least Developed Countries (LDC),,,,Low income,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Malawi,454,MW,MWI,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Malaysia,458,MY,MYS,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Maldives,462,MV,MDV,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Mali,466,ML,MLI,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Malta,470,MT,MLT,,,,High income,,,,,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,Marshall Islands,584,MH,MHL,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Martinique,474,MQ,MTQ,,,,,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Mauritania,478,MR,MRT,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Mauritius,480,MU,MUS,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Mayotte,175,YT,MYT,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Mexico,484,MX,MEX,,,,,,,Upper middle income,OECD member,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,Micronesia (Federated States of),583,FM,FSM,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Monaco,492,MC,MCO,,,,High income,,,,,,UN Member State
+1,World,142,Asia,30,Eastern Asia,,,Mongolia,496,MN,MNG,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Montenegro,499,ME,MNE,,,,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Montserrat,500,MS,MSR,,,Small Island Developing States (SIDS),,,,,,,
+1,World,2,Africa,15,Northern Africa,,,Morocco,504,MA,MAR,,,,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Mozambique,508,MZ,MOZ,Least Developed Countries (LDC),,,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Myanmar,104,MM,MMR,Least Developed Countries (LDC),,,,,Lower middle income,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,18,Southern Africa,Namibia,516,NA,NAM,,,,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,Naoero,520,NR,NRU,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Nepal,524,NP,NPL,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Netherlands (Kingdom of the),528,NL,NLD,,,,High income,,,,OECD member,,UN Member State
+1,World,9,Oceania,54,Melanesia,,,New Caledonia,540,NC,NCL,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,9,Oceania,53,Australia and New Zealand,,,New Zealand,554,NZ,NZL,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Nicaragua,558,NI,NIC,,,,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Niger,562,NE,NER,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Nigeria,566,NG,NGA,,,,,,Lower middle income,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,9,Oceania,61,Polynesia,,,Niue,570,NU,NIU,,,Small Island Developing States (SIDS),,,,,,,
+1,World,9,Oceania,53,Australia and New Zealand,,,Norfolk Island,574,NF,NFK,,,,,,,,,,
+1,World,150,Europe,39,Southern Europe,,,North Macedonia,807,MK,MKD,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,Northern Mariana Islands,580,MP,MNP,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,150,Europe,154,Northern Europe,,,Norway,578,NO,NOR,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Oman,512,OM,OMN,,,,High income,,,,,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Pakistan,586,PK,PAK,,,,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,Palau,585,PW,PLW,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,13,Central America,Panama,591,PA,PAN,,,,High income,,,,,,UN Member State
+1,World,9,Oceania,54,Melanesia,,,Papua New Guinea,598,PG,PNG,,,Small Island Developing States (SIDS),,,Lower middle income,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Paraguay,600,PY,PRY,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Peru,604,PE,PER,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Philippines,608,PH,PHL,,,,,,,Upper middle income,,,UN Member State
+1,World,9,Oceania,61,Polynesia,,,Pitcairn,612,PN,PCN,,,,,,,,,,
+1,World,150,Europe,151,Eastern Europe,,,Poland,616,PL,POL,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Portugal,620,PT,PRT,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Puerto Rico,630,PR,PRI,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,142,Asia,145,Western Asia,,,Qatar,634,QA,QAT,,,,High income,,,,,,UN Member State
+1,World,142,Asia,30,Eastern Asia,,,Republic of Korea,410,KR,KOR,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Republic of Moldova,498,MD,MDA,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Romania,642,RO,ROU,,,,High income,,,,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Russian Federation,643,RU,RUS,,,,High income,,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Rwanda,646,RW,RWA,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Réunion,638,RE,REU,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Saint Barthélemy,652,BL,BLM,,,,,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Saint Helena,654,SH,SHN,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Saint Kitts and Nevis,659,KN,KNA,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Saint Lucia,662,LC,LCA,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Saint Martin (French Part),663,MF,MAF,,,,High income,,,,,,
+1,World,19,Americas,21,Northern America,,,Saint Pierre and Miquelon,666,PM,SPM,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Saint Vincent and the Grenadines,670,VC,VCT,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,9,Oceania,61,Polynesia,,,Samoa,882,WS,WSM,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,San Marino,674,SM,SMR,,,,High income,,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,17,Middle Africa,Sao Tome and Principe,678,ST,STP,,,Small Island Developing States (SIDS),,,Lower middle income,,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Saudi Arabia,682,SA,SAU,,,,High income,,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Senegal,686,SN,SEN,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Serbia,688,RS,SRB,,,,,,,Upper middle income,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Seychelles,690,SC,SYC,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Sierra Leone,694,SL,SLE,Least Developed Countries (LDC),,,,Low income,,,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Singapore,702,SG,SGP,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Sint Maarten (Dutch part),534,SX,SXM,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,150,Europe,151,Eastern Europe,,,Slovakia,703,SK,SVK,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Slovenia,705,SI,SVN,,,,High income,,,,OECD member,,UN Member State
+1,World,9,Oceania,54,Melanesia,,,Solomon Islands,90,SB,SLB,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Somalia,706,SO,SOM,Least Developed Countries (LDC),,,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,18,Southern Africa,South Africa,710,ZA,ZAF,,,,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,South Georgia and the South Sandwich Islands,239,GS,SGS,,,,,,,,,,
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,South Sudan,728,SS,SSD,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,150,Europe,39,Southern Europe,,,Spain,724,ES,ESP,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,34,Southern Asia,,,Sri Lanka,144,LK,LKA,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,State of Palestine,275,PS,PSE,,,,,,Lower middle income,,,Fragile and Conflict-Affected Situations,
+1,World,2,Africa,15,Northern Africa,,,Sudan,729,SD,SDN,Least Developed Countries (LDC),,,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Suriname,740,SR,SUR,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Svalbard and Jan Mayen Islands,744,SJ,SJM,,,,,,,,,,
+1,World,150,Europe,154,Northern Europe,,,Sweden,752,SE,SWE,,,,High income,,,,OECD member,,UN Member State
+1,World,150,Europe,155,Western Europe,,,Switzerland,756,CH,CHE,,,,High income,,,,OECD member,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Syrian Arab Republic,760,SY,SYR,,,,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,142,Asia,143,Central Asia,,,Tajikistan,762,TJ,TJK,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Thailand,764,TH,THA,,,,,,,Upper middle income,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Timor-Leste,626,TL,TLS,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,11,Western Africa,Togo,768,TG,TGO,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,61,Polynesia,,,Tokelau,772,TK,TKL,,,,,,,,,,
+1,World,9,Oceania,61,Polynesia,,,Tonga,776,TO,TON,,,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Trinidad and Tobago,780,TT,TTO,,,Small Island Developing States (SIDS),High income,,,,,,UN Member State
+1,World,2,Africa,15,Northern Africa,,,Tunisia,788,TN,TUN,,,,,,Lower middle income,,,,UN Member State
+1,World,142,Asia,143,Central Asia,,,Turkmenistan,795,TM,TKM,,Land Locked Developing Countries (LLDC),,,,,Upper middle income,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,Turks and Caicos Islands,796,TC,TCA,,,,High income,,,,,,
+1,World,9,Oceania,61,Polynesia,,,Tuvalu,798,TV,TUV,Least Developed Countries (LDC),,Small Island Developing States (SIDS),,,,Upper middle income,,,UN Member State
+1,World,142,Asia,145,Western Asia,,,Türkiye,792,TR,TUR,,,,,,,Upper middle income,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Uganda,800,UG,UGA,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,Low income,,,,,UN Member State
+1,World,150,Europe,151,Eastern Europe,,,Ukraine,804,UA,UKR,,,,,,,Upper middle income,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,142,Asia,145,Western Asia,,,United Arab Emirates,784,AE,ARE,,,,High income,,,,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,United Kingdom of Great Britain and Northern Ireland,826,GB,GBR,,,,High income,,,,OECD member,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,United Republic of Tanzania,834,TZ,TZA,Least Developed Countries (LDC),,,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,57,Micronesia,,,United States Minor Outlying Islands,581,UM,UMI,,,,,,,,,,
+1,World,19,Americas,419,Latin America and the Caribbean,29,Caribbean,United States Virgin Islands,850,VI,VIR,,,Small Island Developing States (SIDS),High income,,,,,,
+1,World,19,Americas,21,Northern America,,,United States of America,840,US,USA,,,,High income,,,,OECD member,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Uruguay,858,UY,URY,,,,High income,,,,,,UN Member State
+1,World,142,Asia,143,Central Asia,,,Uzbekistan,860,UZ,UZB,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,9,Oceania,54,Melanesia,,,Vanuatu,548,VU,VUT,,,Small Island Developing States (SIDS),,,Lower middle income,,,,UN Member State
+1,World,19,Americas,419,Latin America and the Caribbean,5,South America,Venezuela (Bolivarian Republic of),862,VE,VEN,,,,,,Lower middle income,,,,UN Member State
+1,World,142,Asia,35,South-eastern Asia,,,Viet Nam,704,VN,VNM,,,,,,,Upper middle income,,,UN Member State
+1,World,9,Oceania,61,Polynesia,,,Wallis and Futuna Islands,876,WF,WLF,,,,,,,,,,
+1,World,2,Africa,15,Northern Africa,,,Western Sahara,732,EH,ESH,,,,,,,,,,
+1,World,142,Asia,145,Western Asia,,,Yemen,887,YE,YEM,Least Developed Countries (LDC),,,,Low income,,,,Fragile and Conflict-Affected Situations,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Zambia,894,ZM,ZMB,Least Developed Countries (LDC),Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,2,Africa,202,Sub-Saharan Africa,14,Eastern Africa,Zimbabwe,716,ZW,ZWE,,Land Locked Developing Countries (LLDC),,,,Lower middle income,,,,UN Member State
+1,World,150,Europe,154,Northern Europe,,,Åland Islands,248,AX,ALA,,,,,,,,,,

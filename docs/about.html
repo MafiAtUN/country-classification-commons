@@ -1,273 +1,318 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>About &amp; Methodology | Country Classification Commons</title>
-  <meta name="description" content="Methodology, data sources, and technical architecture behind Country Classification Commons — UN M49, World Bank, OECD DAC, and more.">
-  <meta property="og:title" content="About &amp; Methodology | Country Classification Commons">
-  <meta property="og:description" content="Methodology, data sources, and technical architecture behind Country Classification Commons.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/about.html">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260305h">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method — Country Classification Commons</title>
+<meta name="description" content="How Country Classification Commons builds its data: UN membership versus the M49 statistical standard, UN regional groups, sources, refresh schedule, quality checks, limitations and how to cite.">
+<meta property="og:title" content="Method — Country Classification Commons">
+<meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/about.html">
+<!-- shell:head -->
+<meta name="theme-color" content="#141419">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Jost:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('cc-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/css/shell.css?v=20261012">
+<link rel="stylesheet" href="assets/css/cc.css?v=20261012">
+<script src="assets/js/core.js?v=20261012" defer></script>
+<!-- /shell:head -->
+<style>
+  .method { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 4rem; align-items: start; padding-top: 2.5rem; }
+  .method > * { min-width: 0; }
+  .method aside { position: sticky; top: 84px; display: grid; gap: 1rem; }
+  .method section { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--line); }
+  .method section:last-child { border-bottom: 0; }
+  .method h2 { margin-top: 0; }
+  .method h3 { margin-top: 1.8rem; }
+  .method .prose { max-width: none; }
+  .compare-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+  .compare-strip .card { padding: 1.1rem 1.2rem; }
+  .compare-strip b { display: block; font: 600 2.2rem/1 var(--font-display); letter-spacing: -.02em; margin-bottom: .4rem; }
+  .compare-strip span { color: var(--text-2); font-size: .88rem; }
+  .pipeline { list-style: none; padding: 0; margin: 1.2rem 0; display: grid; gap: 0; counter-reset: p; }
+  .pipeline li { counter-increment: p; display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; padding: .9rem 0; border-top: 1px solid var(--line); }
+  .pipeline li::before { content: counter(p, decimal-leading-zero); font: 500 .8rem var(--font-mono); color: var(--accent); padding-top: .15rem; }
+  .pipeline b { display: block; }
+  .pipeline span { color: var(--text-2); font-size: .92rem; }
+  #sources-table td:first-child { min-width: 12rem; }
+  @media (max-width: 960px) { .method { grid-template-columns: minmax(0, 1fr); } .method aside { position: static; } }
+  @media (max-width: 640px) { .compare-strip { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-  <header class="hero">
-    <h1>About &amp; Methodology</h1>
-    <p>How data is collected, processed, validated, and kept up-to-date — and why you can trust it.</p>
-    <nav class="nav">
-      <a href="./index.html">Home</a>
-      <a href="./explorer.html">Explorer</a>
-      <a href="./examples.html">Example Uses</a>
-      <a href="./downloads.html">Downloads &amp; API Links</a>
-      <a href="./about.html" aria-current="page">About &amp; Methodology</a>
+<!-- shell:header -->
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="nl-bar">
+  <div class="wrap">
+    <a class="nl-presents" href="https://nerd-factory.github.io/nerd-lab/" aria-label="Nerd Lab presents">
+      <img class="nl-mark" src="assets/img/mark-e.svg" alt="" width="16" height="16">
+      <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+      <span class="nl-verb">presents</span>
+    </a>
+    <span class="nl-bar-note">An open experiment. <b>Unnecessarily clever.</b> Occasionally useful.</span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#141419"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><ellipse cx="16" cy="16" rx="4.2" ry="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><path d="M6.5 16h19" stroke="#C8F531" stroke-width="2"/></svg>
+      <span class="brand-name">Country Classification Commons<small>Every official country grouping</small></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="explorer.html">Explorer</a>
+      <a href="guides.html">Use it</a>
+      <a href="data.html">Data</a>
+      <a href="about.html" aria-current="page">Method</a>
+      <a href="examples.html">Labs</a>
     </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" aria-label="Search countries and groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="st-label">Search countries, groups</span><span class="kbd">⌘K</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a class="icon-btn" href="https://github.com/MafiAtUN/country-classification-commons" aria-label="Source on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<!-- /shell:header -->
+
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Method</p>
+      <h1>How the data is built, and what it means</h1>
+      <p class="lede">What each grouping is for, where it comes from, how often it changes, and where the edges are.
+      Short version: every list comes straight from its publisher, and every row says whether it is a UN Member State.</p>
+    </div>
   </header>
 
-  <main>
+  <div class="wrap method">
+    <div class="prose">
 
-    <!-- What is this -->
-    <section class="card">
-      <h2>What is Country Classification Commons?</h2>
-      <p>
-        Country Classification Commons is an open, automated reference library that consolidates country-level
-        classifications from the United Nations, World Bank, and OECD into a single, machine-readable dataset.
-        It is designed for UN agencies, INGOs, academic researchers, students, data journalists, and anyone who
-        regularly works with countries as units of analysis and needs consistent, authoritative classification metadata.
-      </p>
-      <p>
-        Instead of hunting across multiple agency websites, manually copy-pasting tables, or maintaining your own lookup files,
-        you can reference a single stable URL that is refreshed automatically from the original sources.
-      </p>
-    </section>
-
-    <!-- Data sources -->
-    <section class="card">
-      <h2>Data sources</h2>
-      <p>All data is fetched directly from authoritative public sources at every pipeline run. No manual editing is applied.</p>
-      <div class="table-wrap">
-        <table class="source-table">
-          <thead>
-            <tr>
-              <th>Source ID</th>
-              <th>Organisation</th>
-              <th>Dataset</th>
-              <th>What it provides</th>
-              <th>Access method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>un_m49</code></td>
-              <td>UN Statistics Division (UNSD)</td>
-              <td><a href="https://unstats.un.org/unsd/methodology/m49/overview/" target="_blank" rel="noreferrer">M49 Overview</a></td>
-              <td>ISO2, ISO3, M49 codes; UN geoscheme (region/sub-region/intermediate); LDC, LLDC, SIDS flags; country names in 6 UN languages</td>
-              <td>HTML scrape (multilingual tabs)</td>
-            </tr>
-            <tr>
-              <td><code>un_sdg</code></td>
-              <td>UN SDG Global Database</td>
-              <td><a href="https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List" target="_blank" rel="noreferrer">SDG GeoArea API</a></td>
-              <td>SDG geographic area codes; SDG regional hierarchy memberships</td>
-              <td>JSON REST API</td>
-            </tr>
-            <tr>
-              <td><code>world_bank</code></td>
-              <td>World Bank Open Data</td>
-              <td><a href="https://api.worldbank.org/v2/country?format=json&per_page=1000" target="_blank" rel="noreferrer">World Bank Country API v2</a></td>
-              <td>WB income level (Low / Lower Middle / Upper Middle / High), lending type (IDA/IBRD/Blend), WB region, capital city, latitude/longitude</td>
-              <td>JSON REST API (paginated)</td>
-            </tr>
-            <tr>
-              <td><code>world_bank_fcs</code></td>
-              <td>World Bank</td>
-              <td><a href="https://www.worldbank.org/en/topic/fragilityconflictviolence/brief/classification-of-fragile-and-conflict-affected-situations" target="_blank" rel="noreferrer">FCS Classification page</a></td>
-              <td>Fragile &amp; Conflict-affected Situations (FCS) list: country name, category (Conflict vs Institutional &amp; Social Fragility), fiscal year</td>
-              <td>Auto-discovered latest FY PDF → pdftotext parse</td>
-            </tr>
-            <tr>
-              <td><code>oecd_dac</code></td>
-              <td>OECD Development Assistance Committee</td>
-              <td><a href="https://webfs.oecd.org/oda/DAClists/" target="_blank" rel="noreferrer">DAC List of ODA Recipients</a></td>
-              <td>ODA recipient eligibility, DAC group (LDCs / LMICs / UMICs / Other LICs), World Bank income hint, reporting year</td>
-              <td>Auto-discovered latest CSV from official OECD webfs directory</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Pipeline methodology -->
-    <section class="card">
-      <h2>Data pipeline methodology</h2>
-
-      <h3 style="font-size:.97rem;margin:.5rem 0 .4rem">Authority ranking</h3>
-      <p style="font-size:.88rem">
-        When multiple sources provide overlapping information (e.g. country name, ISO codes),
-        the pipeline follows this authority order:
-      </p>
-      <ol class="step-list" style="font-size:.88rem">
-        <li><strong>UN M49</strong> — canonical ISO2, ISO3, M49 codes; UN geoscheme hierarchy; LDC/LLDC/SIDS flags; all six UN-language names</li>
-        <li><strong>UN SDG API</strong> — SDG geographic groupings and regional hierarchy</li>
-        <li><strong>World Bank API</strong> — economic classification (income level, lending type), capital cities, coordinates</li>
-        <li><strong>World Bank FCS page</strong> — latest fragility roster and category</li>
-        <li><strong>OECD DAC CSV</strong> — ODA recipient status and groupings</li>
-      </ol>
-
-      <h3 style="font-size:.97rem;margin:.75rem 0 .4rem">Processing steps</h3>
-      <ol class="step-list" style="font-size:.88rem">
-        <li>Fetch all sources in parallel using <code>requests.Session</code> with a descriptive User-Agent.</li>
-        <li>Parse UN M49 HTML page for all six language tabs; derive the canonical country list from the English tab (filter to 3-character ISO3 only). Merge multilingual names on <code>[m49, iso3]</code>.</li>
-        <li>Merge World Bank API response into the M49 base table on <code>iso3</code> (left join — M49 is the authority).</li>
-        <li>Merge UN SDG GeoArea list on <code>m49</code>; walk the tree JSON to derive region memberships.</li>
-        <li>For the World Bank FCS PDF: auto-detect the latest FY PDF link, extract text with <code>pdftotext</code>, parse country names and categories from the structured section headers.</li>
-        <li>For OECD DAC CSV: auto-detect the most recent CSV in the official webfs directory; read and normalise.</li>
-        <li>Map FCS and OECD country names to ISO3 using Unicode-normalised string matching + a curated alias table. Unmapped names are recorded in <code>unmapped_external_names.csv</code> for transparency.</li>
-        <li>Build the long-format memberships table from all sources. Emit one row per country–group pair with explicit <code>source</code> and <code>group_type</code>.</li>
-        <li>Denormalize into <code>country_classification_library</code> by joining memberships back to the master table.</li>
-        <li>Write CSV and JSON outputs; compute SHA-256 checksums; generate the run manifest.</li>
-        <li>Compare with the previous run and write a human-readable changelog report.</li>
-        <li>Copy output files into <code>docs/data/</code> for GitHub Pages serving.</li>
-      </ol>
-
-      <h3 style="font-size:.97rem;margin:.75rem 0 .4rem">Name-matching for FCS and OECD</h3>
-      <p style="font-size:.88rem">
-        The WB FCS PDF and OECD DAC CSV do not publish ISO3 codes directly, so country names must be matched to ISO3.
-        The pipeline applies deterministic Unicode normalisation (NFKD, accent-strip, punctuation-strip, lowercase) and then
-        looks up the normalised name in an index built from the M49 and World Bank name columns.
-        A curated alias table handles known divergences (e.g. "Türkiye" → TUR, "West Bank and Gaza Strip" → PSE).
-        Any name that cannot be resolved is saved to <code>unmapped_external_names.csv</code> so coverage gaps are transparent.
-      </p>
-    </section>
-
-    <!-- GitHub Actions -->
-    <section class="card">
-      <h2>Automation — GitHub Actions workflows</h2>
-
-      <h3 style="font-size:.97rem;margin:.5rem 0 .4rem">1. Update Data (<code>update-data.yml</code>)</h3>
-      <p style="font-size:.88rem">This workflow runs the full data pipeline and commits any changes back to the repository.</p>
-      <div class="table-wrap">
-        <table style="min-width:500px;font-size:.83rem">
-          <thead><tr><th>Trigger</th><th>Schedule (UTC)</th><th>Purpose</th></tr></thead>
-          <tbody>
-            <tr><td>Weekday morning</td><td>05:17 Mon–Fri</td><td>Catch overnight upstream updates (WB API, M49 edits)</td></tr>
-            <tr><td>Weekday evening</td><td>17:17 Mon–Fri</td><td>Catch same-day source revisions</td></tr>
-            <tr><td>Weekly safety refresh</td><td>09:42 every Sunday</td><td>Ensure data is never more than 7 days old</td></tr>
-            <tr><td>Manual dispatch</td><td><em>on demand</em></td><td>Force a refresh at any time from GitHub Actions UI</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:.85rem;margin-top:.6rem">
-        The workflow checks out the repository, installs Python 3.11 + <code>requirements.txt</code>,
-        runs <code>scripts/update_data.py</code>, stages the changed files under <code>data/latest/</code>,
-        <code>data/changelog/</code>, <code>data/history/</code>, and <code>docs/data/</code>,
-        and commits + pushes only if there is a diff.
-        The commit message is always <code>chore(data): automated refresh</code>, making the history clean and auditable.
-      </p>
-
-      <h3 style="font-size:.97rem;margin:.85rem 0 .4rem">2. Deploy Pages (<code>deploy-pages.yml</code>)</h3>
-      <p style="font-size:.88rem">
-        Every push to <code>main</code> that touches any file under <code>docs/</code> or the workflow file itself
-        triggers this workflow. It uploads the <code>docs/</code> folder as a GitHub Pages artifact and deploys it
-        to <a href="https://mafiAtUN.github.io/country-classification-commons/" target="_blank" rel="noreferrer">https://mafiAtUN.github.io/country-classification-commons/</a>.
-        Concurrent runs are cancelled so only the latest version is ever deployed.
-      </p>
-      <p style="font-size:.85rem">
-        This means: when the data pipeline runs and finds changes, it commits → that commit triggers Pages deploy →
-        within minutes the live website serves the updated data files.
-      </p>
-
-      <h3 style="font-size:.97rem;margin:.85rem 0 .4rem">Data freshness</h3>
-      <p style="font-size:.85rem">
-        Under normal conditions the data is refreshed <strong>up to 10 times per week</strong> (twice per weekday + once on Sunday).
-        The exact "last refreshed" timestamp is embedded in every output file via <code>run_manifest.json</code> and visible in the Explorer header.
-        Each run also archives a full snapshot to <code>data/history/&lt;snapshot-id&gt;/</code>, so historical versions are always available in the repository.
-      </p>
-    </section>
-
-    <!-- Change tracking -->
-    <section class="card">
-      <h2>Change tracking &amp; reproducibility</h2>
-      <div class="grid">
-        <div>
-          <h3 style="font-size:.95rem;margin:0 0 .4rem">Per-run changelog</h3>
-          <p style="font-size:.85rem">
-            Every run generates a Markdown report at <code>data/changelog/changes_&lt;snapshot_id&gt;.md</code> listing:
-          </p>
-          <ul style="font-size:.85rem">
-            <li>Countries/areas added or removed since the previous run</li>
-            <li>Countries where core metadata changed (income level, FCS status, ODA eligibility, etc.)</li>
-            <li>Group memberships added or removed</li>
-            <li>Any country names from external sources (FCS, OECD) that could not be mapped to ISO3</li>
-          </ul>
+      <section id="un-membership">
+        <p class="eyebrow">The question this project exists for</p>
+        <h2>Why Africa has 54 countries, or 60</h2>
+        <p>The UN uses two different kinds of country list, for two different jobs.</p>
+        <div class="compare-strip">
+          <div class="card"><b>54</b><span>UN Member States in Africa. The political list: who sits in the General Assembly.</span></div>
+          <div class="card"><b>60</b><span>Countries and areas in the M49 region “Africa”. The statistical list: everywhere data is reported for.</span></div>
+          <div class="card"><b>48</b><span>World Bank “Sub-Saharan Africa”. An analytical region that leaves North Africa out.</span></div>
         </div>
-        <div>
-          <h3 style="font-size:.95rem;margin:0 0 .4rem">SHA-256 checksums</h3>
-          <p style="font-size:.85rem">
-            The <code>run_manifest.json</code> file includes a SHA-256 hash for every output file.
-            This lets you verify that the file you downloaded matches exactly what the pipeline produced,
-            and detect any transmission or storage corruption.
-          </p>
-          <h3 style="font-size:.95rem;margin:.6rem 0 .4rem">Full history in git</h3>
-          <p style="font-size:.85rem">
-            Every automated commit is versioned in the repository's git history.
-            You can check out any past commit to reproduce the exact dataset from that point in time.
-            Snapshots are also copied to <code>data/history/</code> for convenient access without git.
-          </p>
+        <p><strong>UN membership</strong> is decided by the General Assembly under the UN Charter. There are 193 Member States, and two
+        non-member observer States: the Holy See and the State of Palestine.</p>
+        <p><strong>UN M49</strong> is the UN Statistics Division's <em>Standard country or area codes for statistical use</em>. It covers
+        every place for which statistics are compiled, including territories that are not States. In Africa that adds six areas:
+        British Indian Ocean Territory, French Southern Territories, Mayotte, Réunion, Saint Helena and Western Sahara.
+        Worldwide, M49 lists 248 countries and areas.</p>
+        <p>Both are correct. They answer different questions. Trouble starts when a report filters on “region = Africa” in an M49 table and
+        calls the result “African countries”. Every file here carries <code>un_status</code> (<code>member_state</code>,
+        <code>observer_state</code> or <code>non_member</code>) and a plain <code>is_un_member</code> flag, so the choice is explicit.</p>
+        <div class="callout"><p><strong>The African Union</strong> has 55 members, including the Sahrawi Arab Democratic Republic, which is not a
+        UN Member State. This project publishes UN, World Bank and OECD groupings only; it does not publish African Union membership.</p></div>
+
+        <h3 id="regional-groups">UN regional groups</h3>
+        <p>Member States organise themselves into five regional groups for elections and the allocation of seats in UN bodies.
+        They are a list of States by definition, so they never include territories. <code>un_regional_group</code> holds the
+        group used for electoral purposes:</p>
+        <div class="table-wrap" style="margin:1rem 0">
+          <table class="data">
+            <thead><tr><th scope="col">Code</th><th scope="col">Group</th><th scope="col">Member States</th></tr></thead>
+            <tbody>
+              <tr><td class="code-cell">AG</td><td>African Group</td><td>54</td></tr>
+              <tr><td class="code-cell">APG</td><td>Asia-Pacific Group</td><td>54, plus Türkiye (see below)</td></tr>
+              <tr><td class="code-cell">EEG</td><td>Eastern European Group</td><td>23</td></tr>
+              <tr><td class="code-cell">GRULAC</td><td>Latin American and Caribbean Group</td><td>33</td></tr>
+              <tr><td class="code-cell">WEOG</td><td>Western European and Others Group</td><td>29, including Türkiye and the United States</td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-    </section>
+        <ul>
+          <li><strong>Türkiye</strong> participates fully in both the Asia-Pacific Group and WEOG; for electoral purposes it counts in WEOG only.
+          The long membership table lists it in both, the <code>un_regional_group</code> column says WEOG.</li>
+          <li><strong>United States</strong> belongs to no regional group. It attends WEOG meetings as an observer and is treated as a WEOG member for electoral purposes.</li>
+          <li><strong>Israel</strong> has been a full WEOG member since 2000 (temporary basis), renewed permanently in 2004.</li>
+        </ul>
+        <p class="muted">Source: <a href="https://www.un.org/dgacm/en/content/regional-groups">UN Department for General Assembly and Conference Management, Regional groups of Member States</a>.</p>
+      </section>
 
-    <!-- Limitations -->
-    <section class="card">
-      <h2>Limitations &amp; caveats</h2>
-      <ul style="font-size:.88rem">
-        <li><strong>Source lag:</strong> The pipeline reflects the state of upstream sources at the time of the last run. If a source organisation updates their classification mid-day, the change will appear in the next pipeline run (at most ~12 hours on weekdays).</li>
-        <li><strong>FCS PDF parsing:</strong> The World Bank FCS list is published only as a PDF. The pipeline uses <code>pdftotext</code> to extract text and parses the output using section headers. If the PDF layout changes, parsing may fail or produce incorrect results — unmapped names would appear in <code>unmapped_external_names.csv</code>.</li>
-        <li><strong>OECD DAC CSV format:</strong> The pipeline auto-selects the most recent CSV in the OECD webfs directory. Column names are assumed stable; a format change could require a script update.</li>
-        <li><strong>Coverage:</strong> Only countries/areas that appear in the UN M49 overview with a valid 3-character ISO3 code are included. Sub-national and provisional territories without ISO3 codes are excluded.</li>
-        <li><strong>Boolean columns in CSV:</strong> <code>True</code>/<code>False</code> strings (capitalised) are used. In JSON, proper JSON booleans are used.</li>
-        <li><strong>Non-member UN territories:</strong> The dataset covers UN statistical countries/areas, which includes some non-member territories (e.g. Taiwan, Kosovo, Western Sahara) under their ISO3 codes.</li>
-      </ul>
-    </section>
+      <section id="choose">
+        <p class="eyebrow">Choosing a grouping</p>
+        <h2>Which list should I use?</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th scope="col">If you are…</th><th scope="col">Use</th></tr></thead>
+            <tbody>
+              <tr><td>Counting or listing countries, States, Member States</td><td><code>is_un_member</code> = true, then any region</td></tr>
+              <tr><td>Following UN statistical practice, e.g. SDG reporting</td><td><code>region</code>, <code>sub_region</code>, <code>sdg_region</code>, all areas</td></tr>
+              <tr><td>Writing about elections, seats or negotiating blocs in UN bodies</td><td><code>un_regional_group</code></td></tr>
+              <tr><td>Working with World Bank data</td><td><code>wb_region</code>, <code>wb_income_group</code></td></tr>
+              <tr><td>Working on development finance</td><td><code>is_oda_eligible</code>, <code>oda_recipient_group</code></td></tr>
+              <tr><td>Reporting on countries in special situations</td><td><code>is_ldc</code>, <code>is_lldc</code>, <code>is_sids</code>, <code>is_fcs</code></td></tr>
+              <tr><td>Splitting Africa into its five familiar parts</td><td><code>analysis_region</code>: the M49 intermediate region where there is one, otherwise the sub-region</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:1rem">Not sure two definitions agree? Put them side by side in the <a href="explorer.html?tab=compare">Explorer's comparison view</a>.</p>
+      </section>
 
-    <!-- Citation -->
-    <section class="card">
-      <h2>Citation &amp; license</h2>
-      <p style="font-size:.88rem">
-        This project is open source under the MIT License. The <em>compiled dataset</em> is derived from public data published
-        by UNSD, World Bank, and OECD. Please also cite the original sources when using the data in publications:
-      </p>
-      <ul style="font-size:.85rem">
-        <li>United Nations Statistics Division. <em>M49 Standard country or area codes for statistical use.</em> <a href="https://unstats.un.org/unsd/methodology/m49/" target="_blank" rel="noreferrer">unstats.un.org</a></li>
-        <li>World Bank. <em>World Bank Country and Lending Groups.</em> <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519" target="_blank" rel="noreferrer">World Bank Open Data</a></li>
-        <li>World Bank. <em>Harmonized List of Fragile Situations.</em> <a href="https://www.worldbank.org/en/topic/fragilityconflictviolence/brief/classification-of-fragile-and-conflict-affected-situations" target="_blank" rel="noreferrer">worldbank.org</a></li>
-        <li>OECD. <em>DAC List of ODA Recipients.</em> <a href="https://www.oecd.org/en/topics/policy-issues/official-development-assistance-oda.html" target="_blank" rel="noreferrer">oecd.org</a></li>
-      </ul>
-      <p style="font-size:.85rem;margin-top:.5rem">
-        Repository: <a href="https://github.com/MafiAtUN/country-classification-commons" target="_blank" rel="noreferrer">github.com/MafiAtUN/country-classification-commons</a>
-      </p>
-    </section>
+      <section id="sources">
+        <p class="eyebrow">Provenance</p>
+        <h2>Sources</h2>
+        <p>Each run fetches every source fresh. The table below is read from this snapshot's <code>sources.json</code>, so it shows when each was last accessed.</p>
+        <div class="table-wrap">
+          <table class="data" id="sources-table">
+            <thead><tr><th scope="col">Source</th><th scope="col">Publisher</th><th scope="col">What it provides</th></tr></thead>
+            <tbody><tr><td colspan="3" class="loading">Loading</td></tr></tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:.8rem">Two lists are curated by hand because no publisher offers them as data: UN membership with regional groups, and OECD membership.
+        They live in <a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/reference">reference/</a>, and every run checks that they still add up to 193 and 38.</p>
+      </section>
 
-  </main>
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <p class="site-footer-copy">&copy; 2026 <strong>Mafizul Islam</strong> &mdash; Country Classification Commons &mdash; MIT License</p>
-      <nav class="site-footer-links">
-        <a href="https://github.com/MafiAtUN" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/mafizul/" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </nav>
+      <section id="pipeline">
+        <p class="eyebrow">Automation</p>
+        <h2>How a refresh works</h2>
+        <p>A GitHub Actions workflow runs <code>scripts/update_data.py</code> at 05:17 and 17:17 UTC every weekday and at 09:42 UTC on Sundays.
+        When it finishes, a second workflow republishes this site, so the files and pages always match.</p>
+        <ol class="pipeline">
+          <li><div><b>Fetch</b><span>UN M49 (all six language tabs), the UN SDG API, the World Bank country API, the current World Bank FCV list (PDF) and the latest OECD DAC recipient list (CSV).</span></div></li>
+          <li><div><b>Match</b><span>M49 is the backbone. Other sources join on ISO3 where they publish it, otherwise on a normalised name with a small alias table. Names that do not match are written to <code>unmapped_external_names.csv</code>; today there are none.</span></div></li>
+          <li><div><b>Check</b><span>The run stops if the UN membership list is not 193 + 2, the regional groups do not add up, or OECD membership is not 38.</span></div></li>
+          <li><div><b>Publish</b><span>CSV with a single header row, JSON for the web, SHA-256 checksums in <code>run_manifest.json</code>, a dated snapshot in <code>data/history/</code> and a plain-language changelog in <code>data/changelog/</code>.</span></div></li>
+        </ol>
+        <p>Last refreshed <strong data-fresh>recently</strong>. <a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/changelog">See what changed in each run →</a></p>
+      </section>
+
+      <section id="limits">
+        <p class="eyebrow">Read before you rely on it</p>
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Not an official product.</strong> Country Classification Commons is an independent open-source project. It is not issued or endorsed by the United Nations, the World Bank or the OECD. For anything formal, check the publisher's own list.</li>
+          <li><strong>Upstream changes break parsers.</strong> For FY27 the World Bank replaced its FCS list file with a “Public FCV List” that no longer splits conflict from institutional fragility, so <code>fcs_category</code> is empty from FY27. The run flags such breaks instead of publishing stale data silently.</li>
+          <li><strong>Names follow M49.</strong> Short names are the UN's, for example Türkiye, Côte d’Ivoire and Naoero (Nauru). Other publishers' names are matched to them, not shown.</li>
+          <li><strong>World Bank columns</strong> are filled for 215 of the 248 areas. Areas the World Bank does not classify have them empty, and economies it lists without an M49 code, such as Kosovo, are not included.</li>
+          <li><strong>Timing differs by publisher.</strong> World Bank income groups change on 1 July, the FCV list at the start of the World Bank fiscal year, the OECD DAC list every three years, LDC status on graduation dates set by the General Assembly.</li>
+          <li><strong>Coordinates</strong> are World Bank capital-city points, useful for dot maps, not for boundaries.</li>
+        </ul>
+        <div class="callout"><p>The designations employed and the presentation of material in this dataset do not imply the expression of any opinion
+        whatsoever concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.</p></div>
+      </section>
+
+      <section id="cite">
+        <p class="eyebrow">Credit</p>
+        <h2>How to cite</h2>
+        <p>Cite the publisher of the classification you use, and this project as the source of the machine-readable version.</p>
+        <div class="code" data-title="Citation">
+<pre data-tab="Text"><code data-lang="shell">Islam, M. (2026). Country Classification Commons: official country groupings from the UN, World Bank and OECD
+in one open table [Data set]. Nerd Lab. https://mafiatun.github.io/country-classification-commons/</code></pre>
+<pre data-tab="BibTeX"><code data-lang="shell">@misc{country_classification_commons,
+  author       = {Islam, Mafizul},
+  title        = {Country Classification Commons: official country groupings from the UN, World Bank and OECD in one open table},
+  year         = {2026},
+  publisher    = {Nerd Lab},
+  howpublished = {\url{https://mafiatun.github.io/country-classification-commons/}},
+  note         = {Snapshot used: see run_manifest.json}
+}</code></pre>
+        </div>
+        <p style="margin-top:1rem">Code is MIT-licensed. Data remains under each publisher's terms. Found a mistake? <a href="https://github.com/MafiAtUN/country-classification-commons/issues">Open an issue</a>; reports count as contributions.</p>
+      </section>
     </div>
-  </footer>
+
+    <aside aria-label="On this page">
+      <nav class="card" style="padding:1.1rem 1.2rem">
+        <p class="label" style="margin:0 0 .7rem">On this page</p>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:.45rem;font-size:.9rem">
+          <li><a href="#un-membership">54 or 60?</a></li>
+          <li><a href="#regional-groups">UN regional groups</a></li>
+          <li><a href="#choose">Which list to use</a></li>
+          <li><a href="#sources">Sources</a></li>
+          <li><a href="#pipeline">How a refresh works</a></li>
+          <li><a href="#limits">Limitations</a></li>
+          <li><a href="#cite">How to cite</a></li>
+        </ul>
+      </nav>
+      <a class="card" href="https://nerd-factory.github.io/nerd-lab/" style="padding:1.1rem 1.2rem;background:#141419;color:#f4f1ea;border-color:#2b2b34">
+        <img src="assets/img/mark-e.svg" alt="" width="32" height="32" style="border-radius:6px;margin-bottom:.7rem">
+        <b style="display:block">A Nerd Lab experiment</b>
+        <span style="font-size:.85rem;color:#cfccc4">Unnecessarily clever. Occasionally useful. Built in public.</span>
+      </a>
+    </aside>
+  </div>
+</main>
+
+<!-- shell:footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="footer-nl" href="https://nerd-factory.github.io/nerd-lab/">
+          <img src="assets/img/mark-e.svg" alt="" width="18" height="18">
+          <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+          <span>experiment</span>
+        </a>
+        <p>Country Classification Commons rebuilds the official country groupings of the UN, World Bank and OECD
+        into one open, auto-refreshing table. Built in public by <a href="https://github.com/MafiAtUN">Mafizul Islam</a>
+        for <a href="https://github.com/nerd-factory">Nerd Lab</a>.</p>
+      </div>
+      <div>
+        <h2>Use</h2>
+        <ul>
+          <li><a href="explorer.html">Explorer</a></li>
+          <li><a href="guides.html">Power BI, Tableau, Qlik</a></li>
+          <li><a href="guides.html#python">Python, R, Julia, JS</a></li>
+          <li><a href="data.html">Files and columns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="about.html#un-membership">Why Africa has 54, or 60</a></li>
+          <li><a href="about.html#sources">Sources</a></li>
+          <li><a href="about.html#cite">How to cite</a></li>
+          <li><a href="examples.html">Labs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons">Source code</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/issues">Report a problem</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/changelog">Changelog</a></li>
+          <li><a href="https://nerd-factory.github.io/nerd-lab/">Nerd Lab</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>Code MIT. Data from the UN, World Bank and OECD under their terms. Last refreshed <span data-fresh>recently</span>.</p>
+      <p>The designations used do not imply any opinion on the legal status of any country, territory or area.</p>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var PROVIDES = {
+      un_m49_overview: 'M49 and ISO codes, regions, sub-regions, LDC/LLDC/SIDS, names in Arabic, Chinese, English, French, Russian and Spanish',
+      un_sdg_geoarea_list: 'SDG geographic area codes',
+      un_sdg_geoarea_tree: 'SDG regional groupings and their hierarchy',
+      world_bank_country_api: 'Region, income group, lending category, capital and coordinates',
+      world_bank_fcs: 'Fragile and conflict-affected situations, current fiscal year',
+      oecd_dac_oda_recipients: 'ODA eligibility and DAC recipient groups',
+      un_membership: 'UN Member and observer States, regional groups',
+      oecd_members: 'OECD Member countries'
+    };
+    fetch('data/sources.json').then(function (r) { return r.json(); }).then(function (rows) {
+      var tb = document.querySelector('#sources-table tbody');
+      tb.innerHTML = rows.map(function (s) {
+        var when = s.access_utc ? new Date(s.access_utc).toISOString().slice(0, 10) : '';
+        return '<tr><td><a href="' + CC.esc(s.url) + '">' + CC.esc(s.title) + '</a><div class="dim" style="font-size:.75rem;font-family:var(--font-mono)">accessed ' + when + '</div></td>' +
+          '<td>' + CC.esc(s.organization) + '</td><td>' + CC.esc(PROVIDES[s.source_id] || s.notes) + '</td></tr>';
+      }).join('');
+    }).catch(function () {
+      document.querySelector('#sources-table tbody').innerHTML = '<tr><td colspan="3">Could not load sources.json. The file is in <a href="data/sources.csv">data/sources.csv</a>.</td></tr>';
+    });
+  });
+</script>
 </body>
 </html>

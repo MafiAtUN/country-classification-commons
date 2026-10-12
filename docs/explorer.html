@@ -1,693 +1,340 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Explorer | Country Classification Commons</title>
-  <meta name="description" content="Interactively explore 248 countries across UN, World Bank, and OECD classification systems. Filter by region, income group, LDC, SIDS, FCS status, and more.">
-  <meta property="og:title" content="Explorer | Country Classification Commons">
-  <meta property="og:description" content="Interactively explore 248 countries across UN, World Bank, and OECD classification systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/explorer.html">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260305h">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="./explorer.js?v=20260305b" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorer — Country Classification Commons</title>
+<meta name="description" content="Build any country list from official UN, World Bank and OECD groupings. Keep only UN Member States, combine and exclude groups, compare definitions, map the result, and export CSV or ready-to-run code.">
+<meta property="og:title" content="Explorer — Country Classification Commons">
+<meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/explorer.html">
+<!-- shell:head -->
+<meta name="theme-color" content="#141419">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Jost:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('cc-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/css/shell.css?v=20261012">
+<link rel="stylesheet" href="assets/css/cc.css?v=20261012">
+<script src="assets/js/core.js?v=20261012" defer></script>
+<!-- /shell:head -->
+<script src="assets/js/explorer.js?v=20261012" defer></script>
+<style>
+  .ex { display: grid; grid-template-columns: 21rem minmax(0, 1fr); gap: 2rem; padding-block: 2rem 1rem; align-items: start; }
+  .ex > * { min-width: 0; }
+  .ex-side { position: sticky; top: 76px; display: grid; gap: 1.4rem; max-height: calc(100vh - 92px); overflow-y: auto; padding: .2rem .4rem 1rem .2rem; margin: -.2rem -.4rem 0 -.2rem; }
+  .ex-side h1 { font-size: 1.6rem; margin: 0 0 .3rem; }
+  .ex-side .intro { color: var(--text-2); font-size: .9rem; margin: 0; }
+  .ex-block { display: grid; gap: .6rem; }
+  .ex-block-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+  .scope { display: grid; grid-template-columns: 1fr; }
+  .scope .segmented { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .scope .segmented button { flex-direction: column; align-items: center; gap: .15rem; padding: .5rem .3rem; }
+  .scope-note { font-size: .78rem; color: var(--muted); margin: 0; }
+  .rule-list { display: grid; gap: .4rem; }
+  .rule {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem;
+    padding: .5rem .5rem .5rem .75rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface);
+  }
+  .rule.ex-rule { border-style: dashed; }
+  .rule-name { font-size: .88rem; font-weight: 500; line-height: 1.3; }
+  .rule-sys { display: block; font: 400 .7rem var(--font-mono); color: var(--muted); margin-top: .15rem; }
+  .rule .icon-btn { width: 28px; height: 28px; }
+  .rule .icon-btn svg { width: 14px; height: 14px; }
+  .add-btn { justify-content: flex-start; border-style: dashed; color: var(--text-2); }
+  .match-toggle .segmented button { padding: .3rem .55rem; font-size: .75rem; }
+  .presets { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .presets .chip { font-size: .76rem; }
+
+  .result-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 1.5rem; margin-bottom: 1.2rem; }
+  .result-count { font: 600 clamp(2.4rem, 1.8rem + 2vw, 3.4rem)/1 var(--font-display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .result-count small { font: 500 1rem var(--font-ui); letter-spacing: 0; color: var(--muted); margin-left: .4rem; }
+  .result-desc { margin: .5rem 0 0; color: var(--text-2); max-width: 40rem; font-size: .95rem; }
+  .result-actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+  .panel { padding-top: 1.2rem; }
+  .table-tools { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; margin-bottom: .8rem; }
+  .table-tools .input { max-width: 18rem; min-height: 36px; }
+  .table-wrap { max-height: 70vh; }
+  .flags { display: flex; flex-wrap: wrap; gap: .25rem; }
+  .status-pill { font: 500 .7rem var(--font-mono); white-space: nowrap; }
+  .status-pill.member { color: var(--text); }
+  .status-pill.observer, .status-pill.non { color: var(--muted); }
+  .status-pill::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: .4rem; background: var(--accent-mark); vertical-align: 1px; }
+  .status-pill.observer::before { background: transparent; box-shadow: inset 0 0 0 1.5px var(--accent-mark); }
+  .status-pill.non::before { background: var(--line-strong); }
+
+  .breakdown-controls { margin-bottom: 1.2rem; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+  .compare-pickers { display: grid; grid-template-columns: 1fr auto 1fr; gap: .75rem; align-items: end; margin-bottom: 1.2rem; }
+  .compare-pickers .vs { font: 500 .8rem var(--font-mono); color: var(--muted); padding-bottom: .7rem; }
+  .compare-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .compare-col { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+  .compare-col h3 { font-size: .95rem; margin: 0; padding: .9rem 1rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: .5rem; }
+  .compare-col h3 b { font: 600 1.2rem var(--font-mono); }
+  .compare-col.both h3 b { color: var(--accent); }
+  .compare-col ul { list-style: none; margin: 0; padding: .4rem; max-height: 26rem; overflow-y: auto; }
+  .compare-col li { padding: .4rem .6rem; border-radius: var(--r-sm); font-size: .86rem; display: flex; justify-content: space-between; gap: .5rem; cursor: pointer; }
+  .compare-col li:hover { background: var(--surface-2); }
+  .compare-col li .tag { font-size: .62rem; flex-shrink: 0; align-self: center; }
+  #table .flags { flex-wrap: nowrap; }
+  .compare-col .empty { padding: 1.5rem .5rem; font-size: .85rem; }
+
+  .picker-search { margin-bottom: .8rem; }
+  .picker-list { max-height: 55vh; overflow-y: auto; margin: 0 -.4rem; padding: 0 .4rem; }
+  .picker-sys { font: 500 .7rem/1 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 1rem 0 .4rem; position: sticky; top: 0; background: var(--bg); padding: .3rem 0; }
+  .picker-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; text-align: left; border: 0; background: transparent; color: var(--text); padding: .5rem .6rem; border-radius: var(--r-sm); font: 400 .9rem var(--font-ui); cursor: pointer; }
+  .picker-item:hover, .picker-item:focus-visible { background: var(--accent-soft); }
+  .picker-item .n { font: 500 .74rem var(--font-mono); color: var(--muted); white-space: nowrap; }
+  .picker-item[disabled] { opacity: .45; cursor: default; }
+
+  .code-modal .code pre { max-height: 50vh; }
+  .side-toggle { display: none; }
+
+  @media (max-width: 1000px) {
+    .ex { grid-template-columns: minmax(0, 1fr); }
+    .ex-side { position: static; max-height: none; overflow: visible; }
+    .compare-pickers { grid-template-columns: 1fr; }
+    .compare-pickers .vs { display: none; }
+  }
+  @media (max-width: 760px) { .compare-cols { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-  <header class="hero">
-    <h1>Country Classification Explorer</h1>
-    <p>Choose a classification system below. Each system has its own country coverage, groupings, and purpose.</p>
-    <nav class="nav">
-      <a href="./index.html">Home</a>
-      <a href="./explorer.html" aria-current="page">Explorer</a>
-      <a href="./examples.html">Example Uses</a>
-      <a href="./downloads.html">Downloads &amp; API Links</a>
-      <a href="./about.html">About &amp; Methodology</a>
+<!-- shell:header -->
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="nl-bar">
+  <div class="wrap">
+    <a class="nl-presents" href="https://nerd-factory.github.io/nerd-lab/" aria-label="Nerd Lab presents">
+      <img class="nl-mark" src="assets/img/mark-e.svg" alt="" width="16" height="16">
+      <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+      <span class="nl-verb">presents</span>
+    </a>
+    <span class="nl-bar-note">An open experiment. <b>Unnecessarily clever.</b> Occasionally useful.</span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#141419"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><ellipse cx="16" cy="16" rx="4.2" ry="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><path d="M6.5 16h19" stroke="#C8F531" stroke-width="2"/></svg>
+      <span class="brand-name">Country Classification Commons<small>Every official country grouping</small></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="explorer.html" aria-current="page">Explorer</a>
+      <a href="guides.html">Use it</a>
+      <a href="data.html">Data</a>
+      <a href="about.html">Method</a>
+      <a href="examples.html">Labs</a>
     </nav>
-  </header>
-
-  <main>
-
-    <!-- Error banner -->
-    <div id="load-error" class="card error-card hidden" role="alert"></div>
-
-    <!-- Snapshot bar -->
-    <div class="card snapshot-bar">
-      <span id="snapshot-meta">Loading data…</span>
-      <a href="./downloads.html" class="btn btn-sm btn-outline">Download data →</a>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" aria-label="Search countries and groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="st-label">Search countries, groups</span><span class="kbd">⌘K</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a class="icon-btn" href="https://github.com/MafiAtUN/country-classification-commons" aria-label="Source on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
+  </div>
+</header>
+<!-- /shell:header -->
 
-    <!-- Classification system tab bar -->
-    <div class="cls-tab-bar" role="tablist">
-      <button class="cls-tab active" data-tab="m49"    role="tab" aria-selected="true">
-        <span class="cls-tab-label">UN M49 / Geoscheme</span>
-        <span class="cls-tab-count" id="count-m49">—</span>
-      </button>
-      <button class="cls-tab" data-tab="wb"     role="tab" aria-selected="false">
-        <span class="cls-tab-label">World Bank</span>
-        <span class="cls-tab-count" id="count-wb">—</span>
-      </button>
-      <button class="cls-tab" data-tab="oecd"   role="tab" aria-selected="false">
-        <span class="cls-tab-label">OECD DAC</span>
-        <span class="cls-tab-count" id="count-oecd">—</span>
-      </button>
-      <button class="cls-tab" data-tab="fcs"    role="tab" aria-selected="false">
-        <span class="cls-tab-label">World Bank FCS</span>
-        <span class="cls-tab-count" id="count-fcs">—</span>
-      </button>
-      <button class="cls-tab" data-tab="sdg"    role="tab" aria-selected="false">
-        <span class="cls-tab-label">UN SDG Regions</span>
-        <span class="cls-tab-count" id="count-sdg">—</span>
-      </button>
-      <button class="cls-tab" data-tab="all"    role="tab" aria-selected="false">
-        <span class="cls-tab-label">All Groups</span>
-        <span class="cls-tab-count" id="count-all">—</span>
-      </button>
-    </div>
+<main id="main" class="wrap">
+  <div class="ex">
 
-    <!-- Cross-system filters (always visible, applied on top of each tab) -->
-    <div class="card cross-filters-card" id="cross-filter-card">
-      <div class="cross-filter-header">
-        <strong style="font-size:.88rem">Cross-system filters</strong>
-        <span class="cross-filter-note">Stack on top of each tab's own filters to intersect classification systems</span>
-        <button class="link-btn" id="cross-filter-clear" style="margin-left:auto;font-size:.8rem">Clear</button>
-      </div>
-      <div class="cross-filter-grid">
-        <div>
-          <label for="cross-wb-income">WB Income Level</label>
-          <select id="cross-wb-income"><option value="">Any income level</option></select>
-        </div>
-        <div>
-          <label for="cross-sdg-group">SDG Group membership</label>
-          <select id="cross-sdg-group"><option value="">Any SDG group</option></select>
-        </div>
-      </div>
-    </div>
-
-    <!-- Export guide (collapsible) -->
-    <details class="export-guide">
-      <summary>How to export a filtered country list — examples &amp; tool tips</summary>
-      <div class="export-guide-body">
-        <p>
-          Every tab has an <strong>Export CSV</strong> button. It downloads <em>exactly the rows currently shown</em>
-          in the table — all filters, dropdowns, and search terms are applied before export.
-          The file is <strong>UTF-8 CSV</strong>, compatible with Excel, R (readr/read.csv), Python (pandas),
-          Stata, SPSS, and Power BI. The filename includes the classification system and row count so you always
-          know what you downloaded.
-        </p>
-
-        <h3>UN M49 / Geoscheme — examples</h3>
-        <div class="export-guide-example">
-          <strong>All LDC countries with geographic codes</strong><br>
-          Set <em>Special group → LDC only</em> → Export →
-          columns: <code>country_name_en, iso3, iso2, m49, region, sub_region, intermediate_region, is_ldc, is_lldc, is_sids</code>.
-          Useful as a master list for any analysis that requires UN M49 codes alongside LDC/LLDC/SIDS flags.
-        </div>
-        <div class="export-guide-example">
-          <strong>All countries in a specific sub-region</strong><br>
-          Set <em>UN Sub-region → Eastern Africa</em> → Export → precise 20-country list with full geographic hierarchy.
-          Combine with the search box to further narrow by name.
-        </div>
-
-        <h3>World Bank — examples</h3>
-        <div class="export-guide-example">
-          <strong>Low-income economies in Sub-Saharan Africa</strong><br>
-          Set <em>Income level → Low income</em> + <em>WB Region → Sub-Saharan Africa</em> → Export →
-          the exact list used in World Bank operational and poverty targeting work.
-        </div>
-        <div class="export-guide-example">
-          <strong>All IDA-eligible economies</strong><br>
-          Set <em>Lending type → IDA</em> → Export → countries eligible for concessional IDA financing
-          (<code>wb_income_name, wb_lending_name, capital_city</code> included per row).
-        </div>
-        <div class="export-guide-example">
-          <strong>Upper-middle-income economies globally</strong><br>
-          Set <em>Income level → Upper middle income</em> → Export → used to identify countries approaching
-          high-income status or recently graduated from ODA eligibility.
-        </div>
-
-        <h3>OECD DAC — examples</h3>
-        <div class="export-guide-example">
-          <strong>All ODA-eligible LDCs in Africa</strong><br>
-          Set <em>DAC group → LDCs</em> + <em>UN Region → Africa</em> → Export →
-          columns include <code>dac_group, wb_income_hint, reporting_year</code>.
-          Use directly for ODA targeting, donor reporting, or OECD peer-review submissions.
-        </div>
-        <div class="export-guide-example">
-          <strong>All ODA-eligible countries in a specific reporting year</strong><br>
-          No filter needed — the <code>reporting_year</code> column in the export shows the year each country
-          was added to or last confirmed on the DAC list.
-        </div>
-
-        <h3>World Bank FCS — examples</h3>
-        <div class="export-guide-example">
-          <strong>Conflict-affected countries only</strong><br>
-          Set <em>Category → Conflict</em> → Export → 21-country list with
-          <code>wb_region, wb_income_name, wb_fcs_category, wb_fcs_fy</code>.
-          Useful for humanitarian programming, risk analysis, and IDA conflict windows.
-        </div>
-        <div class="export-guide-example">
-          <strong>FCS countries in a specific WB region</strong><br>
-          Set <em>WB Region → Sub-Saharan Africa</em> (or any region) → Export →
-          fragile and conflict-affected states within that region only.
-          Combine with <em>Category</em> filter to separate Conflict from Institutional Fragility.
-        </div>
-
-        <h3>UN SDG Regions — examples</h3>
-        <div class="export-guide-example">
-          <strong>All countries in a specific SDG group</strong><br>
-          Select e.g. <em>Sub-Saharan Africa</em> in the SDG group dropdown → Export →
-          53-country list. The <code>sdg_groups</code> column lists <em>all</em> groups each country belongs to,
-          separated by <code>;</code> — so one row per country, all memberships visible at once.
-        </div>
-        <div class="export-guide-example">
-          <strong>Splitting the sdg_groups column into multiple rows</strong><br>
-          <strong>Excel:</strong> select the column → Data → Text to Columns → delimiter <code>;</code><br>
-          <strong>R:</strong> <code>tidyr::separate_rows(df, sdg_groups, sep = ";")</code><br>
-          <strong>Python:</strong> <code>df["sdg_groups"].str.split(";").explode().reset_index(drop=True)</code><br>
-          <strong>Stata:</strong> <code>split sdg_groups, parse(";")</code><br>
-          <strong>Power BI:</strong> Split Column → By Delimiter <code>;</code> → Into Rows
-        </div>
-
-        <h3>General tips</h3>
-        <div class="export-guide-example">
-          <strong>Match counts before exporting</strong><br>
-          The <em>Showing</em> box and the <em>Export CSV</em> note both display the exact row count.
-          If the count looks wrong, check your active filters — each dropdown narrows the list independently.
-        </div>
-        <div class="export-guide-example">
-          <strong>Want the full unfiltered dataset?</strong><br>
-          Clear all filters (reload the page) then export — or go to the
-          <a href="./downloads.html">Downloads page</a> to get pre-built full CSVs and JSON files
-          with permanent raw GitHub URLs for scripting.
-        </div>
-      </div>
-    </details>
-
-    <!-- ═══════════════════════════════ TAB: UN M49 ═══════════════════════════════ -->
-    <div class="tab-content" id="tab-m49">
-
-      <div class="card cls-info-card">
-        <div class="cls-info-main">
-          <h2>UN M49 Standard Country or Area Codes</h2>
-          <p>
-            The foundational UN classification system published by the UN Statistics Division (UNSD).
-            Covers <strong>all 248 UN statistical countries and areas</strong> — including territories and dependencies
-            that may not be members of the UN or classified by the World Bank or OECD.
-            Provides the global geoscheme (global → region → sub-region → intermediate region),
-            plus three special designations: <strong>LDC</strong> (Least Developed Countries),
-            <strong>LLDC</strong> (Landlocked Developing Countries), and
-            <strong>SIDS</strong> (Small Island Developing States).
-          </p>
-        </div>
-        <div class="cls-info-stats">
-          <div class="mini-stat"><div class="mini-num" id="m49-total">—</div><div class="mini-lbl">Total countries / areas</div></div>
-          <div class="mini-stat"><div class="mini-num" id="m49-ldc">—</div><div class="mini-lbl">LDC</div></div>
-          <div class="mini-stat"><div class="mini-num" id="m49-lldc">—</div><div class="mini-lbl">LLDC</div></div>
-          <div class="mini-stat"><div class="mini-num" id="m49-sids">—</div><div class="mini-lbl">SIDS</div></div>
-        </div>
+    <aside class="ex-side" aria-label="Build your list">
+      <div>
+        <h1>Explorer</h1>
+        <p class="intro">Build a country list from official groupings. Combine, exclude, compare, then take it to your tool.</p>
       </div>
 
-      <div class="grid">
-        <div class="card"><h3>Countries by UN Region</h3><div class="chart-wrap"><canvas id="chart-m49-region"></canvas></div></div>
-        <div class="card"><h3>Special Designations</h3><div class="chart-wrap"><canvas id="chart-m49-special"></canvas></div></div>
+      <div class="ex-block scope">
+        <span class="label" id="scope-label">Scope</span>
+        <div class="segmented" role="group" aria-labelledby="scope-label" id="scope">
+          <button type="button" data-scope="un" aria-pressed="true">UN Members<span class="seg-n" data-scope-n="un">193</span></button>
+          <button type="button" data-scope="un_obs" aria-pressed="false">+ Observers<span class="seg-n" data-scope-n="un_obs">195</span></button>
+          <button type="button" data-scope="all" aria-pressed="false">All areas<span class="seg-n" data-scope-n="all">248</span></button>
+        </div>
+        <p class="scope-note" id="scope-note">Only the 193 UN Member States. Switch to “All areas” to include territories such as Réunion or Greenland.</p>
       </div>
 
-      <div class="cls-filters card">
-        <div>
-          <label for="m49-search">Search</label>
-          <input id="m49-search" type="search" placeholder="Country name, ISO3, ISO2, M49…">
-        </div>
-        <div>
-          <label for="m49-region">UN Region</label>
-          <select id="m49-region"><option value="">All regions</option></select>
-        </div>
-        <div>
-          <label for="m49-subregion">UN Sub-region</label>
-          <select id="m49-subregion"><option value="">All sub-regions</option></select>
-        </div>
-        <div>
-          <label for="m49-special">Special group</label>
-          <select id="m49-special">
-            <option value="">All</option>
-            <option value="ldc">LDC only</option>
-            <option value="lldc">LLDC only</option>
-            <option value="sids">SIDS only</option>
-          </select>
-        </div>
-        <div>
-          <label>Showing</label>
-          <div class="stat-box" id="m49-count">—</div>
-        </div>
-        <div class="export-row">
-          <span class="export-note" id="m49-export-note"></span>
-          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Country / Area</th>
-                <th>ISO3</th>
-                <th>ISO2</th>
-                <th>M49</th>
-                <th>UN Region</th>
-                <th>UN Sub-region</th>
-                <th>Intermediate Region</th>
-                <th title="Least Developed Country">LDC</th>
-                <th title="Landlocked Developing Country">LLDC</th>
-                <th title="Small Island Developing State">SIDS</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="m49-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════ TAB: WORLD BANK ═══════════════════════════════ -->
-    <div class="tab-content hidden" id="tab-wb">
-
-      <div class="card cls-info-card">
-        <div class="cls-info-main">
-          <h2>World Bank Country &amp; Lending Groups</h2>
-          <p>
-            The World Bank classifies <strong>215 economies</strong> by income level and lending eligibility.
-            <strong>33 UN statistical territories are not included</strong> — mostly French and British overseas
-            territories, Western Sahara, and similar — so the WB count for the African continent is 54, not 60.
-            Income levels are updated each July using Atlas GNI per capita. Lending type shows IDA/IBRD eligibility.
-          </p>
-          <p>
-            <strong>⚠ WB region ≠ UN region:</strong> The World Bank labels its Africa region
-            <em>"Sub-Saharan Africa"</em> (48 countries). The remaining 6 North African countries
-            (Algeria, Egypt, Libya, Morocco, Tunisia, Sudan) appear in the WB region
-            <em>"Middle East, North Africa, Afghanistan &amp; Pakistan"</em>.
-            Filter by <em>WB Region</em> below to see this breakdown.
-          </p>
-        </div>
-        <div class="cls-info-stats">
-          <div class="mini-stat"><div class="mini-num" id="wb-total">—</div><div class="mini-lbl">Economies classified</div></div>
-          <div class="mini-stat"><div class="mini-num" id="wb-low">—</div><div class="mini-lbl">Low income</div></div>
-          <div class="mini-stat"><div class="mini-num" id="wb-lm">—</div><div class="mini-lbl">Lower middle</div></div>
-          <div class="mini-stat"><div class="mini-num" id="wb-um">—</div><div class="mini-lbl">Upper middle</div></div>
-          <div class="mini-stat"><div class="mini-num" id="wb-high">—</div><div class="mini-lbl">High income</div></div>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card"><h3>Income level distribution</h3><div class="chart-wrap"><canvas id="chart-wb-income"></canvas></div></div>
-        <div class="card"><h3>Countries by WB Region</h3><div class="chart-wrap"><canvas id="chart-wb-region"></canvas></div></div>
-      </div>
-
-      <div class="cls-filters card">
-        <div>
-          <label for="wb-search">Search</label>
-          <input id="wb-search" type="search" placeholder="Country name, ISO3…">
-        </div>
-        <div>
-          <label for="wb-income">Income level</label>
-          <select id="wb-income"><option value="">All income levels</option></select>
-        </div>
-        <div>
-          <label for="wb-region">WB Region</label>
-          <select id="wb-region"><option value="">All WB regions</option></select>
-        </div>
-        <div>
-          <label for="wb-lending">Lending type</label>
-          <select id="wb-lending"><option value="">All lending types</option></select>
-        </div>
-        <div>
-          <label>Showing</label>
-          <div class="stat-box" id="wb-count">—</div>
-        </div>
-        <div class="export-row">
-          <span class="export-note" id="wb-export-note"></span>
-          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Economy</th>
-                <th>ISO3</th>
-                <th>WB Region</th>
-                <th>Income Level</th>
-                <th>Lending Type</th>
-                <th>Capital City</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="wb-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════ TAB: OECD DAC ═══════════════════════════════ -->
-    <div class="tab-content hidden" id="tab-oecd">
-
-      <div class="card cls-info-card">
-        <div class="cls-info-main">
-          <h2>OECD DAC List of ODA Recipients</h2>
-          <p>
-            The OECD Development Assistance Committee (DAC) publishes the official list of countries
-            eligible to receive Official Development Assistance (ODA).
-            The current list covers <strong id="oecd-total-inline">—</strong> countries and territories,
-            grouped by DAC category which roughly tracks World Bank income levels.
-            Only countries on this list can be reported as ODA recipients in donor statistics.
-            High-income countries are <em>not</em> on this list.
-          </p>
-        </div>
-        <div class="cls-info-stats">
-          <div class="mini-stat"><div class="mini-num" id="oecd-total">—</div><div class="mini-lbl">ODA-eligible</div></div>
-          <div class="mini-stat"><div class="mini-num" id="oecd-ldc">—</div><div class="mini-lbl">LDCs</div></div>
-          <div class="mini-stat"><div class="mini-num" id="oecd-lmic">—</div><div class="mini-lbl">LMICs</div></div>
-          <div class="mini-stat"><div class="mini-num" id="oecd-umic">—</div><div class="mini-lbl">UMICs</div></div>
-          <div class="mini-stat"><div class="mini-num" id="oecd-other">—</div><div class="mini-lbl">Other LICs</div></div>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card"><h3>Countries by DAC group</h3><div class="chart-wrap"><canvas id="chart-oecd-group"></canvas></div></div>
-        <div class="card"><h3>ODA recipients by UN Region</h3><div class="chart-wrap"><canvas id="chart-oecd-region"></canvas></div></div>
-      </div>
-
-      <div class="cls-filters card">
-        <div>
-          <label for="oecd-search">Search</label>
-          <input id="oecd-search" type="search" placeholder="Country name, ISO3…">
-        </div>
-        <div>
-          <label for="oecd-group">DAC group</label>
-          <select id="oecd-group"><option value="">All groups</option></select>
-        </div>
-        <div>
-          <label for="oecd-un-region">UN Region</label>
-          <select id="oecd-un-region"><option value="">All regions</option></select>
-        </div>
-        <div>
-          <label>Showing</label>
-          <div class="stat-box" id="oecd-count">—</div>
-        </div>
-        <div class="export-row">
-          <span class="export-note" id="oecd-export-note"></span>
-          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Country / Territory</th>
-                <th>ISO3</th>
-                <th>UN Region</th>
-                <th>DAC Group</th>
-                <th>WB Income (OECD)</th>
-                <th>Reporting Year</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="oecd-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════ TAB: WB FCS ═══════════════════════════════ -->
-    <div class="tab-content hidden" id="tab-fcs">
-
-      <div class="card cls-info-card">
-        <div class="cls-info-main">
-          <h2>World Bank — Fragile and Conflict-affected Situations (FCS)</h2>
-          <p>
-            The World Bank publishes an annual list of countries classified as
-            <strong>Fragile and Conflict-affected Situations (FCS)</strong>.
-            Countries are grouped into two categories:
-            <strong>Conflict</strong> (active conflict with significant impact on governance and service delivery)
-            and <strong>Institutional and Social Fragility</strong>
-            (weak institutions, social cohesion, or high vulnerability without active conflict).
-            The list informs IDA resource allocation and World Bank operational policies.
-          </p>
-          <p id="fcs-no-data" class="cls-warning hidden">
-            ⚠ The FCS list could not be parsed from the latest pipeline run.
-            The World Bank publishes the FCS list as a PDF; if the PDF layout changed, the parser may need updating.
-            Check <a href="https://www.worldbank.org/en/topic/fragilityconflictviolence/brief/classification-of-fragile-and-conflict-affected-situations" target="_blank" rel="noreferrer">the WB page</a> directly.
-          </p>
-        </div>
-        <div class="cls-info-stats">
-          <div class="mini-stat"><div class="mini-num" id="fcs-total">—</div><div class="mini-lbl">FCS countries</div></div>
-          <div class="mini-stat"><div class="mini-num" id="fcs-conflict">—</div><div class="mini-lbl">Conflict</div></div>
-          <div class="mini-stat"><div class="mini-num" id="fcs-fragile">—</div><div class="mini-lbl">Institutional Fragility</div></div>
-        </div>
-      </div>
-
-      <div class="card"><h3>FCS countries by UN Region &amp; category</h3><div class="chart-wrap"><canvas id="chart-fcs"></canvas></div></div>
-
-      <div class="cls-filters card">
-        <div>
-          <label for="fcs-search">Search</label>
-          <input id="fcs-search" type="search" placeholder="Country name, ISO3…">
-        </div>
-        <div>
-          <label for="fcs-category">Category</label>
-          <select id="fcs-category">
-            <option value="">All categories</option>
-            <option value="Conflict">Conflict</option>
-            <option value="Institutional and Social Fragility">Institutional &amp; Social Fragility</option>
-          </select>
-        </div>
-        <div>
-          <label for="fcs-un-region">UN Region</label>
-          <select id="fcs-un-region"><option value="">All regions</option></select>
-        </div>
-        <div>
-          <label for="fcs-wb-region">WB Region</label>
-          <select id="fcs-wb-region"><option value="">All WB regions</option></select>
-        </div>
-        <div>
-          <label>Showing</label>
-          <div class="stat-box" id="fcs-count">—</div>
-        </div>
-        <div class="export-row">
-          <span class="export-note" id="fcs-export-note"></span>
-          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Country</th>
-                <th>ISO3</th>
-                <th>UN Region</th>
-                <th>WB Region</th>
-                <th>WB Income Level</th>
-                <th>FCS Category</th>
-                <th>Fiscal Year</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="fcs-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════ TAB: UN SDG ═══════════════════════════════ -->
-    <div class="tab-content hidden" id="tab-sdg">
-
-      <div class="card cls-info-card">
-        <div class="cls-info-main">
-          <h2>UN SDG Geographic Regions</h2>
-          <p>
-            The UN SDG monitoring framework uses its own geographic grouping system,
-            <strong>different from UN M49 and World Bank regions</strong>.
-            SDG groups are overlapping — a country can belong to multiple groups simultaneously
-            (e.g. "Africa", "Sub-Saharan Africa", "Eastern Africa", and "LDC Africa" at once).
-            There are <strong id="sdg-groups-inline">—</strong> distinct SDG groups.
-          </p>
-          <p>
-            <strong>Why SDG "Africa" = 60 but World Bank "Africa" = 54:</strong>
-            The SDG group <em>"Africa"</em> covers the full continental Africa — all 60 countries
-            per UN M49, including North African and overseas territories.
-            The World Bank's <em>"Sub-Saharan Africa"</em> region covers only 48 countries
-            (North Africa sits in WB's MENA region, and 6 territories have no WB classification at all).
-            These are different groupings answering different questions.
-            For Sub-Saharan Africa specifically, select <em>"Sub-Saharan Africa"</em> in the filter below (53 countries).
-          </p>
-          <p>
-            Use this tab when matching to the <a href="https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List" target="_blank" rel="noreferrer">UN SDG indicator database</a> groupings.
-            For standard UN geographic hierarchy, use the <button class="link-btn" data-switch-tab="m49">UN M49 tab</button>.
-          </p>
-        </div>
-        <div class="cls-info-stats">
-          <div class="mini-stat"><div class="mini-num">248</div><div class="mini-lbl">Countries covered</div></div>
-          <div class="mini-stat"><div class="mini-num" id="sdg-groups-count">—</div><div class="mini-lbl">SDG groups</div></div>
-          <div class="mini-stat"><div class="mini-num" id="sdg-filtered-count">—</div><div class="mini-lbl">Shown (selected group)</div></div>
-        </div>
-      </div>
-
-      <div class="card"><h3>Countries per top-level SDG group</h3><p class="chart-note">Shows the major SDG continental groupings only. Select a specific group below to filter the table.</p><div class="chart-wrap" style="height:300px"><canvas id="chart-sdg"></canvas></div></div>
-
-      <div class="cls-filters card">
-        <div style="grid-column: span 2">
-          <label for="sdg-group">SDG Group (select to filter countries)</label>
-          <select id="sdg-group"><option value="">All SDG groups</option></select>
-        </div>
-        <div>
-          <label for="sdg-search">Search country</label>
-          <input id="sdg-search" type="search" placeholder="Country name, ISO3…">
-        </div>
-        <div>
-          <label>Showing</label>
-          <div class="stat-box" id="sdg-count">—</div>
-        </div>
-        <div class="export-row">
-          <span class="export-note" id="sdg-export-note"></span>
-          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Country / Area</th>
-                <th>ISO3</th>
-                <th>M49</th>
-                <th>SDG Groups</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="sdg-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════ TAB: ALL GROUPS ═══════════════════════════════ -->
-    <div class="tab-content hidden" id="tab-all">
-
-      <div class="card cls-info-card">
-        <div class="cls-info-main">
-          <h2>All Group Memberships — Combined Reference</h2>
-          <p>
-            Every country / area with all its group memberships from all five sources combined:
-            UN M49 geographic hierarchy, World Bank income &amp; lending, OECD DAC ODA eligibility,
-            World Bank FCS, and UN SDG regional groups.
-            Search by <strong>country name, ISO3, M49 code, or group name</strong>.
-            Filter by source to narrow to one classification system.
-            Export generates a long-format CSV (one row per country-group) compatible with the
-            <a href="https://raw.githubusercontent.com/MafiAtUN/OSAAReferenceData/refs/heads/main/Aggregates.csv" target="_blank" rel="noreferrer">OSAA reference data format</a>.
-          </p>
-        </div>
-        <div class="cls-info-stats">
-          <div class="mini-stat"><div class="mini-num">248</div><div class="mini-lbl">Countries / areas</div></div>
-          <div class="mini-stat"><div class="mini-num" id="all-memberships-total">—</div><div class="mini-lbl">Total memberships</div></div>
-          <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lbl">Data sources</div></div>
-        </div>
-      </div>
-
-      <div class="cls-filters card">
-        <div style="grid-column:span 2">
-          <label for="all-search">Search country or group</label>
-          <input id="all-search" type="search" placeholder="Country name, ISO3, M49 code, or group name…">
-        </div>
-        <div>
-          <label for="all-source">Source / system</label>
-          <select id="all-source">
-            <option value="">All sources</option>
-            <option value="un_m49">UN M49 / Geoscheme</option>
-            <option value="world_bank">World Bank</option>
-            <option value="oecd_dac">OECD DAC</option>
-            <option value="world_bank_fcs">World Bank FCS</option>
-            <option value="un_sdg">UN SDG</option>
-          </select>
-        </div>
-        <div>
-          <label>Showing</label>
-          <div class="stat-box" id="all-count">—</div>
-        </div>
-        <div class="export-row">
-          <span class="export-note" id="all-export-note"></span>
-          <button class="btn btn-sm export-btn" type="button">⬇ Export CSV</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Country / Area</th>
-                <th>ISO3</th>
-                <th>M49</th>
-                <th style="width:3rem;text-align:center" title="Number of group memberships">#</th>
-                <th>All Group Memberships</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="all-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Country detail panel (shared across all tabs) -->
-    <div class="card" id="detail-panel" style="display:none">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem">
-        <h2 id="detail-label" style="margin:0">Country detail</h2>
-        <button id="detail-close" class="btn btn-sm btn-outline" type="button">✕ Close</button>
-      </div>
-      <p id="detail-names" style="font-size:.85rem;color:#555;margin:.25rem 0 .75rem"></p>
-      <div class="grid" style="gap:.75rem;margin-bottom:.75rem">
-        <div>
-          <strong style="font-size:.85rem">All group memberships</strong>
-          <div class="table-wrap" style="margin-top:.4rem">
-            <table>
-              <thead><tr><th>Source</th><th>Group type</th><th>Code</th><th>Group name</th></tr></thead>
-              <tbody id="detail-body"></tbody>
-            </table>
+      <div class="ex-block">
+        <div class="ex-block-head">
+          <span class="label">Include countries in</span>
+          <div class="match-toggle" id="match-wrap" hidden>
+            <div class="segmented" role="group" aria-label="How to combine included groups">
+              <button type="button" data-match="all" aria-pressed="true" title="Countries must be in every group">all</button>
+              <button type="button" data-match="any" aria-pressed="false" title="Countries can be in any of the groups">any</button>
+            </div>
           </div>
         </div>
-        <div id="detail-flags">
-          <strong style="font-size:.85rem">Quick reference</strong>
-          <div id="detail-flags-inner" style="margin-top:.5rem;font-size:.88rem"></div>
+        <div class="rule-list" id="include-list"></div>
+        <button class="btn btn-sm add-btn" type="button" data-add="in">+ Add a group</button>
+      </div>
+
+      <div class="ex-block">
+        <span class="label">Exclude countries in</span>
+        <div class="rule-list" id="exclude-list"></div>
+        <button class="btn btn-sm add-btn" type="button" data-add="ex">+ Exclude a group</button>
+      </div>
+
+      <div class="ex-block">
+        <span class="label">Common lists</span>
+        <div class="presets" id="presets"></div>
+      </div>
+
+      <button class="btn btn-sm btn-ghost" type="button" id="reset" style="justify-self:start">Reset</button>
+    </aside>
+
+    <section aria-labelledby="result-count">
+      <div class="result-head">
+        <div>
+          <div class="result-count" id="result-count" aria-live="polite">—</div>
+          <p class="result-desc" id="result-desc">Loading the data</p>
+        </div>
+        <div class="result-actions">
+          <button class="btn btn-sm" type="button" id="copy-iso">Copy ISO3</button>
+          <button class="btn btn-sm" type="button" id="download">Download CSV</button>
+          <button class="btn btn-sm" type="button" id="share">Share link</button>
+          <button class="btn btn-sm btn-primary" type="button" id="get-code">Get code</button>
         </div>
       </div>
-    </div>
 
-  </main>
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <p class="site-footer-copy">&copy; 2026 <strong>Mafizul Islam</strong> &mdash; Country Classification Commons &mdash; MIT License</p>
-      <nav class="site-footer-links">
-        <a href="https://github.com/MafiAtUN" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/mafizul/" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </nav>
+      <div class="tabs" role="tablist" aria-label="Views">
+        <button role="tab" type="button" id="tab-table" aria-controls="panel-table" aria-selected="true" data-tab="table">Table</button>
+        <button role="tab" type="button" id="tab-map" aria-controls="panel-map" aria-selected="false" data-tab="map" tabindex="-1">Map</button>
+        <button role="tab" type="button" id="tab-breakdown" aria-controls="panel-breakdown" aria-selected="false" data-tab="breakdown" tabindex="-1">Breakdown</button>
+        <button role="tab" type="button" id="tab-compare" aria-controls="panel-compare" aria-selected="false" data-tab="compare" tabindex="-1">Compare two groups</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-table" aria-labelledby="tab-table">
+        <div class="table-tools">
+          <input class="input" type="search" id="table-filter" placeholder="Filter by name or code" aria-label="Filter the table">
+          <span class="muted" style="font-size:.82rem">Select a row to see every group it belongs to.</span>
+        </div>
+        <div class="table-wrap">
+          <table class="data" id="table">
+            <thead><tr>
+              <th scope="col" data-key="name" aria-sort="ascending"><button type="button">Country or area</button></th>
+              <th scope="col" data-key="iso3"><button type="button">ISO3</button></th>
+              <th scope="col" data-key="m49"><button type="button">M49</button></th>
+              <th scope="col" data-key="un_status"><button type="button">UN status</button></th>
+              <th scope="col" data-key="sub_region"><button type="button">M49 sub-region</button></th>
+              <th scope="col" data-key="wb_income_group"><button type="button">WB income</button></th>
+              <th scope="col">Flags</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-map" aria-labelledby="tab-map" hidden>
+        <div class="map-wrap" id="map"><p class="loading" style="padding:1rem">Loading the map</p></div>
+        <p class="muted" style="font-size:.8rem;margin-top:.6rem">Dots mark countries and areas too small to draw at world scale. Boundaries from Natural Earth (world-atlas); they do not imply official endorsement or acceptance by the United Nations.</p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-breakdown" aria-labelledby="tab-breakdown" hidden>
+        <div class="breakdown-controls">
+          <span class="label">Count by</span>
+          <div class="segmented" role="group" aria-label="Breakdown dimension" id="dims"></div>
+        </div>
+        <div class="bars" id="breakdown"></div>
+        <p class="muted" style="font-size:.8rem;margin-top:1rem">Select a bar to add that group to your list.</p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-compare" aria-labelledby="tab-compare" hidden>
+        <p class="muted" style="font-size:.9rem;margin-top:0">Two definitions of the same idea rarely list the same countries. Comparison uses all countries and areas, whatever the scope.</p>
+        <div class="compare-pickers">
+          <div class="field"><label for="cmp-a">Group A</label><select class="select" id="cmp-a"></select></div>
+          <span class="vs">vs</span>
+          <div class="field"><label for="cmp-b">Group B</label><select class="select" id="cmp-b"></select></div>
+        </div>
+        <div class="compare-cols" id="compare"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer" id="drawer" aria-labelledby="drawer-title" role="dialog" aria-modal="true" hidden>
+  <div class="drawer-head">
+    <div>
+      <p class="eyebrow" id="drawer-eyebrow" style="margin:0">Country or area</p>
+      <h2 id="drawer-title">—</h2>
+      <div class="flags" id="drawer-tags"></div>
     </div>
-  </footer>
+    <button class="icon-btn drawer-close" type="button" id="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</aside>
+
+<div class="modal" id="picker" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+  <div class="modal-box" style="width:min(38rem,100%)">
+    <div class="modal-head">
+      <div><h2 id="picker-title">Add a group</h2><p class="muted" style="margin:0;font-size:.85rem">Counts are for the current scope.</p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Close" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <input class="input picker-search" type="search" id="picker-search" placeholder="Search 120 groups: Africa, income, SIDS, OECD…" aria-label="Search groups">
+    <div class="picker-list" id="picker-list"></div>
+  </div>
+</div>
+
+<div class="modal code-modal" id="code-modal" role="dialog" aria-modal="true" aria-labelledby="code-title">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><h2 id="code-title">Get this list in your tool</h2><p class="muted" style="margin:0;font-size:.85rem" id="code-sub">Code that rebuilds this exact list from the live files, so it stays current.</p></div>
+      <button class="icon-btn" type="button" data-close aria-label="Close" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div id="code-slot"></div>
+    <p class="muted" style="font-size:.82rem;margin:1rem 0 0">Step-by-step setup for each tool is in <a href="guides.html">Use it</a>.</p>
+  </div>
+</div>
+
+<!-- shell:footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="footer-nl" href="https://nerd-factory.github.io/nerd-lab/">
+          <img src="assets/img/mark-e.svg" alt="" width="18" height="18">
+          <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+          <span>experiment</span>
+        </a>
+        <p>Country Classification Commons rebuilds the official country groupings of the UN, World Bank and OECD
+        into one open, auto-refreshing table. Built in public by <a href="https://github.com/MafiAtUN">Mafizul Islam</a>
+        for <a href="https://github.com/nerd-factory">Nerd Lab</a>.</p>
+      </div>
+      <div>
+        <h2>Use</h2>
+        <ul>
+          <li><a href="explorer.html">Explorer</a></li>
+          <li><a href="guides.html">Power BI, Tableau, Qlik</a></li>
+          <li><a href="guides.html#python">Python, R, Julia, JS</a></li>
+          <li><a href="data.html">Files and columns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="about.html#un-membership">Why Africa has 54, or 60</a></li>
+          <li><a href="about.html#sources">Sources</a></li>
+          <li><a href="about.html#cite">How to cite</a></li>
+          <li><a href="examples.html">Labs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons">Source code</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/issues">Report a problem</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/changelog">Changelog</a></li>
+          <li><a href="https://nerd-factory.github.io/nerd-lab/">Nerd Lab</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>Code MIT. Data from the UN, World Bank and OECD under their terms. Last refreshed <span data-fresh>recently</span>.</p>
+      <p>The designations used do not imply any opinion on the legal status of any country, territory or area.</p>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
 </body>
 </html>

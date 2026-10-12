@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img" aria-label="Nerd Lab mark">
+  <title>Nerd Lab</title>
+  <rect width="140" height="140" rx="20" fill="#141419"/>
+  <g fill="#C8F531">
+    <rect x="35" y="20" width="56" height="24"/>
+    <rect x="49" y="58" width="56" height="24"/>
+    <rect x="35" y="96" width="56" height="24"/>
+  </g>
+</svg>

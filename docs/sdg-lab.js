@@ -88,6 +88,7 @@ const E = {
   min: document.getElementById('lab-score-min'),
   max: document.getElementById('lab-score-max'),
   missing: document.getElementById('lab-missing'),
+  zeroOverall: document.getElementById('lab-zero-overall'),
   reset: document.getElementById('lab-reset'),
   kpis: document.getElementById('lab-kpis'),
   tableBody: document.getElementById('lab-table-body'),
@@ -130,8 +131,10 @@ function csvEscape(v) {
   return (s.includes(',') || s.includes('"') || s.includes('\n')) ? `"${s.replaceAll('"', '""')}"` : s;
 }
 
+const MAINTAINER_ATTRIBUTION = '# Maintainer: Mafizul Islam | GitHub: https://github.com/MafiAtUN | LinkedIn: https://www.linkedin.com/in/mafizul/';
 function downloadCsv(fileName, headers, rows, meta = {}) {
   const lines = [
+    MAINTAINER_ATTRIBUTION,
     `# Created by ${GENERATED_BY}`,
     `# Data source citation: ${SOURCE_CITATION}`,
     `# Generated UTC: ${new Date().toISOString()}`,
@@ -409,6 +412,7 @@ function activeFilters() {
     min: E.min.value === '' ? null : n(E.min.value),
     max: E.max.value === '' ? null : n(E.max.value),
     includeMissing: E.missing.value === 'include',
+    includeZeroOverall: E.zeroOverall.value === 'include',
   };
 }
 
@@ -419,6 +423,7 @@ function applyFilters() {
     if (f.q && !hay.includes(f.q)) return false;
     if (f.region && row.apiRegion !== f.region) return false;
     if (!passesGroupFilter(row, f.scheme, f.group)) return false;
+    if (!f.includeZeroOverall && row.Overall_Score === 0) return false;
 
     const metricVal = getMetricValue(row, f.metric);
     if (!f.includeMissing && metricVal === null) return false;
@@ -812,6 +817,8 @@ function ensureMap() {
     attribution: '&copy; OpenStreetMap contributors',
   }).addTo(S.map);
   S.mapLayer = L.layerGroup().addTo(S.map);
+  setTimeout(() => S.map && S.map.invalidateSize(), 0);
+  window.addEventListener('resize', () => S.map && S.map.invalidateSize(), { passive: true });
 }
 
 function renderGeo(f) {
@@ -1229,7 +1236,7 @@ function wireTabs() {
 
 function wireFilters() {
   const rerender = () => applyFilters();
-  [E.search, E.metric, E.group, E.publisherRegion, E.topN, E.min, E.max, E.missing]
+  [E.search, E.metric, E.group, E.publisherRegion, E.topN, E.min, E.max, E.missing, E.zeroOverall]
     .forEach(el => {
       el.addEventListener('input', rerender);
       el.addEventListener('change', rerender);
@@ -1251,6 +1258,7 @@ function wireFilters() {
     E.min.value = '';
     E.max.value = '';
     E.missing.value = 'exclude';
+    E.zeroOverall.value = 'exclude';
     applyFilters();
   });
 

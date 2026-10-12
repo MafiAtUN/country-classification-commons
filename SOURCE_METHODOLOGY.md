@@ -72,3 +72,22 @@ Report path: `data/changelog/changes_<snapshot>.md`
 ## Planned Expansion
 
 Future versions can add additional official classification systems (for example IMF WEO groups, UN regional commission rosters, and treaty-based country groupings) once stable machine-readable endpoints are validated.
+
+## UN membership and regional groups (added 2.0.0)
+
+- No UN page publishes Member States with their regional groups as data, so the list is curated in
+  `reference/un_membership.csv` from the DGACM page
+  [Regional groups of Member States](https://www.un.org/dgacm/en/content/regional-groups) and the
+  [UN Member States](https://www.un.org/en/about-us/member-states) list.
+- The pipeline stops if the file does not contain exactly 193 Member States and 2 observer States, or if any code is missing from M49.
+- `un_regional_group` is the group for electoral purposes. Türkiye is also listed in the Asia-Pacific Group in the long membership table.
+
+## OECD membership (added 2.0.0)
+
+- `reference/oecd_members.csv`, 38 countries, checked on every run. Not to be confused with ODA eligibility, which comes from the DAC list.
+
+## World Bank FCV list from FY27
+
+- From FY27 the World Bank publishes a single "Public FCV List" (`A1-FY27-FCV-List.pdf`) with ISO3 codes and no
+  conflict/fragility categories. The pipeline accepts both the old `FCSListFYnn.pdf` and the new `FYnn-FCV-List.pdf`
+  names, ignores the historical FY06–FY26 file, and uses the published ISO3 codes directly.

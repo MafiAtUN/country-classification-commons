@@ -1,0 +1,122 @@
+group_id,system,group_name,group_code,source,group_type,organization,n_members,n_un_members,system_description
+un_membership.membership.member,UN membership,UN Member States,MEMBER,un_membership,membership,United Nations,193,193,UN Member and observer States (UN Charter membership).
+un_membership.membership.observer,UN membership,UN non-member observer States,OBSERVER,un_membership,membership,United Nations,2,0,UN Member and observer States (UN Charter membership).
+un_membership.regional_group.ag,UN regional groups,African Group,AG,un_membership,regional_group,United Nations,54,54,Groups of Member States used for elections and seat allocation in UN bodies.
+un_membership.regional_group.apg,UN regional groups,Asia-Pacific Group,APG,un_membership,regional_group,United Nations,55,55,Groups of Member States used for elections and seat allocation in UN bodies.
+un_membership.regional_group.eeg,UN regional groups,Eastern European Group,EEG,un_membership,regional_group,United Nations,23,23,Groups of Member States used for elections and seat allocation in UN bodies.
+un_membership.regional_group.grulac,UN regional groups,Latin American and Caribbean Group,GRULAC,un_membership,regional_group,United Nations,33,33,Groups of Member States used for elections and seat allocation in UN bodies.
+un_membership.regional_group.weog,UN regional groups,Western European and Others Group,WEOG,un_membership,regional_group,United Nations,29,29,Groups of Member States used for elections and seat allocation in UN bodies.
+un_m49.region.2,UN M49 regions,Africa,2,un_m49,region,UN Statistics Division,60,54,"UN Statistics Division standard regions. Includes territories, not only States."
+un_m49.region.19,UN M49 regions,Americas,19,un_m49,region,UN Statistics Division,57,35,"UN Statistics Division standard regions. Includes territories, not only States."
+un_m49.region.142,UN M49 regions,Asia,142,un_m49,region,UN Statistics Division,50,47,"UN Statistics Division standard regions. Includes territories, not only States."
+un_m49.region.150,UN M49 regions,Europe,150,un_m49,region,UN Statistics Division,51,43,"UN Statistics Division standard regions. Includes territories, not only States."
+un_m49.region.9,UN M49 regions,Oceania,9,un_m49,region,UN Statistics Division,29,14,"UN Statistics Division standard regions. Includes territories, not only States."
+un_m49.sub_region.53,UN M49 sub-regions,Australia and New Zealand,53,un_m49,sub_region,UN Statistics Division,6,2,UN Statistics Division standard sub-regions.
+un_m49.sub_region.143,UN M49 sub-regions,Central Asia,143,un_m49,sub_region,UN Statistics Division,5,5,UN Statistics Division standard sub-regions.
+un_m49.sub_region.30,UN M49 sub-regions,Eastern Asia,30,un_m49,sub_region,UN Statistics Division,7,5,UN Statistics Division standard sub-regions.
+un_m49.sub_region.151,UN M49 sub-regions,Eastern Europe,151,un_m49,sub_region,UN Statistics Division,10,10,UN Statistics Division standard sub-regions.
+un_m49.sub_region.419,UN M49 sub-regions,Latin America and the Caribbean,419,un_m49,sub_region,UN Statistics Division,52,33,UN Statistics Division standard sub-regions.
+un_m49.sub_region.54,UN M49 sub-regions,Melanesia,54,un_m49,sub_region,UN Statistics Division,5,4,UN Statistics Division standard sub-regions.
+un_m49.sub_region.57,UN M49 sub-regions,Micronesia,57,un_m49,sub_region,UN Statistics Division,8,5,UN Statistics Division standard sub-regions.
+un_m49.sub_region.15,UN M49 sub-regions,Northern Africa,15,un_m49,sub_region,UN Statistics Division,7,6,UN Statistics Division standard sub-regions.
+un_m49.sub_region.21,UN M49 sub-regions,Northern America,21,un_m49,sub_region,UN Statistics Division,5,2,UN Statistics Division standard sub-regions.
+un_m49.sub_region.154,UN M49 sub-regions,Northern Europe,154,un_m49,sub_region,UN Statistics Division,16,10,UN Statistics Division standard sub-regions.
+un_m49.sub_region.61,UN M49 sub-regions,Polynesia,61,un_m49,sub_region,UN Statistics Division,10,3,UN Statistics Division standard sub-regions.
+un_m49.sub_region.35,UN M49 sub-regions,South-eastern Asia,35,un_m49,sub_region,UN Statistics Division,11,11,UN Statistics Division standard sub-regions.
+un_m49.sub_region.34,UN M49 sub-regions,Southern Asia,34,un_m49,sub_region,UN Statistics Division,9,9,UN Statistics Division standard sub-regions.
+un_m49.sub_region.39,UN M49 sub-regions,Southern Europe,39,un_m49,sub_region,UN Statistics Division,16,14,UN Statistics Division standard sub-regions.
+un_m49.sub_region.202,UN M49 sub-regions,Sub-Saharan Africa,202,un_m49,sub_region,UN Statistics Division,53,48,UN Statistics Division standard sub-regions.
+un_m49.sub_region.145,UN M49 sub-regions,Western Asia,145,un_m49,sub_region,UN Statistics Division,18,17,UN Statistics Division standard sub-regions.
+un_m49.sub_region.155,UN M49 sub-regions,Western Europe,155,un_m49,sub_region,UN Statistics Division,9,9,UN Statistics Division standard sub-regions.
+un_m49.intermediate_region.29,UN M49 intermediate regions,Caribbean,29,un_m49,intermediate_region,UN Statistics Division,28,13,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.intermediate_region.13,UN M49 intermediate regions,Central America,13,un_m49,intermediate_region,UN Statistics Division,8,8,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.intermediate_region.14,UN M49 intermediate regions,Eastern Africa,14,un_m49,intermediate_region,UN Statistics Division,22,18,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.intermediate_region.17,UN M49 intermediate regions,Middle Africa,17,un_m49,intermediate_region,UN Statistics Division,9,9,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.intermediate_region.5,UN M49 intermediate regions,South America,5,un_m49,intermediate_region,UN Statistics Division,16,12,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.intermediate_region.18,UN M49 intermediate regions,Southern Africa,18,un_m49,intermediate_region,UN Statistics Division,5,5,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.intermediate_region.11,UN M49 intermediate regions,Western Africa,11,un_m49,intermediate_region,UN Statistics Division,17,16,Finer M49 regions used in parts of Africa and the Americas.
+un_m49.special_group.lldc,UN development groups,Landlocked Developing Countries (LLDC),LLDC,un_m49,special_group,UN Statistics Division,32,32,"Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (UN-OHRLLS)."
+un_m49.special_group.ldc,UN development groups,Least Developed Countries (LDC),LDC,un_m49,special_group,UN Statistics Division,44,44,"Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (UN-OHRLLS)."
+un_m49.special_group.sids,UN development groups,Small Island Developing States (SIDS),SIDS,un_m49,special_group,UN Statistics Division,53,37,"Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (UN-OHRLLS)."
+un_sdg.region.2,UN SDG regional groupings,Africa,2,un_sdg,region,UN Statistics Division,60,54,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.19,UN SDG regional groupings,Americas,19,un_sdg,region,UN Statistics Division,57,35,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.142,UN SDG regional groupings,Asia,142,un_sdg,region,UN Statistics Division,50,47,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.53,UN SDG regional groupings,Australia and New Zealand,53,un_sdg,region,UN Statistics Division,6,2,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.29,UN SDG regional groupings,Caribbean,29,un_sdg,region,UN Statistics Division,28,13,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.135,UN SDG regional groupings,Caucasus and Central Asia,135,un_sdg,region,UN Statistics Division,8,8,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.13,UN SDG regional groupings,Central America,13,un_sdg,region,UN Statistics Division,8,8,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.143,UN SDG regional groupings,Central Asia,143,un_sdg,region,UN Statistics Division,5,5,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.62,UN SDG regional groupings,Central and Southern Asia,62,un_sdg,region,UN Statistics Division,14,14,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.514,UN SDG regional groupings,"Developed regions (Europe, Cyprus, Israel, Northern America, Japan, Australia & New Zealand)",514,un_sdg,region,UN Statistics Division,65,50,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.515,UN SDG regional groupings,Developing regions,515,un_sdg,region,UN Statistics Division,182,143,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.14,UN SDG regional groupings,Eastern Africa,14,un_sdg,region,UN Statistics Division,22,18,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.30,UN SDG regional groupings,Eastern Asia,30,un_sdg,region,UN Statistics Division,7,5,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.223,UN SDG regional groupings,Eastern Asia (excluding Japan and China),223,un_sdg,region,UN Statistics Division,3,3,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.518,UN SDG regional groupings,Eastern Asia (excluding Japan),518,un_sdg,region,UN Statistics Division,6,4,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.151,UN SDG regional groupings,Eastern Europe,151,un_sdg,region,UN Statistics Division,10,10,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.753,UN SDG regional groupings,Eastern and South-Eastern Asia,753,un_sdg,region,UN Statistics Division,18,16,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.150,UN SDG regional groupings,Europe,150,un_sdg,region,UN Statistics Division,51,43,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.513,UN SDG regional groupings,Europe and Northern America,513,un_sdg,region,UN Statistics Division,56,45,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.927,UN SDG regional groupings,LDC Africa,927,un_sdg,region,UN Statistics Division,32,32,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.928,UN SDG regional groupings,LDC Americas,928,un_sdg,region,UN Statistics Division,1,1,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.929,UN SDG regional groupings,LDC Asia,929,un_sdg,region,UN Statistics Division,8,8,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.930,UN SDG regional groupings,LDC Oceania,930,un_sdg,region,UN Statistics Division,3,3,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.923,UN SDG regional groupings,LLDC Africa,923,un_sdg,region,UN Statistics Division,16,16,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.924,UN SDG regional groupings,LLDC Americas,924,un_sdg,region,UN Statistics Division,2,2,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.925,UN SDG regional groupings,LLDC Asia,925,un_sdg,region,UN Statistics Division,12,12,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.926,UN SDG regional groupings,LLDC Europe,926,un_sdg,region,UN Statistics Division,2,2,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.432,UN SDG regional groupings,Land Locked Developing Countries (LLDC),432,un_sdg,region,UN Statistics Division,32,32,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.419,UN SDG regional groupings,Latin America and the Caribbean,419,un_sdg,region,UN Statistics Division,52,33,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.199,UN SDG regional groupings,Least Developed Countries (LDC),199,un_sdg,region,UN Statistics Division,44,44,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.54,UN SDG regional groupings,Melanesia,54,un_sdg,region,UN Statistics Division,5,4,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.57,UN SDG regional groupings,Micronesia,57,un_sdg,region,UN Statistics Division,8,5,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.17,UN SDG regional groupings,Middle Africa,17,un_sdg,region,UN Statistics Division,9,9,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.15,UN SDG regional groupings,Northern Africa,15,un_sdg,region,UN Statistics Division,7,6,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.746,UN SDG regional groupings,Northern Africa (exc. Sudan),746,un_sdg,region,UN Statistics Division,6,5,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.747,UN SDG regional groupings,Northern Africa and Western Asia,747,un_sdg,region,UN Statistics Division,25,23,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.21,UN SDG regional groupings,Northern America,21,un_sdg,region,UN Statistics Division,5,2,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.154,UN SDG regional groupings,Northern Europe,154,un_sdg,region,UN Statistics Division,16,10,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.9,UN SDG regional groupings,Oceania,9,un_sdg,region,UN Statistics Division,29,14,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.543,UN SDG regional groupings,Oceania (exc. Australia and New Zealand),543,un_sdg,region,UN Statistics Division,23,12,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.61,UN SDG regional groupings,Polynesia,61,un_sdg,region,UN Statistics Division,10,3,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.931,UN SDG regional groupings,SIDS Africa,931,un_sdg,region,UN Statistics Division,6,6,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.932,UN SDG regional groupings,SIDS Americas,932,un_sdg,region,UN Statistics Division,25,16,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.933,UN SDG regional groupings,SIDS Asia,933,un_sdg,region,UN Statistics Division,3,3,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.934,UN SDG regional groupings,SIDS Oceania,934,un_sdg,region,UN Statistics Division,19,12,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.722,UN SDG regional groupings,Small Island Developing States (SIDS),722,un_sdg,region,UN Statistics Division,53,37,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.5,UN SDG regional groupings,South America,5,un_sdg,region,UN Statistics Division,16,12,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.35,UN SDG regional groupings,South-Eastern Asia,35,un_sdg,region,UN Statistics Division,11,11,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.18,UN SDG regional groupings,Southern Africa,18,un_sdg,region,UN Statistics Division,5,5,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.34,UN SDG regional groupings,Southern Asia,34,un_sdg,region,UN Statistics Division,9,9,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.39,UN SDG regional groupings,Southern Europe,39,un_sdg,region,UN Statistics Division,16,14,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.202,UN SDG regional groupings,Sub-Saharan Africa,202,un_sdg,region,UN Statistics Division,53,48,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.738,UN SDG regional groupings,Sub-Saharan Africa (inc. Sudan),738,un_sdg,region,UN Statistics Division,54,49,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.11,UN SDG regional groupings,Western Africa,11,un_sdg,region,UN Statistics Division,17,16,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.145,UN SDG regional groupings,Western Asia,145,un_sdg,region,UN Statistics Division,18,17,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.485,UN SDG regional groupings,"Western Asia (exc. Armenia, Azerbaijan, Cyprus, Israel and Georgia)",485,un_sdg,region,UN Statistics Division,13,12,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.155,UN SDG regional groupings,Western Europe,155,un_sdg,region,UN Statistics Division,9,9,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.world-by-mdg-regions,UN SDG regional groupings,World (total) by MDG regions,1,un_sdg,region,UN Statistics Division,247,193,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.world-by-sdg-regions,UN SDG regional groupings,World (total) by SDG regions,1,un_sdg,region,UN Statistics Division,247,193,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+un_sdg.region.world-by-continental-regions,UN SDG regional groupings,World (total) by continental regions,1,un_sdg,region,UN Statistics Division,248,193,Groupings used by the UN SDG Global Database and the SDG Progress Report.
+world_bank.region.eas,World Bank regions,East Asia & Pacific,EAS,world_bank,region,World Bank,37,30,World Bank analytical regions.
+world_bank.region.ecs,World Bank regions,Europe & Central Asia,ECS,world_bank,region,World Bank,56,52,World Bank analytical regions.
+world_bank.region.lcn,World Bank regions,Latin America & Caribbean,LCN,world_bank,region,World Bank,42,33,World Bank analytical regions.
+world_bank.region.mea,World Bank regions,"Middle East, North Africa, Afghanistan & Pakistan",MEA,world_bank,region,World Bank,23,22,World Bank analytical regions.
+world_bank.region.nac,World Bank regions,North America,NAC,world_bank,region,World Bank,3,2,World Bank analytical regions.
+world_bank.region.sas,World Bank regions,South Asia,SAS,world_bank,region,World Bank,6,6,World Bank analytical regions.
+world_bank.region.ssf,World Bank regions,Sub-Saharan Africa,SSF,world_bank,region,World Bank,48,48,World Bank analytical regions.
+world_bank.income_level.hic,World Bank income groups,High income,HIC,world_bank,income_level,World Bank,85,64,"World Bank income classification by GNI per capita (Atlas method), revised each 1 July."
+world_bank.income_level.lic,World Bank income groups,Low income,LIC,world_bank,income_level,World Bank,25,25,"World Bank income classification by GNI per capita (Atlas method), revised each 1 July."
+world_bank.income_level.lmc,World Bank income groups,Lower middle income,LMC,world_bank,income_level,World Bank,47,46,"World Bank income classification by GNI per capita (Atlas method), revised each 1 July."
+world_bank.income_level.umc,World Bank income groups,Upper middle income,UMC,world_bank,income_level,World Bank,58,58,"World Bank income classification by GNI per capita (Atlas method), revised each 1 July."
+world_bank.lending_type.idb,World Bank lending categories,Blend financing (IBRD and IDA eligible),IDB,world_bank,lending_type,World Bank,19,19,"IDA, IBRD and Blend eligibility."
+world_bank.lending_type.ibd,World Bank lending categories,International Bank for Reconstruction and Development (IBRD),IBD,world_bank,lending_type,World Bank,67,67,"IDA, IBRD and Blend eligibility."
+world_bank.lending_type.idx,World Bank lending categories,International Development Association (IDA),IDX,world_bank,lending_type,World Bank,58,58,"IDA, IBRD and Blend eligibility."
+world_bank.lending_type.lnx,World Bank lending categories,World Bank lending type: Not classified,LNX,world_bank,lending_type,World Bank,71,49,"IDA, IBRD and Blend eligibility."
+world_bank_fcs.fcs_status.fcs,World Bank FCS,Fragile and Conflict-affected Situations,FCS,world_bank_fcs,fcs_status,World Bank,24,23,"Fragile and Conflict-affected Situations, current fiscal year list."
+oecd.membership.oecd,OECD membership,OECD Member countries,OECD,oecd,membership,OECD,38,38,Member countries of the OECD.
+oecd_dac.oda_eligibility.oda,OECD DAC ODA recipients,ODA-eligible recipient,ODA,oecd_dac,oda_eligibility,OECD,140,134,Countries and territories eligible to receive official development assistance.
+oecd_dac.oda_recipient_group.10016,OECD DAC ODA recipients,LDCs,10016,oecd_dac,oda_recipient_group,OECD,45,45,DAC List of ODA Recipients by group.
+oecd_dac.oda_recipient_group.10018,OECD DAC ODA recipients,LMICs,10018,oecd_dac,oda_recipient_group,OECD,35,34,DAC List of ODA Recipients by group.
+oecd_dac.oda_recipient_group.10017,OECD DAC ODA recipients,Other LICs,10017,oecd_dac,oda_recipient_group,OECD,2,2,DAC List of ODA Recipients by group.
+oecd_dac.oda_recipient_group.10019,OECD DAC ODA recipients,UMICs,10019,oecd_dac,oda_recipient_group,OECD,58,53,DAC List of ODA Recipients by group.

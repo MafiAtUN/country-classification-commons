@@ -10,28 +10,62 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/sdg-lab.html">
   <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="./styles.css?v=20260305h">
+  <!-- shell:head -->
+<meta name="theme-color" content="#141419">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Jost:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script>document.documentElement.setAttribute('data-theme','light');</script>
+<link rel="stylesheet" href="assets/css/shell.css?v=20261012">
+<script src="assets/js/core.js?v=20261012" defer></script>
+<!-- /shell:head -->
+  <link rel="stylesheet" href="./styles.css?v=20261012">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="./sdg-lab.js?v=20260305e" defer></script>
 </head>
 <body>
-  <header class="hero hero-lab">
+  <!-- shell:header -->
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="nl-bar">
+  <div class="wrap">
+    <a class="nl-presents" href="https://nerd-factory.github.io/nerd-lab/" aria-label="Nerd Lab presents">
+      <img class="nl-mark" src="assets/img/mark-e.svg" alt="" width="16" height="16">
+      <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+      <span class="nl-verb">presents</span>
+    </a>
+    <span class="nl-bar-note">An open experiment. <b>Unnecessarily clever.</b> Occasionally useful.</span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#141419"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><ellipse cx="16" cy="16" rx="4.2" ry="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><path d="M6.5 16h19" stroke="#C8F531" stroke-width="2"/></svg>
+      <span class="brand-name">Country Classification Commons<small>Every official country grouping</small></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="explorer.html">Explorer</a>
+      <a href="guides.html">Use it</a>
+      <a href="data.html">Data</a>
+      <a href="about.html">Method</a>
+      <a href="examples.html" aria-current="page">Labs</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" aria-label="Search countries and groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="st-label">Search countries, groups</span><span class="kbd">⌘K</span></button>
+      <a class="icon-btn" href="https://github.com/MafiAtUN/country-classification-commons" aria-label="Source on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<!-- /shell:header -->
+  <div class="lab-head"><div class="wrap">
+    <p class="lab-eyebrow"><a href="examples.html">Labs</a> / SDG Analytics Lab</p>
     <h1>SDG Analytics Lab</h1>
     <p>Interactive SDG Index analysis with multi-scheme country classification filters, rich map exploration, and deep regional comparisons.</p>
-    <nav class="nav">
-      <a href="./index.html">Home</a>
-      <a href="./explorer.html">Explorer</a>
-      <a href="./examples.html" aria-current="page">Example Uses</a>
-      <a href="./downloads.html">Downloads &amp; API Links</a>
-      <a href="./about.html">About &amp; Methodology</a>
-    </nav>
-  </header>
+  </div></div>
 
   <main class="lab-main">
     <div id="lab-error" class="card error-card hidden" role="alert"></div>
@@ -354,20 +388,54 @@
       </article>
     </section>
   </main>
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <p class="site-footer-copy">&copy; 2026 <strong>Mafizul Islam</strong> &mdash; Country Classification Commons &mdash; MIT License</p>
-      <nav class="site-footer-links">
-        <a href="https://github.com/MafiAtUN" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
+  <!-- shell:footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="footer-nl" href="https://nerd-factory.github.io/nerd-lab/">
+          <img src="assets/img/mark-e.svg" alt="" width="18" height="18">
+          <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+          <span>experiment</span>
         </a>
-        <a href="https://www.linkedin.com/in/mafizul/" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </nav>
+        <p>Country Classification Commons rebuilds the official country groupings of the UN, World Bank and OECD
+        into one open, auto-refreshing table. Built in public by <a href="https://github.com/MafiAtUN">Mafizul Islam</a>
+        for <a href="https://github.com/nerd-factory">Nerd Lab</a>.</p>
+      </div>
+      <div>
+        <h2>Use</h2>
+        <ul>
+          <li><a href="explorer.html">Explorer</a></li>
+          <li><a href="guides.html">Power BI, Tableau, Qlik</a></li>
+          <li><a href="guides.html#python">Python, R, Julia, JS</a></li>
+          <li><a href="data.html">Files and columns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="about.html#un-membership">Why Africa has 54, or 60</a></li>
+          <li><a href="about.html#sources">Sources</a></li>
+          <li><a href="about.html#cite">How to cite</a></li>
+          <li><a href="examples.html">Labs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons">Source code</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/issues">Report a problem</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/changelog">Changelog</a></li>
+          <li><a href="https://nerd-factory.github.io/nerd-lab/">Nerd Lab</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+    <div class="footer-base">
+      <p>Code MIT. Data from the UN, World Bank and OECD under their terms. Last refreshed <span data-fresh>recently</span>.</p>
+      <p>The designations used do not imply any opinion on the legal status of any country, territory or area.</p>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
 </body>
 </html>

@@ -1,87 +1,150 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Example Uses of Classifications | Country Classification Commons</title>
-  <meta name="description" content="Practical examples of using country classifications in research, policy analysis, and data visualisation.">
-  <meta property="og:title" content="Example Uses | Country Classification Commons">
-  <meta property="og:description" content="Practical examples of using country classifications in research, policy analysis, and data visualisation.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/examples.html">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260305h">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labs — Country Classification Commons</title>
+<meta name="description" content="Worked examples that put country classifications to use: SDG Index results, government AI readiness and ease of doing business, compared across UN, World Bank and OECD groupings.">
+<meta property="og:title" content="Labs — Country Classification Commons">
+<meta property="og:url" content="https://mafiatun.github.io/country-classification-commons/examples.html">
+<!-- shell:head -->
+<meta name="theme-color" content="#141419">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Jost:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('cc-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/css/shell.css?v=20261012">
+<link rel="stylesheet" href="assets/css/cc.css?v=20261012">
+<script src="assets/js/core.js?v=20261012" defer></script>
+<!-- /shell:head -->
+<style>
+  .labs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .lab { display: flex; flex-direction: column; gap: .5rem; min-height: 15rem; }
+  .lab .src { font: 500 .72rem var(--font-mono); color: var(--muted); letter-spacing: .03em; }
+  .lab p { color: var(--text-2); font-size: .94rem; flex: 1; }
+  @media (max-width: 900px) { .labs { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-  <header class="hero hero-lab">
-    <h1>Example Uses of Classifications</h1>
-    <p>Applied analysis modules showing how country classifications change interpretation, targeting, and policy insights.</p>
-    <nav class="nav">
-      <a href="./index.html">Home</a>
-      <a href="./explorer.html">Explorer</a>
-      <a href="./examples.html" aria-current="page">Example Uses</a>
-      <a href="./downloads.html">Downloads &amp; API Links</a>
-      <a href="./about.html">About &amp; Methodology</a>
+<!-- shell:header -->
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="nl-bar">
+  <div class="wrap">
+    <a class="nl-presents" href="https://nerd-factory.github.io/nerd-lab/" aria-label="Nerd Lab presents">
+      <img class="nl-mark" src="assets/img/mark-e.svg" alt="" width="16" height="16">
+      <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+      <span class="nl-verb">presents</span>
+    </a>
+    <span class="nl-bar-note">An open experiment. <b>Unnecessarily clever.</b> Occasionally useful.</span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#141419"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><ellipse cx="16" cy="16" rx="4.2" ry="9.5" fill="none" stroke="#C8F531" stroke-width="2"/><path d="M6.5 16h19" stroke="#C8F531" stroke-width="2"/></svg>
+      <span class="brand-name">Country Classification Commons<small>Every official country grouping</small></span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="explorer.html">Explorer</a>
+      <a href="guides.html">Use it</a>
+      <a href="data.html">Data</a>
+      <a href="about.html">Method</a>
+      <a href="examples.html" aria-current="page">Labs</a>
     </nav>
-  </header>
-
-  <main>
-    <section class="card">
-      <h2>Choose an analysis module</h2>
-      <p>
-        Each module uses the same country-classification backbone but different thematic datasets.
-        Compare results by UN regions, World Bank classes, SDG groups, fragility tags, and more.
-      </p>
-      <div class="dataset-grid">
-        <article class="dataset-card">
-          <h3>SDG Analytics Lab</h3>
-          <p style="font-size:.86rem;line-height:1.5">
-            Multi-tab SDG Index exploration with dynamic filtering, map analysis, goal profiles, and chart/data export.
-          </p>
-          <div class="dl-links">
-            <a class="btn" href="./sdg-lab.html">Open SDG Module</a>
-          </div>
-        </article>
-
-        <article class="dataset-card">
-          <h3>Government AI Readiness Analysis</h3>
-          <p style="font-size:.86rem;line-height:1.5">
-            Oxford Insights 2025 AI readiness results linked to classification schemes for regional and peer-group comparisons.
-          </p>
-          <div class="dl-links">
-            <a class="btn" href="./ai-readiness.html">Open AI Readiness Module</a>
-          </div>
-        </article>
-
-        <article class="dataset-card">
-          <h3>Ease of Doing Business Analysis</h3>
-          <p style="font-size:.86rem;line-height:1.5">
-            World Bank Doing Business rank/score insights analyzed using the full country-classification framework.
-          </p>
-          <div class="dl-links">
-            <a class="btn" href="./ease-business.html">Open Ease of Doing Business Module</a>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <p class="site-footer-copy">&copy; 2026 <strong>Mafizul Islam</strong> &mdash; Country Classification Commons &mdash; MIT License</p>
-      <nav class="site-footer-links">
-        <a href="https://github.com/MafiAtUN" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/mafizul/" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" aria-label="Search countries and groups"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="st-label">Search countries, groups</span><span class="kbd">⌘K</span></button>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a class="icon-btn" href="https://github.com/MafiAtUN/country-classification-commons" aria-label="Source on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
-  </footer>
+  </div>
+</header>
+<!-- /shell:header -->
+
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Worked examples</p>
+      <h1>Labs</h1>
+      <p class="lede">The same indicator tells a different story depending on how you group countries. Each lab joins a public dataset
+      to this classification backbone so you can watch averages shift between UN regions, World Bank income groups, fragility status and more.</p>
+    </div>
+  </header>
+  <div class="wrap" style="padding-top:2.5rem">
+    <div class="labs">
+      <a class="card lab" href="sdg-lab.html">
+        <span class="src">SDSN · SUSTAINABLE DEVELOPMENT REPORT 2025</span>
+        <h2 style="font-size:1.35rem;margin:0">SDG Analytics Lab</h2>
+        <p>SDG Index scores and goal dashboards, filtered and averaged by any classification, with maps and exportable charts.</p>
+        <span class="card-go">Open lab →</span>
+      </a>
+      <a class="card lab" href="ai-readiness.html">
+        <span class="src">OXFORD INSIGHTS · GOVERNMENT AI READINESS 2025</span>
+        <h2 style="font-size:1.35rem;margin:0">Government AI Readiness</h2>
+        <p>How ready governments are to use AI, compared across regions and peer groups such as LDCs, SIDS and income groups.</p>
+        <span class="card-go">Open lab →</span>
+      </a>
+      <a class="card lab" href="ease-business.html">
+        <span class="src">WORLD BANK · DOING BUSINESS (ARCHIVED 2020)</span>
+        <h2 style="font-size:1.35rem;margin:0">Ease of Doing Business</h2>
+        <p>The last Doing Business ranks and scores, read through the classification framework. The series was discontinued in 2021; treat it as history.</p>
+        <span class="card-go">Open lab →</span>
+      </a>
+    </div>
+    <div class="callout" style="margin-top:2rem"><p><strong>Want a map of any grouping?</strong> The <a href="explorer.html?tab=map">Explorer's map view</a> draws whatever list you build.
+    Building something on this data? <a href="https://github.com/MafiAtUN/country-classification-commons/issues">Tell us</a> and it can become a lab.</p></div>
+  </div>
+</main>
+
+<!-- shell:footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="footer-nl" href="https://nerd-factory.github.io/nerd-lab/">
+          <img src="assets/img/mark-e.svg" alt="" width="18" height="18">
+          <svg class="nl-word" viewBox="32 30 638 116" role="img" aria-label="Nerd Lab"><g fill="none" stroke="currentColor" stroke-width="24"><path transform="translate(38,38)" d="M12 100 L12 0 L64 100 L64 0"/><g transform="translate(128,38)" fill="currentColor" stroke="none"><rect x="6" y="0" width="56" height="24"/><rect x="20" y="38" width="56" height="24"/><rect x="6" y="76" width="56" height="24"/></g><path transform="translate(210,38)" d="M12 100 L12 0 M12 12 H40 Q64 12 64 33 Q64 54 40 54 H12 M40 54 L66 100"/><path transform="translate(302,38)" d="M12 100 L12 0 M12 12 H38 Q66 12 66 50 Q66 88 38 88 H12"/><path transform="translate(422,38)" d="M12 0 L12 88 L56 88"/><path transform="translate(496,38)" d="M6 100 L38 0 L70 100 M22 64 H54"/><path transform="translate(586,38)" d="M12 100 L12 0 M12 12 H36 Q58 12 58 30 Q58 48 36 48 H12 M12 48 H38 Q64 48 64 68 Q64 88 38 88 H12"/></g></svg>
+          <span>experiment</span>
+        </a>
+        <p>Country Classification Commons rebuilds the official country groupings of the UN, World Bank and OECD
+        into one open, auto-refreshing table. Built in public by <a href="https://github.com/MafiAtUN">Mafizul Islam</a>
+        for <a href="https://github.com/nerd-factory">Nerd Lab</a>.</p>
+      </div>
+      <div>
+        <h2>Use</h2>
+        <ul>
+          <li><a href="explorer.html">Explorer</a></li>
+          <li><a href="guides.html">Power BI, Tableau, Qlik</a></li>
+          <li><a href="guides.html#python">Python, R, Julia, JS</a></li>
+          <li><a href="data.html">Files and columns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="about.html#un-membership">Why Africa has 54, or 60</a></li>
+          <li><a href="about.html#sources">Sources</a></li>
+          <li><a href="about.html#cite">How to cite</a></li>
+          <li><a href="examples.html">Labs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons">Source code</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/issues">Report a problem</a></li>
+          <li><a href="https://github.com/MafiAtUN/country-classification-commons/tree/main/data/changelog">Changelog</a></li>
+          <li><a href="https://nerd-factory.github.io/nerd-lab/">Nerd Lab</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>Code MIT. Data from the UN, World Bank and OECD under their terms. Last refreshed <span data-fresh>recently</span>.</p>
+      <p>The designations used do not imply any opinion on the legal status of any country, territory or area.</p>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
 </body>
 </html>

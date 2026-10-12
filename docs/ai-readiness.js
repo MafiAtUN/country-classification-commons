@@ -104,8 +104,10 @@ async function loadJson(file) {
 
 function setChartExport(id, headers, rows, baseName, ctx) { S.chartExports[id] = { headers, rows, baseName, ctx }; }
 function csvEscape(v) { const s = v == null ? '' : String(v); return (s.includes(',') || s.includes('"') || s.includes('\n')) ? `"${s.replaceAll('"', '""')}"` : s; }
+const MAINTAINER_ATTRIBUTION = '# Maintainer: Mafizul Islam | GitHub: https://github.com/MafiAtUN | LinkedIn: https://www.linkedin.com/in/mafizul/';
 function downloadCsv(fileName, headers, rows, ctx) {
   const lines = [
+    MAINTAINER_ATTRIBUTION,
     `# Created by ${GENERATED_BY}`,
     `# Data source citation: ${SOURCE_CITATION}`,
     `# Generated UTC: ${new Date().toISOString()}`,
@@ -275,6 +277,8 @@ function ensureMap() {
   S.map = L.map('ai-map', { worldCopyJump: true }).setView([18, 10], 2);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 6, attribution: '&copy; OpenStreetMap contributors' }).addTo(S.map);
   S.mapLayer = L.layerGroup().addTo(S.map);
+  setTimeout(() => S.map && S.map.invalidateSize(), 0);
+  window.addEventListener('resize', () => S.map && S.map.invalidateSize(), { passive: true });
 }
 
 function color(v) {

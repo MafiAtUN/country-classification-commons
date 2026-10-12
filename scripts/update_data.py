@@ -5,6 +5,10 @@ Outputs:
 - data/latest/countries_master.csv
 - data/latest/country_group_membership.csv
 - data/latest/country_classification_library.csv
+- data/latest/countries.csv (flagship: one row per country/area, analysis-ready)
+- data/latest/groups.csv (catalogue: one row per group, with member counts)
+- data/latest/aggregates.csv (long format, OSAA-style)
+- data/latest/world_reference.csv (wide format, one row per country, UNStats-style)
 - data/latest/sources.csv
 - data/latest/run_manifest.json
 - data/latest/unmapped_external_names.csv
@@ -39,6 +43,27 @@ LATEST_DIR = DATA_DIR / "latest"
 HISTORY_DIR = DATA_DIR / "history"
 CHANGELOG_DIR = DATA_DIR / "changelog"
 DOCS_DATA_DIR = ROOT / "docs" / "data"
+
+REFERENCE_DIR = ROOT / "reference"
+
+# CSV outputs start with the header row: no comment or attribution lines. Power BI, Tableau,
+# Qlik, Excel, DuckDB and every CSV reader then load them with default settings.
+# Attribution lives in README.md, CITATION.cff and sources.csv.
+
+EXPECTED_UN_MEMBER_STATES = 193
+EXPECTED_UN_OBSERVER_STATES = 2
+EXPECTED_OECD_MEMBERS = 38
+
+UN_REGIONAL_GROUP_NAMES = {
+    "AG": "African Group",
+    "APG": "Asia-Pacific Group",
+    "EEG": "Eastern European Group",
+    "GRULAC": "Latin American and Caribbean Group",
+    "WEOG": "Western European and Others Group",
+}
+
+# The eight SDG regions used in the Secretary-General's SDG Progress Report (UN SDG GeoArea codes).
+SDG_REGION_CODES = ["202", "747", "62", "753", "419", "53", "543", "513"]
 
 UN_M49_OVERVIEW_URL = "https://unstats.un.org/unsd/methodology/m49/overview/"
 UN_SDG_GEOAREA_LIST_URL = "https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List"
@@ -85,6 +110,7 @@ EXTERNAL_NAME_ALIASES = {
     "tanzania": "TZA",
     "kosovo": "XKX",
     "wallis and futuna": "WLF",
+    "nauru": "NRU",  # UN M49 English short name is now "Naoero"
 }
 
 
@@ -407,6 +433,15 @@ def _parse_fcs_text_layout(text: str, fy_label: str) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     lines = text.splitlines()
 
+    # FY27+ "Public FCV List": one table of Country | Region | ISO3c, no category split.
+    if any("ISO3C" in line.upper() for line in lines):
+        for line in lines:
+            m = re.match(r"^\s*(\S.*?)\s{2,}.*?\s{2,}([A-Z]{3})\s*$", line)
+            if m and m.group(2) != "ISO":
+                rows.append({"fcs_country_name": m.group(1).strip(), "iso3": m.group(2),
+                             "wb_fcs_category": "", "wb_fcs_fy": fy_label})
+        return rows
+
     # Find the header line that contains both category names; use it to
     # determine the character-position boundary between the two columns.
     col_split = None
@@ -474,12 +509,13 @@ def fetch_world_bank_fcs_latest(session: requests.Session) -> tuple[pd.DataFrame
     res.raise_for_status()
     soup = BeautifulSoup(res.text, "lxml")
 
+    # File names seen so far: FCSListFY25.pdf (to FY26), A1-FY27-FCV-List.pdf (from FY27).
+    # The historical file (C2-FCSList-FY06toFY26.pdf) must not match.
+    patterns = [r"FCSListFY(\d{2})\.pdf$", r"FY(\d{2})-FC[SV]-List\.pdf$"]
     candidates: list[tuple[int, str]] = []
     for a in soup.select("a[href]"):
         href = a.get("href", "")
-        if "FCSListFY" not in href or not href.lower().endswith(".pdf"):
-            continue
-        m = re.search(r"FCSListFY(\d{2})\.pdf", href, re.IGNORECASE)
+        m = next((m for pat in patterns if (m := re.search(pat, href, re.IGNORECASE))), None)
         if not m:
             continue
         fy = int(m.group(1))
@@ -568,7 +604,13 @@ def map_external_rows_to_iso3(
     name_index: dict[str, set[str]],
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     mapped = df.copy()
-    mapped["iso3"] = mapped[name_col].astype(str).map(lambda x: resolve_iso3_from_name(x, name_index))
+    by_name = mapped[name_col].astype(str).map(lambda x: resolve_iso3_from_name(x, name_index))
+    known = set().union(*name_index.values()) if name_index else set()
+    if "iso3" in mapped.columns:
+        # Source publishes ISO3: trust it when it is a code we know, fall back to the name otherwise.
+        mapped["iso3"] = mapped["iso3"].where(mapped["iso3"].isin(known), by_name)
+    else:
+        mapped["iso3"] = by_name
 
     unmapped = mapped[mapped["iso3"] == ""].copy()
     if not unmapped.empty:
@@ -690,6 +732,16 @@ def build_group_memberships(
 
 def to_records_csv(path: Path, df: pd.DataFrame) -> None:
     df.to_csv(path, index=False, quoting=csv.QUOTE_MINIMAL)
+
+
+def read_previous_csv(path: Path) -> pd.DataFrame:
+    """Read an earlier output, skipping the attribution comment line older snapshots started with."""
+    return pd.read_csv(path, dtype=str, keep_default_na=False, comment=None, skiprows=_comment_rows(path)).fillna("")
+
+
+def _comment_rows(path: Path) -> int:
+    with path.open(encoding="utf-8") as f:
+        return 1 if f.readline().startswith("#") else 0
 
 
 def sha256_file(path: Path) -> str:
@@ -833,9 +885,417 @@ def write_aggregates(countries: "pd.DataFrame", memberships: "pd.DataFrame", out
     agg.to_csv(out_path, index=False, encoding="utf-8")
 
 
+def write_world_reference(countries: "pd.DataFrame", out_path: Path) -> None:
+    """Write wide-format one-row-per-country CSV matching UNStats/OSAA World reference style.
+
+    Designed for dashboards (Power BI, Tableau, Python): one row per country with
+    geography, codes, and classification columns. Column names aligned with
+    World_reference_UNStats.csv for familiarity.
+    """
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    df = countries.copy()
+
+    def bool_to_label(series: "pd.Series", label: str) -> "pd.Series":
+        return series.map(lambda v: label if (v is True or str(v).strip().lower() == "true") else "")
+
+    # Income: one column per level (value = label or empty)
+    income = df["wb_income_name"].fillna("").astype(str).str.strip()
+    df["High income"] = income.where(income == "High income", "")
+    df["Low income"] = income.where(income == "Low income", "")
+    df["Lower middle income"] = income.where(income == "Lower middle income", "")
+    df["Upper middle income"] = income.where(income == "Upper middle income", "")
+
+    # OECD member: from the OECD membership list (not ODA eligibility, which is roughly its opposite)
+    df["OECD member"] = bool_to_label(df["is_oecd_member"], "OECD member")
+    df["UN Member State"] = bool_to_label(df["is_un_member"], "UN Member State")
+
+    # FCS
+    fcs = df.get("wb_fcs_status", pd.Series(dtype=object))
+    if fcs.isna().all():
+        fcs = pd.Series(False, index=df.index)
+    df["Fragile and Conflict-Affected Situations"] = bool_to_label(fcs, "Fragile and Conflict-Affected Situations")
+
+    # LDC / LLDC / SIDS: label or empty (match UNStats style)
+    df["Least Developed Countries (LDC)"] = bool_to_label(df["is_ldc"], "Least Developed Countries (LDC)")
+    df["Land Locked Developing Countries (LLDC)"] = bool_to_label(df["is_lldc"], "Land Locked Developing Countries (LLDC)")
+    df["Small Island Developing States (SIDS)"] = bool_to_label(df["is_sids"], "Small Island Developing States (SIDS)")
+
+    # Column order matching World_reference_UNStats spirit; we leave Arab states, HIPC, Oil exporting, etc. empty (not in our sources)
+    cols = [
+        "global_code", "global_name_en",
+        "region_code", "region_name_en",
+        "sub_region_code", "sub_region_name_en",
+        "intermediate_region_code", "intermediate_region_name_en",
+        "country_name_en", "m49", "iso2", "iso3",
+        "Least Developed Countries (LDC)", "Land Locked Developing Countries (LLDC)", "Small Island Developing States (SIDS)",
+        "High income", "Low income", "Lower middle income", "Upper middle income",
+        "OECD member", "Fragile and Conflict-Affected Situations", "UN Member State",
+    ]
+    rename = {
+        "global_code": "Global Code",
+        "global_name_en": "Global Name",
+        "region_code": "Region Code",
+        "region_name_en": "Region Name",
+        "sub_region_code": "Sub-region Code",
+        "sub_region_name_en": "Sub-region Name",
+        "intermediate_region_code": "Intermediate Region Code",
+        "intermediate_region_name_en": "Intermediate Region Name",
+        "country_name_en": "Country or Area",
+        "m49": "m49",
+        "iso2": "iso2",
+        "iso3": "iso3",
+    }
+    out = df[cols].copy()
+    out = out.rename(columns=rename)
+    out = out.sort_values("Country or Area").reset_index(drop=True)
+    out.to_csv(out_path, index=False, encoding="utf-8")
+
+
+_DROPDOWN_GROUP_SYSTEMS = [
+    {"system_id": "sdg_region", "system_label": "SDG",        "source": "un_sdg",       "group_type": "region"},
+    {"system_id": "wb_region",  "system_label": "World Bank", "source": "world_bank",   "group_type": "region"},
+    {"system_id": "wb_income",  "system_label": "World Bank", "source": "world_bank",   "group_type": "income_level"},
+    {"system_id": "un_region",  "system_label": "UN",         "source": "un_m49",       "group_type": "region"},
+    {"system_id": "un_sub_region", "system_label": "UN",      "source": "un_m49",       "group_type": "sub_region"},
+    {"system_id": "un_special", "system_label": "UN",         "source": "un_m49",       "group_type": "special_group"},
+    {"system_id": "oecd_dac",   "system_label": "OECD DAC",   "source": "oecd_dac",     "group_type": "oda_recipient_group"},
+    {"system_id": "fcs_category", "system_label": "World Bank", "source": "world_bank_fcs", "group_type": "fcs_category"},
+]
+
+
+def _dropdown_system_for_row(source: str, group_type: str) -> dict[str, str] | None:
+    for cfg in _DROPDOWN_GROUP_SYSTEMS:
+        if cfg["source"] == source and cfg["group_type"] == group_type:
+            return cfg
+    return None
+
+
+def _describe_dropdown_group(system_id: str, system_label: str, group_name: str) -> str:
+    name = as_clean_str(group_name)
+    if not name:
+        return ""
+    lower = name.lower()
+
+    if system_id == "sdg_region":
+        if "africa" in lower:
+            return f"UN SDG regional reporting group: {name}."
+        return f"UN SDG geographic region: {name}."
+    if system_id == "wb_region":
+        if "africa" in lower:
+            return f"World Bank regional grouping for Africa: {name}."
+        return f"World Bank operational region: {name}."
+    if system_id == "wb_income":
+        return f"World Bank income classification: {name}."
+    if system_id in {"un_region", "un_sub_region"}:
+        kind = "region" if system_id == "un_region" else "sub-region"
+        return f"UN M49 {kind}: {name}."
+    if system_id == "un_special":
+        return f"UN special country group: {name}."
+    if system_id == "oecd_dac":
+        return f"OECD DAC ODA recipient group: {name}."
+    if system_id == "fcs_category":
+        return f"World Bank FCS category: {name}."
+    if system_id == "africa_custom":
+        if name == "Africa - All":
+            return "Custom composite group covering all African countries across UN M49 African regions."
+        return f"Custom aggregate group: {name}."
+    return f"{system_label} group: {name}."
+
+
+def write_dropdown_master(
+    countries: "pd.DataFrame",
+    memberships: "pd.DataFrame",
+    out_path: Path,
+) -> "pd.DataFrame":
+    """Write long, thin dropdown-ready sheet: one row per country–group pair."""
+    base = memberships.copy()
+    base = base.merge(
+        countries[["iso3", "iso2", "m49", "country_name_en", "region_name_en"]],
+        on="iso3",
+        how="left",
+    )
+
+    rows: list[dict[str, str]] = []
+
+    for row in base.to_dict(orient="records"):
+        cfg = _dropdown_system_for_row(str(row.get("source", "")), str(row.get("group_type", "")))
+        if not cfg:
+            continue
+        group_name = as_clean_str(row.get("group_name", ""))
+        if not group_name:
+            continue
+        system_id = cfg["system_id"]
+        system_label = cfg["system_label"]
+        display_label = f"{system_label} - {group_name}"
+        description = _describe_dropdown_group(system_id, system_label, group_name)
+
+        rows.append(
+            {
+                "iso3": as_clean_str(row.get("iso3", "")),
+                "iso2": as_clean_str(row.get("iso2", "")),
+                "m49": normalize_code(row.get("m49", "")),
+                "country_name_en": as_clean_str(row.get("country_name_en", "")),
+                "group_system": system_label,
+                "group_name": group_name,
+                "group_display_label": display_label,
+                "group_description": description,
+                "source": as_clean_str(row.get("source", "")),
+                "group_type": as_clean_str(row.get("group_type", "")),
+            }
+        )
+
+    # Synthetic custom group: Africa - All (UN M49 Africa)
+    africa = countries[countries["region_name_en"] == "Africa"][
+        ["iso3", "iso2", "m49", "country_name_en"]
+    ].copy()
+    if not africa.empty:
+        for rec in africa.to_dict(orient="records"):
+            rows.append(
+                {
+                    "iso3": as_clean_str(rec.get("iso3", "")),
+                    "iso2": as_clean_str(rec.get("iso2", "")),
+                    "m49": normalize_code(rec.get("m49", "")),
+                    "country_name_en": as_clean_str(rec.get("country_name_en", "")),
+                    "group_system": "Africa",
+                    "group_name": "Africa - All",
+                    "group_display_label": "Africa - All",
+                    "group_description": _describe_dropdown_group(
+                        "africa_custom", "Africa", "Africa - All"
+                    ),
+                    "source": "custom",
+                    "group_type": "aggregate",
+                }
+            )
+
+    dropdown = pd.DataFrame(rows)
+    if not dropdown.empty:
+        dropdown = dropdown.drop_duplicates()
+        dropdown = dropdown.sort_values(["country_name_en", "group_display_label"]).reset_index(
+            drop=True
+        )
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    dropdown.to_csv(out_path, index=False, encoding="utf-8")
+    return dropdown
+
+
+def load_reference_lists() -> tuple[pd.DataFrame, set[str]]:
+    """Load the UN membership and OECD member lists from reference/ and check their counts."""
+    un = pd.read_csv(REFERENCE_DIR / "un_membership.csv", dtype=str, keep_default_na=False)
+    n_members = int((un["un_status"] == "member_state").sum())
+    n_observers = int((un["un_status"] == "observer_state").sum())
+    if n_members != EXPECTED_UN_MEMBER_STATES or n_observers != EXPECTED_UN_OBSERVER_STATES:
+        raise ValueError(
+            f"reference/un_membership.csv has {n_members} members and {n_observers} observers; "
+            f"expected {EXPECTED_UN_MEMBER_STATES} and {EXPECTED_UN_OBSERVER_STATES}."
+        )
+    oecd = pd.read_csv(REFERENCE_DIR / "oecd_members.csv", dtype=str, keep_default_na=False)
+    if len(oecd) != EXPECTED_OECD_MEMBERS:
+        raise ValueError(f"reference/oecd_members.csv has {len(oecd)} rows; expected {EXPECTED_OECD_MEMBERS}.")
+    return un, set(oecd["iso3"])
+
+
+def add_membership_columns(countries: pd.DataFrame, un: pd.DataFrame, oecd_iso3: set[str]) -> pd.DataFrame:
+    """Add UN membership status, UN regional group and OECD membership to the country table."""
+    missing = sorted(set(un["iso3"]) - set(countries["iso3"]))
+    if missing:
+        raise ValueError(f"UN membership list has ISO3 codes not in UN M49: {', '.join(missing)}")
+    status = un.set_index("iso3")["un_status"]
+    group = un.set_index("iso3")["un_regional_group"]
+    out = countries.copy()
+    out["un_status"] = out["iso3"].map(status).fillna("non_member")
+    out["is_un_member"] = out["un_status"] == "member_state"
+    out["un_regional_group"] = out["iso3"].map(group).fillna("")
+    out["is_oecd_member"] = out["iso3"].isin(oecd_iso3)
+    return out
+
+
+def build_reference_memberships(countries: pd.DataFrame, un: pd.DataFrame) -> pd.DataFrame:
+    """Membership rows for UN membership, UN regional groups and OECD membership."""
+    keys = countries[["iso3", "iso2", "m49"]]
+    rows: list[dict[str, str]] = []
+    for rec in un.to_dict(orient="records"):
+        if rec["un_status"] == "member_state":
+            rows.append({"iso3": rec["iso3"], "source": "un_membership", "group_type": "membership",
+                         "group_code": "MEMBER", "group_name": "UN Member States"})
+            for code in [rec["un_regional_group"], rec["also_participates_in"]]:
+                if code:
+                    rows.append({"iso3": rec["iso3"], "source": "un_membership", "group_type": "regional_group",
+                                 "group_code": code, "group_name": UN_REGIONAL_GROUP_NAMES[code]})
+        else:
+            rows.append({"iso3": rec["iso3"], "source": "un_membership", "group_type": "membership",
+                         "group_code": "OBSERVER", "group_name": "UN non-member observer States"})
+    for iso3 in countries.loc[countries["is_oecd_member"], "iso3"]:
+        rows.append({"iso3": iso3, "source": "oecd", "group_type": "membership",
+                     "group_code": "OECD", "group_name": "OECD Member countries"})
+    return keys.merge(pd.DataFrame(rows), on="iso3", how="inner")
+
+
+def group_id(source: str, group_type: str, group_code: str, group_name: str) -> str:
+    """Stable identifier for a group, e.g. un_m49.region.2 or world_bank.income_level.lmc."""
+    token = as_clean_str(group_code) or as_clean_str(group_name)
+    token = re.sub(r"[^a-z0-9]+", "-", normalize_name(token) if not token.isdigit() else token).strip("-")
+    return f"{source}.{group_type}.{token}"
+
+
+# How each (source, group_type) pair is presented in groups.csv and on the website.
+# Pairs not listed here stay in the long membership table but are left out of the catalogue.
+GROUP_SYSTEMS = [
+    ("un_membership", "membership", "UN membership", "UN Member and observer States (UN Charter membership)."),
+    ("un_membership", "regional_group", "UN regional groups", "Groups of Member States used for elections and seat allocation in UN bodies."),
+    ("un_m49", "region", "UN M49 regions", "UN Statistics Division standard regions. Includes territories, not only States."),
+    ("un_m49", "sub_region", "UN M49 sub-regions", "UN Statistics Division standard sub-regions."),
+    ("un_m49", "intermediate_region", "UN M49 intermediate regions", "Finer M49 regions used in parts of Africa and the Americas."),
+    ("un_m49", "special_group", "UN development groups", "Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (UN-OHRLLS)."),
+    ("un_sdg", "region", "UN SDG regional groupings", "Groupings used by the UN SDG Global Database and the SDG Progress Report."),
+    ("world_bank", "region", "World Bank regions", "World Bank analytical regions."),
+    ("world_bank", "income_level", "World Bank income groups", "World Bank income classification by GNI per capita (Atlas method), revised each 1 July."),
+    ("world_bank", "lending_type", "World Bank lending categories", "IDA, IBRD and Blend eligibility."),
+    ("world_bank_fcs", "fcs_status", "World Bank FCS", "Fragile and Conflict-affected Situations, current fiscal year list."),
+    ("world_bank_fcs", "fcs_category", "World Bank FCS", "Fragile and Conflict-affected Situations, by category."),
+    ("oecd", "membership", "OECD membership", "Member countries of the OECD."),
+    ("oecd_dac", "oda_eligibility", "OECD DAC ODA recipients", "Countries and territories eligible to receive official development assistance."),
+    ("oecd_dac", "oda_recipient_group", "OECD DAC ODA recipients", "DAC List of ODA Recipients by group."),
+]
+
+SOURCE_ORGS = {
+    "un_membership": "United Nations",
+    "un_m49": "UN Statistics Division",
+    "un_sdg": "UN Statistics Division",
+    "world_bank": "World Bank",
+    "world_bank_fcs": "World Bank",
+    "oecd": "OECD",
+    "oecd_dac": "OECD",
+}
+
+
+def finalize_memberships(memberships: pd.DataFrame, countries: pd.DataFrame) -> pd.DataFrame:
+    """Add group_id, country name and UN membership to every membership row."""
+    out = memberships.copy()
+    out["group_id"] = [
+        group_id(r.source, r.group_type, r.group_code, r.group_name) for r in out.itertuples(index=False)
+    ]
+    # Some publishers reuse a code for several groups (the SDG API gives code 1 to three "World (total)"
+    # groupings). Those ids fall back to the group name so no membership is lost.
+    names_per_id = out.groupby("group_id")["group_name"].nunique()
+    clash = out["group_id"].isin(names_per_id[names_per_id > 1].index)
+    out.loc[clash, "group_id"] = [
+        group_id(r.source, r.group_type, "", r.group_name) for r in out[clash].itertuples(index=False)
+    ]
+    out = out.merge(countries[["iso3", "country_name_en", "is_un_member"]], on="iso3", how="left")
+    out = out.rename(columns={"country_name_en": "country_name"})
+    out = out.drop_duplicates(subset=["iso3", "group_id"])
+    cols = ["iso3", "iso2", "m49", "source", "group_type", "group_code", "group_name", "group_id", "country_name", "is_un_member"]
+    return out[cols].sort_values(["iso3", "source", "group_type", "group_name"]).reset_index(drop=True)
+
+
+def build_groups_catalogue(memberships: pd.DataFrame) -> pd.DataFrame:
+    """One row per group with its system, description and member counts."""
+    order = {(src, gt): i for i, (src, gt, _, _) in enumerate(GROUP_SYSTEMS)}
+    labels = {(src, gt): (label, desc) for src, gt, label, desc in GROUP_SYSTEMS}
+    rows = []
+    for (gid, src, gt, code, name), g in memberships.groupby(
+        ["group_id", "source", "group_type", "group_code", "group_name"], sort=False
+    ):
+        if (src, gt) not in labels:
+            continue
+        label, desc = labels[(src, gt)]
+        rows.append({
+            "group_id": gid,
+            "system": label,
+            "group_name": name,
+            "group_code": code,
+            "source": src,
+            "group_type": gt,
+            "organization": SOURCE_ORGS.get(src, ""),
+            "n_members": int(g["iso3"].nunique()),
+            "n_un_members": int(g.loc[g["is_un_member"].astype(bool), "iso3"].nunique()),
+            "system_description": desc,
+            "_order": order[(src, gt)],
+        })
+    cat = pd.DataFrame(rows).sort_values(["_order", "group_name"]).drop(columns="_order")
+    return cat.reset_index(drop=True)
+
+
+def _sdg_region_lookup(memberships: pd.DataFrame) -> dict[str, str]:
+    sdg = memberships[(memberships["source"] == "un_sdg") & memberships["group_code"].isin(SDG_REGION_CODES)]
+    return dict(zip(sdg["iso3"], sdg["group_name"]))
+
+
+def build_flagship(countries: pd.DataFrame, memberships: pd.DataFrame) -> pd.DataFrame:
+    """The analysis-ready table: one row per country or area, plain snake_case columns, true/false flags."""
+    c = countries
+    sdg_region = _sdg_region_lookup(memberships)
+    oda_group = (
+        memberships[(memberships["source"] == "oecd_dac") & (memberships["group_type"] == "oda_recipient_group")]
+        .groupby("iso3")["group_name"].first()
+    )
+    inter = c["intermediate_region_name_en"].fillna("").astype(str)
+    sub = c["sub_region_name_en"].fillna("").astype(str)
+    flag = lambda col: c[col].map(lambda v: v is True or str(v).strip().lower() == "true")  # noqa: E731
+    out = pd.DataFrame({
+        "iso3": c["iso3"],
+        "iso2": c["iso2"],
+        "m49": c["m49"].map(lambda v: str(v).zfill(3) if str(v).isdigit() else v),
+        "name": c["country_name_en"],
+        "un_status": c["un_status"],
+        "is_un_member": c["is_un_member"],
+        "un_regional_group": c["un_regional_group"],
+        "region": c["region_name_en"],
+        "sub_region": sub,
+        "intermediate_region": inter,
+        "analysis_region": inter.where(inter != "", sub),
+        "sdg_region": c["iso3"].map(sdg_region).fillna(""),
+        "is_ldc": flag("is_ldc"),
+        "is_lldc": flag("is_lldc"),
+        "is_sids": flag("is_sids"),
+        "wb_region": c["wb_region_name"].fillna(""),
+        "wb_income_group": c["wb_income_name"].fillna(""),
+        "wb_lending_type": c["wb_lending_name"].fillna(""),
+        "is_fcs": flag("wb_fcs_status"),
+        "fcs_category": c["wb_fcs_category"].fillna(""),
+        "is_oda_eligible": flag("oecd_dac_eligible"),
+        "oda_recipient_group": c["iso3"].map(oda_group).fillna(""),
+        "is_oecd_member": c["is_oecd_member"],
+        "capital": c["capital_city"].fillna(""),
+        "latitude": c["latitude"],
+        "longitude": c["longitude"],
+        "name_ar": c["country_name_ar"],
+        "name_zh": c["country_name_zh"],
+        "name_fr": c["country_name_fr"],
+        "name_ru": c["country_name_ru"],
+        "name_es": c["country_name_es"],
+    })
+    return out.sort_values("name").reset_index(drop=True)
+
+
+def write_tidy_csv(path: Path, df: pd.DataFrame) -> None:
+    """CSV with a clean header row and lowercase true/false for boolean columns."""
+    out = df.copy()
+    for col in out.columns:
+        if out[col].dtype == bool:
+            out[col] = out[col].map({True: "true", False: "false"})
+    path.parent.mkdir(parents=True, exist_ok=True)
+    out.to_csv(path, index=False, encoding="utf-8", lineterminator="\n")
+
+
+def site_payload(flagship: pd.DataFrame, groups: pd.DataFrame, memberships: pd.DataFrame) -> dict[str, Any]:
+    """Compact JSON for the website: countries plus each catalogued group's member list."""
+    members = memberships.groupby("group_id")["iso3"].apply(lambda s: sorted(set(s))).to_dict()
+    group_rows = []
+    for g in groups.to_dict(orient="records"):
+        g = {k: v for k, v in g.items() if k in {"group_id", "system", "group_name", "group_code", "organization", "n_members", "n_un_members"}}
+        g["members"] = members.get(g["group_id"], [])
+        group_rows.append(g)
+    countries = flagship.drop(columns=["name_ar", "name_zh", "name_ru"]).to_dict(orient="records")
+    return {"countries": countries, "groups": group_rows}
+
+
 def main() -> None:
     for d in [LATEST_DIR, HISTORY_DIR, CHANGELOG_DIR, DOCS_DATA_DIR]:
         d.mkdir(parents=True, exist_ok=True)
+
+    un_reference, oecd_iso3 = load_reference_lists()
 
     timestamp = utc_now().strftime("%Y%m%dT%H%M%SZ")
     access_utc = utc_now().isoformat()
@@ -976,8 +1436,18 @@ def main() -> None:
         ]
     ].copy()
 
+    countries = add_membership_columns(countries, un_reference, oecd_iso3)
     countries = countries.sort_values(["country_name_en", "iso3"]).reset_index(drop=True)
-    memberships = build_group_memberships(countries, sdg_group_df, oecd_groups)
+    memberships = pd.concat(
+        [
+            build_group_memberships(countries, sdg_group_df, oecd_groups),
+            build_reference_memberships(countries, un_reference),
+        ],
+        ignore_index=True,
+    )
+    memberships = finalize_memberships(memberships, countries)
+    flagship = build_flagship(countries, memberships)
+    groups = build_groups_catalogue(memberships)
     library = memberships.merge(
         countries[
             [
@@ -1095,6 +1565,26 @@ def main() -> None:
             notes="Latest CSV auto-selected from official OECD webfs directory.",
         ).__dict__,
     ]
+    sources_rows += [
+        SourceRecord(
+            source_id="un_membership",
+            title="UN Member States and regional groups of Member States",
+            url="https://www.un.org/dgacm/en/content/regional-groups",
+            organization="United Nations (DGACM)",
+            license_note="UN website terms",
+            access_utc=access_utc,
+            notes="Curated list in reference/un_membership.csv: 193 Member States, 2 observer States, regional groups.",
+        ).__dict__,
+        SourceRecord(
+            source_id="oecd_members",
+            title="OECD Member countries",
+            url="https://www.oecd.org/en/about/members-partners.html",
+            organization="OECD",
+            license_note="OECD terms",
+            access_utc=access_utc,
+            notes="Curated list in reference/oecd_members.csv: 38 Member countries.",
+        ).__dict__,
+    ]
     sources = pd.DataFrame(sources_rows)
 
     prev_countries = None
@@ -1102,20 +1592,30 @@ def main() -> None:
     prev_country_path = LATEST_DIR / "countries_master.csv"
     prev_group_path = LATEST_DIR / "country_group_membership.csv"
     if prev_country_path.exists() and prev_group_path.exists():
-        prev_countries = pd.read_csv(prev_country_path, dtype=str, keep_default_na=False).fillna("")
-        prev_groups = pd.read_csv(prev_group_path, dtype=str, keep_default_na=False).fillna("")
+        prev_countries = read_previous_csv(prev_country_path)
+        prev_groups = read_previous_csv(prev_group_path)
 
     current_country_path = LATEST_DIR / "countries_master.csv"
     current_group_path = LATEST_DIR / "country_group_membership.csv"
     current_library_path = LATEST_DIR / "country_classification_library.csv"
     current_sources_path = LATEST_DIR / "sources.csv"
     current_unmapped_path = LATEST_DIR / "unmapped_external_names.csv"
+    current_dropdown_path = LATEST_DIR / "country_group_dropdown_master.csv"
+    current_flagship_path = LATEST_DIR / "countries.csv"
+    current_groups_path = LATEST_DIR / "groups.csv"
 
     to_records_csv(current_country_path, countries)
-    to_records_csv(current_group_path, memberships)
+    write_tidy_csv(current_group_path, memberships)
     to_records_csv(current_library_path, library)
     to_records_csv(current_sources_path, sources)
     to_records_csv(current_unmapped_path, unmapped)
+    write_tidy_csv(current_flagship_path, flagship)
+    write_tidy_csv(current_groups_path, groups)
+    dropdown_master = write_dropdown_master(countries, memberships, current_dropdown_path)
+    current_aggregates_path = LATEST_DIR / "aggregates.csv"
+    current_world_reference_path = LATEST_DIR / "world_reference.csv"
+    write_aggregates(countries, memberships, current_aggregates_path)
+    write_world_reference(countries, current_world_reference_path)
 
     change_report = create_change_report(
         current_countries=countries.fillna("").astype(str),
@@ -1131,16 +1631,27 @@ def main() -> None:
         "generated_at_utc": access_utc,
         "snapshot_id": timestamp,
         "record_counts": {
+            "countries": int(len(flagship)),
+            "un_member_states": int(flagship["is_un_member"].sum()),
+            "groups": int(len(groups)),
             "countries_master": int(len(countries)),
             "country_group_membership": int(len(memberships)),
             "country_classification_library": int(len(library)),
+            "country_group_dropdown_master": int(len(dropdown_master)),
+            "aggregates": int(len(memberships)),
+            "world_reference": int(len(countries)),
             "sources": int(len(sources)),
             "unmapped_external_names": int(len(unmapped)),
         },
         "files": {
+            "countries.csv": {"sha256": sha256_file(current_flagship_path)},
+            "groups.csv": {"sha256": sha256_file(current_groups_path)},
             "countries_master.csv": {"sha256": sha256_file(current_country_path)},
             "country_group_membership.csv": {"sha256": sha256_file(current_group_path)},
             "country_classification_library.csv": {"sha256": sha256_file(current_library_path)},
+            "country_group_dropdown_master.csv": {"sha256": sha256_file(current_dropdown_path)},
+            "aggregates.csv": {"sha256": sha256_file(current_aggregates_path)},
+            "world_reference.csv": {"sha256": sha256_file(current_world_reference_path)},
             "sources.csv": {"sha256": sha256_file(current_sources_path)},
             "unmapped_external_names.csv": {"sha256": sha256_file(current_unmapped_path)},
         },
@@ -1151,21 +1662,31 @@ def main() -> None:
     snapshot_dir = HISTORY_DIR / timestamp
     snapshot_dir.mkdir(parents=True, exist_ok=True)
     for f in [
+        current_flagship_path,
+        current_groups_path,
         current_country_path,
         current_group_path,
         current_library_path,
         current_sources_path,
         current_unmapped_path,
+        current_dropdown_path,
+        current_aggregates_path,
+        current_world_reference_path,
         LATEST_DIR / "run_manifest.json",
         change_report_path,
     ]:
         shutil.copy2(f, snapshot_dir / f.name)
 
+    shutil.copy2(current_flagship_path, DOCS_DATA_DIR / "countries.csv")
+    shutil.copy2(current_groups_path, DOCS_DATA_DIR / "groups.csv")
     shutil.copy2(current_country_path, DOCS_DATA_DIR / "countries_master.csv")
     shutil.copy2(current_group_path, DOCS_DATA_DIR / "country_group_membership.csv")
     shutil.copy2(current_library_path, DOCS_DATA_DIR / "country_classification_library.csv")
     shutil.copy2(current_sources_path, DOCS_DATA_DIR / "sources.csv")
     shutil.copy2(current_unmapped_path, DOCS_DATA_DIR / "unmapped_external_names.csv")
+    shutil.copy2(current_dropdown_path, DOCS_DATA_DIR / "country_group_dropdown_master.csv")
+    shutil.copy2(current_aggregates_path, DOCS_DATA_DIR / "aggregates.csv")
+    shutil.copy2(current_world_reference_path, DOCS_DATA_DIR / "world_reference.csv")
     shutil.copy2(LATEST_DIR / "run_manifest.json", DOCS_DATA_DIR / "run_manifest.json")
 
     write_json(DOCS_DATA_DIR / "countries_master.json", countries.to_dict(orient="records"))
@@ -1174,11 +1695,13 @@ def main() -> None:
     write_json(DOCS_DATA_DIR / "sources.json", sources.to_dict(orient="records"))
     write_json(DOCS_DATA_DIR / "unmapped_external_names.json", unmapped.to_dict(orient="records"))
 
-    write_aggregates(countries, memberships, DOCS_DATA_DIR / "aggregates.csv")
-    write_aggregates(countries, memberships, LATEST_DIR / "aggregates.csv")
+    write_json(DOCS_DATA_DIR / "countries.json", flagship.to_dict(orient="records"))
+    with (DOCS_DATA_DIR / "site.json").open("w", encoding="utf-8") as f:
+        json.dump(_sanitize_json(site_payload(flagship, groups, memberships)), f, ensure_ascii=False, separators=(",", ":"))
 
     print(f"Built dataset snapshot: {timestamp}")
-    print(f"Countries: {len(countries)}")
+    print(f"Countries: {len(countries)} ({int(flagship['is_un_member'].sum())} UN Member States)")
+    print(f"Groups catalogued: {len(groups)}")
     print(f"Group memberships: {len(memberships)}")
     print(f"Library rows: {len(library)}")
     print(f"Unmapped external names: {len(unmapped)}")

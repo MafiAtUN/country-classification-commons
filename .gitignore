@@ -7,3 +7,7 @@ __pycache__/
 *.xls
 notebooks/
 .ipynb_checkpoints/
+
+# Editor / IDE (do not publish)
+.cursor/
+.codex/

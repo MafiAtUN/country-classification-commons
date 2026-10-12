@@ -1,126 +1,134 @@
+<div align="center">
+
+<a href="https://nerd-factory.github.io/nerd-lab/"><img src="docs/assets/img/mark-e.svg" alt="Nerd Lab" width="44"></a>
+
+**[Nerd Lab](https://nerd-factory.github.io/nerd-lab/) presents**
+
 # Country Classification Commons
+
+Every official country grouping from the UN, World Bank and OECD, in one open, auto-refreshing table.
 
 [![Update Data](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/update-data.yml/badge.svg)](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/update-data.yml)
 [![Deploy Pages](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/MafiAtUN/country-classification-commons/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 
-An open, auto-refreshing reference library of country classifications from the UN, World Bank, and OECD — for researchers, analysts, and practitioners who work with countries as units of analysis.
+**[Explorer](https://mafiatun.github.io/country-classification-commons/explorer.html)** ·
+**[Use it in your tool](https://mafiatun.github.io/country-classification-commons/guides.html)** ·
+**[Data](https://mafiatun.github.io/country-classification-commons/data.html)** ·
+**[Method](https://mafiatun.github.io/country-classification-commons/about.html)**
 
-**[Live Explorer →](https://mafiatun.github.io/country-classification-commons/)**
+</div>
 
-Maintainer: [Mafizul Islam](https://github.com/MafiAtUN)
+---
 
-This project rebuilds country classifications in a normalized format using authoritative, updateable sources and publishes outputs that can be consumed directly as CSV/JSON.
+## How many countries are in Africa?
 
-## What This Repository Produces
+**54** if you ask the UN General Assembly. **60** if you ask the UN statistical standard (M49), which also lists
+Réunion, Mayotte, Western Sahara and three other areas. **48** if you ask the World Bank about Sub-Saharan Africa.
 
-- `data/latest/countries_master.csv`
-  - Core country keys (`iso3`, `iso2`, `m49`) and multilingual names (UN 6 languages)
-  - UN M49 geoscheme attributes
-  - World Bank metadata (region, income, lending type, capital, coordinates)
-  - World Bank FCS classification fields
-  - OECD DAC ODA eligibility summary fields
-- `data/latest/country_group_membership.csv`
-  - Long-format membership table: one row per country-group assignment
-- `data/latest/country_classification_library.csv`
-  - Denormalized full library: one row per country classification assignment with key country metadata
-- `data/latest/sources.csv`
-  - Source catalog with access timestamps and provenance notes
-- `data/latest/run_manifest.json`
-  - Snapshot metadata, record counts, and file hashes
-- `data/latest/unmapped_external_names.csv`
-  - External source names that could not be mapped to ISO3 in the current run
-- `data/changelog/changes_<snapshot>.md`
-  - Diff report against previous snapshot
-- `docs/`
-  - GitHub Pages multi-page site:
-    - `index.html` (overview)
-    - `explorer.html` (interactive country/classification explorer)
-    - `downloads.html` (direct download links + raw file links)
+Every answer is official. They answer different questions. This project publishes all of them side by side, and marks
+every row with its UN membership status, so the definition you use is a choice rather than an accident.
 
-## Source Systems (Current)
+## Get the data
 
-1. UN Statistics Division (M49 multilingual overview)
-2. UN SDG API (`GeoArea/List` and `GeoArea/Tree`)
-3. World Bank Open Data API (`/v2/country`)
-4. World Bank FCS latest FY list (official page + linked FY PDF)
-5. OECD DAC ODA recipients (latest CSV from OECD webfs directory)
+| File | Shape | Use it for |
+|---|---|---|
+| [`countries.csv`](https://mafiatun.github.io/country-classification-commons/data/countries.csv) | one row per country or area (248) | Start here. UN membership and regional group, M49 and SDG regions, LDC/LLDC/SIDS, World Bank region/income/lending, FCS, ODA eligibility, OECD membership, names in six languages. |
+| [`country_group_membership.csv`](https://mafiatun.github.io/country-classification-commons/data/country_group_membership.csv) | one row per country and group | Any grouping that is not a column, and many-to-many models in BI tools. |
+| [`groups.csv`](https://mafiatun.github.io/country-classification-commons/data/groups.csv) | one row per group (121) | The catalogue: member counts and UN Member State counts per group. |
 
-Detailed notes: [`SOURCE_METHODOLOGY.md`](./SOURCE_METHODOLOGY.md)
+Plain CSV, one header row, `true`/`false` flags, UTF-8. The links are permanent and refresh twice every weekday.
+JSON copies sit next to them. Older formats (`world_reference.csv`, `aggregates.csv`, `countries_master.csv`) are still published.
 
-## Quick Start
+```python
+import pandas as pd
+
+url = "https://mafiatun.github.io/country-classification-commons/data/countries.csv"
+countries = pd.read_csv(url, keep_default_na=False, dtype={"m49": str})  # keeps Namibia's ISO2 "NA"
+
+countries[(countries.region == "Africa") & countries.is_un_member]  # 54 rows
+```
+
+```r
+countries <- readr::read_csv("https://mafiatun.github.io/country-classification-commons/data/countries.csv",
+                             na = "", col_types = readr::cols(m49 = "c"))
+dplyr::filter(countries, region == "Africa", is_un_member)  # 54 rows
+```
+
+```sql
+-- DuckDB
+SELECT name FROM 'https://mafiatun.github.io/country-classification-commons/data/countries.csv'
+WHERE region = 'Africa' AND is_un_member;  -- 54 rows
+```
+
+Step-by-step guides for **Power BI, Tableau, Qlik Sense, Excel, Google Sheets, Python, R, Julia, JavaScript, SQL and Stata**
+are on the [Use it](https://mafiatun.github.io/country-classification-commons/guides.html) page. The
+[Explorer](https://mafiatun.github.io/country-classification-commons/explorer.html) builds any list you need (combine,
+exclude, compare, map) and writes the code to rebuild it in your tool.
+
+## The UN membership column
+
+| `un_status` | Rows | Meaning |
+|---|---|---|
+| `member_state` | 193 | UN Member States. `is_un_member` is true. |
+| `observer_state` | 2 | Holy See, State of Palestine. |
+| `non_member` | 53 | Territories and other areas listed in UN M49 for statistical purposes. |
+
+`un_regional_group` gives each Member State's UN regional group (AG, APG, EEG, GRULAC, WEOG) for electoral purposes.
+Notes on Türkiye, the United States and Israel are in the [method](https://mafiatun.github.io/country-classification-commons/about.html#regional-groups).
+
+## Sources
+
+| Publisher | What | How |
+|---|---|---|
+| UN Statistics Division | M49 codes, regions, LDC/LLDC/SIDS, names in six languages | [M49 overview](https://unstats.un.org/unsd/methodology/m49/overview/), all language tabs |
+| UN SDG Global Database | SDG regional groupings | [SDG API](https://unstats.un.org/SDGAPI/swagger/) GeoArea list and tree |
+| UN General Assembly (DGACM) | Member States, observer States, regional groups | [Regional groups](https://www.un.org/dgacm/en/content/regional-groups), curated in [`reference/`](./reference/) |
+| World Bank | Region, income group, lending category, capital | [Country API](https://api.worldbank.org/v2/country?format=json) |
+| World Bank | Fragile and conflict-affected situations | Current fiscal-year list, auto-discovered |
+| OECD | DAC List of ODA Recipients | Latest CSV, auto-discovered |
+| OECD | 38 Member countries | Curated in [`reference/`](./reference/) |
+
+Each run checks that UN membership adds up to 193 + 2 and OECD to 38, records unmatched names in
+`unmapped_external_names.csv`, keeps a dated snapshot in [`data/history/`](./data/history/) and writes a plain-language
+diff to [`data/changelog/`](./data/changelog/).
+
+## How it runs
 
 ```bash
-cd country-classification-commons
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python scripts/update_data.py
+python scripts/update_data.py      # fetch, build, diff, snapshot, copy to docs/data/
+python scripts/build_shell.py      # only after editing the shared header/footer templates
 ```
 
-## GitHub Pages Setup
+- [`update-data.yml`](./.github/workflows/update-data.yml) runs the pipeline at 05:17 and 17:17 UTC on weekdays and 09:42 UTC on Sundays.
+- [`deploy-pages.yml`](./.github/workflows/deploy-pages.yml) publishes `docs/` after every refresh and every site change.
+- The site is static HTML, CSS and JavaScript in [`docs/`](./docs/). No build step; `scripts/build_shell.py` stamps the shared header and footer into each page.
 
-This repository includes `.github/workflows/deploy-pages.yml` to deploy the `docs/` app.
+Column definitions: [`DATA_DICTIONARY.md`](./DATA_DICTIONARY.md) · Source notes: [`SOURCE_METHODOLOGY.md`](./SOURCE_METHODOLOGY.md) · Version history: [`CHANGELOG.md`](./CHANGELOG.md)
 
-1. In repository settings, open `Pages`.
-2. Set `Source` to `GitHub Actions`.
-3. Push to `main` (or run the workflow manually).
-4. The app will serve from `https://<user>.github.io/<repo>/`.
+## Not an official product
 
-The app reads:
+Country Classification Commons is an independent open-source project. It is not issued or endorsed by the United Nations,
+the World Bank or the OECD; for anything formal, check the publisher's own list. The designations employed do not imply
+the expression of any opinion concerning the legal status of any country, territory, city or area or of its authorities,
+or concerning the delimitation of its frontiers or boundaries.
 
-- `docs/data/countries_master.json`
-- `docs/data/country_group_membership.json`
-- `docs/data/country_classification_library.json`
-- `docs/data/sources.json`
-- `docs/data/run_manifest.json`
+## Cite
 
-## Update Workflow
+> Islam, M. (2026). *Country Classification Commons: official country groupings from the UN, World Bank and OECD in one open table* [Data set]. Nerd Lab. https://mafiatun.github.io/country-classification-commons/
 
-Run:
+Also cite the publisher of each classification you use. Machine-readable citation: [`CITATION.cff`](./CITATION.cff).
 
-```bash
-python scripts/update_data.py
-```
+## Contribute
 
-This performs:
+Bug reports, source proposals and fixes are welcome: see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and the
+[`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md). Security issues: [`SECURITY.md`](./SECURITY.md).
 
-1. Pull fresh data from all registered sources.
-2. Rebuild normalized datasets in `data/latest/`.
-3. Compare with previous snapshot and write a changelog report.
-4. Archive snapshot under `data/history/<timestamp>/`.
-5. Refresh `docs/data/` for GitHub Pages.
+---
 
-## Recommended Publishing Pattern
-
-- Keep this as a dedicated public repository.
-- Use the included scheduled workflow `.github/workflows/update-data.yml`.
-- Commit `data/latest/`, `data/changelog/`, and `docs/data/` after each successful run.
-
-## Data Contract
-
-Schema reference: [`DATA_DICTIONARY.md`](./DATA_DICTIONARY.md)
-
-## Tool Usage Guide
-
-Detailed instructions for spreadsheets, BI tools, and programming environments:
-[`USAGE_GUIDE.md`](./USAGE_GUIDE.md)
-
-## Contributing
-
-Contributions are welcome — bug reports, new data source proposals, documentation fixes, and code improvements. See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for guidelines.
-
-Please read our [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) before participating.
-
-## Citation Guidance
-
-When reusing the data, cite both this repository snapshot and upstream official sources listed in `data/latest/sources.csv`.
-
-## Security
-
-To report a security vulnerability, see [`SECURITY.md`](./SECURITY.md).
-
-## License
-
-MIT License. Copyright (c) 2026 Mafizul Islam.
+<div align="center">
+<sub>A <a href="https://nerd-factory.github.io/nerd-lab/">Nerd Lab</a> experiment. Unnecessarily clever. Occasionally useful.<br>
+Maintained by <a href="https://github.com/MafiAtUN">Mafizul Islam</a>. Code MIT; data under each publisher's terms.</sub>
+</div>

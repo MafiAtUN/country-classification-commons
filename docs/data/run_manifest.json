@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-11-20T14:03:20.837666+00:00",
-  "snapshot_id": "20261120T140320Z",
+  "generated_at_utc": "2026-11-20T23:04:53.583330+00:00",
+  "snapshot_id": "20261120T230453Z",
   "record_counts": {
     "countries_master": 248,
     "country_group_membership": 4249,
@@ -19,11 +19,11 @@
       "sha256": "15deb6f2de73801c0ca802e9451416fe6581d8fadf43a2ab0266136e40123d80"
     },
     "sources.csv": {
-      "sha256": "f873de95502edc8e9a77700bcc2bcb8ef0571b60ee07df538815254fad62ed85"
+      "sha256": "db685415ec2bb19a9dc527c0922eb6be240f84ba45c3d5e4b631c933fb53e1ad"
     },
     "unmapped_external_names.csv": {
       "sha256": "792b0d02cb3dec4cc96c1abda653aee3ecdef4cc149814be202b996d0d41f9ac"
     }
   },
-  "changelog_file": "data/changelog/changes_20261120T140320Z.md"
+  "changelog_file": "data/changelog/changes_20261120T230453Z.md"
 }
